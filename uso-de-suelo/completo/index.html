@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Uso del suelo — Manual Mónaco</title>
+<style>
+  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
+  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:22px;margin:30px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;color:var(--ink2)}
+  .meta{font-size:13px;color:var(--muted)}
+  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
+  .box.amber{border-left-color:var(--amber)}
+  .box.green{border-left-color:var(--green)}
+  .box h3{margin:0 0 6px;font-size:17px}
+  .box p:last-child{margin:0}
+  .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .paper{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
+  .paper .ic{font-size:30px;line-height:1}
+  .paper b{display:block;margin-top:6px;font-size:15px}
+  .paper span{font-size:13px;color:var(--muted)}
+  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  ol.steps>li{position:relative;padding:0 0 18px 58px;counter-increment:s;break-inside:avoid}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--onblue);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li::after{content:"";position:absolute;left:19px;top:44px;bottom:4px;width:2px;background:var(--line)}
+  ol.steps>li:last-child::after{display:none}
+  ol.steps h3{margin:6px 0 4px;font-size:19px}
+  .say{background:var(--soft);border-radius:10px;padding:10px 12px;font-style:italic;margin:8px 0}
+  .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
+  .no{color:var(--red);font-weight:700}
+  ul{padding-left:20px;margin:6px 0 10px}
+  li{margin:3px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
+  td:first-child{font-weight:600;white-space:nowrap}
+  a{color:var(--blue)}
+  .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cal div{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;break-inside:avoid}
+  .cal b{display:block;color:var(--blue)}
+  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  @media (max-width:560px){h1{font-size:28px}.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
+  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}ol.steps>li{padding-bottom:10px}.box{padding:10px 14px;margin:10px 0}}
+  .vid{position:relative;z-index:1;background:var(--bg);margin:14px 0 4px;padding-bottom:4px;break-inside:avoid}
+  .vid video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:var(--screen);border-radius:12px;border:1px solid var(--line)}
+  .vid figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+  @media (max-width:560px){ol.steps>li{padding-left:50px}.vid{margin-left:-50px}}
+  @media print{.vid video{display:none}.vid figcaption a::after{content:" (" attr(href) ")";word-break:break-all}}
+  .nc{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a5a00;background:#fdf3e1;border-radius:6px;padding:1px 6px}
+</style>
+</head>
+<body>
+<main>
+  <p class="meta" style="margin-bottom:18px">Esta es la versión completa, con todo el detalle. <a href="../">← Volver a la versión corta</a></p>
+  <p class="brand">MÓNACO · MOTO DETAILING</p>
+  <p class="kicker">MANUAL PARA ASESORADOS · VERSIÓN EXPRESS</p>
+  <h1>Uso del suelo: el primer trámite, antes de firmar el arriendo</h1>
+  <p class="lead">El <strong>uso del suelo</strong> dice qué negocios se pueden poner en <strong>una dirección exacta</strong>. Si en ese local no se permite lavar motos, no hay papel que lo arregle: toca buscar otro. Por eso esto se averigua <strong>antes de firmar el arriendo</strong> y antes de hacer cualquier obra.</p>
+  <p class="meta">Verificado contra fuentes oficiales el 1 de octubre de 2026.</p>
+
+  <div class="box amber">
+    <h3>¿Cuánto cuesta?</h3>
+    <p><strong>Consultar es gratis.</strong> En el mapa por internet, o preguntando de palabra en la curaduría o en Planeación.</p>
+    <p><strong>El concepto (el papel firmado) en una curaduría cuesta $104.083 en 2026, con IVA incluido.</strong> Es el mismo valor en Bogotá, Soacha, Funza, Mosquera o cualquier curaduría del país, porque lo fija una norma nacional (1,67 UVT más IVA).</p>
+    <p>En los municipios sin curaduría lo da la Alcaldía, y cada una pone su precio. En Facatativá, un asesorado pagó $42.000 en 2026 (dato de Mónaco, no de la Alcaldía).</p>
+    <p>Para la curaduría vas a necesitar además el <strong>certificado de tradición y libertad</strong> del local: $23.000 en línea.</p>
+  </div>
+
+  <h2>Palabras que vas a oír</h2>
+  <ul>
+    <li><strong>POT:</strong> Plan de Ordenamiento Territorial. Es la ley de cada municipio que dice qué se puede hacer en cada zona.</li>
+    <li><strong>Consulta:</strong> mirar tú mismo, gratis, qué permite el POT en esa dirección. No es un permiso ni un papel oficial.</li>
+    <li><strong>Concepto de uso del suelo:</strong> el papel que firma la curaduría o la Alcaldía. Dice qué usos permite el POT en ese predio. Ese sí es tu prueba.</li>
+    <li><strong>Curaduría urbana:</strong> una oficina particular a la que el Estado le dio la tarea de firmar licencias de construcción y conceptos de uso del suelo.</li>
+    <li><strong>CHIP:</strong> el código con el que Bogotá identifica cada predio. Pídeselo al dueño del local.</li>
+    <li><strong>Matrícula inmobiliaria:</strong> el número del predio en la oficina de registro. También te lo da el dueño.</li>
+    <li><strong>CIIU:</strong> el código de tu actividad en el RUT y en la Cámara de Comercio. Abajo te explicamos cuál.</li>
+  </ul>
+
+  <div class="box">
+    <h3>Ojo: el papel informa, no da permiso</h3>
+    <p>La ley dice que el concepto <strong>no da derechos</strong>: solo te cuenta qué permite el POT. Lo que la ley te exige es <strong>cumplir el uso del suelo antes de abrir</strong> (Ley 1801, artículo 87). El concepto es la forma de probar que lo cumples.</p>
+  </div>
+
+  <h2>Antes de ir a la curaduría, ten esto</h2>
+  <div class="papers">
+    <div class="paper"><div class="ic">📄</div><b>Certificado de tradición y libertad</b><span>Del local. Con menos de 30 días. Lo sacas tú en línea</span></div>
+    <div class="paper"><div class="ic">🪪</div><b>Cédula</b><span>De quien pide el concepto, en PDF o fotocopia</span></div>
+    <div class="paper"><div class="ic">📍</div><b>Dirección y CHIP</b><span>La dirección exacta del local y su CHIP</span></div>
+  </div>
+  <p>Eso es lo que piden las curadurías de Bogotá. Si vas a pedirlo <strong>a nombre de una S.A.S.</strong>, suma el certificado de Cámara de Comercio con menos de 30 días. Fuera de Bogotá cada oficina pide cosas un poco distintas: mira la sección del final.</p>
+
+  <h2>Los 6 pasos</h2>
+  <ol class="steps">
+    <li>
+      <h3>Busca el local en el mapa (gratis)</h3>
+      <p>Entra a <a href="https://mapas.bogota.gov.co/">Mapas Bogotá</a> o a <a href="https://sinu.sdp.gov.co/">SINUPOT</a>, el mapa de la Secretaría Distrital de Planeación (SDP). Escribe la dirección exacta del local o su CHIP. Mira qué norma y qué usos salen para ese predio. Busca por dirección, no por barrio: dos locales de la misma cuadra pueden tener normas distintas.</p>
+      <p>Si lo que ves no lo entiendes, no pasa nada. Para eso es el paso 2.</p>
+      <p class="done">✔ Listo cuando: tienes un pantallazo del predio en el mapa, con la dirección visible.</p>
+      <figure class="vid">
+        <iframe src="https://www.youtube-nocookie.com/embed/YTk-pPtVYfQ" title="Cómo consultar un predio en Sinupot — Secretaría Distrital de Planeación" allowfullscreen loading="lazy" style="display:block;width:100%;max-width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe>
+        <figcaption>▶ Video oficial de la Secretaría Distrital de Planeación: <strong>cómo buscar un predio en Sinupot</strong> · 2:18. Solo Bogotá.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <h3>Pregunta de palabra, también gratis</h3>
+      <p>Las preguntas verbales sobre la norma <strong>no se cobran</strong>. Puedes agendar una cita gratis en una curaduría. En la Curaduría 1 de Bogotá es de lunes a jueves, de 8:00 a 12:00 m., dura 20 minutos y se pide en su página. También puedes llamar o escribir (los datos están al final). Pregunta esto:</p>
+      <p class="say">"Buenos días. Voy a arrendar el local de la [dirección exacta], CHIP [número]. Quiero poner un lavadero de motos. ¿Ese predio permite lavado de vehículos según el POT? ¿Tiene alguna condición?"</p>
+      <p>Si te dicen que no, <span class="no">no firmes</span>. Pregunta de una vez en qué zonas cercanas sí se puede.</p>
+      <p class="done">✔ Listo cuando: anotaste la respuesta, la fecha y el nombre de quien te atendió. Si te respondieron por WhatsApp o correo, guarda el pantallazo.</p>
+    </li>
+    <li>
+      <h3>Saca el certificado de tradición y libertad</h3>
+      <p>Pídele al dueño el <strong>número de matrícula inmobiliaria</strong> del local. Entra a <a href="https://certificados.supernotariado.gov.co/certificado">certificados.supernotariado.gov.co</a>, escribe ese número y paga <strong>$23.000</strong>. Te llega en PDF.</p>
+      <p>Te sirve dos veces: la curaduría lo pide, y te muestra quién es el dueño de verdad y si el local tiene embargos.</p>
+      <p class="done">✔ Listo cuando: tienes el PDF guardado, con fecha de menos de 30 días.</p>
+    </li>
+    <li>
+      <h3>Pide el concepto en la curaduría</h3>
+      <p>Puedes usar cualquier curaduría de tu ciudad. En Bogotá, la más sencilla es la <strong>Curaduría 1</strong>: todo se hace en línea, en su <a href="https://curaduria1.com.co/cu1-online/solicitud-de-conceptos/conceptos-de-uso/">formulario de conceptos de uso</a>. Así:</p>
+      <ul>
+        <li>Escribe la dirección <strong>tal como sale en el certificado de tradición</strong> y el CHIP.</li>
+        <li>Sube el certificado de tradición en PDF.</li>
+        <li>En <strong>usos específicos</strong> (máximo tres) escribe la actividad real, tal cual:</li>
+      </ul>
+      <p class="say">"Lavado y detailing de motocicletas."</p>
+      <ul>
+        <li>Pon tu nombre, cédula, celular y correo. Sube la cédula en PDF.</li>
+        <li>Toca el botón de pago PSE y paga <strong>$104.083</strong>. Guarda el comprobante en PDF y súbelo en "Soporte de pago".</li>
+      </ul>
+      <p>No escribas "venta de accesorios" si lo que vas a hacer es lavar. Un concepto sobre otra actividad no te sirve de nada.</p>
+      <p>La Curaduría 2 de Bogotá también lo recibe en línea, pero además pide <strong>plano de loteo</strong> y <strong>manzana catastral</strong> y el pago es por consignación. Si no sabes qué es eso, usa la Curaduría 1.</p>
+      <p class="done">✔ Listo cuando: enviaste el formulario y te llegó la factura al correo. Guarda el correo y el comprobante de pago.</p>
+    </li>
+    <li>
+      <h3>Haz seguimiento</h3>
+      <p>La ley le da a la curaduría <strong>15 días hábiles</strong> para responder, contados desde el día siguiente a radicar. Llama cada 3 días hábiles. En la Curaduría 1 de Bogotá el seguimiento es al (601) 580 4455, extensiones 100, 102 o 144. Cuando esté listo, lo descargas en su página de <a href="https://curaduria1.com.co/conceptos-expedidos/">conceptos expedidos</a>.</p>
+      <p>En Mónaco hemos visto de todo: un asesorado lo tuvo en 3 días hábiles llamando seguido, y otro esperó 2 meses hasta que fue a reclamarlo en persona. Si pasan los 15 días hábiles, ve a la oficina.</p>
+      <p class="done">✔ Listo cuando: tienes el concepto en PDF o en papel.</p>
+    </li>
+    <li>
+      <h3>Léelo y decide</h3>
+      <p>Revisa 4 cosas, en este orden:</p>
+      <ul>
+        <li><strong>Nombre y cédula:</strong> que sean los tuyos.</li>
+        <li><strong>Dirección:</strong> la del local, exacta.</li>
+        <li><strong>Actividad:</strong> que diga lavado de motos o vehículos.</li>
+        <li><strong>Resultado y notas al pie:</strong> si dice permitido, condicionado o prohibido. Las notas dicen qué sí y qué no.</li>
+      </ul>
+      <p>Si dice permitido, ya puedes negociar y firmar el arriendo. Si dice condicionado, mándale foto a tu asesor Mónaco antes de firmar: la condición puede ser imposible de cumplir.</p>
+      <p class="done">✔ Listo cuando: el concepto dice que sí, lo tienes en el celular y una copia impresa para el local.</p>
+    </li>
+  </ol>
+  <p class="meta">¿Te enredaste? Pídele ayuda a tu asesor Mónaco antes de firmar cualquier cosa con el arrendador.</p>
+
+  <h2>¿Qué código CIIU va?</h2>
+  <p>El CIIU es el código de tu actividad. Va igual en el RUT y en la Cámara de Comercio. Esto dice el DANE, que es quien hace la lista:</p>
+  <ul>
+    <li><strong>4520 · Mantenimiento y reparación de vehículos automotores.</strong> Es el único que nombra el <strong>"lavado y encerado"</strong> con esas palabras.</li>
+    <li><strong>4542 · Mantenimiento y reparación de motocicletas y de sus partes y piezas.</strong> Es el de mantenimiento de motos. No nombra el lavado.</li>
+    <li><strong>4541</strong> es para vender motos y accesorios. Solo si también vas a vender.</li>
+  </ul>
+  <p>Cuál va de principal se decide con tu asesor Mónaco y tu contador. Pero ten clara una cosa: <strong>la curaduría no decide por el código.</strong> Decide por la actividad real y por lo que dice el POT. Cambiar el código no vuelve permitido un local donde no se puede lavar.</p>
+
+  <h2>Si sale "no permitido" o "prohibido"</h2>
+  <ul>
+    <li><span class="no">No firmes</span> el arriendo. Si ya firmaste, no hagas obra y no abras.</li>
+    <li>Lee las <strong>notas al pie</strong>. A veces dicen qué sí se permite ahí.</li>
+    <li>Revisa la actividad. Si escribieron otra distinta a lavado de motos, pide un concepto nuevo con la actividad real.</li>
+    <li>Pregunta por escrito en qué zonas sí se puede, y busca local ahí.</li>
+  </ul>
+  <p class="say">"Me negaron el concepto para lavado de motos en la [dirección]. ¿En qué zonas cercanas el POT sí permite lavado de vehículos?"</p>
+  <p><span class="no">Nunca</span> le pagues a alguien que te ofrezca "sacarte el papel". A un asesorado en Facatativá le pidieron $3.500.000 por debajo de la mesa. Eso no cambia el POT y te mete en un problema más grande.</p>
+
+  <h2>Si llega la Policía o un inspector</h2>
+  <p>Muestra el concepto de uso del suelo y di:</p>
+  <p class="say">"Buenos días. Este es el concepto de uso del suelo de este local, para lavado de motos. Aquí está también la matrícula de la Cámara de Comercio."</p>
+  <p>SMDLV quiere decir salario mínimo diario legal vigente. Esto dice la Ley 1801 (artículo 92):</p>
+  <ul>
+    <li><strong>Lavar en un local donde el uso del suelo no lo permite</strong> (numeral 12): multa tipo 4, que son 16 SMDLV (unos $934.000 en 2026), y <strong>suspensión definitiva</strong>. Es decir, te cierran ese negocio en ese local.</li>
+    <li><strong>Abrir sin cumplir algún requisito de la ley</strong> (numeral 16): multa tipo 4 y <strong>suspensión temporal</strong>.</li>
+  </ul>
+  <p>No pagues nada ahí mismo. Tómale foto al comparendo y mándasela a tu asesor Mónaco ese día.</p>
+
+  <h2>Dónde pedirlo en Bogotá</h2>
+  <p>Desde el 8 de agosto de 2023, en Bogotá el concepto <strong>solo lo dan las curadurías</strong>. Si lo radicas en Planeación, te lo mandan a una curaduría y pierdes tiempo. Puedes ir a cualquiera de las cinco.</p>
+  <table>
+    <tr><td>Curaduría 1</td><td>Autopista Norte # 95-31 · L–V 8:00 a.m.–4:00 p.m. · (601) 580 4455 · info@curadora1bogota.com · <a href="https://curaduria1.com.co/cu1-online/solicitud-de-conceptos/conceptos-de-uso/">requisitos</a></td></tr>
+    <tr><td>Curaduría 2</td><td>Carrera 13A # 96-24 · (601) 441 4573 · 311 485 7338 · info@curaduria2bogota.com · <a href="https://curaduria2bogota.com/conceptos-de-uso/">se pide en línea</a></td></tr>
+    <tr><td>Curaduría 3</td><td>Calle 97 # 13-55 · (601) 635 3050 ext. 1000 · 316 818 4509 · correspondencia@curaduria3bogota.com · <a href="https://curaduria3bogota.com/requisitos/">requisitos</a></td></tr>
+    <tr><td>Curaduría 4</td><td>AK 45 (Autopista Norte) # 93-07 · (601) 555 2993 · 322 442 2540 · <a href="https://www.curaduria4.com.co/">curaduria4.com.co</a></td></tr>
+    <tr><td>Curaduría 5</td><td>Calle 95 # 11A-94 · (601) 316 4900 · info@curaduria5bogota.com.co · <a href="https://curaduria5bogota.com.co/">curaduria5bogota.com.co</a></td></tr>
+    <tr><td>Planeación (SDP)</td><td>Solo para consultas gratis y el mapa · (601) 335 8000 · L–V 7:00 a.m.–4:30 p.m.</td></tr>
+  </table>
+  <p class="meta">Datos tomados de la página de cada curaduría y de la SDP el 1 de octubre de 2026. Llama antes de ir.</p>
+
+  <h2>Si tu local no está en Bogotá</h2>
+  <p>La regla es la misma en todo el país: <strong>si el municipio tiene curaduría, el concepto lo da la curaduría</strong>. Si no tiene, lo da la Alcaldía (Planeación o la oficina que haga sus veces). En la curaduría vale $104.083. En la Alcaldía, lo que diga cada municipio.</p>
+  <table>
+    <tr><td>Soacha</td><td>Curaduría Urbana 1 de Soacha: Carrera 1 # 38-89, C.C. Ventura Terreros, local 2-69 · (601) 707 6230 · WhatsApp 312 357 7239. Su <a href="https://curaduria1soacha.com/wp-content/uploads/2022/08/cu1-soacha-sol-conceptos-normativos.pdf">formulario</a> pide cédula, <strong>certificado de nomenclatura</strong> y <strong>RUT</strong>. El precio impreso en ese formulario es de 2022: ya no aplica.</td></tr>
+    <tr><td>Funza</td><td>Curaduría 1: Calle 15 # 14-35 · (601) 825 9885 · WhatsApp 312 318 5038. Curaduría 2: Parque Industrial El Trébol, Km 3,8 vía Funza–Siberia · (601) 821 9044 · 300 313 1693.</td></tr>
+    <tr><td>Mosquera</td><td>Curaduría Urbana 1 de Mosquera: Carrera 2 # 3-16, oficina 204, Edificio Parque Central · L–V 8:00 a.m.–4:30 p.m.</td></tr>
+    <tr><td>Facatativá</td><td>Lo dio la Secretaría de Ordenamiento Territorial y Urbanismo de la Alcaldía. Un asesorado pagó $42.000 en 2026 (dato de Mónaco).</td></tr>
+    <tr><td>Chía</td><td>Se tramita en la Alcaldía, en persona o por correo. Pregunta primero si hoy lo da la Alcaldía o una curaduría. <span class="nc">No confirmado</span></td></tr>
+    <tr><td>Medellín</td><td>La Alcaldía tiene un <a href="https://www.medellin.gov.co/mapgis9/tools/UsoSuelos.html?token=null">aplicativo gratis de usos del suelo</a>: buscas el predio por dirección o matrícula y escoges hasta 3 actividades (escribe "lavado" o el código CIIU). Mira el video de abajo.</td></tr>
+    <tr><td>Otra ciudad</td><td>En la <a href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-usos-del-suelo">Ventanilla Única Empresarial</a> escoges tu municipio y te sale a dónde preguntar.</td></tr>
+  </table>
+  <figure class="vid">
+    <iframe src="https://www.youtube-nocookie.com/embed/qcGUgmShEvE" title="Tutorial sobre el aplicativo concepto de usos del suelo — Alcaldía de Medellín" allowfullscreen loading="lazy" style="display:block;width:100%;max-width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe>
+    <figcaption>▶ Video oficial de la Alcaldía de Medellín: <strong>cómo usar el aplicativo de usos del suelo</strong>. Solo Medellín.</figcaption>
+  </figure>
+  <p>En cualquier municipio, si no hay mapa en internet, escribe o llama a la curaduría o a Planeación con esto:</p>
+  <p class="say">"Buenos días. Voy a poner un lavadero de motos en la [dirección exacta, barrio, municipio]. ¿En qué zona o área de actividad del POT quedó ese predio? ¿Esa zona permite lavado de vehículos? ¿Quién expide el concepto de uso del suelo aquí, cuánto cuesta y qué documentos piden?"</p>
+  <p>Guarda el pantallazo de la respuesta.</p>
+
+  <p><a href="../../">← Ver todos los manuales</a></p>
+
+  <footer>
+    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados, versión express. Este manual te explica el trámite; lo haces tú y lo que diga el concepto lo decide la curaduría o la Alcaldía con el POT. Si algo no coincide con lo que te dicen en ventanilla, avísale a tu asesor Mónaco.<br>Verificado el 1 de octubre de 2026.
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Uso del suelo — Manual Mónaco</title>
+<style>
+  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
+  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:22px;margin:30px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;color:var(--ink2)}
+  .meta{font-size:13px;color:var(--muted)}
+  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
+  .box.amber{border-left-color:var(--amber)}
+  .box.green{border-left-color:var(--green)}
+  .box h3{margin:0 0 6px;font-size:17px}
+  .box p:last-child{margin:0}
+  .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .paper{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
+  .paper .ic{font-size:30px;line-height:1}
+  .paper b{display:block;margin-top:6px;font-size:15px}
+  .paper span{font-size:13px;color:var(--muted)}
+  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  ol.steps>li{position:relative;padding:0 0 18px 58px;counter-increment:s;break-inside:avoid}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--onblue);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li::after{content:"";position:absolute;left:19px;top:44px;bottom:4px;width:2px;background:var(--line)}
+  ol.steps>li:last-child::after{display:none}
+  ol.steps h3{margin:6px 0 4px;font-size:19px}
+  .say{background:var(--soft);border-radius:10px;padding:10px 12px;font-style:italic;margin:8px 0}
+  .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
+  .no{color:var(--red);font-weight:700}
+  ul{padding-left:20px;margin:6px 0 10px}
+  li{margin:3px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
+  td:first-child{font-weight:600;white-space:nowrap}
+  a{color:var(--blue)}
+  .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cal div{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;break-inside:avoid}
+  .cal b{display:block;color:var(--blue)}
+  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  @media (max-width:560px){h1{font-size:28px}.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
+  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}ol.steps>li{padding-bottom:10px}.box{padding:10px 14px;margin:10px 0}}
+  .vid{position:relative;z-index:1;background:var(--bg);margin:14px 0 4px;padding-bottom:4px;break-inside:avoid}
+  .vid video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:var(--screen);border-radius:12px;border:1px solid var(--line)}
+  .vid figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+  @media (max-width:560px){ol.steps>li{padding-left:50px}.vid{margin-left:-50px}}
+  @media print{.vid video{display:none}.vid figcaption a::after{content:" (" attr(href) ")";word-break:break-all}}
+</style>
+</head>
+<body>
+<main>
+  <p class="brand">MÓNACO · MOTO DETAILING</p>
+  <p class="kicker">MANUAL PARA ASESORADOS · VERSIÓN CORTA</p>
+  <h1>Uso del suelo en 6 pasos, antes de firmar el arriendo</h1>
+  <p class="lead">El <strong>concepto de uso del suelo</strong> es el papel que dice si en <strong>esa dirección exacta</strong> se pueden lavar motos. Lo firma la <strong>curaduría</strong> (oficina autorizada para firmar estos papeles). Si sale que no, toca buscar otro local.</p>
+  <p class="meta">Verificado contra fuentes oficiales el 1 de octubre de 2026.</p>
+
+  <div class="papers">
+    <div class="paper"><div class="ic">💵</div><b>$104.083</b><span>El concepto en curaduría (2026). Preguntar es gratis</span></div>
+    <div class="paper"><div class="ic">🏛️</div><b>En la curaduría</b><span>Si tu municipio no tiene, en la Alcaldía</span></div>
+    <div class="paper"><div class="ic">⏱️</div><b>Hasta 15 días hábiles</b><span>Plazo de ley</span></div>
+  </div>
+
+  <h2>Necesitas</h2>
+  <ul style="list-style:none;padding-left:0">
+    <li>☐ <strong>Dirección exacta</strong>, <strong>CHIP</strong> (código del predio en Bogotá) y <strong>matrícula inmobiliaria</strong>. Te los da el dueño.</li>
+    <li>☐ Tu <strong>cédula</strong> en PDF.</li>
+    <li>☐ <strong>Certificado de tradición y libertad</strong> (paso 3).</li>
+    <li>☐ Si es S.A.S.: <strong>Cámara de Comercio</strong> de menos de 30 días.</li>
+  </ul>
+
+  <h2>Los 6 pasos</h2>
+  <ol class="steps">
+    <li>
+      <h3>Busca el local en el mapa (gratis)</h3>
+      <p>Escribe la dirección exacta, no el barrio. <a href="https://sinu.sdp.gov.co/">Abrir el mapa de Bogotá (SINUPOT, de Planeación) ↗</a></p>
+      <p>Medellín: <a href="https://www.medellin.gov.co/mapgis9/tools/UsoSuelos.html?token=null">abrir el aplicativo ↗</a>. Otra ciudad: <a href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-usos-del-suelo">abrir esta página ↗</a>.</p>
+      <p class="done">✔ Listo cuando: tienes pantallazo del predio.</p>
+      <figure class="vid">
+        <iframe src="https://www.youtube-nocookie.com/embed/YTk-pPtVYfQ" title="Cómo consultar un predio en Sinupot — Secretaría Distrital de Planeación" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="lazy" style="display:block;width:100%;max-width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe>
+        <figcaption>▶ Video oficial de Planeación de Bogotá: <strong>cómo buscar un predio en el mapa</strong> · 2:18. Solo Bogotá.</figcaption>
+      </figure>
+      <figure class="vid">
+        <iframe src="https://www.youtube-nocookie.com/embed/qcGUgmShEvE" title="Tutorial sobre el aplicativo concepto de usos del suelo — Alcaldía de Medellín" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="lazy" style="display:block;width:100%;max-width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe>
+        <figcaption>▶ Video oficial de la Alcaldía de Medellín: <strong>cómo usar el aplicativo</strong>. Solo Medellín.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <h3>Pregunta de palabra, también gratis</h3>
+      <p>Llama o pide cita gratis en la curaduría y pregunta:</p>
+      <p class="say">"Buenos días. Quiero poner un lavadero de motos en la [dirección exacta]. ¿Ese predio permite lavado de vehículos?"</p>
+      <p>Si te dicen que no, <span class="no">no firmes</span>.</p>
+      <p class="done">✔ Listo cuando: anotaste la respuesta y quién te atendió.</p>
+    </li>
+    <li>
+      <h3>Saca el certificado de tradición y libertad</h3>
+      <p>Escribe la matrícula inmobiliaria y paga <strong>$23.000</strong>. <a href="https://certificados.supernotariado.gov.co/certificado">Abrir esta página ↗</a></p>
+      <p class="done">✔ Listo cuando: tienes el PDF guardado.</p>
+    </li>
+    <li>
+      <h3>Pide el concepto</h3>
+      <p>En Bogotá, Curaduría 1, en línea: sube certificado y cédula, y paga <strong>$104.083</strong> desde tu banco (PSE). <a href="https://curaduria1.com.co/cu1-online/solicitud-de-conceptos/conceptos-de-uso/">Abrir esta página ↗</a></p>
+      <p>En usos escribe:</p>
+      <p class="say">"Lavado y detailing de motocicletas."</p>
+      <p>Fuera de Bogotá, pregunta allá qué piden y cuánto cuesta.</p>
+      <p class="done">✔ Listo cuando: te llegó la factura al correo.</p>
+    </li>
+    <li>
+      <h3>Llama cada 3 días hábiles</h3>
+      <p>Curaduría 1: (601) 580 4455, ext. 100, 102 o 144. Pasados 15 días hábiles, ve a la oficina.</p>
+      <p class="done">✔ Listo cuando: tienes el concepto.</p>
+    </li>
+    <li>
+      <h3>Léelo y decide</h3>
+      <p>Revisa nombre, dirección y actividad, y el resultado:</p>
+      <ul>
+        <li><strong>Permitido:</strong> ya puedes firmar el arriendo.</li>
+        <li><strong>Condicionado:</strong> foto a tu asesor Mónaco antes de firmar.</li>
+        <li><strong>Prohibido:</strong> <span class="no">no firmes</span>; busca otro local.</li>
+      </ul>
+      <p class="done">✔ Listo cuando: dice que sí y lo tienes impreso.</p>
+    </li>
+  </ol>
+
+  <div class="box amber">
+    <h3>Lo que más falla</h3>
+    <ul>
+      <li>Firmar el arriendo antes de tener el concepto.</li>
+      <li>Escribir otra actividad: ese concepto no sirve.</li>
+      <li>En Bogotá, pedirlo en Planeación: solo lo dan las curadurías.</li>
+      <li><span class="no">Nunca</span> le pagues a alguien que te ofrezca "sacarte el papel".</li>
+    </ul>
+  </div>
+
+  <div class="box green">
+    <h3><a href="completo/">Ver el manual completo (detalle, normas, otras ciudades) →</a></h3>
+    <p>Las 5 curadurías de Bogotá, Soacha, Funza, Mosquera, código CIIU (el de tu actividad) y multas.</p>
+  </div>
+
+  <p><a href="../">← Ver todos los manuales</a></p>
+
+  <footer>
+    <strong>Mónaco · Moto Detailing</strong> · Versión corta. ¿Dudas? Tu asesor Mónaco.
+  </footer>
+</main>
+</body>
+</html>

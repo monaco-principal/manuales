@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Permiso de Bomberos — Manual Mónaco</title>
+<style>
+  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
+  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:22px;margin:30px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;color:var(--ink2)}
+  .meta{font-size:13px;color:var(--muted)}
+  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
+  .box.amber{border-left-color:var(--amber)}
+  .box.green{border-left-color:var(--green)}
+  .box h3{margin:0 0 6px;font-size:17px}
+  .box p:last-child{margin:0}
+  .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .paper{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
+  .paper .ic{font-size:30px;line-height:1}
+  .paper b{display:block;margin-top:6px;font-size:15px}
+  .paper span{font-size:13px;color:var(--muted)}
+  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  ol.steps>li{position:relative;padding:0 0 18px 58px;counter-increment:s;break-inside:avoid}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--onblue);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li::after{content:"";position:absolute;left:19px;top:44px;bottom:4px;width:2px;background:var(--line)}
+  ol.steps>li:last-child::after{display:none}
+  ol.steps h3{margin:6px 0 4px;font-size:19px}
+  .say{background:var(--soft);border-radius:10px;padding:10px 12px;font-style:italic;margin:8px 0}
+  .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
+  .no{color:var(--red);font-weight:700}
+  ul{padding-left:20px;margin:6px 0 10px}
+  li{margin:3px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
+  td:first-child{font-weight:600;white-space:nowrap}
+  a{color:var(--blue)}
+  .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cal div{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;break-inside:avoid}
+  .cal b{display:block;color:var(--blue)}
+  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  @media (max-width:560px){h1{font-size:28px}.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
+  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}ol.steps>li{padding-bottom:10px}.box{padding:10px 14px;margin:10px 0}}
+  .vid{position:relative;z-index:1;background:var(--bg);margin:14px 0 4px;padding-bottom:4px;break-inside:avoid}
+  .vid video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:var(--screen);border-radius:12px;border:1px solid var(--line)}
+  .vid figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+  @media (max-width:560px){ol.steps>li{padding-left:50px}.vid{margin-left:-50px}}
+  @media print{.vid video{display:none}.vid figcaption a::after{content:" (" attr(href) ")";word-break:break-all}}
+  .nc{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a5a00;background:#fdf3e1;border-radius:6px;padding:1px 6px}
+  .vlink{display:inline-block;font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin:2px 6px 2px 0}
+  th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:6px}
+  .tw{overflow-x:auto;margin:10px 0}
+  .check{list-style:none;padding:0;margin:6px 0 14px}
+  .check li{margin:0;padding:7px 0;border-top:1px solid var(--line)}
+  .check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+  .check input{width:20px;height:20px;margin:3px 0 0;flex:none;accent-color:var(--green)}
+  .check small{display:block;font-size:13px;color:var(--muted)}
+  h3.sub{font-size:18px;margin:20px 0 4px}
+  @media print{.vid iframe{display:none}}
+</style>
+</head>
+<body>
+<main>
+  <p class="meta" style="background:var(--soft);border-radius:8px;padding:8px 12px">Estás viendo el manual completo. <a href="../">← Volver a la versión corta</a></p>
+  <p class="brand">MÓNACO · MOTO DETAILING</p>
+  <p class="kicker">MANUAL PARA ASESORADOS · VERSIÓN EXPRESS</p>
+  <h1>Cómo sacar el permiso de Bomberos</h1>
+  <p class="lead">Lo que todos llaman "permiso de Bomberos" se llama <strong>Concepto Técnico de Bomberos</strong>. Dice que tu lavadero es seguro si hay un incendio. En Bogotá es <strong>gratis</strong> y se pide <strong>en línea</strong>, sin llevar papeles. Arriba está la ruta corta. Abajo, todo el detalle, lo que revisan en el local y qué cambia si no estás en Bogotá.</p>
+  <p class="meta">Verificado contra fuentes oficiales el 1 de octubre de 2026.</p>
+
+  <div class="box amber">
+    <h3>¿Cuánto cuesta?</h3>
+    <p><strong>En Bogotá, $0.</strong> Es gratis desde junio de 2024 (Acuerdo Distrital 927 de 2024, art. 290, parágrafo 2). Nadie tiene que cobrarte: ni Bomberos ni un tramitador. Lo que sí cuesta es dejar el local listo: extintores, señales, botiquín y luz de emergencia.</p>
+    <p><strong>Dura 1 año.</strong> Se pide otra vez cada año. <strong>Se demora hasta 3 meses.</strong> Sin visita no hay plazo publicado. Con visita, Bomberos tiene hasta 30 días hábiles para visitarte y 30 más para darte el concepto.</p>
+  </div>
+
+  <h2>Ruta express en 6 pasos</h2>
+  <ol class="steps">
+    <li>
+      <h3>Deja el local listo primero</h3>
+      <p>Cuelga los extintores. Pon las señales de salida y de extintor. Ten botiquín y luz de emergencia. Usa el <a href="#checklist">checklist del local</a>. Si pides el trámite con el local en obra, te pueden visitar antes de tiempo. Solo hay una visita por solicitud.</p>
+      <p class="done">✔ Listo cuando: marcaste todas las casillas del checklist.</p>
+    </li>
+    <li>
+      <h3>Pregunta qué grupo marcar</h3>
+      <p>El portal no tiene la opción "lavadero". Escribe al WhatsApp del trámite, <strong>317 404 3709</strong>:</p>
+      <p class="say">"Tengo un lavadero de motos de __ m² en un piso. Solo lavo y hago detailing. ¿Qué grupo y qué subgrupo de uso debo marcar en la Nueva solicitud?"</p>
+      <p class="done">✔ Listo cuando: tienes la respuesta y guardaste el pantallazo.</p>
+    </li>
+    <li>
+      <h3>Regístrate y activa la cuenta</h3>
+      <p>Entra a <a href="https://servicios.bomberosbogota.gov.co/home_gdr">servicios.bomberosbogota.gov.co</a> y toca <strong>Registrarme</strong>. Llena tus datos. Luego abre tu correo y toca el botón rojo <strong>Confirmar</strong>.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=8s">▶ Ver en el video · 0:08</a><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=36s">▶ Ver en el video · 0:36</a></p>
+      <p class="done">✔ Listo cuando: puedes iniciar sesión.</p>
+    </li>
+    <li>
+      <h3>Llena tus datos y haz la Nueva solicitud</h3>
+      <p>Inicia sesión y toca el módulo amarillo <strong>Inspecciones Técnicas</strong>. Llena los datos del dueño y del negocio, y toca <strong>Guardar</strong>. Crea tu lavadero como <strong>sucursal</strong>. Toca <strong>Nueva solicitud</strong> y marca el grupo que te dijeron. Toca <strong>Generar clasificación</strong> y luego <strong>Continuar</strong>.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=48s">▶ Ver en el video · 0:48</a><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=66s">▶ Ver en el video · 1:06</a><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=72s">▶ Ver en el video · 1:12</a></p>
+      <p class="done">✔ Listo cuando: el portal te muestra tu nivel de riesgo y ya tocaste Continuar.</p>
+    </li>
+    <li>
+      <h3>Descarga tu radicado</h3>
+      <p>Toca <strong>Mis Pagos</strong>, en el menú de la izquierda. En tu solicitud, toca el botón rojo <strong>Cargar/Descargar</strong> y descarga el recibo. Ese PDF es tu radicado: la prueba de que pediste el trámite. No es un recibo de pago. Si ves un valor en pesos o la palabra "pagar", ignóralo. Es gratis.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=90s">▶ Ver en el video · 1:30</a></p>
+      <p class="done">✔ Listo cuando: el PDF del radicado está en tu celular.</p>
+    </li>
+    <li>
+      <h3>Haz el curso o recibe la visita, y descarga el concepto</h3>
+      <p>Revisa el correo todos los días. Te llega un usuario para un <strong>curso virtual</strong> o una <strong>cita de visita</strong>. Si es curso: hazlo y luego llena la <strong>Autorrevisión</strong> en el portal. Ahí se habilita <strong>Descargar concepto</strong>.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=109s">▶ Ver en el video · 1:49</a></p>
+      <p class="done">✔ Listo cuando: tienes el concepto en el celular y una copia en papel en el local.</p>
+    </li>
+  </ol>
+  <p class="meta">¿Te enredaste? Escríbele a tu asesor Mónaco. Abajo está cada paso con más detalle.</p>
+
+  <h2>Qué es y por qué te lo van a pedir</h2>
+  <p>El nombre oficial es <strong>Concepto Técnico de Bomberos</strong>. Bomberos también le dice "certificado". Es el documento del Cuerpo Oficial de Bomberos de Bogotá que dice que tu local cumple lo mínimo: si hay un incendio o una emergencia, la gente puede salir y el fuego se puede controlar.</p>
+  <p>Bomberos puede inspeccionar negocios por la Ley 1575 de 2012 (art. 42, modificado por la Ley 1796 de 2016). Los bomberos inspeccionan y le informan a la autoridad. El dueño del local tiene que dejarlos entrar.</p>
+
+  <div class="box green">
+    <h3>¿Es obligatorio para abrir?</h3>
+    <p>En Bogotá, <strong>no</strong> es requisito para abrir ni para funcionar. Lo dijeron la Secretaría General y la Secretaría de Gobierno en la Circular Conjunta 007 del 30 de octubre de 2024. Bomberos lo repite en sus preguntas frecuentes. Lo que sí es obligatorio es <strong>cumplir las condiciones de seguridad</strong> mientras el negocio opera (Código de Policía, Ley 1801 de 2016, art. 87).</p>
+  </div>
+
+  <h2>Si llega la Policía</h2>
+  <p>En la práctica sí te lo piden. La Policía y la Alcaldía Local lo revisan en sus operativos. El 9 de abril de 2026 la Alcaldía Local de Los Mártires, con la Secretaría de Gobierno y la Policía, revisó lavaderos de vehículos en Samper Mendoza. A varios les dijeron que debían sacar el uso del suelo y las "certificaciones ante bomberos" (<a href="https://www.gobiernobogota.gov.co/noticias/jornada-verificacion-acompanamiento">noticia oficial</a>). Tenerlo vigente es la forma más fácil de mostrar que cumples.</p>
+  <p>Muestra el concepto vigente (o el radicado, si aún está en trámite) y di:</p>
+  <p class="say">"Buenos días. Este es nuestro concepto técnico de Bomberos, vigente. Aquí están los extintores, el botiquín y la salida."</p>
+  <p>Si no cumples las condiciones de seguridad, el Código de Policía (art. 93) tiene multas y cierres. No informar o no señalizar los protocolos de evacuación: multa de <strong>2 salarios mínimos diarios</strong> (unos <strong>$116.700</strong> en 2026). Guardar mercancías peligrosas que no necesitas: multa de <strong>16 salarios mínimos diarios</strong> (unos <strong>$934.000</strong>). Incumplir los protocolos de seguridad: <strong>suspensión temporal de la actividad</strong>. No pagues nada ahí mismo. Tómale foto al comparendo y mándasela a tu asesor Mónaco ese día.</p>
+
+  <h2>Cuándo pedirlo</h2>
+  <p>Pídelo cuando el local <strong>ya esté montado</strong>: extintores colgados, señales puestas, botiquín y luz de emergencia. Solo hay una visita por solicitud. Si no pasas, empiezas otra vez desde cero.</p>
+  <p>El orden que recomendamos en Mónaco: uso de suelo, Cámara de Comercio y RUT, montaje del local y, con el local listo, Bomberos. En Bogotá <strong>no necesitas</strong> el concepto sanitario ni el uso de suelo para pedirlo. Sí necesitas la <strong>matrícula mercantil</strong>: el portal la pide.</p>
+
+  <h2>Qué tener a la mano antes de empezar</h2>
+  <p>El portal no pide adjuntar documentos. Pero sí pide escribir sus datos exactos. Tenlos abiertos:</p>
+  <div class="papers">
+    <div class="paper"><div class="ic">🪪</div><b>Cédula o NIT</b><span>NIT si es empresa. Si eres persona natural, tu cédula.</span></div>
+    <div class="paper"><div class="ic">🏢</div><b>Cámara de Comercio</b><span>Número y fecha de matrícula, nombre comercial y representante legal. Todo es obligatorio.</span></div>
+    <div class="paper"><div class="ic">📄</div><b>RUT</b><span>Para tener a la mano la actividad económica.</span></div>
+  </div>
+  <ul>
+    <li><strong>Dirección exacta del local</strong>, con barrio, localidad y UPZ. <span class="meta">(UPZ = Unidad de Planeamiento Zonal, la zona de Bogotá donde queda tu local.)</span> El portal arma la dirección con un "generador de direcciones". Escríbela como sale en el recibo de servicios.</li>
+    <li><strong>Área construida en m² y número de pisos.</strong> Mide el área que ocupa tu negocio. Si usas el recibo predial, revisa que sea el área de tu local y no la de todo el edificio. Si tienes mezanine u oficina en un segundo nivel, pregunta si cuenta como piso. De estos datos depende tu nivel de riesgo.</li>
+    <li><strong>Año de construcción del local</strong>, o fecha de la licencia de construcción si existe. Define contra qué norma te revisan: la vieja (NSR-98) o la nueva (NSR-10). <span class="meta">(NSR = Reglamento Colombiano de Construcción Sismo Resistente.)</span> Si no lo sabes, pregúntale al arrendador.</li>
+    <li><strong>Datos del ICA</strong> <span class="meta">(Impuesto de Industria y Comercio)</span>. El formulario pregunta si lo declaras anual o bimestral, y el valor. Si eres nuevo y aún no has declarado, pregunta por el WhatsApp de Bomberos qué marcar.</li>
+    <li><strong>Un correo que revises a diario y un celular que contestes.</strong> Por ahí llegan la activación de la cuenta, el usuario del curso y la cita de la visita.</li>
+  </ul>
+
+  <h2>Paso a paso en Bogotá, con detalle</h2>
+  <ol class="steps">
+    <li>
+      <h3>Entra al portal y regístrate</h3>
+      <figure class="vid">
+        <iframe src="https://www.youtube-nocookie.com/embed/Rpx4V7QGkxE" title="Guía paso a paso — Concepto Técnico de Bomberos Bogotá" allowfullscreen loading="lazy" style="display:block;width:100%;max-width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe>
+        <figcaption>▶ Video oficial del Cuerpo Oficial de Bomberos de Bogotá: <strong>Guía paso a paso — Concepto Técnico</strong> · 2 minutos · publicado el 30 de enero de 2025. Muestra el portal pantalla por pantalla. <a href="https://www.youtube.com/watch?v=Rpx4V7QGkxE">Abrir en YouTube</a></figcaption>
+      </figure>
+      <p>Abre <a href="https://servicios.bomberosbogota.gov.co/home_gdr">servicios.bomberosbogota.gov.co</a> y toca <strong>Registrarme</strong>, a la derecha. Llena tipo y número de documento, nombre o razón social, correo, teléfono, contraseña, dirección, barrio, localidad, UPZ y la estación de bomberos más cercana.</p>
+      <p>El correo y el número de documento se escriben dos veces. Anota tu contraseña en un lugar seguro. Marca la casilla que autoriza el uso de tus datos. Resuelve la suma que aparece (por ejemplo, "4 + 1 ="). Toca el botón rojo <strong>Registrarme</strong>.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=8s">▶ Ver en el video · 0:08</a></p>
+      <p class="done">✔ Listo cuando: el portal te dice que revises tu correo.</p>
+    </li>
+    <li>
+      <h3>Activa tu cuenta desde el correo</h3>
+      <p>Te llega un correo de Bomberos que dice "Te damos la bienvenida a GDR BOGOTA". Viene de una dirección que termina en <strong>@bomberosbogota.gov.co</strong>. Toca el botón rojo <strong>Confirmar</strong>. Si no lo ves, búscalo en spam.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=36s">▶ Ver en el video · 0:36</a></p>
+      <p class="done">✔ Listo cuando: puedes iniciar sesión con tu documento y contraseña.</p>
+    </li>
+    <li>
+      <h3>Llena los datos del dueño o representante legal</h3>
+      <p>Inicia sesión. Entra al módulo amarillo <strong>Inspecciones Técnicas</strong>. Completa los datos del propietario o del representante legal, y los datos empresariales (matrícula, nombre comercial, ICA). Toca <strong>Guardar</strong>. Mientras falte esto, el portal no te deja seguir.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=48s">▶ Ver en el video · 0:48</a></p>
+      <p class="done">✔ Listo cuando: tocaste Guardar y el portal no te muestra campos en rojo.</p>
+    </li>
+    <li>
+      <h3>Crea la sucursal: tu lavadero</h3>
+      <p>Vuelve al módulo amarillo. Busca el botón para crear una <strong>sucursal</strong>. Llena el formulario con los datos de tu lavadero y guárdalo. Si tienes dos locales, cada uno es una sucursal y un trámite aparte.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=66s">▶ Ver en el video · 1:06</a></p>
+      <p class="done">✔ Listo cuando: tu lavadero aparece como sucursal.</p>
+    </li>
+    <li>
+      <h3>Haz la "Nueva solicitud"</h3>
+      <p>Vuelve al módulo y toca <strong>Nueva solicitud</strong>. El portal te pregunta si el local tiene licencia de construcción (o el año aproximado de construcción), el grupo y subgrupo de uso, la actividad principal, el número de pisos y el área construida en m².</p>
+      <p>Con esos datos calcula tu nivel de riesgo: bajo, moderado o alto. Lee <a href="#grupo">Qué grupo de uso escoger</a> antes de marcar el grupo: es la decisión más importante del trámite.</p>
+      <p>Toca <strong>Generar clasificación</strong>. Después toca <strong>Continuar</strong>. Si no tocas Continuar, la solicitud no le llega a Bomberos. Sale un aviso que dice que el servicio es sin costo: toca Continuar otra vez.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=72s">▶ Ver en el video · 1:12</a></p>
+      <p class="done">✔ Listo cuando: ya tocaste Continuar y anotaste tu nivel de riesgo.</p>
+    </li>
+    <li>
+      <h3>Descarga tu radicado</h3>
+      <p>Toca <strong>Mis Pagos</strong>, en el menú de la izquierda. Ahí ves el ID de registro, el código de la solicitud y su estado. Toca el botón rojo <strong>Cargar/Descargar</strong> y descarga el recibo. Ese "recibo de caja" es tu radicado: el soporte de que hiciste el trámite. No es un recibo de pago. No tienes que pagar nada.</p>
+      <p>El recibo puede mostrar un valor en pesos, y el portal puede mostrar textos de pago. <span class="no">Ignóralos:</span> el mismo recibo dice "Servicio sin costo". Si el estado dice <strong>Pendiente</strong> o <strong>Subsanar</strong>, entra seguido al portal: puede que te pidan corregir algo.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=90s">▶ Ver en el video · 1:30</a></p>
+      <p class="done">✔ Listo cuando: el PDF del radicado está guardado en tu celular.</p>
+    </li>
+    <li>
+      <h3>Espera el correo con tu ruta</h3>
+      <p>Bomberos revisa las solicitudes en orden de llegada. La admite para trámite o te pide corregir o aclarar datos. Después te llegan por correo las instrucciones según tu riesgo: el usuario y la contraseña del curso virtual, o la cita para la visita. Revisa el correo todos los días.</p>
+      <p><a class="vlink" href="https://www.youtube.com/watch?v=Rpx4V7QGkxE&amp;t=109s">▶ Ver en el video · 1:49</a></p>
+      <p class="done">✔ Listo cuando: te llegó el usuario del curso o la cita de visita.</p>
+    </li>
+    <li>
+      <h3>Haz el curso, la autorrevisión y descarga el concepto</h3>
+      <p>Si te llega un usuario y una contraseña, entra al campus virtual de Bomberos. Termina el curso con su evaluación. Después vuelve al portal, abre tu solicitud y toca <strong>Autorrevisión</strong>.</p>
+      <p>El formulario lo llena el dueño o el representante legal. Responde con la verdad sobre el local (usa el <a href="#checklist">checklist</a>). Sin la autorrevisión no sale el concepto: el mismo curso lo recuerda. Al terminarla se habilita el botón <strong>Descargar concepto</strong>.</p>
+      <p>Si en cambio te citan a visita, lee <a href="#visita">El día de la visita</a>. Si pasan 30 días hábiles sin curso ni cita, escribe al WhatsApp 317 404 3709 con el código de tu solicitud.</p>
+      <p class="done">✔ Listo cuando: descargaste el concepto y lo guardaste en el celular y en papel.</p>
+    </li>
+  </ol>
+
+  <h2>Tu nivel de riesgo: lo que decide si hay visita</h2>
+  <div class="tw"><table>
+    <tr><th>Riesgo</th><th>Qué pasa</th><th>Cómo recibes el concepto</th></tr>
+    <tr><td>🟢 Bajo</td><td>No hay visita. Haces un curso virtual (seguridad humana, protección contra incendios y riesgos comunes) en el campus de Bomberos. Después llenas el formulario de autorrevisión del local. Bomberos verifica al azar una parte de los locales.</td><td>Lo descargas del portal con tu usuario y contraseña.</td></tr>
+    <tr><td>🟠 Moderado</td><td>Visita de un inspector. Bomberos la programa dentro de los 30 días hábiles después de tu registro. Si en vez de eso te llega un curso al correo, hazlo y termina la autorrevisión.</td><td>Las páginas de Bomberos no coinciden: una dice que te lo mandan al correo y otra que lo entregan en el Edificio Comando (Calle 20 # 68A-06, L–V 8:00 a. m.–4:00 p. m.). Revisa el correo y, si en 30 días hábiles después de la visita no te llega, escribe al WhatsApp 317 404 3709.</td></tr>
+    <tr><td>🔴 Alto</td><td>Visita de un inspector. Bomberos también puede reclasificarte después de revisar tu solicitud.</td><td>Igual que el moderado.</td></tr>
+  </table></div>
+  <p>Bomberos recomienda hacer el curso virtual aunque salgas moderado o alto: te prepara para la visita.</p>
+
+  <h2 id="grupo">Qué grupo de uso escoger</h2>
+  <p>El portal calcula tu riesgo con el grupo de uso que declares, el área, los pisos y otros datos del local. Después Bomberos revisa tu solicitud y puede corregir la clasificación.</p>
+  <p>El problema: la norma que usa Bomberos para los grupos (NSR-10, Título K) <strong>no nombra los lavaderos de motos</strong>. Y Bomberos no ha dicho por escrito cuál acepta. Estas son las opciones que más se parecen:</p>
+  <div class="tw"><table>
+    <tr><th>Grupo</th><th>Qué dice la norma</th></tr>
+    <tr><td>C-1 / C-2 Comercial</td><td>Comercio de servicios (C-1) o de bienes y productos (C-2). Ninguno de sus ejemplos es un lavadero.</td></tr>
+    <tr><td>A-1 Almacenamiento de riesgo moderado</td><td>En su lista están los "talleres mecánicos" y los estacionamientos.</td></tr>
+    <tr><td>E Especiales</td><td>En su lista están los "talleres" y los parqueaderos.</td></tr>
+    <tr><td>P Alta peligrosidad</td><td>Productos combustibles, inflamables, ácidos, álcalis y aceites. Es el grupo de mayor peligro.</td></tr>
+  </table></div>
+  <p>El grupo que marques cambia tu nivel de riesgo, y con eso si te toca curso o visita. Por eso no lo escojas a ciegas.</p>
+
+  <div class="box">
+    <h3>Qué recomendamos en Mónaco: no escojas a ciegas</h3>
+    <p>Antes de hacer la Nueva solicitud, escribe al WhatsApp del trámite, <strong>317 404 3709</strong>:</p>
+    <p class="say">"Tengo un lavadero de motos de __ m² en un piso. Solo lavo y hago detailing [o: también hago mecánica]. ¿Qué grupo y qué subgrupo de uso debo marcar en la Nueva solicitud?"</p>
+    <p>Marca exactamente lo que te digan y <strong>guarda el pantallazo</strong>: Bomberos te hace responsable de lo que declaras. En "actividad principal" escribe la verdad (por ejemplo, "Lavado y detailing de motocicletas"). Si no te responden, radica la pregunta en <a href="https://bogota.gov.co/sdqs/">Bogotá Te Escucha</a> (el sistema de peticiones de la Alcaldía) y cuéntale a tu asesor Mónaco antes de enviar.</p>
+  </div>
+
+  <div class="box amber">
+    <h3>Ojo con los químicos</h3>
+    <p>Bomberos revisa los <strong>materiales peligrosos</strong>: líquidos inflamables (thinner, alcohol industrial) y combustibles (aceites, grasas, ceras). Los desengrasantes y limpiarrines fuertes son ácidos o álcalis. La norma pone esos productos en el grupo de alta peligrosidad (P). Y el Código de Policía multa guardar mercancías peligrosas que no necesitas. Compra en presentaciones pequeñas. Revisa la ficha de seguridad de tus productos. Guarda en el local solo lo que vas a usar.</p>
+  </div>
+
+  <h2 id="checklist">Checklist del local: lo que revisan</h2>
+  <p>Esta lista sale de lo que Bomberos dice que revisa (seguridad humana, protección contra incendios, riesgos comunes y materiales peligrosos) y de las normas que cita. Sirve igual si tienes curso o visita: en el curso tú mismo respondes estas preguntas. Marca cada casilla cuando lo tengas.</p>
+
+  <h3 class="sub">🧯 Extintores</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>Extintor multipropósito ABC, mínimo uno por cada 200 m² o fracción, cerca de las zonas de más riesgo.<small>Resolución 2400 de 1979, arts. 220–221. En un lavadero: uno en la zona de lavado y uno en recepción es lo sensato aunque midas menos de 200 m².</small></span></label></li>
+    <li><label><input type="checkbox"><span>Extintor de CO₂ (clase BC) junto al tablero eléctrico o el compresor.<small>Recomendado: apaga fuego eléctrico sin dañar los equipos.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Nadie camina más de 22 metros para llegar a un extintor. Desde la zona de las motos (gasolina), máximo 9 metros si la etiqueta del extintor dice 10-B, o 15 metros si dice 20-B.<small>NTC 2885, riesgo ordinario (NTC = Norma Técnica Colombiana). Revisa la etiqueta al comprarlo.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Colgados con la parte de arriba a máximo 1,50 m del piso (1,07 m si el extintor pesa más de 18 kg) y la base a mínimo 10 cm. Visibles y sin nada que los tape.</span></label></li>
+    <li><label><input type="checkbox"><span>Con recarga vigente (menos de un año) y tarjeta de inspección mensual.</span></label></li>
+    <li><label><input type="checkbox"><span>Señal roja de "Extintor" en la pared, encima de cada uno.</span></label></li>
+    <li><label><input type="checkbox"><span>Tú y tus trabajadores saben usarlo. El inspector lo pregunta.</span></label></li>
+  </ul>
+
+  <h3 class="sub">🚪 Salidas y evacuación</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>Salida despejada: ni motos, ni canecas, ni mangueras en el camino.</span></label></li>
+    <li><label><input type="checkbox"><span>La puerta o persiana de salida mide mínimo 80 cm de ancho libre. Queda abierta, o se abre desde adentro sin llave, mientras haya gente.<small>Depende del grupo que declaraste. En C-1 o C-2, una sola salida alcanza si da directo a la calle, nadie camina más de 30 m para llegar a ella y hay menos de 100 personas. En E, la salida debe medir mínimo 1,20 m. En A-1, la norma pide dos salidas. Si quedaste en A-1 o E y tienes una sola persiana, díselo a tu asesor Mónaco antes de la visita.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Señal de SALIDA verde y blanca, visible desde cualquier punto (NTC 1461), y flechas de ruta si la salida no se ve.</span></label></li>
+    <li><label><input type="checkbox"><span>Luz de emergencia que prenda sola si se va la energía (mínimo 1,5 horas).<small>NSR-10, K.3.9.2. Pruébala una vez al mes.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Plano o mapa de evacuación visible, con salidas, extintores y botiquín marcados.</span></label></li>
+    <li><label><input type="checkbox"><span>Ventilación natural o artificial adecuada.</span></label></li>
+  </ul>
+
+  <h3 class="sub">🩹 Plan de emergencias y botiquín</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>Plan de Emergencias y Contingencias impreso en el local, y el personal lo conoce.<small>Tu asesor Mónaco te da el kit para armarlo.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Botiquín tipo A, en un lugar señalizado y protegido de la humedad, la luz y el calor.<small>Resolución 705 de 2007: gasas, esparadrapo, bajalenguas, guantes, vendas elásticas y de algodón, yodopovidona, solución salina, termómetro y alcohol.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Un punto de encuentro definido afuera del local.</span></label></li>
+  </ul>
+  <div class="box">
+    <h3>Si tienes trabajadores: otra obligación aparte</h3>
+    <p>La norma laboral (Decreto 1072 de 2015 y Resolución 0312 de 2019) te pide un <strong>SG-SST</strong> (Sistema de Gestión de Seguridad y Salud en el Trabajo). Lo diseña un técnico en SST con licencia; tu <strong>ARL</strong> (la aseguradora de riesgos laborales) te puede orientar. Incluye un plan de emergencias y al menos un simulacro al año. El <strong>Simulacro Bogotá 2026 es el miércoles 21 de octubre, desde las 10:00 a. m.</strong> Inscribe tu negocio en la página del IDIGER (la entidad de gestión de riesgos de Bogotá). El certificado que te da sirve como soporte para tu SG-SST. <a href="https://bogota.gov.co/mi-ciudad/emergencias/participa-en-el-simulacro-bogota-2026-miercoles-21-de-octubre-idiger">Cómo inscribirte</a>.</p>
+  </div>
+
+  <h3 class="sub">⚡ Electricidad: el riesgo número uno de un lavadero</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>Tablero eléctrico con tapa, con los circuitos rotulados y sin obstáculos al frente.</span></label></li>
+    <li><label><input type="checkbox"><span>Sin cables pelados, empalmes con cinta ni extensiones permanentes.</span></label></li>
+    <li><label><input type="checkbox"><span>Polo a tierra en las tomas de las hidrolavadoras y el compresor.</span></label></li>
+    <li><label><input type="checkbox"><span>Tomas en la zona de chorro de agua con protección contra agua (IP67 o NEMA 6), lo más altas y lejos del agua posible.<small>IP67 y NEMA 6 son sellos que dicen que el toma aguanta agua. Obligatorio si instalas o remodelas la parte eléctrica (RETIE 2026, Libro 3, art. 3.17.10; RETIE = Reglamento Técnico de Instalaciones Eléctricas). Ojo: un toma con protección de falla a tierra no sirve en zona de chorro salvo que el fabricante lo garantice.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Sin tomas recargadas (varios equipos en un mismo toma).</span></label></li>
+  </ul>
+
+  <h3 class="sub">🧪 Químicos y otros riesgos</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>Químicos en su envase original con etiqueta, en un lugar ventilado. Nunca en botellas de gaseosa o de agua.</span></label></li>
+    <li><label><input type="checkbox"><span>La ficha de datos de seguridad de cada producto, impresa o en el celular (pídesela al proveedor).</span></label></li>
+    <li><label><input type="checkbox"><span>Envases vacíos cerrados y separados.</span></label></li>
+    <li><label><input type="checkbox"><span>Nada de llamas abiertas ni fumar cerca de las motos (entran con gasolina en el tanque).</span></label></li>
+    <li><label><input type="checkbox"><span>Aviso de espacio libre de humo en un lugar visible.</span></label></li>
+    <li><label><input type="checkbox"><span>Orden y aseo: sin cartón, trapos con grasa ni basura acumulada.</span></label></li>
+  </ul>
+  <p class="meta">Las casillas no se guardan: si recargas la página, se borran. Si quieres guardarlo, imprime esta página.</p>
+
+  <h2 id="visita">El día de la visita</h2>
+  <ul>
+    <li><strong>No es sorpresa.</strong> Te avisan por correo, con el horario de la visita. Por eso el correo y el celular tienen que estar al día.</li>
+    <li><strong>Verifica al inspector.</strong> Viene con uniforme o prendas de Bomberos y carné. Si dudas, llama al 601 382 2500.</li>
+    <li><strong>Quién atiende:</strong> alguien que conozca el plan de emergencias y sepa usar el extintor.</li>
+    <li><strong>Ten a la mano:</strong> el plan de emergencias, el soporte de la última recarga de los extintores y, si existe, la licencia de construcción.</li>
+    <li><span class="no">No compres nada ahí.</span> Bomberos no vende extintores ni señales. Nadie puede multarte ni cerrarte por no comprarle a una empresa.</li>
+  </ul>
+
+  <div class="box amber">
+    <h3>Si sale desfavorable</h3>
+    <p>La visita no te aprueba ni te rechaza en el momento. Bomberos tiene hasta 30 días hábiles después de la visita para darte el concepto: dice si cumples o qué tienes que mejorar. Solo hay una visita por solicitud. Si no pasas, corriges lo que te señalaron y haces una solicitud nueva en el portal. No te cuesta plata, pero puede costarte otros dos o tres meses.</p>
+    <p>Un concepto desfavorable no cierra tu local por sí solo. Pero sí te deja sin respaldo si llega la Policía. Corrige rápido.</p>
+  </div>
+
+  <h2>Después: guardar, renovar y cambios</h2>
+  <div class="cal">
+    <div><b>El día que lo recibes</b>Descárgalo. Guárdalo en el celular y en papel en el local, junto con Cámara de Comercio, RUT y uso de suelo.</div>
+    <div><b>3 meses antes de que venza</b>Haz una Nueva solicitud sobre la misma sucursal. Con visita, el trámite puede tardar hasta 60 días hábiles.</div>
+    <div><b>Hoy mismo</b>Pon un recordatorio en el celular para 9 meses después de la fecha más temprana del concepto.</div>
+  </div>
+  <ul>
+    <li><strong>Vigencia de un año.</strong> Las páginas de Bomberos no coinciden en desde cuándo se cuenta (la expedición, la visita o el curso). Para estar seguro, cuenta desde la fecha más temprana.</li>
+    <li><strong>No hay un trámite de "renovación".</strong> Se hace una Nueva solicitud sobre la misma sucursal en el portal.</li>
+    <li><strong>Si amplías o remodelas el local,</strong> el concepto deja de valer: pide uno nuevo (Resolución 661 de 2014, art. 213).</li>
+    <li><strong>Si te trasladas,</strong> el concepto no se muda contigo. El local nuevo es un trámite nuevo.</li>
+    <li><strong>Si cambias de dueño, razón social o actividad,</strong> no hay una regla escrita. Pregunta por el WhatsApp de Bomberos y guarda la respuesta.</li>
+    <li><strong>El concepto del inquilino anterior no te sirve.</strong> Es del negocio que lo pidió, no del local.</li>
+    <li>Aunque tengas el concepto vigente, Bomberos puede hacer una <strong>visita de verificación</strong> durante el año. Mantén el local como lo dejaste.</li>
+  </ul>
+
+  <h2>Canales de atención de Bomberos Bogotá</h2>
+  <div class="tw"><table>
+    <tr><th>Canal</th><th>Dato</th><th>Horario</th></tr>
+    <tr><td>WhatsApp del trámite</td><td>317 404 3709</td><td>Bomberos no publica el horario</td></tr>
+    <tr><td>Teléfono</td><td>601 382 2500 · Servicio al ciudadano: ext. 40101, 40102, 40104</td><td>L–V, 8:00 a. m.–12:00 m. y 1:00–4:00 p. m.</td></tr>
+    <tr><td>Celular</td><td>316 473 9599</td><td>L–V, 8:00 a. m.–12:00 m. y 1:00–4:00 p. m.</td></tr>
+    <tr><td>WhatsApp general</td><td>317 450 3539 (no es el del trámite)</td><td>Asesor L–V, 8:00 a. m.–4:00 p. m.</td></tr>
+    <tr><td>Presencial (con cita)</td><td>Edificio Comando, Calle 20 # 68A-06. También en los SuperCADE Carrera 30, Suba y Américas. <a href="https://www.bomberosbogota.gov.co/content/asignacion-citas">Pedir cita</a>. Allí te orientan, pero el trámite se hace en el portal.</td><td>Comando: L–V, 8:00 a. m.–4:00 p. m.</td></tr>
+  </table></div>
+
+  <h2>Si tu local no está en Bogotá</h2>
+  <p>El portal y la gratuidad son <strong>solo de Bogotá</strong>. En el resto del país cada municipio tiene su propio cuerpo de bomberos (oficial o voluntario), su propio trámite y, casi siempre, su propia tarifa. La tarifa depende del área y del nivel de riesgo. No existe una tarifa nacional. Pregunta siempre antes de pagar.</p>
+  <div class="tw"><table>
+    <tr><th>Municipio</th><th>Quién lo expide y cómo</th><th>Costo publicado</th></tr>
+    <tr><td><a href="https://www.alcaldiasoacha.gov.co/AtencionalCiudadano/Paginas/Visita-Bomberos.aspx">Soacha</a></td><td>La solicitud de visita se hace en línea, desde la página de la Alcaldía. Ahí ves qué documentos piden.</td><td><a href="http://concejo-de-soacha.micolombiadigital.gov.co/sites/concejo-de-soacha/content/files/000073/3614_acuerdo-no_12-abril-15-de-2020.pdf">Acuerdo 12 de 2020</a> (valores de 2020): en 51–100 m², riesgo leve $74.000 y moderado $315.000. Pregunta en cuál te clasifican y confirma el valor de hoy con la Alcaldía.</td></tr>
+    <tr><td>Facatativá, Funza, Mosquera, Chía, Zipaquirá, Cajicá</td><td>No encontramos el trámite publicado en una fuente oficial actual. Sigue los 5 pasos de abajo.</td><td>No publicado. Pregunta directamente.</td></tr>
+    <tr><td><a href="https://sigesh.medellin.gov.co/sign-in">Medellín</a></td><td>Bomberos Oficial, en SIGESH (su sistema en línea). Locales de hasta 100 m² y riesgo bajo pueden <a href="https://www.medellin.gov.co/es/sala-de-prensa/noticias/ahora-el-certificado-de-bomberos-para-establecimientos-en-medellin-puede-autogestionarse-en-linea/">autogestionarlo con fotos</a>, pero los lavaderos no aparecen en los ejemplos oficiales de riesgo bajo (salsamentarias, peluquerías, tiendas…): pregunta antes. Los demás piden la visita en el mismo SIGESH.</td><td>No encontramos tarifa publicada. Pregunta antes de pagar.</td></tr>
+    <tr><td><a href="https://bomberoscali.org/inspecciones-tecnicas/">Cali</a></td><td>Bomberos Voluntarios. Formulario en línea con el RUT del año en curso y la Cámara de Comercio actualizada.</td><td>Pago parcial (anticipo) de $100.000. Pide la renovación al menos 5 días hábiles antes de que venza.</td></tr>
+    <tr><td><a href="https://barranquilla.gov.co/tramites-bomberos">Barranquilla</a></td><td>Bomberos Oficial. En su lista oficial, "lavaderos" es riesgo leve; "talleres mecánicos", moderado. Si la página del trámite no te abre, llama a la Alcaldía.</td><td><a href="https://tramites1.suit.gov.co/registro-web/suit_descargar_archivo?A=118591">Resolución 0231 de 2021</a> (valores de 2021): leve $116.575 en 51–100 m² y $226.848 en 101–1.000 m². Si te registras como taller, pasas a moderado: $496.231 en 51–100 m².</td></tr>
+    <tr><td>Bucaramanga</td><td>Bomberos Oficial. Pide la visita y te cotizan. Para saber cómo radicar, llama al 607 652 6666.</td><td><a href="https://bomberosdebucaramanga.gov.co/wp-content/uploads/2026/01/tarifas-2026.pdf">Tarifas 2026</a>, comercio y servicio de riesgo leve, con IVA: $266.115 (21–100 m²) y $410.042 (101–500 m²).</td></tr>
+    <tr><td><a href="https://bomberosfloridablanca.com/area-de-ingenieria-cbvf/">Floridablanca</a></td><td>Bomberos Voluntarios, Área de Ingeniería: llenas los formatos FR-144 y FR-114, pagas lo que te liquiden, te visitan y te dan el informe. Correo: correspondencia@bomberosfloridablanca.com.</td><td>No publicado.</td></tr>
+  </table></div>
+  <p class="meta">Las tarifas cambian cada año. Los valores de la tabla son los publicados en la fuente y en el año indicados, no los de hoy.</p>
+
+  <h3 class="sub">Cómo averiguarlo en tu municipio, en 5 pasos</h3>
+  <ol>
+    <li>Pregunta en la Alcaldía qué cuerpo de bomberos expide el certificado (oficial o voluntarios). Si no sabes a quién llamar, busca el tuyo en el <a href="https://dnbc.gov.co/directorio-nacional-de-bomberos/">Directorio Nacional de Bomberos</a> (DNBC, la entidad nacional de bomberos). Confirma siempre con la Alcaldía.</li>
+    <li>Llama y pregunta:<p class="say">"¿Cómo pido la inspección para un lavadero de motos de __ m²? ¿Es en línea o presencial?"</p></li>
+    <li>Pregunta qué documentos piden. Normalmente son Cámara de Comercio, RUT y cédula. Algunos piden uso de suelo y predial.</li>
+    <li>Pide que te digan <strong>por escrito</strong> cuánto cuesta y con qué acuerdo o resolución lo cobran. Paga solo en las cuentas oficiales, nunca a una persona. Guarda el pantallazo.</li>
+    <li>Pregunta cuánto tarda la visita, cuánto tiempo tienes para corregir si no pasas y cuánto dura el certificado (casi siempre un año).</li>
+  </ol>
+  <div class="box">
+    <h3>Antes de pagar en otro municipio</h3>
+    <p>Pide el número del acuerdo o la resolución que fija la tarifa. Paga solo en las cuentas oficiales que te digan por escrito. Guarda el recibo.</p>
+  </div>
+
+  <h2>Errores comunes y estafas</h2>
+  <ul>
+    <li><span class="no">Pagarle a alguien.</span> En Bogotá el trámite es gratis. Quien te cobre por "sacarte el certificado" no es de Bomberos. Denúncialo en <a href="mailto:denuncias@bomberosbogota.gov.co">denuncias@bomberosbogota.gov.co</a>.</li>
+    <li><span class="no">Falsos inspectores que venden extintores.</span> Llegan diciendo que son de Bomberos y que te multan o te cierran si no les compras. Bomberos no vende nada. Compra tus extintores donde quieras.</li>
+    <li><strong>Creerle a páginas viejas.</strong> Hay páginas y notas en internet que todavía hablan de pagar por el concepto en Bogotá. Están desactualizadas: es gratis desde el 7 de junio de 2024. La fuente que manda es la web de Bomberos Bogotá.</li>
+    <li><strong>Llenar mal el área o el grupo de uso.</strong> Cambia tu nivel de riesgo. Pueden devolverte la solicitud o reclasificarte. Mide bien y pregunta antes.</li>
+    <li><strong>No tocar "Continuar"</strong> después de generar la clasificación. La solicitud se queda sin enviar.</li>
+    <li><strong>Hacer el curso y olvidar la autorrevisión.</strong> Sin ese formulario no sale el concepto.</li>
+    <li><strong>Pedirlo con el local en obra.</strong> Solo hay una visita por solicitud. Si no pasas, vuelves a empezar.</li>
+    <li><strong>No revisar el correo ni contestar el teléfono.</strong> Por ahí llegan el curso y la cita. Solo hay una visita por solicitud: si la pierdes, puede tocarte empezar de nuevo.</li>
+    <li><strong>Dejarlo vencer.</strong> Pon un recordatorio en el celular 3 meses antes de que se cumpla el año.</li>
+  </ul>
+
+  <h2>Fuentes oficiales</h2>
+  <ol class="meta">
+    <li><a href="https://www.youtube.com/watch?v=Rpx4V7QGkxE">Bomberos Bogotá — Guía paso a paso, Concepto Técnico (video, 30-ene-2025)</a> · <a href="https://www.bomberosbogota.gov.co/pasos-obtener-concepto-tecnico">Pasos para obtener el Concepto Técnico (WhatsApp del trámite)</a> · <a href="https://www.bomberosbogota.gov.co/servicio-la-ciudadania">Servicio a la ciudadanía (canales y horarios)</a></li>
+    <li><a href="https://www.bomberosbogota.gov.co/requisitos-concepto-tecnico">Bomberos Bogotá — Requisitos del Concepto Técnico</a></li>
+    <li><a href="https://www.bomberosbogota.gov.co/preguntas-frecuentes-concepto-tecnico">Bomberos Bogotá — Preguntas frecuentes del Concepto Técnico</a></li>
+    <li><a href="https://www.bomberosbogota.gov.co/transparencia/tramites-servicios/concepto-tecnico-visitas-inspeccion">Bomberos Bogotá — Ficha del trámite: tiempos y canales</a></li>
+    <li><a href="https://www.bomberosbogota.gov.co/clasificacion-del-riesgo">Bomberos Bogotá — Clasificación del riesgo</a></li>
+    <li><a href="https://www.bomberosbogota.gov.co/content/como-evito-ser-victima-estafas">Bomberos Bogotá — Cómo evitar ser víctima de estafas</a></li>
+    <li><a href="https://servicios.bomberosbogota.gov.co/home_gdr">Portal de servicios de Bomberos Bogotá</a> (formularios de solicitud, autorrevisión e inspección)</li>
+    <li><a href="https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=155699">Concejo de Bogotá — Acuerdo 927 de 2024, art. 290, parágrafo 2 (gratuidad)</a></li>
+    <li><a href="https://secretariageneral.gov.co/sites/default/files/documentos_normativa/2024-12/Circular%20007%20(1).pdf">Secretaría General y Secretaría de Gobierno — Circular Conjunta 007 de 2024</a></li>
+    <li><a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1575_2012.html">Ley 1575 de 2012, art. 42</a> · Ley 1801 de 2016 (Código de Policía): <a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016_pr001.html">art. 87</a> · <a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016_pr002.html">arts. 92 y 93</a></li>
+    <li><a href="https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/resolucion_mininterior_0661_2014_pr005.htm">Ministerio del Interior — Resolución 661 de 2014, arts. 207 a 213</a></li>
+    <li><a href="https://www.gobiernobogota.gov.co/noticias/jornada-verificacion-acompanamiento">Secretaría de Gobierno — Operativo en lavaderos de Samper Mendoza (9-abr-2026)</a> · <a href="https://bogota.gov.co/mi-ciudad/emergencias/participa-en-el-simulacro-bogota-2026-miercoles-21-de-octubre-idiger">Simulacro Bogotá 2026</a> · <a href="https://idrd.gov.co/sites/default/files/documentos/Construcciones/11titulo-k-nsr-100.pdf">NSR-10, Título K (grupos de uso, salidas, luces de emergencia)</a></li>
+    <li><a href="https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=53565">Resolución 2400 de 1979 (extintores)</a> · <a href="https://bogota.gov.co/sites/default/files/inline-files/resolucion-705-de-2007-secretaria-distrital-de-salud.pdf">Resolución 705 de 2007 SDS (botiquín)</a> · <a href="https://www.minenergia.gov.co/documents/15921/Libro-3-Resolucion-40284-23-06-2026.pdf">RETIE 2026, Libro 3</a></li>
+    <li>Otras ciudades: <a href="https://www.alcaldiasoacha.gov.co/AtencionalCiudadano/Paginas/Visita-Bomberos.aspx">Soacha</a> · <a href="https://bomberoscali.org/inspecciones-tecnicas/">Cali</a> · <a href="https://www.medellin.gov.co/es/sala-de-prensa/noticias/ahora-el-certificado-de-bomberos-para-establecimientos-en-medellin-puede-autogestionarse-en-linea/">Medellín</a> · <a href="http://concejo-de-soacha.micolombiadigital.gov.co/sites/concejo-de-soacha/content/files/000073/3614_acuerdo-no_12-abril-15-de-2020.pdf">Acuerdo 12/2020 de Soacha</a> · <a href="https://bomberosfloridablanca.com/area-de-ingenieria-cbvf/">Floridablanca</a> · <a href="https://tramites1.suit.gov.co/registro-web/suit_descargar_archivo?A=118591">Resolución 0231/2021 de Barranquilla</a> · <a href="https://bomberosdebucaramanga.gov.co/wp-content/uploads/2026/01/tarifas-2026.pdf">Bucaramanga (tarifas 2026)</a> · <a href="https://dnbc.gov.co/directorio-nacional-de-bomberos/">Directorio Nacional de Bomberos</a></li>
+  </ol>
+
+  <p><a href="../../">← Ver todos los manuales</a></p>
+
+  <footer>
+    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados. Este manual te explica el trámite; lo radicas tú y la decisión es de Bomberos. Los trámites del Estado cambian: si algo en el portal no coincide con lo que dice aquí, avísale a tu asesor Mónaco para actualizarlo.<br>Verificado el 1 de octubre de 2026.
+  </footer>
+</main>
+</body>
+</html>

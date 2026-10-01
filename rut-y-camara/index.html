@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RUT y Cámara de Comercio — Manual Mónaco</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
+  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:22px;margin:30px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;color:var(--ink2)}
+  .meta{font-size:13px;color:var(--muted)}
+  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
+  .box.amber{border-left-color:var(--amber)}
+  .box.green{border-left-color:var(--green)}
+  .box h3{margin:0 0 6px;font-size:17px}
+  .box p:last-child{margin:0}
+  .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .paper{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
+  .paper .ic{font-size:30px;line-height:1}
+  .paper b{display:block;margin-top:6px;font-size:15px}
+  .paper span{font-size:13px;color:var(--muted)}
+  .say{background:var(--soft);border-radius:10px;padding:10px 12px;font-style:italic;margin:8px 0}
+  .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
+  .no{color:var(--red);font-weight:700}
+  ul{padding-left:20px;margin:6px 0 10px}
+  li{margin:3px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
+  td:first-child{font-weight:600;white-space:nowrap}
+  a{color:var(--blue)}
+  .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cal div{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;break-inside:avoid}
+  .cal b{display:block;color:var(--blue)}
+  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  @media (max-width:560px){h1{font-size:28px}.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
+  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}.box{padding:10px 14px;margin:10px 0}}
+
+  /* ---------- Asistente: componentes nuevos ---------- */
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .jsonly{display:none}
+  html.js .jsonly{display:block}
+  html.js .nojs{display:none}
+  [hidden]{display:none!important}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+  h1:focus,h2:focus{outline:none}
+
+  .topbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+  .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted)}
+  .bar{height:8px;background:var(--soft);border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
+  .bar span{display:block;height:100%;width:0;background:var(--blue);border-radius:99px;transition:width .25s ease}
+  .linkbtn{background:none;border:0;color:var(--blue);font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:6px 2px;min-height:44px;white-space:nowrap;flex:0 0 auto}
+
+  .screen{padding:8px 0 24px;border-bottom:1px dashed var(--line)}
+  html.js .screen{border-bottom:0}
+  html.js .screen:not(.on){display:none}
+  .screen h2{margin-top:14px}
+  .stepno{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--blue);margin:14px 0 0}
+
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:14px 18px;border-radius:14px;border:2px solid var(--blue);background:var(--blue);color:var(--onblue);font:inherit;font-size:18px;font-weight:700;text-decoration:none;cursor:pointer;text-align:center;margin:10px 0}
+  .btn:hover{filter:brightness(.95)}
+  .btn.ghost{background:var(--bg);color:var(--blue)}
+  .btn.ok{background:var(--green);border-color:var(--green)}
+  .btn.small{min-height:44px;font-size:15px;width:auto;display:inline-flex;margin:4px 0}
+  .nav{display:flex;flex-direction:column;gap:0;margin-top:18px}
+  .nav .back{background:none;border:0;color:var(--muted);font:inherit;font-size:15px;text-decoration:underline;cursor:pointer;min-height:44px;align-self:center}
+
+  .q{border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0;background:var(--bg)}
+  .q > label, .q legend{display:block;font-weight:700;font-size:17px;margin-bottom:8px;padding:0}
+  fieldset.q{min-width:0}
+  select,input[type=text]{width:100%;min-height:52px;font:inherit;font-size:18px;padding:10px 12px;border:1.5px solid #b9bcc4;border-radius:12px;background:var(--bg);color:var(--ink)}
+  .money{position:relative}
+  .money span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--muted)}
+  .money input{padding-left:30px}
+  .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .choices label{display:flex;align-items:center;justify-content:center;min-height:52px;border:1.5px solid #b9bcc4;border-radius:12px;font-weight:600;cursor:pointer;position:relative}
+  .choices input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+  .choices label:has(input:checked){background:var(--blue);border-color:var(--blue);color:var(--onblue)}
+  .choices label:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:3px}
+  .result{background:var(--soft);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:15px}
+  .result p:last-child{margin:0}
+  .big{font-size:26px;font-weight:800;letter-spacing:-.01em}
+  .cost td{font-size:15px}
+  .cost td:last-child{text-align:right;white-space:nowrap}
+  .cost tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
+
+  .check{list-style:none;padding:0;margin:8px 0}
+  .check li{margin:0;border-top:1px solid var(--line)}
+  .check label{display:flex;gap:12px;align-items:flex-start;padding:12px 2px;cursor:pointer;min-height:48px}
+  .check input{width:24px;height:24px;flex:0 0 24px;margin-top:1px;accent-color:var(--green)}
+  .check small{display:block;color:var(--muted);font-size:14px}
+  .check input:checked + span{color:var(--muted)}
+
+  .code{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:var(--soft)}
+  .code b{font-size:22px;font-family:"SF Mono",Menlo,Consolas,monospace;letter-spacing:.04em}
+  .code .lbl{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--muted);display:block}
+  .code .txt{flex:1 1 220px;font-size:15px}
+  .copy{min-height:44px;padding:8px 14px;border-radius:10px;border:1.5px solid var(--blue);background:var(--bg);color:var(--blue);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+  .copy.copied{background:var(--green);border-color:var(--green);color:var(--onblue)}
+
+  details.stuck{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;margin:14px 0;background:var(--bg)}
+  details.stuck summary{cursor:pointer;padding:14px 16px;font-weight:700;min-height:48px;list-style-position:inside}
+  details.stuck > div{padding:0 16px 12px}
+  details.stuck h4{margin:10px 0 4px;font-size:16px}
+
+  .shot{margin:16px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--soft)}
+  .shot img{display:block;width:100%;height:auto}
+  .shot-ph{display:flex;align-items:center;justify-content:center;min-height:140px;padding:16px;font-size:14px;color:var(--muted);text-align:center;border:2px dashed var(--line);border-radius:12px;margin:6px}
+
+  .platnote{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:12px 14px;margin:12px 0;font-size:15px;background:var(--bg)}
+  .camara{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:15px}
+  .camara b.n{display:block;font-size:17px}
+  .warn{color:var(--amber);font-weight:700}
+  .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:var(--soft);border:1px solid var(--line);color:var(--muted);vertical-align:middle}
+  .url{word-break:break-all;font-size:14px}
+  .wrap{overflow-x:auto}
+
+  @media (max-width:560px){.choices{grid-template-columns:1fr 1fr 1fr}.btn{font-size:17px}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+  @media print{.topbar,.nav,.jsonly,.copy{display:none!important}html.js .screen:not(.on){display:block}.shot-ph{min-height:40px}details.stuck > div{display:block}}
+</style>
+</head>
+<body>
+<main id="app">
+  <p class="brand">MÓNACO · MOTO DETAILING</p>
+
+  <div class="topbar jsonly" id="topbar">
+    <div class="row">
+      <span id="progtxt">Inicio</span>
+      <button type="button" class="linkbtn" id="reset">Empezar de nuevo</button>
+    </div>
+    <div class="bar" role="progressbar" aria-label="Avance del trámite" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><span id="barfill"></span></div>
+  </div>
+  <p class="sr" aria-live="polite" id="live"></p>
+
+  <!-- ============ 0. PORTADA ============ -->
+  <section class="screen" data-id="inicio" data-title="Inicio">
+    <p class="kicker">ASISTENTE PARA ASESORADOS · PASO A PASO</p>
+    <h1 tabindex="-1">Saca tu RUT y tu Cámara de Comercio en línea</h1>
+    <p class="lead">En un solo trámite por internet, en la <strong>Ventanilla Única Empresarial (VUE)</strong>, te registras como <strong>persona natural con un establecimiento de comercio</strong>, que es tu lavadero.</p>
+    <div class="papers">
+      <div class="paper"><div class="ic">1</div><b>RUT</b><span>Registro Único Tributario: tu registro ante la DIAN (la entidad de impuestos), con tu NIT (tu número de identificación tributaria)</span></div>
+      <div class="paper"><div class="ic">2</div><b>Matrícula de la persona</b><span>Tú, como comerciante</span></div>
+      <div class="paper"><div class="ic">3</div><b>Matrícula del local</b><span>Tu lavadero, como establecimiento</span></div>
+    </div>
+    <div class="box">
+      <h3>¿Cuánto tarda?</h3>
+      <p>Llenarlo lo haces tú, en línea y con calma. Según la VUE, en la Cámara de Bogotá la matrícula sale <strong>de inmediato</strong> al pagar; en las de Facatativá, Medellín y Cali, <strong>1 hora después de pagar</strong>, y si terminas fuera del horario hábil, queda el siguiente día hábil. El RUT te llega después al correo, enviado por la DIAN.</p>
+    </div>
+    <div class="box green">
+      <h3>No tienes que ir antes a la DIAN</h3>
+      <p>La VUE dice que el RUT y el NIT salen <strong>dentro del mismo trámite</strong> de la Cámara. Para persona natural, la VUE dice que no hay que adjuntar documentos, salvo una copia de la cédula si falla la conexión con la Registraduría; en la Cámara de Bogotá pide tenerla a mano escaneada o en foto.</p>
+    </div>
+    <p class="meta">Verificado contra fuentes oficiales (VUE, tablas de tarifas 2026 de las cámaras, DANE) el 1 de octubre de 2026. Lo que no pudimos confirmar está marcado como <span class="tag">SIN CONFIRMAR</span>.</p>
+    <div class="nav jsonly"><button type="button" class="btn" data-next>Empezar</button></div>
+  </section>
+
+  <!-- ============ 1. TRES PREGUNTAS ============ -->
+  <section class="screen" data-id="preguntas" data-title="Tres preguntas">
+    <p class="stepno">ANTES DE EMPEZAR</p>
+    <h2 tabindex="-1">Tres preguntas para armar tu ruta</h2>
+    <p>Con tus respuestas te damos el link correcto, lo que necesitas a la mano y cuánto te va a costar más o menos.</p>
+
+    <div class="jsonly">
+      <div class="q">
+        <label for="muni">1. ¿En qué municipio queda tu local?</label>
+        <select id="muni">
+          <option value="">Escoge tu municipio…</option>
+        </select>
+        <div id="muniInfo" aria-live="polite"></div>
+      </div>
+
+      <fieldset class="q">
+        <legend>2. ¿Ya tienes RUT?</legend>
+        <div class="choices">
+          <label><input type="radio" name="rut" value="si"> Sí</label>
+          <label><input type="radio" name="rut" value="no"> No</label>
+          <label><input type="radio" name="rut" value="nose"> No sé</label>
+        </div>
+        <div id="rutInfo" aria-live="polite"></div>
+      </fieldset>
+
+      <div class="q">
+        <label for="inv">3. ¿Cuánto vas a declarar en activos (máquinas, herramientas, muebles e insumos)?</label>
+        <div class="money"><span aria-hidden="true">$</span><input type="text" id="inv" inputmode="numeric" autocomplete="off" placeholder="Ej: 25.000.000" aria-describedby="invHelp"></div>
+        <p class="meta" id="invHelp" style="margin-top:8px">Suma también las adecuaciones del local si las pagaste tú. No cuentan el arriendo, la publicidad, los permisos ni la dotación: esos son gastos.</p>
+        <div id="invInfo" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="nojs">
+      <h3>¿En qué municipio queda tu local?</h3>
+      <div class="wrap"><table>
+        <tr><td>Bogotá</td><td>Cámara de Comercio de Bogotá · <a class="url" href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=11001&amp;a=1">abrir la VUE para Bogotá</a></td></tr>
+        <tr><td>Chía, Cajicá, Zipaquirá</td><td>Cámara de Comercio de Bogotá · <a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=25175&amp;a=7">Chía</a> · <a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=25126&amp;a=7">Cajicá</a> · <a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=25899&amp;a=7">Zipaquirá</a></td></tr>
+        <tr><td>Facatativá, Funza, Madrid</td><td>Cámara de Comercio de Facatativá · <a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=25269&amp;a=7">abrir la VUE (se entra por Facatativá)</a> Funza y Madrid no salen en la VUE: entras por Facatativá y pones la dirección real de tu local.</td></tr>
+        <tr><td>Mosquera</td><td>Cámara de Comercio de Facatativá · <a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=25473&amp;a=7">abrir la VUE para Mosquera</a></td></tr>
+        <tr><td>Medellín</td><td>Cámara de Comercio de Medellín para Antioquia · <a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=05001&amp;a=3">abrir la VUE para Medellín</a></td></tr>
+        <tr><td>Cali</td><td>Cámara de Comercio de Cali · <a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica?c=76001&amp;a=6">abrir la VUE para Cali</a></td></tr>
+        <tr><td>Soacha</td><td><span class="tag">SIN CONFIRMAR</span> No está claro si te atiende la Cámara de Bogotá o la Cámara de Comercio de Soacha. Llama a las dos antes de empezar.</td></tr>
+        <tr><td>Otro municipio</td><td><a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica">VUE</a>: escoge tu departamento y tu ciudad a mano.</td></tr>
+      </table></div>
+      <h3>¿Cuánto cuesta?</h3>
+      <p>Con las tablas 2026 (iguales en las cámaras de Bogotá, Facatativá, Medellín y Cali): matrícula de la persona = $24.220 + $8.477 por cada millón de activos (hasta $78.715.000 de activos); matrícula del local = $48.400 (activos hasta $78.715.000) o $121.000 (hasta $302.750.000); formulario RUES = $8.500; certificado = $6.100 cada uno, si lo compras.</p>
+    </div>
+
+    <div class="nav jsonly">
+      <button type="button" class="btn" data-next id="qNext">Continuar</button>
+      <button type="button" class="back" data-back>← Atrás</button>
+    </div>
+  </section>
+
+  <!-- ============ 2. CHECKLIST ============ -->
+  <section class="screen" data-id="alamano" data-title="Lo que necesitas a la mano">
+    <p class="stepno">ANTES DE EMPEZAR</p>
+    <h2 tabindex="-1">Lo que necesitas a la mano</h2>
+    <p>Marca cada cosa cuando la tengas. Así no te frenas en la mitad.</p>
+    <ul class="check" id="checklist">
+      <li><label><input type="checkbox" data-ck="cedula"><span>Tu cédula física<small>La fecha de expedición tiene que ser exacta, tal como aparece en tu cédula.</small></span></label></li>
+      <li data-show="plat:ccb"><label><input type="checkbox" data-ck="cedfoto"><span>Tu cédula escaneada, en fotocopia o en foto<small>La VUE lo pide tener a mano para la Cámara de Bogotá.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="correo"><span>Un correo tuyo que puedas abrir en el celular<small>Ahí llegan la clave y el enlace para activar la cuenta.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="cel"><span>Tu celular a mano, con un número a tu nombre</span></label></li>
+      <li><label><input type="checkbox" data-ck="banco"><span>Tus datos de bancos y tarjetas a mano<small>Para las preguntas de seguridad: te preguntan por tus tarjetas de crédito, tus bancos o tu operador de celular.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="dir"><span>La dirección exacta del local, tal como sale en el recibo de servicios</span></label></li>
+      <li><label><input type="checkbox" data-ck="fecha"><span>La fecha en que empezaste (o empiezas) a trabajar<small>No puede ser una fecha futura: el formulario no la acepta.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="nombre"><span>El nombre de tu lavadero, ya revisado<small>Lo verificamos en el primer paso.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="activos"><span>El valor de tu inversión<small id="ckInv">Lo que pusiste en la pregunta 3.</small></span></label></li>
+      <li data-show="rut:si"><label><input type="checkbox" data-ck="rutpdf"><span>Tu RUT actual y tu usuario y clave de la DIAN<small>Después del trámite vas a tener que actualizar tu RUT con la actividad nueva.</small></span></label></li>
+      <li data-show="rut:nose"><label><input type="checkbox" data-ck="rutsabe"><span>Saber si ya tienes RUT<small>Consúltalo en la VUE antes de empezar (link en la pregunta 2).</small></span></label></li>
+      <li data-show="muni:soacha"><label><input type="checkbox" data-ck="soacha"><span>Haber llamado a la Cámara para saber cuál te toca<small>En Soacha no está claro hoy si es la de Bogotá o la de Soacha.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="pago"><span>Con qué pagar<small id="ckPago">Las opciones dependen de tu Cámara. Si pagas en efectivo, te dan un número de recuperación para pagar en la sede.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="papel"><span>Papel y lápiz<small>Para anotar la clave, el número de solicitud y el número de recuperación.</small></span></label></li>
+      <li><label><input type="checkbox" data-ck="popups"><span>Ventanas emergentes permitidas en tu navegador<small>El botón "Crear empresa" abre una pestaña nueva. Si están bloqueadas, parece que no pasa nada.</small></span></label></li>
+    </ul>
+    <div class="nav jsonly">
+      <button type="button" class="btn" data-next>✔ Tengo todo, sigamos</button>
+      <button type="button" class="back" data-back>← Atrás</button>
+    </div>
+  </section>
+
+  <!-- ============ 3. PASOS ============ -->
+  <section class="screen" data-id="nombre" data-title="Revisa el nombre">
+    <p class="stepno">PASO <span class="n"></span> · OPCIONAL</p>
+    <h2 tabindex="-1">Revisa que el nombre de tu lavadero esté libre</h2>
+    <p>En la VUE, escoge tu ciudad y busca el nombre. Prueba variantes: con K y con C, junto y separado, en plural y en singular. Es gratis y el resultado sale de una vez.</p>
+    <a class="btn" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-nombre-de-empresa-homonimia" target="_blank" rel="noopener">Abrir esta página ↗</a>
+    <p class="meta">También puedes buscarlo en el RUES (Registro Único Empresarial y Social, el registro de todas las cámaras): <a href="https://www.rues.org.co" target="_blank" rel="noopener">rues.org.co</a>.</p>
+    <figure class="shot" data-shot="01-nombre"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>"Lo busqué y estaba libre, pero después no me dejó"</h4>
+      <p>La Cámara <strong>no reserva nombres</strong>: si otra persona lo inscribe antes, ya no te lo dejan. Haz el trámite pronto después de consultar. El mismo trámite vuelve a revisar el nombre más adelante.</p>
+      <h4>¿Esto me protege la marca?</h4>
+      <p>No. El registro de marca es otro trámite, ante la Superintendencia de Industria y Comercio.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="ciiu" data-title="Tus códigos de actividad">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Ten listos tus códigos de actividad (CIIU)</h2>
+    <p>El formulario te pide qué hace tu negocio con un código CIIU (la lista oficial de actividades económicas). <strong>El principal depende de tu uso de suelo:</strong> si en tu local permiten el <strong>4520</strong>, ese va de principal; si no, el <strong>4542</strong>. Por eso el uso de suelo se revisa antes.</p>
+    <div class="code"><div><span class="lbl">PRINCIPAL SI TU USO DE SUELO LO PERMITE</span><b>4520</b></div><span class="txt">Mantenimiento y reparación de vehículos automotores (incluye lavado)</span><button type="button" class="copy" data-copy="4520">Copiar código</button></div>
+    <div class="code"><div><span class="lbl">PRINCIPAL SI NO PERMITEN EL 4520</span><b>4542</b></div><span class="txt">Mantenimiento y reparación de motocicletas y de sus partes y piezas</span><button type="button" class="copy" data-copy="4542">Copiar código</button></div>
+    <div class="code"><div><span class="lbl">SECUNDARIA</span><b>4541</b></div><span class="txt">Comercio de motocicletas y de sus partes, piezas y accesorios</span><button type="button" class="copy" data-copy="4541">Copiar código</button></div>
+    <div class="code"><div><span class="lbl">SOLO SI TIENES CAFETERÍA</span><b>5613</b></div><span class="txt">Expendio de comidas preparadas en cafeterías</span><button type="button" class="copy" data-copy="5613">Copiar código</button></div>
+    <p class="jsonly" style="margin-top:6px"><button type="button" class="copy" data-copy="4542 Mantenimiento y reparación de motocicletas y de sus partes y piezas">Copiar 4542 con su descripción</button> <button type="button" class="copy" data-copy="4541 Comercio de motocicletas y de sus partes, piezas y accesorios">Copiar 4541 con su descripción</button></p>
+    <a class="btn ghost" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-actividad-economica-ciiu" target="_blank" rel="noopener">Abrir el buscador de códigos ↗</a>
+    <figure class="shot" data-shot="02-ciiu"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>¿Cómo sé si permiten el 4520?</h4>
+      <p>Míralo en tu concepto de uso de suelo. El 4520 menciona el lavado, pero es de alto impacto y en muchas zonas no lo permiten: a dos asesorados se lo rechazaron. Si tienes duda, usa el 4542 y pregúntale a tu asesor.</p>
+      <h4>¿Cuántos puedo poner?</h4>
+      <p>Una actividad principal y máximo tres secundarias.</p>
+      <h4>Quiero buscar otro código</h4>
+      <p>En el buscador escoge tu ubicación, luego "Por palabra clave" y escribe, por ejemplo, <em>motocicletas</em> o <em>cafetería</em>.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya los tengo</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="vue" data-title="Abre la VUE">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Abre la VUE con tu link</h2>
+    <p>Este link ya trae tu municipio. Baja hasta el recuadro azul: debe decir el nombre de <strong data-fill="camaraCorta">tu Cámara</strong>. Si no sale, escoge abajo el <strong>Departamento</strong> y la <strong>Ciudad</strong>.</p>
+    <p class="platnote" data-fill-html="vueNote" hidden></p>
+    <a class="btn" id="vueLink" data-vue href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica" target="_blank" rel="noopener">Abrir esta página ↗</a>
+    <figure class="shot" data-shot="03-vue-municipio"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Mi municipio no sale en la lista de "Ciudad"</h4>
+      <p>La lista trae las sedes de cada cámara, no todos los municipios. Por ejemplo, para Funza y Madrid se entra por <strong>Facatativá</strong>, y en el formulario pones la dirección real de tu local.</p>
+      <h4>La dirección de arriba del navegador cambió sola</h4>
+      <p>Puede pasar. Lo que vale es el recuadro azul, no la barra. Para compartir el link, usa el de este asistente, no el de la barra.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="crear" data-title="Crear mi empresa">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Toca "Crear mi empresa" → Persona Natural</h2>
+    <p>En el recuadro azul toca <strong>Crear mi empresa</strong>. En la ventana que sale, escoge <strong>Persona Natural</strong> y toca <strong>CREAR EMPRESA</strong>. Revisa que el título de la ventana diga el municipio de tu Cámara.</p>
+    <figure class="shot" data-shot="04-crear-mi-empresa"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Toqué el botón y no pasa nada</h4>
+      <p>Abre una pestaña nueva. Si tu navegador bloquea las ventanas emergentes, permítelas para vue.gov.co y vuelve a tocar.</p>
+      <h4>¿Puedo guardar el link que se abrió para seguir otro día?</h4>
+      <p>No. Ese link lleva la fecha del día. Siempre entra desde la VUE, con el link del paso anterior.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="login-trampa" data-title="La pantalla que pide clave">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Te pide clave sin tener cuenta: no llenes nada</h2>
+    <div class="platnote" data-platnote hidden></div>
+    <p>Se abre una página nueva de la Cámara (ctce.confecamaras.co) con un bloque de <strong>Inicio de sesión</strong> que pide correo, cédula, celular y clave. La primera vez <strong>no tienes clave</strong>. Baja hasta <strong>"¿No tiene cuenta? Regístrese"</strong>.</p>
+    <figure class="shot" data-shot="05-inicio-sesion"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Me pide una clave que no tengo</h4>
+      <p>Es la trampa más común. Ignora el inicio de sesión y baja hasta el final de la página: ahí está <strong>Regístrese</strong>.</p>
+      <h4>Abrí esa página directo y me devolvió a la VUE</h4>
+      <p>Es normal: solo funciona si llegas desde la VUE. Vuelve al paso "Abre la VUE".</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="registro" data-title="Regístrate">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Regístrate: correo, cédula y celular</h2>
+    <div class="platnote" data-platnote hidden></div>
+    <p>En <strong>"Registrarse para ingresar"</strong> pon tu correo, tu número de cédula <strong>sin puntos</strong> y tu celular. Marca la casilla de datos personales y toca <strong>Crear Usuario</strong>.</p>
+    <figure class="shot" data-shot="06-registrarse"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>El botón "Crear Usuario" no avanza</h4>
+      <p>Revisa que marcaste la casilla de datos personales. La cédula y el celular van solo con números, máximo 10.</p>
+      <h4>¿Puedo usar el correo de otra persona?</h4>
+      <p>No. Usa tu correo y tu celular: por ahí te llega la clave con la que vas a firmar y pagar.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="identidad" data-title="Verifica tu identidad">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Verifica tu identidad</h2>
+    <div class="platnote" data-platnote hidden></div>
+    <p>Se abre otra página, el <strong>Verificador de identidad de las Cámaras de Comercio</strong>. Cambian el logo y la dirección, pero sigues en el mismo trámite. Pon tipo y número de documento, acepta las dos casillas, toca <strong>Continuar</strong> y escribe la <strong>fecha de expedición</strong> de tu cédula.</p>
+    <figure class="shot" data-shot="07-verificador-identidad"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Dice que la fecha no coincide</h4>
+      <p>Tiene que ser exactamente la fecha de expedición que aparece en tu cédula (día, mes y año), no tu fecha de nacimiento.</p>    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="reto" data-title="Preguntas de seguridad">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Responde las preguntas de seguridad con calma</h2>
+    <p>Te hacen preguntas de selección múltiple sobre tu vida financiera, por ejemplo hace cuánto tienes tarjeta de crédito con cierto banco o si tienes línea con cierto operador de celular. Las respondes <strong>tú</strong>, sin afán.</p>
+    <figure class="shot" data-shot="08-preguntas-reto"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Fallé las preguntas</h4>
+      <p>Por lo que hemos visto en Mónaco, al fallar bloquean el intento por varias horas <span class="tag">SIN CONFIRMAR</span>: la Cámara no publica cuántos intentos hay ni cuánto dura el bloqueo. Espera y vuelve a intentar desde la VUE, o termina el trámite en persona en tu Cámara.</p>
+      <p data-fill-html="contacto"></p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="correos" data-title="Activa tu cuenta">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Abre tu correo y activa la cuenta</h2>
+    <p>Te llegan correos: uno con tu <strong>contraseña generada</strong> y otro con el botón <strong>"Verificar este mensaje y activar credenciales"</strong>. Toca ese botón antes de intentar entrar. <strong>Anota la clave</strong>: con ella entras, firmas y pagas.</p>
+    <figure class="shot" data-shot="09-correos-clave"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>No me llegó nada</h4>
+      <p>Revisa la carpeta de spam o correo no deseado, y espera unos minutos. Revisa que escribiste bien el correo al registrarte.</p>
+      <h4>Entro con la clave y no me deja</h4>
+      <p>Primero tienes que activar la cuenta con el botón del segundo correo.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="entrar" data-title="Entra y crea el trámite">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Entra y toca "Crear nuevo trámite"</h2>
+    <p>Vuelve a entrar desde la VUE (tu link), toca otra vez Crear mi empresa → Persona Natural, y ahora sí llena el <strong>Inicio de sesión</strong> con correo, cédula, celular y la clave. Lee la bienvenida y toca <strong>Crear nuevo trámite</strong>.</p>
+    <a class="btn" data-vue href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica" target="_blank" rel="noopener">Abrir esta página ↗</a>
+    <figure class="shot" data-shot="10-crear-tramite"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Cerré la página a la mitad</h4>
+      <p>No pierdes nada. Entra de nuevo y busca la pestaña <strong>Trámites en proceso</strong> → <strong>Continuar</strong>. También está en el menú que sale al tocar tu nombre, arriba a la derecha.</p>
+      <h4>Me pide clave y no la tengo</h4>
+      <p>Bájate hasta "Regístrese" (paso de la pantalla que pide clave). Si ya te registraste, la clave está en tu correo.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="datos" data-title="Datos generales y activos">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Datos generales, activos y 1 establecimiento</h2>
+    <p>Llena tus datos personales, el número de empleados y tus <strong>activos</strong>: <strong data-fill="invTxt">el valor de tu inversión</strong>. En establecimientos pon <strong>1</strong> y sus activos. Ahí mismo te pregunta cuántos certificados quieres comprar ($6.100 cada uno).</p>
+    <div class="box" data-show="rut:si"><p><strong>Ya tienes RUT:</strong> el sistema lo encuentra con tu cédula y te pregunta si quieres usar esos datos. Responde <strong>Sí</strong>.</p></div>
+    <div class="box" data-show="rut:no"><p><strong>No tienes RUT:</strong> si el sistema dice que encontró datos asociados a tu cédula, es que sí tienes RUT. En ese caso responde <strong>Sí</strong> para usarlos.</p></div>
+    <figure class="shot" data-shot="11-datos-generales"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Sale "Por favor, verifique el NIT diligenciado"</h4>
+      <p>En un recorrido que hicimos en Mónaco, salió al decir que no había NIT cuando la persona ya tenía RUT. Revisa si tienes RUT en la <a href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-estado-del-rut" target="_blank" rel="noopener">consulta de estado del RUT</a> y, si lo tienes, responde <strong>Sí</strong> a usar los datos encontrados. <span class="tag">SIN CONFIRMAR</span> La causa la deducimos de ese recorrido; la Cámara no la publica.</p>
+      <h4>¿Marco la Ley 1780?</h4>
+      <p>Solo si cumples todo: tener entre 18 y 35 años, máximo 50 trabajadores y activos de máximo 5.000 salarios mínimos. Te exonera de pagar la matrícula y la renovación del primer año. Lo declaras bajo juramento, y si das información falsa tienes que devolver lo exonerado. Lo pierdes si no renuevas a tiempo o no pagas seguridad social o impuestos. <span class="tag">SIN CONFIRMAR</span> No sabemos si cubre también el local y el formulario.</p>
+      <h4>¿Qué pongo en activos?</h4>
+      <p>En Mónaco recomendamos declarar poco, por ejemplo $1.000.000: entre menos declares, menos pagas de matrícula y de renovación cada año.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="preliq" data-title="Revisa el cobro y el nombre">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Revisa la preliquidación y escribe el nombre</h2>
+    <p>Te muestra lo que vas a pagar: deben salir <strong>dos matrículas</strong> (la tuya y la del local) y el formulario. Compáralo con el cálculo de este asistente: <strong data-fill="costoTxt">el valor que calculamos al principio</strong>. Después escribe el nombre del lavadero: el sistema revisa que esté libre.</p>
+    <figure class="shot" data-shot="12-preliquidacion"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Solo sale una matrícula</h4>
+      <p>Revisa que en el paso anterior pusiste 1 establecimiento. Si no, devuélvete y corrígelo.</p>
+      <h4>El nombre no pasa</h4>
+      <p>Ya está tomado o se parece mucho a otro. Cambia el nombre. Agregar "S.A.S." o "Ltda." no sirve para diferenciarlo.</p>
+      <h4>Me sale un cobro de impuesto de registro</h4>
+      <p>No lo esperábamos para persona natural: la VUE solo menciona el pago del impuesto de registro para sociedades, no para persona natural. <span class="tag">SIN CONFIRMAR</span> Si te sale, pregúntale a tu Cámara antes de pagar.</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="responsabilidades" data-title="Responsabilidades tributarias">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Responsabilidades tributarias: aquí nace tu RUT</h2>
+    <p data-show="rut:si"><strong>Ya tienes RUT</strong>, así que puede que esta pantalla no te salga. Si no sale, sigue.</p>
+    <p>Si dijiste que no tienes NIT, te sale el formato <strong>Responsabilidades tributarias</strong>. Tienes que escoger mínimo una para seguir. Esto es lo que la DIAN va a poner en tu RUT.</p>
+    <a class="btn ghost" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-responsabilidades-tributarias" target="_blank" rel="noopener">Abrir la consulta de responsabilidades ↗</a>
+    <figure class="shot" data-shot="13-responsabilidades"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>No sé cuál marcar</h4>
+      <p>Pregúntale a un contador antes de seguir. No te damos una respuesta general porque depende de tu caso (por ejemplo, si eres o no responsable de IVA).</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="formularios" data-title="Los formularios">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Llena los formularios por secciones</h2>
+    <p>Son dos: el tuyo y el del local. Vas sección por sección: ubicación, actividad económica, información financiera y, en el del local, sus datos. Revisa todo antes de enviar: <strong>después ya no se puede cambiar</strong>.</p>
+    <p><strong>Actividad económica:</strong></p>
+    <p class="meta">Principal: el 4520 si tu uso de suelo lo permite; si no, el 4542.</p>
+    <div class="code"><div><span class="lbl">PRINCIPAL (OPCIÓN A)</span><b>4520</b></div><span class="txt">Mantenimiento y reparación de vehículos automotores</span><button type="button" class="copy" data-copy="4520">Copiar</button></div>
+    <div class="code"><div><span class="lbl">PRINCIPAL (OPCIÓN B)</span><b>4542</b></div><span class="txt">Mantenimiento y reparación de motocicletas y de sus partes y piezas</span><button type="button" class="copy" data-copy="4542">Copiar</button></div>
+    <div class="code"><div><span class="lbl">SECUNDARIA</span><b>4541</b></div><span class="txt">Comercio de motocicletas y de sus partes, piezas y accesorios</span><button type="button" class="copy" data-copy="4541">Copiar</button></div>
+    <p class="meta">En el formulario del local puedes usar "Importar datos del inscrito" para traer las mismas actividades, y "Elegir dirección de la empresa" si es la misma dirección.</p>
+    <figure class="shot" data-shot="14-formularios"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>No me acepta la fecha de inicio de actividad</h4>
+      <p>No admite fechas futuras. Pon la fecha de hoy o una anterior, la fecha en que de verdad empezaste.</p>
+      <h4>Dice "debe ir diligenciado" en un campo que no aplica</h4>
+      <p>Nos pasó con un campo como el segundo nombre. Revisa campo por campo, incluso los que parecen opcionales.</p>
+      <h4>Mi municipio no sale en la dirección</h4>
+      <p data-fill-html="contacto"></p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="firma" data-title="Firma">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Firma con tu clave</h2>
+    <p>Escribe la <strong>misma clave</strong> del correo para firmar electrónicamente los documentos. No es una clave nueva. Desde aquí ya no se puede cambiar nada.</p>
+    <figure class="shot" data-shot="15-firma"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Perdí la clave</h4>
+      <p>Búscala en tu correo ("Contraseña generada"). En el inicio de sesión también está "¿Olvidó la contraseña?".</p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo hice</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="pago" data-title="Paga">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Paga y anota el número de recuperación</h2>
+    <p>Revisa la liquidación definitiva, toca <strong>Continuar</strong> y paga con las opciones que te dé tu Cámara. Si eliges pagar en efectivo en la sede, te sale un <strong>número de recuperación</strong>: anótalo antes de cerrar.</p>
+    <figure class="shot" data-shot="16-pago"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>¿Se paga por PSE (pago en línea desde tu cuenta de banco)?</h4>
+      <p>Depende de tu Cámara. Para la Cámara de Bogotá, la VUE dice que se paga con el botón de pagos PSE. Para las demás <span class="tag">SIN CONFIRMAR</span>: el manual oficial solo dice "según las opciones disponibles". Si no ves cómo pagar, llama:</p>
+      <p data-fill-html="contacto"></p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya pagué</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <section class="screen" data-id="documentos" data-title="Descarga tus documentos">
+    <p class="stepno">PASO <span class="n"></span></p>
+    <h2 tabindex="-1">Guarda el número de solicitud y descarga todo</h2>
+    <p>Sale <strong>"Trámite finalizado"</strong> con un número de solicitud: anótalo. Al correo te llega un PDF (el "sobre digital") con tus formularios, el recibo y la factura <strong>adjuntos dentro del PDF</strong>. Después la DIAN te manda el RUT al correo.</p>
+    <a class="btn" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-estado-del-registro-mercantil" target="_blank" rel="noopener">Ver cómo va mi trámite ↗</a>
+    <figure class="shot" data-shot="17-tramite-finalizado"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <details class="stuck"><summary>Me trabé</summary><div>
+      <h4>Abro el PDF y no veo los adjuntos</h4>
+      <p>Ábrelo con Adobe Acrobat Reader y busca "Archivos adjuntos".</p>
+      <h4>No tengo el certificado del local</h4>
+      <p>Según la VUE, el certificado del establecimiento se pide aparte: en el RUES (<a href="https://www.rues.org.co" target="_blank" rel="noopener">rues.org.co</a>) o, en la Cámara de Bogotá, en la misma Cámara.</p>
+      <h4>Pasó más de un día hábil y nada</h4>
+      <p data-fill-html="contacto"></p>
+    </div></details>
+    <div class="nav jsonly"><button type="button" class="btn ok" data-next>✔ Ya lo tengo</button><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <!-- ============ 4. FINAL ============ -->
+  <section class="screen" data-id="final" data-title="Listo">
+    <p class="stepno">TERMINASTE</p>
+    <h2 tabindex="-1">Revisa que tengas estos 3 documentos</h2>
+    <div class="box green"><h3>1. RUT</h3><p>PDF de la DIAN con la leyenda <strong>"certificado"</strong> y tu NIT. Revisa que diga tu actividad principal (<strong>4520 o 4542</strong>), 4541 como secundaria y la dirección de tu local.</p></div>
+    <div class="box green"><h3>2. Certificado de matrícula de la persona</h3><p>Dice tu nombre como comerciante y tu número de matrícula. Te llega si compraste el certificado en el trámite.</p></div>
+    <div class="box green"><h3>3. Certificado del establecimiento</h3><p>Dice el nombre de tu lavadero y su dirección. Según la VUE, se pide aparte, en el RUES o en tu Cámara.</p></div>
+    <p>Si solo tienes uno, el trámite quedó incompleto: llama a tu Cámara.</p>
+    <div class="box amber" data-show="rut:si"><h3>Actualiza tu RUT en la DIAN</h3><p>Como ya tenías RUT, la VUE dice que después del registro debes actualizarlo con la actividad nueva (tu código principal y tus responsabilidades). Hazlo en línea en la DIAN, con tu usuario y clave, dentro del mes siguiente. Si no, la DIAN cobra multa por cada día de atraso.</p></div>
+    <div class="box amber" data-show="rut:nose"><h3>Revisa tu RUT</h3><p>Si resultó que ya tenías RUT, revisa que tenga tu código principal y la dirección del local. Si no los tiene, actualízalo en la DIAN dentro del mes siguiente.</p></div>
+
+    <h2>Qué sigue</h2>
+    <ul>
+      <li><a href="../uso-de-suelo/">Uso de suelo</a></li>
+      <li><a href="../sayco-acinpro/">Sayco y Acinpro</a></li>
+      <li><a href="../bomberos/">Bomberos</a></li>
+    </ul>
+
+    <h2>Se renueva cada año</h2>
+    <div class="cal">
+      <div><b>1 de enero</b>Arranca la renovación de las dos matrículas, la tuya y la del local.</div>
+      <div><b>Antes del 31 de marzo</b>Renueva. Si no, te expones a multas de la Superintendencia de Sociedades y a que la Policía suspenda tu actividad, y si tienes la Ley 1780, pierdes el beneficio.</div>
+      <div><b>Diciembre</b>Pon un recordatorio en el celular para enero.</div>
+    </div>
+    <p class="meta" style="margin-top:10px">Si te matriculas en octubre de 2026, entendemos que tu primera renovación es entre enero y el 31 de marzo de 2027. Confírmalo con tu Cámara.</p>
+    <div class="nav jsonly"><button type="button" class="back" data-back>← Atrás</button></div>
+  </section>
+
+  <footer>
+    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados. Este asistente te explica el trámite; lo haces tú y los valores los fija tu Cámara de Comercio. Si algo no coincide con lo que ves en pantalla, avísale a tu asesor Mónaco.<br>Fuentes: vue.gov.co (fichas y preguntas frecuentes, Manual Persona Natural), tablas de tarifas 2026 de las cámaras de Bogotá, Facatativá, Medellín y Cali, CIIU Rev. 4 A.C. del DANE, Código de Comercio art. 33 y Ley 1780 de 2016.<br>Verificado el 1 de octubre de 2026.
+  </footer>
+</main>
+
+<script>
+(function(){
+  'use strict';
+  document.documentElement.classList.add('js');
+
+  var VUE = 'https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica';
+  var CCB_TEL = '(601) 383 0330, opción 1 y luego 1 · WhatsApp 317 257 7909 · lunes a viernes, 8:00 a.m. a 5:00 p.m.';
+  var CCF_TEL = '(601) 890 2833, ext. 1105 · WhatsApp 312 588 7624 · lunes a viernes, 8:00 a.m. a 1:00 p.m. y 2:00 a 5:00 p.m.';
+  var CCF_SEDE = 'Sede principal: Carrera 3 No. 4-60, Facatativá';
+  var M = [
+    {id:'bogota', n:'Bogotá', cam:'Cámara de Comercio de Bogotá', corta:'Cámara de Comercio de Bogotá', tar:'CCB', plat:'ccb', c:'11001', a:'1', ok:true, tel:CCB_TEL, sede:''},
+    {id:'chia', n:'Chía', cam:'Cámara de Comercio de Bogotá', corta:'Cámara de Comercio de Bogotá', tar:'CCB', plat:'ccb', c:'25175', a:'7', ok:true, tel:CCB_TEL, sede:''},
+    {id:'cajica', n:'Cajicá', cam:'Cámara de Comercio de Bogotá', corta:'Cámara de Comercio de Bogotá', tar:'CCB', plat:'ccb', c:'25126', a:'7', ok:true, tel:CCB_TEL, sede:''},
+    {id:'zipaquira', n:'Zipaquirá', cam:'Cámara de Comercio de Bogotá', corta:'Cámara de Comercio de Bogotá', tar:'CCB', plat:'ccb', c:'25899', a:'7', ok:true, tel:'(601) 383 0330', sede:''},
+    {id:'facatativa', n:'Facatativá', cam:'Cámara de Comercio de Facatativá', corta:'Cámara de Comercio de Facatativá', tar:'CCF', plat:'ctce', c:'25269', a:'7', ok:true, tel:CCF_TEL, sede:CCF_SEDE},
+    {id:'funza', n:'Funza', cam:'Cámara de Comercio de Facatativá', corta:'Cámara de Comercio de Facatativá', tar:'CCF', plat:'ctce', c:'25269', a:'7', ok:true, via:'Facatativá', tel:CCF_TEL, sede:'Centro de Atención Funza: Carrera 17B No. 16-91, Funza'},
+    {id:'madrid', n:'Madrid', cam:'Cámara de Comercio de Facatativá', corta:'Cámara de Comercio de Facatativá', tar:'CCF', plat:'ctce', c:'25269', a:'7', ok:true, via:'Facatativá', tel:'(601) 890 2833 · WhatsApp 312 588 7624', sede:'Centro de Atención Funza: Carrera 17B No. 16-91 · ' + CCF_SEDE},
+    {id:'mosquera', n:'Mosquera', cam:'Cámara de Comercio de Facatativá', corta:'Cámara de Comercio de Facatativá', tar:'CCF', plat:'ctce', c:'25473', a:'7', ok:true, tel:'(601) 890 2833 · WhatsApp 312 588 7624', sede:'La más cercana: Centro de Atención Funza, Carrera 17B No. 16-91 · ' + CCF_SEDE},
+    {id:'soacha', n:'Soacha', cam:'Sin confirmar: Cámara de Comercio de Bogotá o Cámara de Comercio de Soacha', corta:'tu Cámara', tar:null, plat:'ccb', c:'25754', a:'7', ok:false, tel:'', sede:'Cámara de Comercio de Soacha: Carrera 8 # 16-76, barrio Lincoln (dato de su web). Cámara de Comercio de Bogotá: ' + CCB_TEL},
+    {id:'medellin', n:'Medellín', cam:'Cámara de Comercio de Medellín para Antioquia', corta:'Cámara de Comercio de Medellín para Antioquia', tar:'CCMA', plat:'ccma', c:'05001', a:'3', ok:true, tel:'(604) 444 9758, opción 6 · WhatsApp 315 612 1069 · lunes a viernes, 8:00 a.m. a 4:30 p.m.', sede:''},
+    {id:'cali', n:'Cali', cam:'Cámara de Comercio de Cali', corta:'Cámara de Comercio de Cali', tar:'CCC', plat:'ccc', c:'76001', a:'6', ok:true, tel:'(602) 886 1300 · WhatsApp 318 886 1300 · lunes a viernes, 8:00 a.m. a 5:00 p.m.', sede:''},
+    {id:'otro', n:'Otro municipio', cam:'', corta:'tu Cámara', tar:null, plat:'otro', c:'', a:'', ok:false, tel:'', sede:''}
+  ];
+  var PLAT = {
+    ccb:'la plataforma de la Cámara de Comercio de Bogotá (linea.ccb.org.co)',
+    ccma:'la plataforma de la Cámara de Medellín (virtuales.camaramedellin.com.co)',
+    ccc:'la plataforma de la Cámara de Cali (sedevirtual.ccc.org.co)',
+    otro:'la plataforma que tenga tu Cámara'
+  };
+
+  // ---------- estado ----------
+  var KEY = 'monaco-rut-camara-v1';
+  var S = {step:0, muni:'', rut:'', inv:'', ck:{}};
+  function load(){ try{ var r = localStorage.getItem(KEY); if(r){ var o = JSON.parse(r); if(o && typeof o === 'object'){ for(var k in S){ if(o[k] !== undefined) S[k] = o[k]; } } } }catch(e){} if(!S.ck || typeof S.ck !== 'object') S.ck = {}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+  // ---------- utilidades ----------
+  function $(s, r){ return (r||document).querySelector(s); }
+  function $$(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function peso(n){ return '$' + Math.round(n).toLocaleString('es-CO').replace(/,/g, '.'); }
+  function num(t){ var d = String(t||'').replace(/\D/g, ''); return d ? parseInt(d, 10) : 0; }
+  function muni(){ for(var i=0;i<M.length;i++){ if(M[i].id === S.muni) return M[i]; } return null; }
+  function vueUrl(m){ return (m && m.ok && m.c) ? VUE + '?c=' + m.c + '&a=' + m.a : VUE; }
+
+  // Tablas 2026 (Decreto 1074/2015 mod. Decreto 045/2024; UVB 2026 = $12.110). Iguales en CCB, CCF, CCMA y CCC.
+  function feePersona(A){
+    if(A <= 78715000) return 24220 + 8477 * A / 1e6;
+    if(A <= 302750000) return 575225 + 4238.5 * (A - 78715000) / 1e6;
+    if(A <= 787150000) return 1359347.5 + 1211 * (A - 302750000) / 1e6;
+    if(A <= 7871500000) return 1843747.5 + 544.95 * (A - 787150000) / 1e6;
+    return null;
+  }
+  function feeLocal(A){
+    if(A <= 78715000) return 48400;
+    if(A <= 302750000) return 121000;
+    if(A <= 787150000) return 194000;
+    if(A <= 7871500000) return 266000;
+    return null;
+  }
+  var FORM = 8500, CERT = 6100;
+
+  // ---------- pantallas ----------
+  var screens = $$('.screen');
+  var N = screens.length;
+  var firstStep = 0;
+  screens.forEach(function(s, i){ if(!firstStep && s.querySelector('.stepno .n')) firstStep = i; });
+  screens.forEach(function(s, i){ var n = s.querySelector('.stepno .n'); if(n) n.textContent = (i - firstStep + 1) + ' de ' + (N - 1 - firstStep); });
+
+  function show(i, focus){
+    i = Math.max(0, Math.min(N - 1, i|0));
+    S.step = i; save();
+    screens.forEach(function(s, k){ s.classList.toggle('on', k === i); });
+    var pct = Math.round(i / (N - 1) * 100);
+    $('#barfill').style.width = pct + '%';
+    $('#bar').setAttribute('aria-valuenow', String(pct));
+    var t = screens[i].getAttribute('data-title');
+    var lbl = i === 0 ? 'Inicio' : (i === N - 1 ? 'Terminaste' : (i < firstStep ? 'Antes de empezar' : 'Paso ' + (i - firstStep + 1) + ' de ' + (N - 1 - firstStep)) + ' · ' + t);
+    $('#progtxt').textContent = lbl;
+    if(focus){
+      $('#live').textContent = lbl;
+      var h = screens[i].querySelector('h1,h2');
+      try{ window.scrollTo(0, 0); }catch(e){}
+      if(h){ try{ h.focus({preventScroll:true}); }catch(e){ h.focus(); } }
+    }
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-next],[data-back]') : null;
+    if(!b) return;
+    if(b.hasAttribute('data-next')) show(S.step + 1, true); else show(S.step - 1, true);
+  });
+
+  // ---------- preguntas ----------
+  var sel = $('#muni');
+  M.forEach(function(m){ var o = document.createElement('option'); o.value = m.id; o.textContent = m.n; sel.appendChild(o); });
+
+  function contactoHTML(m){
+    if(!m || m.id === 'otro') return 'Busca el teléfono de tu Cámara de Comercio en su página web, o escríbele a tu asesor Mónaco.';
+    var h = '<strong>' + esc(m.id === 'soacha' ? 'Llama antes de ir' : m.cam) + ':</strong> ';
+    h += m.tel ? esc(m.tel) : '';
+    var dot = function(x){ return /\.$/.test(x) ? ' ' : '. '; };
+    if(m.sede) h += (m.tel ? dot(m.tel) : '') + esc(m.sede) + (/\.$/.test(m.sede) ? '' : '.');
+    if(!m.sede && m.tel) h += dot(m.tel) + 'La dirección de la sede no la confirmamos hoy: pregúntala por teléfono.';
+    return h;
+  }
+
+  function renderMuni(){
+    var m = muni(), box = $('#muniInfo');
+    if(!m){ box.innerHTML = ''; return; }
+    var h = '<div class="camara">';
+    if(m.id === 'otro'){
+      h += '<b class="n">Tu Cámara: escógela en la VUE</b><p>Este asistente solo tiene confirmados algunos municipios. Te dejamos el link general de la VUE: ahí escoges tu departamento y tu ciudad a mano, y el recuadro azul te dice cuál es tu Cámara.</p>';
+    } else if(m.id === 'soacha'){
+      h += '<b class="n"><span class="tag">SIN CONFIRMAR</span> Cámara de Soacha</b><p>La Cámara de Comercio de Soacha se autorizó con el Decreto 2210 de diciembre de 2023, y la VUE no tiene a Soacha en su lista. <strong>Llama a las dos antes de empezar</strong> para saber cuál te toca. Te dejamos el link general de la VUE para escoger a mano.</p>';
+    } else {
+      h += '<b class="n">' + esc(m.cam) + '</b>';
+      if(m.via) h += '<p>' + esc(m.n) + ' es de la Cámara de Facatativá pero no sale en la lista de la VUE. Entras por <strong>' + esc(m.via) + '</strong>, que es de la misma Cámara, y en el formulario pones la dirección real de tu local en ' + esc(m.n) + '. Si algo no te deja seguir, llama a la Cámara de Facatativá o ve a su sede.</p>';
+    }
+    h += '<p class="url">Tu link: <a href="' + esc(vueUrl(m)) + '" target="_blank" rel="noopener">' + esc(vueUrl(m).replace('https://', '')) + '</a></p>';
+    if(m.id !== 'otro') h += '<p class="meta">' + contactoHTML(m) + '</p>';
+    h += '</div>';
+    box.innerHTML = h;
+  }
+
+  function renderRut(){
+    var box = $('#rutInfo'), h = '';
+    if(S.rut === 'si') h = 'No sacas uno nuevo: el sistema lo encuentra con tu cédula. Al final tienes que actualizarlo en la DIAN con la actividad nueva; te lo recordamos.';
+    else if(S.rut === 'no') h = 'Perfecto: el RUT y el NIT te salen dentro de este mismo trámite. No tienes que ir antes a la DIAN.';
+    else if(S.rut === 'nose') h = 'Averígualo antes de empezar en la <a href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-estado-del-rut" target="_blank" rel="noopener">consulta de estado del RUT de la VUE</a>: pones tu cédula y la DIAN te manda el PDF al correo si lo tienes.';
+    box.innerHTML = h ? '<div class="result"><p>' + h + '</p></div>' : '';
+  }
+
+  function costo(){
+    var m = muni(), A = num(S.inv);
+    if(!m || !A) return null;
+    if(!m.tar) return {pedir:true};
+    var p = feePersona(A), l = feeLocal(A);
+    if(p === null || l === null) return {pedir:true};
+    return {p:p, l:l, f:FORM, c:CERT, tot:p + l + FORM, totc:p + l + FORM + CERT, A:A};
+  }
+
+  function renderInv(){
+    var box = $('#invInfo'), m = muni(), A = num(S.inv), h = '';
+    if(A){
+      var k = costo();
+      if(!m){ h += '<p>Escoge tu municipio arriba para calcular el costo.</p>'; }
+      else if(!k || k.pedir){
+        h += '<p class="big">Pídele la liquidación a tu Cámara</p><p>' + (m.tar ? 'Tus activos están por fuera de la tabla que tenemos.' : 'Para ' + (m.id === 'otro' ? 'tu municipio' : esc(m.n)) + ' no tenemos una tarifa confirmada.') + ' La preliquidación del trámite te dice el valor exacto.</p>';
+      } else {
+        h += '<p class="meta" style="margin:0">Costo aproximado con las tarifas 2026 de la ' + esc(m.cam) + '</p>';
+        h += '<p class="big">' + peso(k.totc) + '</p>';
+        h += '<table class="cost"><tr><td>Tu matrícula (según activos)</td><td>' + peso(k.p) + '</td></tr><tr><td>Matrícula del local</td><td>' + peso(k.l) + '</td></tr><tr><td>Formulario RUES</td><td>' + peso(k.f) + '</td></tr><tr><td>1 certificado de matrícula</td><td>' + peso(k.c) + '</td></tr><tr class="tot"><td>Total aproximado</td><td>' + peso(k.totc) + '</td></tr></table>';
+        h += '<p class="meta" style="margin-top:8px">Es una estimación de Mónaco con las tablas oficiales. El valor exacto te lo da la preliquidación. Cada certificado adicional cuesta ' + peso(CERT) + '. Si tienes entre 18 y 35 años y cumples la Ley 1780, podrías no pagar tu matrícula.</p>';
+        if(A >= 70000000 && A <= 90000000) h += '<p class="meta"><span class="warn">Ojo:</span> tus activos están cerca de $78.715.000, donde la tabla oficial cambia de tramo. Confirma el valor en la preliquidación.</p>';
+      }
+      h += '<div class="box green" style="margin-bottom:0"><h3>Recomendación de Mónaco: declara poco</h3><p>Entre menos activos declares, menos pagas de matrícula cada año. Pon un valor bajo, por ejemplo $1.000.000, y mira cuánto baja el costo.</p></div>';
+      box.innerHTML = '<div class="result">' + h + '</div>';
+    } else box.innerHTML = '';
+  }
+
+  function applyCond(){
+    var m = muni();
+    var ctx = {rut:S.rut, muni:S.muni, plat:m ? m.plat : ''};
+    $$('[data-show]').forEach(function(el){
+      var p = el.getAttribute('data-show').split(':');
+      el.hidden = ctx[p[0]] !== p[1];
+    });
+    // textos personalizados
+    var A = num(S.inv), k = costo();
+    var fill = {
+      camaraCorta: m ? (m.id === 'otro' || m.id === 'soacha' ? 'tu Cámara' : m.corta) : 'tu Cámara',
+      invTxt: A ? peso(A) : 'el valor de tu inversión',
+      costoTxt: k && !k.pedir ? 'unos ' + peso(k.tot) + ' sin certificados' : 'el valor que te dé tu Cámara'
+    };
+    $$('[data-fill]').forEach(function(el){ var v = fill[el.getAttribute('data-fill')]; if(v) el.textContent = v; });
+    var ct = contactoHTML(m);
+    $$('[data-fill-html="contacto"]').forEach(function(el){ el.innerHTML = ct; });
+    var vn = $('[data-fill-html="vueNote"]');
+    if(m && (m.via || !m.ok)){
+      vn.hidden = false;
+      vn.innerHTML = m.via ? esc(m.n) + ' no sale en la lista de la VUE: el link entra por <strong>' + esc(m.via) + '</strong>, que es tu misma Cámara. Pon la dirección real de tu local en el formulario.'
+        : (m.id === 'soacha' ? '<span class="tag">SIN CONFIRMAR</span> Soacha no está en la lista de la VUE. Antes de seguir, confirma por teléfono qué Cámara te toca y escógela a mano.' : 'Escoge a mano tu departamento y tu ciudad.');
+    } else vn.hidden = true;
+    $$('[data-vue]').forEach(function(a){ a.href = vueUrl(m); });
+    // nota de plataforma distinta (el recorrido verificado es el de Confecámaras)
+    var showPlat = m && m.plat !== 'ctce';
+    $$('[data-platnote]').forEach(function(el){
+      el.hidden = !showPlat;
+      if(showPlat) el.innerHTML = '<strong>Ojo:</strong> en ' + (m.id === 'otro' ? 'tu municipio' : esc(m.n)) + ' la VUE te manda a ' + esc(PLAT[m.plat] || PLAT.otro) + '. Estas pantallas son las de Confecámaras y la tuya puede verse distinta. Busca la opción equivalente o llama a tu Cámara.';
+    });
+    var ci = $('#ckInv'); if(ci) ci.textContent = A ? 'Pusiste ' + peso(A) + '. Esos son los activos que vas a declarar.' : 'Lo que pusiste en la pregunta 3.';
+  }
+
+  function renderAll(){ renderMuni(); renderRut(); renderInv(); applyCond(); }
+
+  sel.addEventListener('change', function(){ S.muni = sel.value; save(); renderAll(); });
+  $$('input[name="rut"]').forEach(function(r){ r.addEventListener('change', function(){ S.rut = r.value; save(); renderAll(); }); });
+  var inv = $('#inv');
+  inv.addEventListener('input', function(){
+    var raw = inv.value, pos = inv.selectionStart == null ? raw.length : inv.selectionStart;
+    var after = raw.slice(pos).replace(/\D/g, '').length;
+    var n = num(raw.replace(/\D/g, '').slice(0, 13));
+    inv.value = n ? n.toLocaleString('es-CO').replace(/,/g, '.') : '';
+    // deja el cursor en el mismo dígito (si no, salta al final al corregir en la mitad)
+    try{ var v = inv.value, k = v.length, c = 0; while(k > 0 && c < after){ k--; if(/\d/.test(v[k])) c++; } if(document.activeElement === inv) inv.setSelectionRange(k, k); }catch(e){}
+    S.inv = n ? String(n) : ''; save(); renderInv(); applyCond();
+  });
+
+  // checklist
+  $$('[data-ck]').forEach(function(c){
+    var id = c.getAttribute('data-ck');
+    c.checked = !!S.ck[id];
+    c.addEventListener('change', function(){ S.ck[id] = c.checked; save(); });
+  });
+
+  // ---------- copiar ----------
+  function fallbackCopy(t){
+    var ta = document.createElement('textarea');
+    ta.value = t; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.top = '-1000px';
+    document.body.appendChild(ta); ta.select();
+    var ok = false; try{ ok = document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta); return ok;
+  }
+  function flash(b, ok){
+    var old = b.getAttribute('data-label') || b.textContent; b.setAttribute('data-label', old);
+    b.textContent = ok ? '✔ Copiado' : 'Ya está seleccionado: cópialo';
+    if(ok) b.classList.add('copied');
+    else {
+      // Respaldo: deja seleccionado el texto visible para copiarlo a mano
+      var box = b.closest('.code'), tgt = box ? box.querySelector('b') : null;
+      if(tgt){ try{ var rg = document.createRange(); rg.selectNodeContents(tgt); var sl = window.getSelection(); sl.removeAllRanges(); sl.addRange(rg); }catch(e){} }
+      else { try{ window.prompt('Copia este texto:', b.getAttribute('data-copy')); }catch(e){} }
+    }
+    $('#live').textContent = ok ? 'Copiado: ' + b.getAttribute('data-copy') : 'No se pudo copiar automáticamente';
+    setTimeout(function(){ b.textContent = old; b.classList.remove('copied'); }, 1800);
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-copy]') : null;
+    if(!b) return;
+    var t = b.getAttribute('data-copy');
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(t).then(function(){ flash(b, true); }, function(){ flash(b, fallbackCopy(t)); });
+    } else flash(b, fallbackCopy(t));
+  });
+
+  // ---------- reiniciar ----------
+  $('#reset').addEventListener('click', function(){
+    if(!window.confirm('¿Borrar tus respuestas y empezar de nuevo?')) return;
+    S = {step:0, muni:'', rut:'', inv:'', ck:{}};
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    sel.value = ''; inv.value = '';
+    $$('input[name="rut"]').forEach(function(r){ r.checked = false; });
+    $$('[data-ck]').forEach(function(c){ c.checked = false; });
+    renderAll(); show(0, true);
+  });
+
+  // ---------- arranque ----------
+  load();
+  if(muni()) sel.value = S.muni; else S.muni = '';
+  $$('input[name="rut"]').forEach(function(r){ r.checked = (r.value === S.rut); });
+  if(num(S.inv)) inv.value = num(S.inv).toLocaleString('es-CO').replace(/,/g, '.');
+  $$('[data-ck]').forEach(function(c){ c.checked = !!S.ck[c.getAttribute('data-ck')]; });
+  renderAll();
+  show(S.step, false);
+})();
+</script>
+</body>
+</html>

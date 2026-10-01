@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Vertimientos y lodos — Manual Mónaco</title>
+<style>
+  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
+  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:22px;margin:30px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;color:var(--ink2)}
+  .meta{font-size:13px;color:var(--muted)}
+  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
+  .box.amber{border-left-color:var(--amber)}
+  .box.green{border-left-color:var(--green)}
+  .box h3{margin:0 0 6px;font-size:17px}
+  .box p:last-child{margin:0}
+  .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .paper{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
+  .paper .ic{font-size:30px;line-height:1}
+  .paper b{display:block;margin-top:6px;font-size:15px}
+  .paper span{font-size:13px;color:var(--muted)}
+  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  ol.steps>li{position:relative;padding:0 0 18px 58px;counter-increment:s;break-inside:avoid}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--onblue);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li::after{content:"";position:absolute;left:19px;top:44px;bottom:4px;width:2px;background:var(--line)}
+  ol.steps>li:last-child::after{display:none}
+  ol.steps h3{margin:6px 0 4px;font-size:19px}
+  .say{background:var(--soft);border-radius:10px;padding:10px 12px;font-style:italic;margin:8px 0}
+  .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
+  .no{color:var(--red);font-weight:700}
+  ul{padding-left:20px;margin:6px 0 10px}
+  li{margin:3px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
+  td:first-child{font-weight:600;white-space:nowrap}
+  a{color:var(--blue)}
+  .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cal div{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;break-inside:avoid}
+  .cal b{display:block;color:var(--blue)}
+  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  @media (max-width:560px){h1{font-size:28px}.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
+  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}ol.steps>li{padding-bottom:10px}.box{padding:10px 14px;margin:10px 0}}
+  .vid{position:relative;z-index:1;background:var(--bg);margin:14px 0 4px;padding-bottom:4px;break-inside:avoid}
+  .vid video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:var(--screen);border-radius:12px;border:1px solid var(--line)}
+  .vid figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+  @media (max-width:560px){ol.steps>li{padding-left:50px}.vid{margin-left:-50px}}
+  @media print{.vid video{display:none}.vid figcaption a::after{content:" (" attr(href) ")";word-break:break-all}}
+</style>
+</head>
+<body>
+<main>
+  <p class="brand">MÓNACO · MOTO DETAILING</p>
+  <p class="kicker">MANUAL PARA ASESORADOS · VERSIÓN CORTA</p>
+  <h1>El agua y el lodo de tu lavadero, en 6 pasos</h1>
+  <p class="lead">En Bogotá no sacas permiso: haces un <strong>registro</strong> en línea. El agua pasa por una <strong>trampa</strong>, y su lodo lo entregas a cambio de un <strong>certificado</strong>.</p>
+  <p class="meta">Verificado contra fuentes oficiales el 1 de octubre de 2026.</p>
+
+  <div class="papers">
+    <div class="paper"><div class="ic">💰</div><b>Cuánto cuesta</b><span>Trampa: $700.000 a $1.200.000. Lodo: unos $120.000 por hasta 25 kg. Referencias de Mónaco.</span></div>
+    <div class="paper"><div class="ic">💻</div><b>Dónde se hace</b><span>En línea, en la Ventanilla Virtual de la Secretaría de Ambiente de Bogotá</span></div>
+    <div class="paper"><div class="ic">⏳</div><b>Cuánto tarda</b><span>No hay plazo publicado. Pregúntalo y revisa la Ventanilla cada lunes.</span></div>
+  </div>
+
+  <h2>Necesitas, en PDF</h2>
+  <ul>
+    <li>☐ Cédula (o Cámara de Comercio si es S.A.S.)</li>
+    <li>☐ Último recibo del agua del local</li>
+    <li>☐ Plano del local (dibujo visto desde arriba)</li>
+    <li>☐ Diagrama de cómo sale el agua</li>
+  </ul>
+
+  <h2>Los 6 pasos</h2>
+  <ol class="steps">
+    <li>
+      <h3>Haz la trampa antes de abrir</h3>
+      <p>Pídele al maestro: desarenador + trampa de grasas con tapa liviana, una cajita de muestras a la salida, y salida al tubo de aguas sucias, <span class="no">nunca</span> al de lluvia.</p>
+      <p class="done">✔ Listo cuando: la probaste con agua y tienes fotos.</p>
+    </li>
+    <li>
+      <h3>Dibuja el plano y el diagrama</h3>
+      <p>No necesitas arquitecto. El diagrama son cajitas con flechas, así:</p>
+      <p class="say">Moto → lavado → canaleta → desarenador → trampa → caja de salida → alcantarillado. Lodo → lona → empresa autorizada.</p>
+      <p class="done">✔ Listo cuando: tienes los 4 PDF.</p>
+    </li>
+    <li>
+      <h3>Crea tu usuario</h3>
+      <p><a href="https://forest.ambientebogota.gov.co/ventanillaVirtual/app">Abrir esta página ↗</a> en el computador y toca <strong>Registro Nuevo Usuario</strong> (o <strong>Regístrese</strong>).</p>
+      <p class="done">✔ Listo cuando: entras y ves el menú de trámites.</p>
+    </li>
+    <li>
+      <h3>Envía el registro</h3>
+      <p>Busca el trámite <strong>Registro de Vertimientos</strong>, llena el formulario y sube los 4 PDF.</p>
+      <p class="done">✔ Listo cuando: tienes pantallazo del número de radicado.</p>
+    </li>
+    <li>
+      <h3>Revisa cada lunes</h3>
+      <p>La respuesta llega por la Ventanilla, no por correo. Si te piden un permiso, no pagues y responde:</p>
+      <p class="say">"Mi lavadero vierte al alcantarillado público, no a un río ni al suelo. Solicito que se me asigne el número de registro de vertimientos."</p>
+      <p class="done">✔ Listo cuando: tienes el número de registro impreso.</p>
+    </li>
+    <li>
+      <h3>Limpia la trampa y entrega el lodo</h3>
+      <p>Cada 15 a 30 días: saca el lodo en lonas, pésalas con foto y llama a la empresa autorizada. Pide el <strong>certificado</strong>, no solo la factura.</p>
+      <p class="done">✔ Listo cuando: cada limpieza está anotada con fecha, kilos y certificado.</p>
+    </li>
+  </ol>
+  <p class="meta">¿Te enredaste? Soporte de la Ventanilla: (601) 377 8815, o tu asesor Mónaco.</p>
+
+  <div class="box amber">
+    <h3>⚠️ Lo que más falla</h3>
+    <ul>
+      <li>Conectar la trampa al tubo de lluvia.</li>
+      <li>Echar el lodo al desagüe o a la basura.</li>
+      <li>Aceptar factura sin certificado.</li>
+      <li>No pesar las lonas: después te cobran kilos de más.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h3>¿Tu lodo es peligroso?</h3>
+    <p>Con aceite o gasolina, puede serlo. Pregunta por escrito:</p>
+    <p class="say">"¿Reciben el lodo de mi trampa como residuo peligroso o no peligroso? ¿El certificado lo dice?"</p>
+  </div>
+
+  <h2>Se repite</h2>
+  <div class="cal">
+    <div><b>Cada 15 a 30 días</b>Limpiar, pesar, entregar, pedir certificado.</div>
+    <div><b>Siempre</b>Guarda los certificados 5 años.</div>
+    <div><b>Si cambias algo</b>Más puestos u otro local: avísale a la Secretaría de Ambiente.</div>
+  </div>
+
+  <div class="box green">
+    <p style="font-size:20px;font-weight:700;margin:0"><a href="completo/">Ver el manual completo (detalle, normas, otras ciudades) →</a></p>
+  </div>
+  <p><a href="../">← Ver todos los manuales</a></p>
+
+  <footer>
+    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados, versión corta. Lo que decide la autoridad ambiental es lo que vale. Los precios son referencias de Mónaco, no tarifas oficiales.<br>Verificado el 1 de octubre de 2026.
+  </footer>
+</main>
+</body>
+</html>

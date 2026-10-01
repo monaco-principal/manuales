@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Concepto sanitario — Manual Mónaco</title>
+<style>
+  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
+  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+  h2{font-size:22px;margin:30px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:19px;color:var(--ink2)}
+  .meta{font-size:13px;color:var(--muted)}
+  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
+  .box.amber{border-left-color:var(--amber)}
+  .box.green{border-left-color:var(--green)}
+  .box h3{margin:0 0 6px;font-size:17px}
+  .box p:last-child{margin:0}
+  .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .paper{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
+  .paper .ic{font-size:30px;line-height:1}
+  .paper b{display:block;margin-top:6px;font-size:15px}
+  .paper span{font-size:13px;color:var(--muted)}
+  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  ol.steps>li{position:relative;padding:0 0 18px 58px;counter-increment:s;break-inside:avoid}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--onblue);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li::after{content:"";position:absolute;left:19px;top:44px;bottom:4px;width:2px;background:var(--line)}
+  ol.steps>li:last-child::after{display:none}
+  ol.steps h3{margin:6px 0 4px;font-size:19px}
+  .say{background:var(--soft);border-radius:10px;padding:10px 12px;font-style:italic;margin:8px 0}
+  .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
+  .no{color:var(--red);font-weight:700}
+  ul{padding-left:20px;margin:6px 0 10px}
+  li{margin:3px 0}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
+  td:first-child{font-weight:600;white-space:nowrap}
+  a{color:var(--blue)}
+  .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .cal div{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;break-inside:avoid}
+  .cal b{display:block;color:var(--blue)}
+  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  @media (max-width:560px){h1{font-size:28px}.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
+  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}ol.steps>li{padding-bottom:10px}.box{padding:10px 14px;margin:10px 0}}
+  .vid{position:relative;z-index:1;background:var(--bg);margin:14px 0 4px;padding-bottom:4px;break-inside:avoid}
+  .vid video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:var(--screen);border-radius:12px;border:1px solid var(--line)}
+  .vid figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+  @media (max-width:560px){ol.steps>li{padding-left:50px}.vid{margin-left:-50px}}
+  @media print{.vid video{display:none}.vid figcaption a::after{content:" (" attr(href) ")";word-break:break-all}}
+  .nc{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a5a00;background:#fdf3e1;border-radius:6px;padding:1px 6px}
+  .check{list-style:none;padding:0;margin:6px 0 14px}
+  .check li{margin:0;padding:7px 0;border-top:1px solid var(--line)}
+  .check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+  .check input{width:20px;height:20px;margin:3px 0 0;flex:none;accent-color:var(--green)}
+  .check small{display:block;font-size:13px;color:var(--muted)}
+  h3.sub{font-size:18px;margin:20px 0 4px}
+  @media print{.vid iframe{display:none}}
+</style>
+</head>
+<body>
+<main>
+  <p class="meta" style="background:var(--soft);border-radius:8px;padding:8px 12px">Estás viendo el manual completo. <a href="../">← Volver a la versión corta</a></p>
+  <p class="brand">MÓNACO · MOTO DETAILING</p>
+  <p class="kicker">MANUAL PARA ASESORADOS · VERSIÓN EXPRESS</p>
+  <h1>Concepto sanitario en 6 pasos</h1>
+  <p class="lead">El <strong>concepto sanitario</strong> es la nota que le pone la <strong>Secretaría de Salud</strong> a tu lavadero después de una visita. No es un papel que se "saca" en una ventanilla: un inspector va al local, revisa y deja un <strong>acta</strong>. Tú puedes <strong>pedir esa visita</strong> en línea. Y si no la pides, igual te pueden visitar sin avisar.</p>
+  <p class="meta">Verificado contra fuentes oficiales el 1 de octubre de 2026.</p>
+
+  <div class="box amber">
+    <h3>¿Cuánto cuesta?</h3>
+    <p><strong>Nada.</strong> Pedir la visita es gratis y el concepto también. La Secretaría de Salud lo dice así: no permitas que te cobren por la visita ni por el concepto. <span class="no">Si alguien te pide plata, es estafa.</span> Lo que sí cuesta es <em>cumplir</em>: la fumigación, el lavado del tanque de agua, la recolección de lodos y el botiquín.</p>
+  </div>
+
+  <h2>Lo que tienes que saber primero</h2>
+  <ul>
+    <li><strong>IVC</strong> = Inspección, Vigilancia y Control. Así se llama la visita del inspector.</li>
+    <li><strong>Subred</strong> = la red de hospitales públicos de tu zona de Bogotá. Ellos mandan al inspector.</li>
+    <li><strong>FDS</strong> = Ficha de Datos de Seguridad (también le dicen "hoja de seguridad"). Es el papel de cada químico que te da el proveedor.</li>
+    <li><strong>Acta</strong> = el papel que llena el inspector en la visita. Ahí queda tu concepto.</li>
+    <li><strong>Requerimiento</strong> = cada cosa que el inspector te pide arreglar. Viene escrita en el acta, con plazo.</li>
+    <li><strong>Radicado</strong> = el número que te da el sistema cuando envías la solicitud. Es la prueba de que la pediste.</li>
+    <li>El concepto se pide <strong>cuando el lavadero ya está funcionando</strong>. La Secretaría lo expide así. Por eso no es un papel para antes de abrir.</li>
+  </ul>
+
+  <h2>Los 3 resultados posibles</h2>
+  <div class="cal">
+    <div><b>Favorable</b>Cumples con todo lo que revisaron.</div>
+    <div><b>Favorable con requerimientos</b>Te faltan cosas, pero no ponen en riesgo la salud. Te dan un plazo para arreglarlas.</div>
+    <div><b>Desfavorable</b>Incumples la norma. Pueden aplicar medidas como cerrar el local por un tiempo.</div>
+  </div>
+
+  <h2>Antes de empezar, ten esto en el celular</h2>
+  <div class="papers">
+    <div class="paper"><div class="ic">🏢</div><b>Cámara de Comercio</b><span>Número de matrícula, NIT (el número del negocio ante la DIAN) y nombre del lavadero</span></div>
+    <div class="paper"><div class="ic">🪪</div><b>Cédula</b><span>Del dueño o representante legal</span></div>
+    <div class="paper"><div class="ic">🧾</div><b>Recibo de luz o agua</b><span>Para copiar la dirección exacta, letra por letra</span></div>
+  </div>
+  <p>Ten a la mano también: la <strong>localidad</strong> y el <strong>barrio</strong> del local, un <strong>celular</strong> y un <strong>correo</strong> que revises todos los días.</p>
+
+  <h2>Los 6 pasos</h2>
+  <ol class="steps">
+    <li>
+      <h3>Inscribe tu lavadero en la Secretaría de Salud</h3>
+      <p>La inscripción es obligatoria para todo negocio. Se hace una sola vez. Abre el <a href="https://sivigila.saludcapital.gov.co/MICROSIVIGILA/ServiciosComuni1.aspx">formulario de inscripción</a>. Escoge el botón <strong>"restaurantes, salones de belleza, droguerías y otros"</strong> (ahí entran los lavaderos). En el menú que sale, toca <strong>Inscribir establecimiento</strong>. Llena:</p>
+      <ul>
+        <li><strong>Dirección:</strong> escoge urbana, y cópiala igual que en el recibo. Si tu local tiene número de local o bodega, agrégalo con <strong>Adicionar</strong>.</li>
+        <li><strong>Actividad económica:</strong> toca la lupa y busca la de lavadero de vehículos.</li>
+        <li><strong>Datos:</strong> escríbelos igual que en la Cámara de Comercio.</li>
+      </ul>
+      <p>Toca <strong>Ingresar</strong>. Te sale un <strong>código de letras y números</strong>. Anótalo. Sin ese código no puedes pedir la visita.</p>
+      <p class="done">✔ Listo cuando: tienes el código de inscripción anotado y con pantallazo.</p>
+      <figure class="vid"><iframe src="https://www.youtube-nocookie.com/embed/zj6ou-dE7n0" title="Inscripción de establecimientos comerciales ante la Secretaría Distrital de Salud" allowfullscreen loading="lazy" style="display:block;width:100%;max-width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe><figcaption>▶ Video oficial de la Secretaría Distrital de Salud: <strong>cómo inscribir tu negocio</strong>.</figcaption></figure>
+    </li>
+    <li>
+      <h3>Descarga tu lista de chequeo y llénala</h3>
+      <p>La Secretaría publica la lista exacta que va a revisar el inspector. Para un lavadero es la <a href="https://autorregulacion.saludcapital.gov.co/storage/33.%20AUTOEVALUACION%20PARA%20SERVICIOS%20DE%20MANTENIMIENTO%20AUTOMOTRIZ%20(1).pdf">Lista 33: Servicios de mantenimiento automotriz</a>. La lista misma dice que aplica a <strong>"lavaderos de vehículos"</strong>. Imprímela. Camina el local con ella y marca <strong>Cumplo</strong> o <strong>No cumplo</strong> en cada renglón. Abajo tienes el <a href="#checklist">checklist del local</a> en palabras sencillas.</p>
+      <p class="done">✔ Listo cuando: tienes la lista impresa y marcada, con lo que te falta anotado.</p>
+    </li>
+    <li>
+      <h3>Arregla lo que te falta y empieza las planillas</h3>
+      <p>La Secretaría dice que pidas la visita cuando cumplas el <strong>100 %</strong> de la lista. Lo que más demora son los <strong>registros</strong>: las planillas que se llenan día a día. Empiézalas el primer día que laves motos. En Mónaco vemos que un negocio que abrió ayer no tiene historial que mostrar: por eso pedimos la visita <strong>más o menos un mes después de abrir</strong>.</p>
+      <p>Tres cosas que se piden antes y toman días:</p>
+      <ul>
+        <li>Pídele a cada proveedor la <strong>FDS</strong> de cada químico el día que lo compras.</li>
+        <li>Contrata la fumigación con una empresa que te dé un certificado de cada servicio.</li>
+        <li>Contrata un <strong>gestor</strong> (una empresa que recoge residuos peligrosos) para los lodos y los trapos o envases contaminados. Guarda el certificado de cada recolección.</li>
+      </ul>
+      <p class="done">✔ Listo cuando: todas las casillas de la lista dicen Cumplo y las planillas llevan semanas llenas.</p>
+    </li>
+    <li>
+      <h3>Pide la visita en línea</h3>
+      <p>Entra a <a href="https://conceptosanitario.saludcapital.gov.co/">conceptosanitario.saludcapital.gov.co</a> y toca <strong>Solicitud concepto</strong>. Cuando pregunte si ya estás inscrito, marca <strong>Sí</strong> y escribe tu <strong>código de inscripción</strong>. Salen los datos del lavadero. Revisa que estén bien. Escribe tu <strong>celular</strong> y tu <strong>correo</strong>. Toca <strong>Enviar</strong> y confirma.</p>
+      <p>Te sale un <strong>número de radicado</strong> y también te llega al correo. Con ese número consultas cómo va en <strong>Consultar solicitud</strong>, en la misma página.</p>
+      <p>¿No puedes hacerlo en línea? Ve a la oficina de tu subred (la tabla está abajo) o a la Secretaría de Salud, en la Carrera 32 # 12-81. Allá llenas un formato de solicitud de visita.</p>
+      <p class="done">✔ Listo cuando: tienes el número de radicado guardado (pantallazo y correo).</p>
+      <figure class="vid"><iframe src="https://www.youtube-nocookie.com/embed/2uJO6x2-3VE" title="Solicitud de visita de inspección, vigilancia y control" allowfullscreen loading="lazy" style="display:block;width:100%;max-width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe><figcaption>▶ Video oficial de la Secretaría Distrital de Salud: <strong>cómo pedir la visita</strong>.</figcaption></figure>
+    </li>
+    <li>
+      <h3>Atiende al inspector</h3>
+      <p>La visita no se anuncia. Puede llegar cualquier día. Por eso la carpeta y las planillas viven en el local, no en tu casa. Lo que dice la Secretaría:</p>
+      <ul>
+        <li>Pídele al inspector su <strong>carné</strong>. Si dudas, llama a tu subred (los teléfonos están al final).</li>
+        <li>Atiéndelo tú, o una persona <strong>mayor de edad</strong> que lo acompañe <strong>toda</strong> la visita.</li>
+        <li>Al final, pídele que te <strong>lea el acta</strong> y te explique cada hallazgo.</li>
+        <li>Si no estás de acuerdo con algo, <strong>escríbelo en el acta antes de firmar</strong>. Hay un espacio para eso.</li>
+        <li>Pide <strong>copia del acta</strong>, con el concepto y los requerimientos.</li>
+      </ul>
+      <p class="done">✔ Listo cuando: tienes tu copia del acta firmada.</p>
+    </li>
+    <li>
+      <h3>Cumple los requerimientos dentro del plazo</h3>
+      <p>Si te dieron <strong>favorable con requerimientos</strong>, el acta dice qué falta y en cuánto tiempo. Haz una lista con cada requerimiento. Al lado escribe la fecha en que lo cumpliste y guarda la prueba (foto, factura o certificado). Guarda el acta en la carpeta del local, junto a la Cámara de Comercio.</p>
+      <p class="done">✔ Listo cuando: cada requerimiento tiene su prueba guardada antes de que venza el plazo.</p>
+    </li>
+  </ol>
+  <p class="meta">¿Te enredaste? Pídele ayuda a tu asesor Mónaco, o llama a la subred de tu localidad (está en la tabla de abajo).</p>
+
+  <div class="box">
+    <h3>¿Y si no sé qué lista me toca?</h3>
+    <p>Escríbele a tu subred y guarda el pantallazo de la respuesta:</p>
+    <p class="say">"Buenos días. Tengo un lavadero de motos en [dirección], localidad de [localidad]. Ya lo inscribí con el código [código]. ¿La lista de autoevaluación que me aplica es la 33, de mantenimiento automotriz? Gracias."</p>
+  </div>
+
+  <div class="box amber">
+    <h3>📋 Un caso real: así fue la primera visita</h3>
+    <p>El 15 de octubre de 2025, la Secretaría de Salud de Soacha visitó un lavadero de motos que ya estaba abierto. Los programas escritos y las planillas no estaban al día. El acta cerró en <strong>63 %</strong>, con <strong>14 requerimientos</strong> y <strong>22 días hábiles</strong> para cumplirlos. La lección: el inspector califica lo que está escrito y lleno, no lo que tienes pensado hacer.</p>
+  </div>
+
+  <h2 id="checklist">Checklist del local: lo que revisan</h2>
+  <p>Esta lista sale de la <a href="https://autorregulacion.saludcapital.gov.co/storage/33.%20AUTOEVALUACION%20PARA%20SERVICIOS%20DE%20MANTENIMIENTO%20AUTOMOTRIZ%20(1).pdf">Lista 33 de la Secretaría Distrital de Salud</a> (versión 3, de noviembre de 2024), dicha en palabras sencillas. Marca cada casilla cuando lo tengas.</p>
+
+  <h3 class="sub">📁 Papeles y planillas</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>FDS de <strong>cada</strong> químico: champú, desengrasante, cera, silicona, aromatizante, desinfectante, y gasolina o aceite si los manejas.<small>Pídela al proveedor. Un proveedor que no la da no te sirve.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Procedimiento escrito de <strong>limpieza y desinfección</strong> de áreas y equipos, y la planilla donde se anota cada día.<small>Firmada día por día. Las firmas puestas todas la misma tarde se notan.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Programa de <strong>control de plagas</strong> y sus registros: certificado de la fumigadora y revisiones.</span></label></li>
+    <li><label><input type="checkbox"><span>Registro de <strong>mantenimiento</strong> de hidrolavadora, compresor, champucera y sopladora: qué se hizo, cuándo y quién.</span></label></li>
+    <li><label><input type="checkbox"><span>Certificado de <strong>lavado y desinfección del tanque</strong> de agua, si tienes tanque.<small>El Decreto 1575 de 2007, art. 10, pide lavarlo y desinfectarlo como mínimo cada 6 meses.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Registro de los <strong>residuos peligrosos</strong> (lodos, trapos con grasa, envases de químicos) y certificado del gestor que se los lleva.</span></label></li>
+    <li><label><input type="checkbox"><span>Registros del <strong>tratamiento del agua</strong> antes de botarla, si aplica: limpieza de la trampa de lodos y del desarenador.</span></label></li>
+    <li><label><input type="checkbox"><span>Procedimiento escrito para <strong>emergencias</strong>, incluido un derrame de químicos.</span></label></li>
+    <li><label><input type="checkbox"><span>Registro de <strong>capacitación</strong> en manejo seguro de químicos.<small>La lista lo exige si tienes más de 10 trabajadores. Con menos, igual te preguntan si conocen las FDS. Mónaco recomienda tener la constancia firmada siempre.</small></span></label></li>
+  </ul>
+
+  <h3 class="sub">🧱 El local</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>Pisos firmes, impermeables, antideslizantes y fáciles de lavar. Paredes y techos limpios y en buen estado.</span></label></li>
+    <li><label><input type="checkbox"><span>Zonas separadas y señalizadas: lavado, paso de gente y salida.</span></label></li>
+    <li><label><input type="checkbox"><span>Buena ventilación y buena luz.</span></label></li>
+    <li><label><input type="checkbox"><span>Rincón de químicos limpio, con estantes o estibas, señalizado y <strong>con algo que contenga un derrame</strong> (bandeja o borde).</span></label></li>
+    <li><label><input type="checkbox"><span>Rincón de residuos ordenado, con canecas por colores, y los residuos peligrosos aparte.</span></label></li>
+    <li><label><input type="checkbox"><span>Agua potable continua y con presión. Conexión al alcantarillado.</span></label></li>
+    <li><label><input type="checkbox"><span>Desagües, rejillas, canales y cajas funcionando y limpios.</span></label></li>
+    <li><label><input type="checkbox"><span>Baño limpio, funcionando y con dotación completa (papel, jabón, toallas). Vestier con lockers asegurados a la pared, separado para hombres y mujeres si tienes los dos.</span></label></li>
+    <li><label><input type="checkbox"><span>Sin malos olores ni humo acumulado. Sin rastros de ratas ni cucarachas.</span></label></li>
+  </ul>
+
+  <h3 class="sub">🦺 Seguridad</h3>
+  <ul class="check">
+    <li><label><input type="checkbox"><span>Cada químico con su <strong>etiqueta</strong>. Si lo pasas a otro envase (por ejemplo, a un atomizador), ese envase también lleva etiqueta.</span></label></li>
+    <li><label><input type="checkbox"><span>Tus trabajadores usan <strong>guantes, gafas y botas</strong> según lo que diga la FDS de cada producto.</span></label></li>
+    <li><label><input type="checkbox"><span>Hidrolavadora, compresor y demás máquinas en buen estado, con sus protecciones.</span></label></li>
+    <li><label><input type="checkbox"><span>Cables, tomas y tableros protegidos. Ningún cable pelado ni suelto en la zona mojada.</span></label></li>
+    <li><label><input type="checkbox"><span>Mangueras y tubos en buen estado, sin fugas.</span></label></li>
+    <li><label><input type="checkbox"><span>Señales de químicos, de emergencia y de salida.</span></label></li>
+    <li><label><input type="checkbox"><span><strong>Botiquín</strong> señalizado, completo y fácil de alcanzar.<small>La lista dice que puedes guiarte por la Resolución 705 de 2007.</small></span></label></li>
+    <li><label><input type="checkbox"><span><strong>Extintor</strong> cargado, a la mano y del tipo que pide tu riesgo.<small>El manual de Bomberos explica cuál comprar.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Ruta de evacuación y lista de teléfonos de emergencia pegada a la vista.</span></label></li>
+    <li><label><input type="checkbox"><span>Ruido controlado: compresor y sopladora sin molestar de más.</span></label></li>
+    <li><label><input type="checkbox"><span>Nadie fuma ni vapea dentro del local.<small>Ley 1335 de 2009: espacios libres de humo.</small></span></label></li>
+  </ul>
+
+  <h2>Si llega la Policía o el inspector</h2>
+  <p>Muestra la <strong>copia del acta</strong> con tu concepto. Si aún no te han visitado, muestra el <strong>código de inscripción</strong> y el <strong>radicado</strong> de la solicitud. Di:</p>
+  <p class="say">"Buenos días. El lavadero está inscrito en la Secretaría de Salud. Esta es el acta de la última visita y aquí están las planillas al día."</p>
+  <p>La Ley 1801 (Código de Policía), artículo 87, dice que mientras el negocio funcione debe cumplir las condiciones sanitarias. Si no las cumples, el artículo 92, numeral 16, prevé una multa tipo 4: <strong>16 salarios mínimos diarios</strong> (unos $934.000 en 2026) y suspensión temporal de la actividad. Aparte, la Secretaría de Salud puede cerrar el local por un tiempo, total o parcial (Ley 9 de 1979, art. 576). No pagues nada ahí mismo. Tómale foto al papel que te dejen y mándasela a tu asesor Mónaco ese día.</p>
+
+  <h2>¿Cada cuánto se renueva?</h2>
+  <p>La Secretaría Distrital de Salud dice que el concepto sanitario <strong>no tiene vigencia en el tiempo</strong>: cambia cada vez que te visitan. No hay una fecha para renovarlo. Lo que se mantiene es <strong>cumplir todos los días</strong>, porque la próxima visita puede llegar en cualquier momento.</p>
+  <div class="cal">
+    <div><b>Todos los días</b>Planilla de limpieza y desinfección, firmada ese mismo día.</div>
+    <div><b>Cada 6 meses</b>Si tienes tanque de agua: lavado y desinfección, con certificado.</div>
+    <div><b>Si cambian tus datos</b>Actualiza la inscripción con tu código. Si dudas cómo, pregúntale a tu subred.</div>
+  </div>
+
+  <h2>Quién te visita en Bogotá</h2>
+  <p>Según la localidad de tu lavadero, te visita una de las cuatro subredes.</p>
+  <table>
+    <tr><td>Subred Norte</td><td>Usaquén, Teusaquillo, Chapinero, Barrios Unidos, Engativá y Suba · Calle 66 # 15-41 · Tel. 300 323 8661</td></tr>
+    <tr><td>Subred Sur</td><td>Ciudad Bolívar, Tunjuelito, Usme y Sumapaz · Carrera 24C # 54-47 Sur · Tel. (601) 730 0000 ext. 72431 · WhatsApp 302 242 2056</td></tr>
+    <tr><td>Subred Centro Oriente</td><td>Antonio Nariño, Rafael Uribe Uribe, La Candelaria, Santa Fe, San Cristóbal y Los Mártires · Calle 22 Sur # 8A-58 · Tel. (601) 328 2828 ext. 17521</td></tr>
+    <tr><td>Subred Sur Occidente</td><td>Puente Aranda, Fontibón, Kennedy y Bosa · Calle 9 # 39-46 · Tel. 318 827 4479</td></tr>
+    <tr><td>Secretaría Distrital de Salud</td><td>Carrera 32 # 12-81 · Tel. (601) 364 9090 · contactenos@saludcapital.gov.co</td></tr>
+    <tr><td>En línea</td><td><a href="https://autorregulacion.saludcapital.gov.co/">autorregulacion.saludcapital.gov.co</a> (información y listas) · <a href="https://conceptosanitario.saludcapital.gov.co/">conceptosanitario.saludcapital.gov.co</a> (pedir y consultar la visita)</td></tr>
+  </table>
+
+  <h2>Si tu local no está en Bogotá</h2>
+  <p>La idea es la misma en todo el país: te inscribes, cumples y te visitan. Gratis. Lo que cambia es <strong>quién</strong> te visita y <strong>por dónde</strong> lo pides.</p>
+  <ul>
+    <li><strong>Soacha:</strong> lo hace la Secretaría de Salud de Soacha, en línea. Primero <a href="https://www.alcaldiasoacha.gov.co/AtencionalCiudadano/Paginas/Registro-Establecimiento-Concepto-Sanitario.aspx">inscribes el establecimiento</a> (te da un número de ticket). Luego <a href="https://www.alcaldiasoacha.gov.co/AtencionalCiudadano/Paginas/Solicitud-Visita-Concepto-Sanitario.aspx">pides la visita</a> con tu número de cédula. Puedes adjuntar la Cámara de Comercio o el RUT, pero no es obligatorio. Te dan un número de radicado. La <a href="https://www.alcaldiasoacha.gov.co/AtencionalCiudadano/Paginas/proceso-de-inscripcion-y-solicitud-de-vista-para-concepto-sanitario-de-establecimientos.aspx">guía de Soacha</a> pide a todos los negocios un <strong>plan de saneamiento</strong> escrito: limpieza y desinfección, residuos, control de plagas y agua potable. Alcaldía: Calle 13 # 7-30 · L–V 7:00 a.m.–4:00 p.m. · (601) 489 7363.</li>
+    <li><strong>Mosquera:</strong> se pide en línea en la <a href="https://tramites-mosquera.gov.co/tramites/125/concepto-sanitario/">sede de trámites de Mosquera</a>. Sin costo. Responden en 10 días hábiles.</li>
+    <li><strong>Otros municipios de Cundinamarca</strong> (Funza, Facatativá, Chía…): según la Gobernación, depende de la <strong>categoría del municipio</strong>. En categorías 1 y 2 lo expide la Secretaría de Salud del municipio. En categorías 3 a 6, la Secretaría de Salud de Cundinamarca. Pregunta en tu alcaldía y guarda el pantallazo:
+      <p class="say">"Buenos días. Voy a abrir un lavadero de motos en [dirección]. ¿Quién expide el concepto sanitario en el municipio, la Secretaría de Salud municipal o la de Cundinamarca? ¿Por qué canal pido la inscripción y la visita?"</p></li>
+    <li><strong>Medellín:</strong> lo hace la Secretaría de Salud de Medellín con su programa <a href="https://www.medellin.gov.co/es/secretaria-de-salud/subsecretaria-de-salud-publica/establecimientos-seguros-y-abiertos-al-publico/">Establecimientos seguros y abiertos al público</a>. Ese programa visita los negocios abiertos al público y emite el concepto sanitario. La página no explica cómo pedir la visita. Pregunta por la línea de atención de la Alcaldía y guarda la respuesta. Igual que en Bogotá: pide siempre el carné y no le pagues a nadie.</li>
+  </ul>
+
+  <h2>Fuentes oficiales</h2>
+  <ul>
+    <li><a href="https://autorregulacion.saludcapital.gov.co/autorregulacion">Secretaría Distrital de Salud — Negocios Saludables, Negocios Rentables: concepto sanitario, tipos de concepto, subredes y recomendaciones para la visita</a></li>
+    <li><a href="https://autorregulacion.saludcapital.gov.co/registrate">Secretaría Distrital de Salud — Regístrate, verifica y solicita la visita (listas de chequeo)</a></li>
+    <li><a href="https://autorregulacion.saludcapital.gov.co/files/Instructivo.pdf">Secretaría Distrital de Salud — Instructivo de inscripción y solicitud de concepto</a></li>
+    <li><a href="https://secretariageneral.gov.co/ivc/preguntas-frecuentes?page=1">Secretaría General de Bogotá — Preguntas frecuentes de IVC (vigencia del concepto)</a></li>
+    <li><a href="https://bogota.gov.co/mi-ciudad/salud/donde-sacar-concepto-sanitario-en-bogota-tramite-secretaria-de-salud">Bogotá.gov.co — Dónde sacar el concepto sanitario (gratuito)</a></li>
+    <li><a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016_pr001.html">Ley 1801 de 2016, art. 87</a> · <a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016_pr002.html">art. 92</a> · <a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_0009_1979_pr012.html">Ley 9 de 1979, art. 576</a> · <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=30007">Decreto 1575 de 2007, art. 10</a></li>
+    <li>Otros lugares: <a href="https://www.alcaldiasoacha.gov.co/AtencionalCiudadano/Paginas/Concepto-Sanitario.aspx">Soacha</a> · <a href="https://tramites-mosquera.gov.co/tramites/125/concepto-sanitario/">Mosquera</a> · <a href="https://www.cundinamarca.gov.co/dependencias/secsalud/servicios-al-ciudadano/oferta-institucional/acciones-de-inspeccion-vigilancia-y-control">Secretaría de Salud de Cundinamarca</a> · <a href="https://www.medellin.gov.co/es/secretaria-de-salud/subsecretaria-de-salud-publica/establecimientos-seguros-y-abiertos-al-publico/">Medellín</a></li>
+  </ul>
+
+  <p><a href="../../">← Ver todos los manuales</a></p>
+
+  <footer>
+    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados, versión express. Este manual te explica el trámite; lo haces tú y el concepto lo da la Secretaría de Salud. Si algo no coincide con lo que te dicen en la Secretaría o en tu subred, avísale a tu asesor Mónaco.<br>Verificado el 1 de octubre de 2026.
+  </footer>
+</main>
+</body>
+</html>
