@@ -125,6 +125,9 @@
   @media (max-width:560px){.choices{grid-template-columns:1fr 1fr 1fr}.btn{font-size:17px}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
   @media print{.topbar,.nav,.jsonly,.copy{display:none!important}html.js .screen:not(.on){display:block}.shot-ph{min-height:40px}details.stuck > div{display:block}}
+  .shot-img{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg);margin:14px 0}
+  .shot-img img{display:block;width:100%;max-width:100%;height:auto}
+  .shot-img figcaption{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -252,7 +255,7 @@
     <p>En la VUE, escoge tu ciudad y busca el nombre. Prueba variantes: con K y con C, junto y separado, en plural y en singular. Es gratis y el resultado sale de una vez.</p>
     <a class="btn" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-nombre-de-empresa-homonimia" target="_blank" rel="noopener">Abrir esta página ↗</a>
     <p class="meta">También puedes buscarlo en el RUES (Registro Único Empresarial y Social, el registro de todas las cámaras): <a href="https://www.rues.org.co" target="_blank" rel="noopener">rues.org.co</a>.</p>
-    <figure class="shot" data-shot="01-nombre"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>"Lo busqué y estaba libre, pero después no me dejó"</h4>
       <p>La Cámara <strong>no reserva nombres</strong>: si otra persona lo inscribe antes, ya no te lo dejan. Haz el trámite pronto después de consultar. El mismo trámite vuelve a revisar el nombre más adelante.</p>
@@ -272,7 +275,7 @@
     <div class="code"><div><span class="lbl">SOLO SI TIENES CAFETERÍA</span><b>5613</b></div><span class="txt">Expendio de comidas preparadas en cafeterías</span><button type="button" class="copy" data-copy="5613">Copiar código</button></div>
     <p class="jsonly" style="margin-top:6px"><button type="button" class="copy" data-copy="4542 Mantenimiento y reparación de motocicletas y de sus partes y piezas">Copiar 4542 con su descripción</button> <button type="button" class="copy" data-copy="4541 Comercio de motocicletas y de sus partes, piezas y accesorios">Copiar 4541 con su descripción</button></p>
     <a class="btn ghost" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-actividad-economica-ciiu" target="_blank" rel="noopener">Abrir el buscador de códigos ↗</a>
-    <figure class="shot" data-shot="02-ciiu"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>¿Cómo sé si permiten el 4520?</h4>
       <p>Míralo en tu concepto de uso de suelo. El 4520 menciona el lavado, pero es de alto impacto y en muchas zonas no lo permiten: a dos asesorados se lo rechazaron. Si tienes duda, usa el 4542 y pregúntale a tu asesor.</p>
@@ -290,7 +293,7 @@
     <p>Este link ya trae tu municipio. Baja hasta el recuadro azul: debe decir el nombre de <strong data-fill="camaraCorta">tu Cámara</strong>. Si no sale, escoge abajo el <strong>Departamento</strong> y la <strong>Ciudad</strong>.</p>
     <p class="platnote" data-fill-html="vueNote" hidden></p>
     <a class="btn" id="vueLink" data-vue href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica" target="_blank" rel="noopener">Abrir esta página ↗</a>
-    <figure class="shot" data-shot="03-vue-municipio"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <figure class="shot shot-img" data-shot="03-vue-municipio"><img src="img/03.jpg" alt="La VUE con tu municipio: revisa que el recuadro azul diga tu Cámara y toca «Crear mi empresa». (Ejemplo: Bogotá)" loading="lazy"><figcaption>La VUE con tu municipio: revisa que el recuadro azul diga tu Cámara y toca «Crear mi empresa». (Ejemplo: Bogotá)</figcaption></figure>
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Mi municipio no sale en la lista de "Ciudad"</h4>
       <p>La lista trae las sedes de cada cámara, no todos los municipios. Por ejemplo, para Funza y Madrid se entra por <strong>Facatativá</strong>, y en el formulario pones la dirección real de tu local.</p>
@@ -304,7 +307,7 @@
     <p class="stepno">PASO <span class="n"></span></p>
     <h2 tabindex="-1">Toca "Crear mi empresa" → Persona Natural</h2>
     <p>En el recuadro azul toca <strong>Crear mi empresa</strong>. En la ventana que sale, escoge <strong>Persona Natural</strong> y toca <strong>CREAR EMPRESA</strong>. Revisa que el título de la ventana diga el municipio de tu Cámara.</p>
-    <figure class="shot" data-shot="04-crear-mi-empresa"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <figure class="shot shot-img" data-shot="04-crear-mi-empresa"><img src="img/04.jpg" alt="Escoge «Persona Natural» y toca «CREAR EMPRESA». (Ejemplo: Facatativá)" loading="lazy"><figcaption>Escoge «Persona Natural» y toca «CREAR EMPRESA». (Ejemplo: Facatativá)</figcaption></figure>
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Toqué el botón y no pasa nada</h4>
       <p>Abre una pestaña nueva. Si tu navegador bloquea las ventanas emergentes, permítelas para vue.gov.co y vuelve a tocar.</p>
@@ -319,7 +322,7 @@
     <h2 tabindex="-1">Te pide clave sin tener cuenta: no llenes nada</h2>
     <div class="platnote" data-platnote hidden></div>
     <p>Se abre una página nueva de la Cámara (ctce.confecamaras.co) con un bloque de <strong>Inicio de sesión</strong> que pide correo, cédula, celular y clave. La primera vez <strong>no tienes clave</strong>. Baja hasta <strong>"¿No tiene cuenta? Regístrese"</strong>.</p>
-    <figure class="shot" data-shot="05-inicio-sesion"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <figure class="shot shot-img" data-shot="05-inicio-sesion"><img src="img/05.jpg" alt="Esta pantalla pide clave, pero todavía no tienes cuenta: baja y toca «Regístrese». (Ejemplo: Cámara de Facatativá)" loading="lazy"><figcaption>Esta pantalla pide clave, pero todavía no tienes cuenta: baja y toca «Regístrese». (Ejemplo: Cámara de Facatativá)</figcaption></figure>
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Me pide una clave que no tengo</h4>
       <p>Es la trampa más común. Ignora el inicio de sesión y baja hasta el final de la página: ahí está <strong>Regístrese</strong>.</p>
@@ -334,7 +337,7 @@
     <h2 tabindex="-1">Regístrate: correo, cédula y celular</h2>
     <div class="platnote" data-platnote hidden></div>
     <p>En <strong>"Registrarse para ingresar"</strong> pon tu correo, tu número de cédula <strong>sin puntos</strong> y tu celular. Marca la casilla de datos personales y toca <strong>Crear Usuario</strong>.</p>
-    <figure class="shot" data-shot="06-registrarse"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    <figure class="shot shot-img" data-shot="06-registrarse"><img src="img/06.jpg" alt="Llena correo, cédula y celular, acepta y toca «Crear Usuario». (Ejemplo: Cámara de Facatativá)" loading="lazy"><figcaption>Llena correo, cédula y celular, acepta y toca «Crear Usuario». (Ejemplo: Cámara de Facatativá)</figcaption></figure>
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>El botón "Crear Usuario" no avanza</h4>
       <p>Revisa que marcaste la casilla de datos personales. La cédula y el celular van solo con números, máximo 10.</p>
@@ -349,7 +352,7 @@
     <h2 tabindex="-1">Verifica tu identidad</h2>
     <div class="platnote" data-platnote hidden></div>
     <p>Se abre otra página, el <strong>Verificador de identidad de las Cámaras de Comercio</strong>. Cambian el logo y la dirección, pero sigues en el mismo trámite. Pon tipo y número de documento, acepta las dos casillas, toca <strong>Continuar</strong> y escribe la <strong>fecha de expedición</strong> de tu cédula.</p>
-    <figure class="shot" data-shot="07-verificador-identidad"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Dice que la fecha no coincide</h4>
       <p>Tiene que ser exactamente la fecha de expedición que aparece en tu cédula (día, mes y año), no tu fecha de nacimiento.</p>    </div></details>
@@ -360,7 +363,7 @@
     <p class="stepno">PASO <span class="n"></span></p>
     <h2 tabindex="-1">Responde las preguntas de seguridad con calma</h2>
     <p>Te hacen preguntas de selección múltiple sobre tu vida financiera, por ejemplo hace cuánto tienes tarjeta de crédito con cierto banco o si tienes línea con cierto operador de celular. Las respondes <strong>tú</strong>, sin afán.</p>
-    <figure class="shot" data-shot="08-preguntas-reto"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Fallé las preguntas</h4>
       <p>Por lo que hemos visto en Mónaco, al fallar bloquean el intento por varias horas <span class="tag">SIN CONFIRMAR</span>: la Cámara no publica cuántos intentos hay ni cuánto dura el bloqueo. Espera y vuelve a intentar desde la VUE, o termina el trámite en persona en tu Cámara.</p>
@@ -373,7 +376,7 @@
     <p class="stepno">PASO <span class="n"></span></p>
     <h2 tabindex="-1">Abre tu correo y activa la cuenta</h2>
     <p>Te llegan correos: uno con tu <strong>contraseña generada</strong> y otro con el botón <strong>"Verificar este mensaje y activar credenciales"</strong>. Toca ese botón antes de intentar entrar. <strong>Anota la clave</strong>: con ella entras, firmas y pagas.</p>
-    <figure class="shot" data-shot="09-correos-clave"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>No me llegó nada</h4>
       <p>Revisa la carpeta de spam o correo no deseado, y espera unos minutos. Revisa que escribiste bien el correo al registrarte.</p>
@@ -388,7 +391,7 @@
     <h2 tabindex="-1">Entra y toca "Crear nuevo trámite"</h2>
     <p>Vuelve a entrar desde la VUE (tu link), toca otra vez Crear mi empresa → Persona Natural, y ahora sí llena el <strong>Inicio de sesión</strong> con correo, cédula, celular y la clave. Lee la bienvenida y toca <strong>Crear nuevo trámite</strong>.</p>
     <a class="btn" data-vue href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica" target="_blank" rel="noopener">Abrir esta página ↗</a>
-    <figure class="shot" data-shot="10-crear-tramite"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Cerré la página a la mitad</h4>
       <p>No pierdes nada. Entra de nuevo y busca la pestaña <strong>Trámites en proceso</strong> → <strong>Continuar</strong>. También está en el menú que sale al tocar tu nombre, arriba a la derecha.</p>
@@ -404,7 +407,7 @@
     <p>Llena tus datos personales, el número de empleados y tus <strong>activos</strong>: <strong data-fill="invTxt">el valor de tu inversión</strong>. En establecimientos pon <strong>1</strong> y sus activos. Ahí mismo te pregunta cuántos certificados quieres comprar ($6.100 cada uno).</p>
     <div class="box" data-show="rut:si"><p><strong>Ya tienes RUT:</strong> el sistema lo encuentra con tu cédula y te pregunta si quieres usar esos datos. Responde <strong>Sí</strong>.</p></div>
     <div class="box" data-show="rut:no"><p><strong>No tienes RUT:</strong> si el sistema dice que encontró datos asociados a tu cédula, es que sí tienes RUT. En ese caso responde <strong>Sí</strong> para usarlos.</p></div>
-    <figure class="shot" data-shot="11-datos-generales"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Sale "Por favor, verifique el NIT diligenciado"</h4>
       <p>En un recorrido que hicimos en Mónaco, salió al decir que no había NIT cuando la persona ya tenía RUT. Revisa si tienes RUT en la <a href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-estado-del-rut" target="_blank" rel="noopener">consulta de estado del RUT</a> y, si lo tienes, responde <strong>Sí</strong> a usar los datos encontrados. <span class="tag">SIN CONFIRMAR</span> La causa la deducimos de ese recorrido; la Cámara no la publica.</p>
@@ -420,7 +423,7 @@
     <p class="stepno">PASO <span class="n"></span></p>
     <h2 tabindex="-1">Revisa la preliquidación y escribe el nombre</h2>
     <p>Te muestra lo que vas a pagar: deben salir <strong>dos matrículas</strong> (la tuya y la del local) y el formulario. Compáralo con el cálculo de este asistente: <strong data-fill="costoTxt">el valor que calculamos al principio</strong>. Después escribe el nombre del lavadero: el sistema revisa que esté libre.</p>
-    <figure class="shot" data-shot="12-preliquidacion"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Solo sale una matrícula</h4>
       <p>Revisa que en el paso anterior pusiste 1 establecimiento. Si no, devuélvete y corrígelo.</p>
@@ -438,7 +441,7 @@
     <p data-show="rut:si"><strong>Ya tienes RUT</strong>, así que puede que esta pantalla no te salga. Si no sale, sigue.</p>
     <p>Si dijiste que no tienes NIT, te sale el formato <strong>Responsabilidades tributarias</strong>. Tienes que escoger mínimo una para seguir. Esto es lo que la DIAN va a poner en tu RUT.</p>
     <a class="btn ghost" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-responsabilidades-tributarias" target="_blank" rel="noopener">Abrir la consulta de responsabilidades ↗</a>
-    <figure class="shot" data-shot="13-responsabilidades"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>No sé cuál marcar</h4>
       <p>Pregúntale a un contador antes de seguir. No te damos una respuesta general porque depende de tu caso (por ejemplo, si eres o no responsable de IVA).</p>
@@ -456,7 +459,7 @@
     <div class="code"><div><span class="lbl">PRINCIPAL (OPCIÓN B)</span><b>4542</b></div><span class="txt">Mantenimiento y reparación de motocicletas y de sus partes y piezas</span><button type="button" class="copy" data-copy="4542">Copiar</button></div>
     <div class="code"><div><span class="lbl">SECUNDARIA</span><b>4541</b></div><span class="txt">Comercio de motocicletas y de sus partes, piezas y accesorios</span><button type="button" class="copy" data-copy="4541">Copiar</button></div>
     <p class="meta">En el formulario del local puedes usar "Importar datos del inscrito" para traer las mismas actividades, y "Elegir dirección de la empresa" si es la misma dirección.</p>
-    <figure class="shot" data-shot="14-formularios"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>No me acepta la fecha de inicio de actividad</h4>
       <p>No admite fechas futuras. Pon la fecha de hoy o una anterior, la fecha en que de verdad empezaste.</p>
@@ -472,7 +475,7 @@
     <p class="stepno">PASO <span class="n"></span></p>
     <h2 tabindex="-1">Firma con tu clave</h2>
     <p>Escribe la <strong>misma clave</strong> del correo para firmar electrónicamente los documentos. No es una clave nueva. Desde aquí ya no se puede cambiar nada.</p>
-    <figure class="shot" data-shot="15-firma"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Perdí la clave</h4>
       <p>Búscala en tu correo ("Contraseña generada"). En el inicio de sesión también está "¿Olvidó la contraseña?".</p>
@@ -484,7 +487,7 @@
     <p class="stepno">PASO <span class="n"></span></p>
     <h2 tabindex="-1">Paga y anota el número de recuperación</h2>
     <p>Revisa la liquidación definitiva, toca <strong>Continuar</strong> y paga con las opciones que te dé tu Cámara. Si eliges pagar en efectivo en la sede, te sale un <strong>número de recuperación</strong>: anótalo antes de cerrar.</p>
-    <figure class="shot" data-shot="16-pago"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>¿Se paga por PSE (pago en línea desde tu cuenta de banco)?</h4>
       <p>Depende de tu Cámara. Para la Cámara de Bogotá, la VUE dice que se paga con el botón de pagos PSE. Para las demás <span class="tag">SIN CONFIRMAR</span>: el manual oficial solo dice "según las opciones disponibles". Si no ves cómo pagar, llama:</p>
@@ -498,7 +501,7 @@
     <h2 tabindex="-1">Guarda el número de solicitud y descarga todo</h2>
     <p>Sale <strong>"Trámite finalizado"</strong> con un número de solicitud: anótalo. Al correo te llega un PDF (el "sobre digital") con tus formularios, el recibo y la factura <strong>adjuntos dentro del PDF</strong>. Después la DIAN te manda el RUT al correo.</p>
     <a class="btn" href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-estado-del-registro-mercantil" target="_blank" rel="noopener">Ver cómo va mi trámite ↗</a>
-    <figure class="shot" data-shot="17-tramite-finalizado"><div class="shot-ph">Aquí va la pantalla de este paso</div></figure>
+    
     <details class="stuck"><summary>Me trabé</summary><div>
       <h4>Abro el PDF y no veo los adjuntos</h4>
       <p>Ábrelo con Adobe Acrobat Reader y busca "Archivos adjuntos".</p>
