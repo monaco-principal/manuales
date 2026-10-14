@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Descripción de Videos</title>
+<meta name="robots" content="noindex">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PLANTILLA DE DESCRIPCIÓN DE VIDEOS · Mónaco · oct 2026
+     Para todos los asesorados. Guía + generador: el cliente pone su barrio,
+     el tipo de video y sus servicios, y copia la descripción lista.
+
+     De dónde sale:
+     · El formato de Mónaco: «Comenta PALABRA» primero (videos de 523K y
+       337K: el «Comenta MONACO» iba solo en la descripción).
+     · Curso M3.4: la palabra se dice en el audio y se repite en el texto;
+       en la red social solo se saca el WhatsApp (por eso el precio exacto
+       va APAGADO por defecto).
+     · Instagram (about.instagram.com, 2024): la búsqueda lee descripción,
+       hashtags y lugar. Límite de 5 hashtags (@creators, dic-2025).
+     · Instagram (jun-2024): pedir «comenta una palabra» solo para inflar
+       interacción es engagement bait; con entrega real (te enviamos la
+       info) no.
+     · Sin nombres de asesorados: todo con espacios en blanco.
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<style>
+  :root{
+    --azul:#0066D6; --azul-bg:#EAF2FF;
+    --tinta:#1D1D1F; --gris:#55555C; --tenue:#8E8E96;
+    --claro:#F5F5F7; --linea:#E2E2E7; --fondo:#fff;
+    --verde:#0F7B3E; --verde-bg:#EAF7EF;
+    --ambar:#8A5A00; --ambar-bg:#FFF6E6;
+    --rojo:#B42318;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--fondo);color:var(--tinta);line-height:1.5;letter-spacing:-.015em;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",system-ui,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 40px}
+  @media (max-width:700px){.wrap{padding:0 16px}}
+  section{padding:56px 0;border-top:1px solid var(--linea)}
+  section:first-of-type{border-top:0}
+  .paso{font-size:11px;font-weight:650;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);margin-bottom:12px}
+  h1{font-size:clamp(32px,6vw,54px);line-height:1.04;font-weight:680;letter-spacing:-.036em}
+  h2{font-size:clamp(24px,4vw,36px);line-height:1.08;font-weight:670;letter-spacing:-.03em}
+  h3{font-size:17px;font-weight:640;letter-spacing:-.02em}
+  p{font-size:16.5px;color:var(--gris);max-width:66ch}
+  .lead{font-size:clamp(17px,2.4vw,20px);margin-top:16px}
+  strong{color:var(--tinta)}
+
+  /* anatomía */
+  .anat{display:grid;gap:22px;margin-top:28px;align-items:start}
+  @media (min-width:820px){.anat{grid-template-columns:320px 1fr}}
+  .cel{background:#111;border-radius:30px;padding:12px;max-width:320px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+  .pant{background:linear-gradient(160deg,#3a4250,#161a20);border-radius:22px;height:440px;position:relative;overflow:hidden}
+  .pant .moto{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+  .pant .cap{position:absolute;left:14px;right:56px;bottom:18px;color:#fff;font-size:13.5px;line-height:1.35}
+  .pant .cap b{display:block;font-size:13px;margin-bottom:3px}
+  .pant .cap .mas{color:rgba(255,255,255,.65)}
+  .pant .resalta{background:rgba(255,214,0,.28);outline:1.5px dashed #FFD600;border-radius:4px;padding:1px 3px}
+  .bloques{display:grid;gap:10px}
+  .bl{display:grid;grid-template-columns:34px 1fr;gap:12px;background:var(--claro);border-radius:14px;padding:14px 16px}
+  .bl .i{width:30px;height:30px;border-radius:50%;background:var(--azul);color:#fff;font-weight:650;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .bl b{display:block;font-size:15.5px}
+  .bl span{font-size:14.5px;color:var(--gris)}
+  .bl code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#fff;border:1px solid var(--linea);border-radius:6px;padding:1px 6px}
+
+  /* reglas */
+  .reglas{display:grid;gap:10px;margin-top:24px}
+  @media (min-width:760px){.reglas{grid-template-columns:1fr 1fr}}
+  .r{border:1px solid var(--linea);border-radius:14px;padding:16px 18px}
+  .r b{display:block;font-size:15.5px;margin-bottom:3px}
+  .r span{font-size:14.5px;color:var(--gris)}
+  .r.no{border-color:#f3c7c3;background:#FFF5F4}
+  .r.no b{color:var(--rojo)}
+
+  /* generador */
+  .gen{display:grid;gap:24px;margin-top:26px}
+  @media (min-width:900px){.gen{grid-template-columns:1fr 1fr}}
+  .campo{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+  .campo label,.grupo-t{font-size:13px;font-weight:620;color:var(--tinta)}
+  .campo small{font-size:12.5px;color:var(--tenue)}
+  input[type=text],input[type=number],select{font:inherit;font-size:15px;padding:10px 12px;border:1px solid #cfcfd6;border-radius:10px;background:#fff;color:var(--tinta);width:100%}
+  input:focus,select:focus{outline:2px solid var(--azul);outline-offset:1px;border-color:transparent}
+  .fila{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .checks{display:grid;gap:6px;margin:6px 0 16px}
+  .checks label{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;color:var(--gris);cursor:pointer}
+  .checks input{margin-top:4px;accent-color:var(--azul)}
+  .salida{position:sticky;top:16px;align-self:start}
+  .caja{background:var(--claro);border-radius:16px;padding:18px}
+  textarea{width:100%;min-height:420px;font:inherit;font-size:15px;line-height:1.5;border:1px solid var(--linea);border-radius:12px;padding:14px;background:#fff;color:var(--tinta);resize:vertical}
+  .medidor{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin:10px 0 12px;color:var(--gris);flex-wrap:wrap}
+  .medidor .ok{color:var(--verde);font-weight:620}
+  .medidor .mal{color:var(--rojo);font-weight:620}
+  .btns{display:flex;gap:10px;flex-wrap:wrap}
+  button{font:inherit;font-size:15px;font-weight:600;border:0;border-radius:999px;padding:11px 20px;cursor:pointer}
+  .b1{background:var(--azul);color:#fff}
+  .b2{background:#fff;color:var(--azul);border:1px solid #cfd9ea}
+  .aviso{font-size:13px;color:var(--verde);margin-left:4px;align-self:center}
+
+  /* tablas */
+  .tsc{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:22px}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+  th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tenue);font-weight:620;padding:10px 12px;border-bottom:1px solid var(--linea)}
+  td{padding:11px 12px;border-bottom:1px solid var(--linea);color:var(--gris);vertical-align:top}
+  td:first-child{color:var(--tinta);font-weight:600}
+  .pal{font-family:ui-monospace,Menlo,monospace;font-weight:650;color:var(--azul)}
+
+  details{border:1px solid var(--linea);border-radius:14px;padding:14px 18px;margin-top:10px}
+  summary{cursor:pointer;font-weight:620;font-size:15.5px}
+  details p,details ul{margin-top:10px;font-size:14.5px;color:var(--gris)}
+  details ul{padding-left:18px}
+
+  .destacado{border-radius:16px;padding:22px 24px;margin-top:24px}
+  .d-ambar{background:var(--ambar-bg);border-left:3px solid var(--ambar)}
+  .d-ambar h3{color:var(--ambar)} .d-ambar p{color:#6b4700;margin-top:6px}
+  .d-verde{background:var(--verde-bg);border-left:3px solid var(--verde)}
+  .d-verde h3{color:#0A5B2D} .d-verde p{color:#14663a;margin-top:6px}
+  .lista{display:grid;gap:8px;margin-top:18px}
+  .lista div{background:var(--claro);border-radius:12px;padding:12px 16px;font-size:15px;color:var(--gris)}
+  .lista b{color:var(--tinta)}
+  footer{padding:30px 0 50px;font-size:13px;color:var(--tenue)}
+</style>
+</head>
+<body>
+
+<!-- ══════ PORTADA ══════ -->
+<section><div class="wrap">
+  <div class="paso">Plantilla · Descripción de los videos</div>
+  <h1>Lo primero que se lee.<br>Durante todo el video.</h1>
+  <p class="lead">La descripción no es para explicar el video. Tiene dos trabajos: que la persona
+    <strong>comente la palabra</strong> y que Instagram y TikTok <strong>muestren el video a quien busca
+    un lavadero de motos en su barrio</strong>.</p>
+</div></section>
+
+<!-- ══════ ANATOMÍA ══════ -->
+<section><div class="wrap">
+  <div class="paso">Cómo está armada</div>
+  <h2>Seis bloques, siempre en el mismo orden.</h2>
+  <p style="margin-top:12px">Mientras el video corre, la red muestra solo el comienzo de la descripción
+    (unos 50 caracteres), encima del video. Por eso <strong>el «Comenta» va primero</strong>:
+    es lo único que todos alcanzan a leer.</p>
+
+  <div class="anat">
+    <div class="cel" aria-hidden="true">
+      <div class="pant">
+        <div class="moto">tu video</div>
+        <div class="cap">
+          <b>@tulavadero</b>
+          <span class="resalta">Comenta PRECIO y te enviamos toda la información 👇</span>
+          <span class="mas">… más</span>
+        </div>
+      </div>
+    </div>
+    <div class="bloques">
+      <div class="bl"><div class="i">1</div><div><b>El «Comenta» (lo que se ve)</b>
+        <span>Máximo ~50 caracteres. Una sola palabra en MAYÚSCULAS y la promesa de lo que reciben.
+        <code>Comenta PRECIO y te enviamos toda la información 👇</code></span></div></div>
+      <div class="bl"><div class="i">2</div><div><b>Servicio + barrio + ciudad</b>
+        <span>Es la frase que la gente busca. <code>Lavado de motos en Suba, Bogotá</code></span></div></div>
+      <div class="bl"><div class="i">3</div><div><b>Los servicios, con ✅</b>
+        <span>Escritos como los busca el motero: polichado, kit de arrastre, desengrase, casco.
+        El servicio del video, de primero.</span></div></div>
+      <div class="bl"><div class="i">4</div><div><b>La membresía</b>
+        <span>Que existe y para qué sirve. El precio exacto, mejor por WhatsApp (ver la advertencia abajo).</span></div></div>
+      <div class="bl"><div class="i">5</div><div><b>Dónde estamos</b>
+        <span>📍 Barrio y ciudad, y la ubicación etiquetada en la publicación. Horario si quieren.</span></div></div>
+      <div class="bl"><div class="i">6</div><div><b>Repetir el «Comenta» + máximo 5 hashtags</b>
+        <span>Para el que abrió el «más» y llegó hasta abajo. Instagram ya no deja más de 5 hashtags.</span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ══════ REGLAS ══════ -->
+<section><div class="wrap">
+  <div class="paso">Las reglas</div>
+  <h2>La palabra se dice, se ve y se escribe.</h2>
+  <div class="reglas">
+    <div class="r"><b>1 · Tres veces la misma palabra</b><span>Dicha en el audio, puesta en pantalla al final y escrita en la descripción. Así la red entiende de qué es el video.</span></div>
+    <div class="r"><b>2 · Una palabra corta, sin tilde</b><span>De 4 a 6 letras, sin tilde ni ñ: PRECIO, PLAN, BRILLO, CADENA. «MEMBRESÍA» no: la escriben con tilde, sin tilde o con Z.</span></div>
+    <div class="r"><b>3 · Una palabra por video, y se rota</b><span>La palabra dice el servicio del video. Así cuando escriben ya saben qué les interesa.</span></div>
+    <div class="r"><b>4 · Siempre hay algo que entregar</b><span>«Comenta PRECIO y te enviamos…» sí. «Comenta 🔥 si te gustó» no: Instagram lo baja por pedir interacción vacía.</span></div>
+    <div class="r"><b>5 · El barrio, escrito</b><span>Instagram busca en la descripción, los hashtags y el lugar. «Lavado de motos en Suba» lo encuentra quien vive en Suba.</span></div>
+    <div class="r"><b>6 · Contestar en menos de un minuto</b><span>Al comentario en público y por privado, con los guiones de la clase. A los 5 minutos se enfría el 80%.</span></div>
+    <div class="r no"><b>No: llenar de hashtags</b><span>Máximo 5, específicos. Los hashtags ya no dan alcance; solo dicen de qué es el video.</span></div>
+    <div class="r no"><b>No: el WhatsApp ni la dirección exacta en el «Comenta»</b><span>La primera línea es solo para comentar. Si arriba va un número, nadie comenta y no sabemos quién vino por el video.</span></div>
+  </div>
+
+  <div class="destacado d-ambar">
+    <h3>¿Precio exacto en la descripción? Por defecto, no.</h3>
+    <p>El que ya tiene el precio y la dirección no tiene ninguna razón para escribir, y el cliente sale de la
+      conversación, no del video. Se dice que hay membresía y para qué sirve («lava todo el mes por menos de
+      lo que cuestan 3 lavadas»). El número exacto va por WhatsApp. El generador trae la opción de mostrarlo
+      para quien prefiera probar.</p>
+  </div>
+</div></section>
+
+<!-- ══════ GENERADOR ══════ -->
+<section id="generador"><div class="wrap">
+  <div class="paso">Generador</div>
+  <h2>Llenen esto una vez. Cambien el tipo de video cada vez.</h2>
+  <p style="margin-top:12px">Los datos del local quedan guardados en este navegador. Por cada video solo se
+    cambia el tipo, y si quieren, la palabra.</p>
+
+  <div class="gen">
+    <form id="f" onsubmit="return false">
+      <div class="fila">
+        <div class="campo"><label for="barrio">Barrio</label><input id="barrio" type="text" placeholder="Suba"></div>
+        <div class="campo"><label for="ciudad">Ciudad o municipio</label><input id="ciudad" type="text" placeholder="Bogotá"></div>
+      </div>
+      <div class="campo"><label for="tipo">Tipo de video</label><select id="tipo"></select></div>
+      <div class="campo"><label for="palabra">Palabra para comentar</label>
+        <input id="palabra" type="text" maxlength="12" autocapitalize="characters">
+        <small>Se llena sola según el tipo de video. Pueden cambiarla.</small></div>
+
+      <div class="grupo-t">Servicios que tiene el local</div>
+      <div class="checks" id="servicios"></div>
+
+      <div class="grupo-t">Membresía</div>
+      <div class="checks">
+        <label><input type="checkbox" id="conMembresia" checked> Tenemos membresía de lavadas ilimitadas</label>
+        <label><input type="checkbox" id="conPrecio"> Mostrar el precio exacto (por defecto no)</label>
+      </div>
+      <div class="fila">
+        <div class="campo"><label for="pMemb">Membresía al mes</label><input id="pMemb" type="number" step="1000" value="59000"></div>
+        <div class="campo"><label for="pBasica">Lavada básica</label><input id="pBasica" type="number" step="1000" value="25000"></div>
+      </div>
+
+      <div class="campo"><label for="direccion">Dirección (opcional)</label><input id="direccion" type="text" placeholder="Cra 00 # 00-00"></div>
+      <div class="campo"><label for="horario">Horario (opcional)</label><input id="horario" type="text" placeholder="Lunes a sábado, 8 a. m. a 6 p. m."></div>
+    </form>
+
+    <div class="salida">
+      <div class="caja">
+        <textarea id="out" spellcheck="false" aria-label="Descripción lista para copiar"></textarea>
+        <div class="medidor"><span id="m1"></span><span id="m2"></span></div>
+        <div class="btns">
+          <button class="b1" id="copiar" type="button">Copiar descripción</button>
+          <button class="b2" id="limpiar" type="button">Borrar datos del local</button>
+          <span class="aviso" id="aviso"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ══════ PALABRAS POR VIDEO ══════ -->
+<section><div class="wrap">
+  <div class="paso">Qué palabra usar</div>
+  <h2>La palabra dice el servicio del video.</h2>
+  <div class="tsc"><table>
+    <thead><tr><th>Video</th><th>Palabra</th><th>Segunda línea</th><th>Por qué</th></tr></thead>
+    <tbody id="tablaTipos"></tbody>
+  </table></div>
+  <p style="margin-top:14px;font-size:14.5px">Aceptar siempre las variantes: si alguien escribe «precio», «Precio» o «presio», se le contesta igual.</p>
+</div></section>
+
+<!-- ══════ DESPUÉS DEL COMENTARIO ══════ -->
+<section><div class="wrap">
+  <div class="paso">Cuando comentan</div>
+  <h2>La descripción trae el comentario. La conversación trae la moto.</h2>
+  <div class="lista">
+    <div><b>1. En público:</b> «Revisa tu mensaje directo, te enviamos toda la información».</div>
+    <div><b>2. Por privado:</b> «Hola, vi que estás interesado. Dame tu WhatsApp y te envío toda la información».</div>
+    <div><b>3. Perfil privado:</b> «Te íbamos a enviar toda la información, pero tienes el perfil privado, mándanos un mensaje».</div>
+    <div><b>4. Primer WhatsApp:</b> «Hola, soy ___, del lavadero de motos. Nos pasaste tu número por Instagram, ¿todavía quieres lavar tu moto?»</div>
+  </div>
+  <div class="destacado d-verde">
+    <h3>¿Se puede automatizar el mensaje privado?</h3>
+    <p>Sí, gratis: Meta Business Suite → Bandeja de entrada → Automatizaciones → «Comentario a mensaje»,
+      con la palabra del video. Hay reportes de que en Reels a veces llega tarde o no llega,
+      así que <strong>pruébenlo con un video de prueba</strong> y revisen los comentarios igual.
+      La respuesta en público se sigue haciendo a mano.</p>
+  </div>
+</div></section>
+
+<!-- ══════ BANCO DE PALABRAS ══════ -->
+<section><div class="wrap">
+  <div class="paso">Banco de palabras clave</div>
+  <h2>Escribir como busca el motero.</h2>
+  <p style="margin-top:12px">Usarlas en frases normales dentro de los servicios, no como lista de hashtags.
+    Son las palabras que usan los negocios y los medios del sector en Colombia. No hay cifras públicas de cuántas
+    búsquedas tiene cada una, así que conviene revisar en el buscador de TikTok cuál sale más.</p>
+
+  <details><summary>Lavado</summary><p>lavado de motos · lavadero de motos cerca · lavada de moto · lavado detallado · lavado a vapor · lavado rápido</p></details>
+  <details><summary>Membresía</summary><p>plan mensual · membresía de lavado · lavadas ilimitadas · moto limpia todo el mes</p></details>
+  <details><summary>Polichado y brillo</summary><p>polichado de moto · brillado · pulido · quitar rayones · plásticos opacos · brillo de tanque · restaurador de partes negras</p></details>
+  <details><summary>Cadena y motor</summary><p>lavado de cadena · lubricación de cadena · kit de arrastre · desengrase de motor · lavado de motor · desengrase de rines</p></details>
+  <details><summary>Casco</summary><p>lavado de casco · desinfección de casco · quitar mal olor del casco · lavado de sillín</p></details>
+  <details><summary>Por tipo de cliente</summary>
+    <ul>
+      <li><b>Domiciliarios y mensajeros:</b> moto de trabajo, lavada rápida, sin hacer fila. Modelos: NKD, Boxer, AKT, Pulsar, XTZ.</li>
+      <li><b>Alto cilindraje:</b> detailing de motos, cerámico, lavado especializado. Duke, MT, GS.</li>
+      <li><b>Scooters:</b> lavado de scooter, plásticos como nuevos. NMAX, Agility, Dinamo.</li>
+    </ul></details>
+  <details><summary>Ubicación</summary><p>«lavadero de motos en [barrio] [ciudad]» · «lavado de motos [ciudad]» · «lavadero de motos cerca de [sitio conocido]». En municipios pequeños casi nadie lo escribe todavía: es fácil salir primero.</p></details>
+</div></section>
+
+<footer><div class="wrap">Mónaco · Plantilla de descripción de videos · oct 2026</div></footer>
+
+<script>
+const TIPOS = {
+  antes:     {n:'Antes y después (lavado)', p:'PRECIO', s:'Lavado de motos', dest:'lavado', por:'Es lo primero que pregunta el que ve una moto sucia quedar limpia.',
+              h:['#lavadodemotos','#lavaderodemotos','#motoslimpias','#motoscolombia']},
+  membresia: {n:'Membresía', p:'PLAN', s:'Membresía de lavado de motos', dest:'lavado', por:'Más fácil de escribir que «membresía».',
+              h:['#lavadodemotos','#lavaderodemotos','#motoscolombia','#moteros']},
+  brillo:    {n:'Polichado / brillo', p:'BRILLO', s:'Polichado de motos', dest:'brillo', por:'Dice el resultado que quieren ver.',
+              h:['#polichado','#detailingdemotos','#motodetailing','#lavadodemotos']},
+  cadena:    {n:'Cadena / kit de arrastre', p:'CADENA', s:'Lavado y lubricación de cadena', dest:'cadena', por:'El que tiene la cadena sucia lo sabe.',
+              h:['#lavadodecadena','#mantenimientodemotos','#lavadodemotos','#moteros']},
+  motor:     {n:'Desengrase de motor', p:'MOTOR', s:'Desengrase de motor de motos', dest:'motor', por:'Corta y sin tilde.',
+              h:['#desengrase','#mantenimientodemotos','#lavadodemotos','#motoscolombia']},
+  casco:     {n:'Casco', p:'CASCO', s:'Lavado y desinfección de casco', dest:'casco', por:'Servicio que nadie más anuncia.',
+              h:['#lavadodecasco','#moteros','#lavadodemotos','#motoscolombia']},
+  domi:      {n:'Domiciliarios / moto de trabajo', p:'INFO', s:'Lavado rápido para motos de trabajo', dest:'lavado', por:'La más fácil de escribir, para quien comenta desde la moto.',
+              h:['#domiciliarios','#motosdetrabajo','#lavadodemotos','#motoscolombia']},
+  apertura:  {n:'Inauguración', p:'CLUB', s:'Nuevo lavadero de motos', dest:'lavado', por:'Ya probada en aperturas. Si hay cupos, decir cuántos («quedan 50»), nunca una fecha.',
+              h:['#lavaderodemotos','#lavadodemotos','#motoscolombia','#inauguracion']}
+};
+const SERV = [
+  {k:'lavado', t:'Lavado detallado de motos', on:true},
+  {k:'cadena', t:'Lavado y lubricación de cadena (kit de arrastre)', on:true},
+  {k:'motor',  t:'Desengrase de motor y rines', on:true},
+  {k:'negras', t:'Cera y restaurador de partes negras', on:true},
+  {k:'brillo', t:'Polichado y brillado', on:true},
+  {k:'casco',  t:'Lavado y desinfección de casco', on:false},
+  {k:'ceram',  t:'Sellado cerámico', on:false}
+];
+const $ = id => document.getElementById(id);
+const CAMPOS = ['barrio','ciudad','pMemb','pBasica','direccion','horario'];
+const KEY = 'monaco-descripcion-v1';
+
+// llenar controles
+for (const [k,t] of Object.entries(TIPOS)) $('tipo').add(new Option(t.n,k));
+$('servicios').innerHTML = SERV.map(s =>
+  `<label><input type="checkbox" data-s="${s.k}" ${s.on?'checked':''}> ${s.t}</label>`).join('');
+$('tablaTipos').innerHTML = Object.values(TIPOS).map(t =>
+  `<tr><td>${t.n}</td><td class="pal">${t.p}</td><td>${t.s} en [barrio]</td><td>${t.por}</td></tr>`).join('');
+
+// datos guardados del local (solo en este navegador)
+try {
+  const g = JSON.parse(localStorage.getItem(KEY) || '{}');
+  CAMPOS.forEach(c => { if (g[c] != null) $(c).value = g[c]; });
+  if (g.serv) document.querySelectorAll('[data-s]').forEach(x => x.checked = g.serv.includes(x.dataset.s));
+  if (g.conMembresia != null) $('conMembresia').checked = g.conMembresia;
+  if (g.conPrecio != null) $('conPrecio').checked = g.conPrecio;
+} catch(e) {}
+function guardar(){
+  try {
+    const g = {};
+    CAMPOS.forEach(c => g[c] = $(c).value);
+    g.serv = [...document.querySelectorAll('[data-s]:checked')].map(x => x.dataset.s);
+    g.conMembresia = $('conMembresia').checked; g.conPrecio = $('conPrecio').checked;
+    localStorage.setItem(KEY, JSON.stringify(g));
+  } catch(e) {}
+}
+
+const pesos = n => '$' + Math.round(n).toLocaleString('es-CO');
+const slug = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+const largo = s => [...s].length;
+
+function armar(){
+  const t = TIPOS[$('tipo').value];
+  const P = ($('palabra').value.trim() || t.p).toUpperCase();
+  const barrio = $('barrio').value.trim() || '[barrio]';
+  const ciudad = $('ciudad').value.trim() || '[ciudad]';
+  const lugar = `${barrio}, ${ciudad}`;
+
+  // servicios: el del video primero
+  let serv = SERV.filter(s => document.querySelector(`[data-s="${s.k}"]`).checked);
+  serv.sort((a,b) => (b.k===t.dest) - (a.k===t.dest));
+
+  const L = [];
+  L.push(`Comenta ${P} y te enviamos toda la información 👇`);
+  L.push(`${t.s} en ${lugar}`);
+  L.push('');
+  if (serv.length){ serv.forEach(s => L.push(`✅ ${s.t}`)); L.push(''); }
+
+  if ($('conMembresia').checked){
+    const m = +$('pMemb').value || 0, b = +$('pBasica').value || 0;
+    if ($('conPrecio').checked && m) L.push(`💳 Membresía de lavadas ilimitadas: ${pesos(m)} al mes`);
+    else if (m && b && m < b*3) L.push(`💳 Membresía de lavadas ilimitadas: lava todo el mes por menos de lo que cuestan ${Math.ceil(m/b)} lavadas`);
+    else L.push('💳 Membresía de lavadas ilimitadas: tu moto limpia todo el mes');
+    L.push('');
+  }
+
+  L.push(`📍 Lavadero de motos en ${lugar}`);
+  if ($('direccion').value.trim()) L.push(`🗺️ ${$('direccion').value.trim()}`);
+  if ($('horario').value.trim())   L.push(`🕗 ${$('horario').value.trim()}`);
+  L.push('');
+  L.push(`👉 Comenta ${P} y te escribimos`);
+  L.push('');
+  const tags = [...t.h];
+  if ($('ciudad').value.trim()) tags.push('#motos' + slug($('ciudad').value));
+  L.push(tags.slice(0,5).join(' '));
+
+  $('out').value = L.join('\n');
+  medir();
+  guardar();
+}
+
+function medir(){
+  const txt = $('out').value;
+  const l1 = txt.split('\n')[0] || '';
+  const n = largo(l1);
+  $('m1').innerHTML = n <= 55
+    ? `<span class="ok">Primera línea: ${n} caracteres ✓</span>`
+    : `<span class="mal">Primera línea: ${n} caracteres — acórtenla (máx. ~55)</span>`;
+  const tags = (txt.match(/#[^\s#]+/g) || []).length;
+  $('m2').innerHTML = tags <= 5
+    ? `${largo(txt)} caracteres · ${tags} hashtags`
+    : `<span class="mal">${tags} hashtags — máximo 5</span>`;
+}
+
+$('tipo').addEventListener('change', () => { $('palabra').value = TIPOS[$('tipo').value].p; armar(); });
+$('palabra').addEventListener('input', () => {
+  const v = $('palabra').value.normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+  if (v !== $('palabra').value) $('palabra').value = v;
+  armar();
+});
+$('f').addEventListener('input', e => { if (e.target.id !== 'palabra') armar(); });
+$('out').addEventListener('input', medir);
+$('copiar').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText($('out').value); }
+  catch(e) { $('out').select(); document.execCommand('copy'); }
+  $('aviso').textContent = 'Copiada ✓';
+  setTimeout(() => $('aviso').textContent = '', 2000);
+});
+$('limpiar').addEventListener('click', () => {
+  try { localStorage.removeItem(KEY); } catch(e) {}
+  CAMPOS.forEach(c => $(c).value = '');
+  $('pMemb').value = 59000; $('pBasica').value = 25000;
+  document.querySelectorAll('[data-s]').forEach(x => x.checked = SERV.find(s => s.k===x.dataset.s).on);
+  $('conMembresia').checked = true; $('conPrecio').checked = false;
+  armar();
+});
+
+$('palabra').value = TIPOS[$('tipo').value].p;
+armar();
+</script>
+</body>
+</html>
