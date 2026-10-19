@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Insumos del lavadero · Manuales Mónaco</title>
+<meta name="robots" content="noindex">
+<style>
+:root {
+  --tinta:#16161a; --papel:#ffffff; --papel-suave:#f6f5f2; --azul:#1f6fb2;
+  --gris:#6b6b70; --linea:#e6e4dd; --ok:#1d7a46; --ok-suave:#eaf5ee; --alerta:#a33a2a;
+  --helvetica:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  color-scheme: light;
+}
+* { box-sizing:border-box }
+body { background:var(--papel); color:var(--tinta); font-family:var(--helvetica);
+  font-size:15px; line-height:1.5; letter-spacing:-0.01em; margin:0 }
+.hoja { max-width:1040px; margin:0 auto; padding-block:40px 56px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px)) }
+.marca img { height:56px; display:block }
+header { display:grid; gap:28px; padding-bottom:24px; border-bottom:2px solid var(--tinta) }
+.kicker { font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--azul); font-weight:700 }
+h1 { font-size:clamp(28px, 5vw, 42px); line-height:1.05; letter-spacing:-0.02em; font-weight:800;
+  margin:6px 0 10px; text-wrap:balance; max-width:24ch }
+.bajada { color:var(--gris); max-width:62ch; margin:0 }
+.aviso { margin:22px 0 0; padding:12px 16px; background:var(--papel-suave);
+  border-left:3px solid var(--azul); max-width:72ch }
+.estado { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; margin:28px 0 6px }
+.estado h2 { margin:0; font-size:20px; font-weight:800; flex:1 1 auto }
+.contador { font-variant-numeric:tabular-nums; font-weight:700 }
+.barra { flex:0 0 180px; height:6px; background:var(--linea); border-radius:3px; overflow:hidden }
+.barra span { display:block; height:100%; width:0; background:var(--ok); transition:width .25s }
+button { font:inherit; letter-spacing:inherit; font-size:13px; font-weight:700; color:var(--tinta);
+  background:var(--papel); border:1px solid var(--tinta); border-radius:4px; padding:6px 12px; cursor:pointer }
+button:focus-visible, input:focus-visible { outline:2px solid var(--azul); outline-offset:2px }
+.grupo { font-size:16px; font-weight:800; margin:26px 0 2px }
+.nota { color:var(--gris); font-size:13px; margin:0 0 6px }
+.tabla { overflow-x:auto }
+table { width:100%; border-collapse:collapse; font-size:14px }
+th { text-align:left; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--gris);
+  font-weight:700; padding:8px 10px; border-bottom:1.5px solid var(--tinta) }
+td { padding:12px 10px; border-bottom:1px solid var(--linea); vertical-align:middle }
+.lista tbody tr { cursor:pointer; transition:background .15s }
+.lista tbody tr:hover { background:var(--papel-suave) }
+.lista tbody tr.listo { background:var(--ok-suave) }
+.lista tbody tr.listo .c-herr strong { color:var(--ok) }
+.c-check { width:44px }
+.lista { table-layout:fixed }
+.lista th:nth-child(1){width:44px} .lista th:nth-child(2){width:27%} .lista th:nth-child(3){width:15%} .lista th:nth-child(5){width:21%}
+.c-check input { width:22px; height:22px; accent-color:var(--ok); cursor:pointer; margin:0 }
+.c-herr { min-width:190px }
+.c-herr label { cursor:pointer; display:block }
+.c-herr strong { font-size:15px; font-weight:800 }
+.num { display:block; font-size:11px; color:var(--gris); font-variant-numeric:tabular-nums; font-weight:700 }
+.medida { display:block; color:var(--gris); font-size:13px }
+.c-cant { font-weight:700; white-space:nowrap }
+.c-uso { max-width:38ch }
+.c-marca { font-weight:600; max-width:24ch }
+section { margin-top:40px }
+section h2 { font-size:20px; font-weight:800; margin:0 0 10px; padding-top:14px; border-top:2px solid var(--tinta) }
+.nunca { list-style:none; padding:0; margin:0; display:grid; gap:0 }
+.nunca li { padding:9px 0; border-bottom:1px solid var(--linea) }
+.nunca strong { color:var(--alerta) }
+.reglas { margin:0; padding-left:20px; display:grid; gap:6px; max-width:72ch }
+footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); font-size:12px; color:var(--gris) }
+@media (max-width:680px) {
+  thead { display:none }
+  .lista, .lista tbody, .lista tr, .lista td { display:block; width:100% }
+  .lista tbody tr { display:grid; grid-template-columns:36px 1fr; gap:4px 10px; padding:14px 4px;
+    border-bottom:1px solid var(--linea) }
+  .lista td { border:0; padding:0 }
+  .lista .c-check { grid-row:1 / span 4; width:auto }
+  .lista .c-cant, .lista .c-uso, .lista .c-marca { grid-column:2; max-width:none; font-size:13px; white-space:normal }
+  .barra { flex-basis:100% }
+}
+@media (prefers-reduced-motion:reduce) { * { transition:none !important } }
+</style>
+</head>
+<body>
+
+<main class="hoja">
+  <header>
+    <div class="marca"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABeYAAAQ4CAIAAADjJJviAAAACXBIWXMAAAsTAAALEwEAmpwYAAALXmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgOS4xLWMwMDMgNzkuOTY5MGE4N2ZjLCAyMDI1LzAzLzA2LTIwOjUwOjE2ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIiB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgV2ViICgyMDI1LjE0LjEuMCA4NmJmNzlhODU4OCkgKFNhZmFyaSkiIHhtcDpDcmVhdGVEYXRlPSIyMDI1LTA3LTI4VDEzOjMwOjMyLTA1OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDI1LTA3LTI4VDEzOjM3OjUxLTA1OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNS0wNy0yOFQxMzozNzo1MS0wNTowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODY3NTA3YTMtZDM0Zi00MjFhLTk3OTItZjZlNDg1MWJkNWQ5IiB4bXBNTTpEb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6M2RlOTdjZTUtY2M4MC03YTRhLTk5ZDktOWFkMTY0ZTk3YWQ5IiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MzhmYTNkZGYtN2ExZi00YTE0LWEyMzYtN2ViNWU5NGU0NTgzIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiB0aWZmOk9yaWVudGF0aW9uPSIxIiB0aWZmOlhSZXNvbHV0aW9uPSI3MjAwMDAvMTAwMDAiIHRpZmY6WVJlc29sdXRpb249IjcyMDAwMC8xMDAwMCIgdGlmZjpSZXNvbHV0aW9uVW5pdD0iMiIgZXhpZjpDb2xvclNwYWNlPSIxIiBleGlmOlBpeGVsWERpbWVuc2lvbj0iMTUxMCIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjEwODAiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjM4ZmEzZGRmLTdhMWYtNGExNC1hMjM2LTdlYjVlOTRlNDU4MyIgc3RFdnQ6d2hlbj0iMjAyNS0wNy0yOFQxMzozMDozMi0wNTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIFdlYiAoMjAyNS4xNC4xLjAgODZiZjc5YTg1ODgpIChTYWZhcmkpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo1Y2JhOGY3MC01YmE4LTQ3OWItYWU0NS1kOWRmMTA2MTQ4ZTAiIHN0RXZ0OndoZW49IjIwMjUtMDctMjhUMTM6MzI6MTMtMDU6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBXZWIgKDIwMjUuMTQuMS4wIDg2YmY3OWE4NTg4KSAoU2FmYXJpKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6MzNiYjU2ZGEtZTNkYi00MDI5LWJlOTUtYjYzNmJiN2MxZjM1IiBzdEV2dDp3aGVuPSIyMDI1LTA3LTI4VDEzOjM3OjUxLTA1OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgV2ViICgyMDI1LjE0LjEuMCA4NmJmNzlhODU4OCkgKFNhZmFyaSkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNvbnZlcnRlZCIgc3RFdnQ6cGFyYW1ldGVycz0iZnJvbSBkb2N1bWVudC92bmQuYWRvYmUuY3BzZCtkY3ggdG8gaW1hZ2UvcG5nIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJkZXJpdmVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJjb252ZXJ0ZWQgZnJvbSBkb2N1bWVudC92bmQuYWRvYmUuY3BzZCtkY3ggdG8gaW1hZ2UvcG5nIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Njc1MDdhMy1kMzRmLTQyMWEtOTc5Mi1mNmU0ODUxYmQ1ZDkiIHN0RXZ0OndoZW49IjIwMjUtMDctMjhUMTM6Mzc6NTEtMDU6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBXZWIgKDIwMjUuMTQuMS4wIDg2YmY3OWE4NTg4KSAoU2FmYXJpKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzNiYjU2ZGEtZTNkYi00MDI5LWJlOTUtYjYzNmJiN2MxZjM1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM4ZmEzZGRmLTdhMWYtNGExNC1hMjM2LTdlYjVlOTRlNDU4MyIgc3RSZWY6b3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjM4ZmEzZGRmLTdhMWYtNGExNC1hMjM2LTdlYjVlOTRlNDU4MyIvPiA8cGhvdG9zaG9wOlRleHRMYXllcnM+IDxyZGY6QmFnPiA8cmRmOmxpIHBob3Rvc2hvcDpMYXllck5hbWU9Im1vbmFjbyIgcGhvdG9zaG9wOkxheWVyVGV4dD0ibW9uYWNvIi8+IDwvcmRmOkJhZz4gPC9waG90b3Nob3A6VGV4dExheWVycz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7L1zqzAABFHUlEQVR4nO3de5hVVd048OGMAyNjGI0CjpMjgkQKPyRIkyJNLAx6xdR8VXy8YGk3s8yyfMJLJWoalZfUzFsamekr5g3EuyCKkshFLqLIHYRhGObCXM/5/THPy8MLzDDM2WufOcPn80dP+Ry/67vW3ufbrHXWXjsnBwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaL1EIpGbm5vpLACACHTKdAIAe69u3bp95StfGTRoUP/+/Q855JD99tuva9euXbt23XffffPy8urq6mr/18aNG1esWPHhhx8uWrTozTffXLp0aUYS7tu37wknnDBo0KB+/foVFhYWFBQUFBR07do1Nzd3W6qVlZWrVq1asWLF0qVLFyxYMH369KqqqoxkG5uSkpLBgwcffvjhJSUlxcXFPXr0KCgoyM/P7/K/9tlnn21Xs6ampmmU1q1bt3LlyuXLly9evPitt94qLS3NdD/au6FDh37+85/v37//YYcd1rNnz21flvz8/EQise0OLC8vX716ddMdOH/+/OnTp9fU1GQ692gUFhYOGjTosMMOKy4uPuigg3r27HnggQcWFhZ269Yt73917tw5Nze3U6dOjY2NDQ0N9fX1dXV1NTU1paWlGzZs2LBhw9q1a9esWdN0482bNy+ZTGa6W6Hk5+cfc8wx/fv37927d3FxcVFR0f7777/9F7NLly45OTm1tbV1dXVNo7Rx48Y1a9asXr36o48+WrJkyaxZs8rKyjLdjzgoYgDtliUbgLideOKJY8aMGTZs2IABAzp37tyGCCtXrpw1a9a0adMeeuihGBZEvvGNb5x66qnDhw/v06dPp0579n8cDQ0NS5Ys+c9//vPKK6888sgjW7ZsCZRknHr16vX1r3/96KOPHjBgQL9+/Xr06JFmwFQqtXr16qYp9Jtvvvnkk092+HWuVho8ePA3v/nNL37xi0cdddSnPvWpNkSoq6tbtGjR7NmzX3755UceeSS7lm9KSkq++tWvDhky5Mgjj+zbt2+vXr329AvYspqamqaF4Llz506fPv2ll17K9hWc448//rjjjhs8ePARRxzRu3fvffbZJ51oyWRy5cqV77333jvvvPPKK688//zz2T4+2yhiAADwfxQXF990001Lly5NRae8vPyf//zn8OHDQyTcvXv3CRMmfPDBB1FlW11d/fzzz//gBz/Iy8sLkXBoo0aNuuOOO+bOnVtfXx/VmOzS1q1bZ82aNXHixGHDhmW605lRXFw8YcKEpj0gEQ5sRUXFM888M27cuEQikekuNis3N/fss89+4IEHFi9e3NjYGGH3d6usrGzatGnjx4/v27dvpodhD3Tv3v1HP/rRk08++fHHHwcdn9LS0meeeebHP/5xYWFhpjvdRooYAADtV11dXUN0Fi1a1Mp2+/bt+7e//a2ysjLQH8cNDQ3PPfdchH8Z5+fn//73vy8tLQ2U8Mcff3zHHXf06dMnqoSDOv744++7776VK1cGGo2WLVmy5NZbbx00aFCcXc7UNyUnJ2fo0KGPPPJIVVVV0FFdvXr1xIkTe/XqFW4M2+CUU07517/+Fe5713oNDQ2zZs0aP358O1+bOO+886ZMmRL6btlZVVXVlClTzj///Pa89re9448//t57792rihgAANmnoaEh2j9Dd9tibm7uxIkTKyoqImy3ObW1tXfffXd+fn6ao3TBBResWLEihoSrqqruvffeoqKiNBMOJC8v7xe/+MWcOXOi3ejRNg0NDTNmzLj44ovjmSLG/03Jycnp06fPww8/XFtbG2HTLSsvL7/99tu7d+8eejxblp+fP378+MWLF8fW8darqKj417/+FWgfX5t17979hhtuWL58eaaHJ7V8+fIbb7yx3S5s7c1FDACA7BPzRPTEE09ctGhRhC22Mqvjjz++beNTWFj4+OOPx/zH/aZNm66++uq2JRxIYWHhxIkT169fH+c4tNKyZcvGjx8f+smy+Jdsxo8fX1ZWFmGjrbd+/frLL7886Hg2Jy8v77e//e26desy0vHWa2homDZtWpsLS4S6d+9+yy23bNq0KdND8n+UlZXdfvvt6R8HEyFFDACA7BPnRHT8+PFbt26NsLnWq6io+P73v7+ngzN8+PAIj63ZU7Nnzx46dGga1zYa+fn5N998c3t4MqVlq1atuvLKK8P9WB3nN6VPnz6vvvpqhM21zfTp04844ohA47lLF1544UcffZTpfu+B+vr6xx57LFPPMyYSifHjx4c+rSYdGzdu/M1vfpPxLSTZUsRWrlwZtIgBAJB94pmIJhKJSZMmRdhQGzQ0NPzmN79p/cicd9555eXlmc25vLz8kksuiehSt8UPf/jDTJ310DYLFy781re+FWIoYluyGTNmzNq1ayNsKx2lpaUXXHBBiPHcQUlJybPPPtsenlVpg7Kysl/84hcxjNL2TjzxxHfffTfTXW+VhQsXnnzyyTGPzzaKGAAAWSyGiWheXt5zzz0XYSttlkwmb7zxxtYMy49//OM4DxBpQWNj4x133BH1Zd+9wYMHv/baa5nufVs0NjZOnjy5uLg42gGJZ8nmBz/4QXV1dYQNpa+hoeHmm2+OdjB3cPrpp7efVao2mzZtWjynUCUSiT/84Q/tpEC1Un19/T333BPzgz+KGAAAWS/0RDSRSEybNi3CJtKUTCbHjx/f8phcfvnlod/2uqcmT54c5275X/3qV/GcDx3O+vXrx40bF+GYxLBk84tf/KK93XjbTJo0KcLB3N748eOza/WhBcuXLz/uuOMCDVSTvn37vvHGG5nuaBstWLDg6KOPDjo+2yhiAAB0BKEnoo8++miE8SNRX19/4YUXNjcg3/ve99rntPnpp5+OYdWmR48eU6dOzXRfo9HY2PjAAw/k5uZGMjKhvyk/+clPom0ico899lgkI7m9W2+9NUsfhmrO5s2bTz/99MgHqsmoUaOyfTtSWVnZ+eefH2h8mihiAAB0HEEnojfddFOEwSNUXl4+bNiwnUfjlFNOaW+PpWzvkUceCXozHHfcccuWLct0LyM2e/bsvn37pj84Qb8pY8eOzYqdJg8++GD6I7nNnXfemekOBVFVVXXmmWdGOFBNLrzwwsrKykx3LgL19fXh3oiniAEA0KGEm4ieddZZ7XO7SpMlS5YUFBRsPxQDBw5sz+9eaRLuVJHzzz8/48ctB7J69eoRI0akOT7hvilHH310pl7m3QbXXXddmiPZ5MYbb+xg+2u2t2XLlpEjR0YyUE0uvfTSrFjUa6VkMvnHP/4xwvFpoogBANDRBJqIFhUVtf8N/P/85z+3jUNeXt7cuXMzndHu1dfXjx07NvLb4Iorrqirq8t05wIqLy8/44wz0hmiQN+UvLy8BQsWRBg5tLq6uvRfZ3PRRRe186fA0rdmzZqoXv596aWXtufl77ZJJpO33nprJOPTRBEDAKADCjQRffLJJyMMG0hjY+O2UxUefPDBTKfTWuvWrSspKYnwHrjmmms6/Pw5lUpVVVWdd955bR6lQN+U++67L8Kw8VizZk06r0YaMmTI5s2bM92JOMyYMaPNo7TNBRdc0JH212wvmUxef/316Q9RjiIGAEBHFWIies4552TLIw+rV68uLCy84IILGhsbM53LHnjqqaeiugGuuuqq7Op7Oqqrq88+++z28005+eSTs3T3xL///e+2DWMikZg9e3am04/Ptdde27aBavK1r30t21971LKGhoYf/vCH6QxRjiIGAEAHFu1E9P3338/NzV26dGmEMUN79NFH2/8zXDtIJpORPB714x//eG/4aXp7FRUVo0ePbg/flJycnOx6JGp7jY2NZ511VhuG8brrrst07rHavHlzmx+P6t279+rVqzPdg+AqKyvTOaVFEQMAoCOLfO/Ar3/96wgD0pyFCxemeenPPPPMmpqaTPcjAzZs2DBkyJCMf1OuuuqqCAPGrw13YJ8+ffaSR6K29/DDD+/pQDV5/fXXM517TJYtW1ZYWNiGIVLEAADo4KKdiG7ZsmXTpk0RBqQFP/nJT9p83YcOHVpaWprpHmTM4sWLu3fvntlvSgcY/z29Ax9++OFMp5wBW7du7dev3x4NVE5OzsSJEzOdeKwmT568p0OkiO1pEQMAIPvsbVvKO5I2b7QpKChYuHBhptPPsGeeecY3JU2LFi1q/QAOHDhw79wQkUql/vKXv+zRzTZixIi9baySyeSFF17Y+iFSxFJ7XsQAOoxEphMAgN3r379/284Tue+++/r37x95Ptnl61//+vjx4zOdRXb7zGc+c84557Tyw1dccUWXLl2C5tNu7dHJI4lE4g9/+MPeNladOnW69tpru3Xr1srPK2I5ihgAwN7A3oGsNmXKlD294hdffHG2vM8rtMrKymOPPdY3JR3Tpk1rzeh17969vLw808lm0umnn97KO21vPg7sjjvuaM0QKWLb7FERA+gwOmU6AYD4NDY2JhJ2F2ar6urq4uLisrKyVn6+qKhozpw5Bx54YNCsssh//vOfVp7i6ZuySzU1NSUlJR9//HHLH7v66quvueaaGPJJpVKlpaUfffTRxo0bKysrKyoqKisrO3fuXFBQsO++++67776f+MQnioqKevXqVVBQEEM+29x3333jxo3b7ceKiormz5+/155RUlVVddRRRy1durSFzyhiO2h9EQPoMPbJdAIAHV8qlaqoqCgrK9u0aVPT5KqgoGC//fYrKCj41Kc+ddBBB+2zT/utxqlUqqysbM2aNRs2bNi6dWtNTU1BQUH37t0/+clPFhcXd+3aNbZMunbtOm7cuN///vet/Pxtt92WkalOKpUqLy9ft27dhg0bampqqqurGxsbt02he/bs2aNHj86dO8ef2Oc+97lrr7326quvjr/ptqmsrFy7du3atWurqqq2bt3auXPnbt26feITn+jWrdsBBxyw//77x5xPfn7+uHHjbrjhhpY/dvLJJwdNo7Gx8b333nv55Zf//ve/v/nmm635V0aMGDF69OgvfOEL/+///b8Ylm9aOam+/vrr41+vSSaTGzZsWLNmzebNm6urq+vq6rp3715YWFhYWPipT30qPz8/tkwKCgp+/etfn3322S18RhHbQdYVMQAA9kDMj3vU1tbOmjXr+uuvP+KII1rIqrCw8LLLLpsyZUq7ev9UdXX1jBkzrrvuuoEDBzaXeV5e3o9+9KOXXnpp69at8WT17LPPtvJajxkzJubLvWHDhmnTpl1zzTWDBw9uObfc3NwzzjjjzjvvfPvtt6urq+NMctOmTSUlJbsdvQw+GFVbW/v222/fcsstI0aMaDnJr33ta7fffvucOXPq6+tjS++5555rOasBAwaEG71kMvnSSy+dcMIJu72CzSkoKPjtb3+7YsWKQBk2qaqq2u0urX79+lVVVQVNY3ulpaVTp0795S9/2fL9P2bMmAcffHD58uXxZFVVVdVCPorYLrWyiAEAkH1i+/O3trb20UcfHTBgwB6ll5ubO2HChA0bNsSTZHPKysr+/Oc/9+jRo/WZH3HEEU8//XRjY2Po3NauXdvKlObMmRM6mSYNDQ2vvvpqax4D2aXu3btfe+21cb4O5h//+Mdus8rIks369etvv/32NkzGBgwY8PDDD8cz/9+wYUPLyVx//fWBmi4tLb3ooov2dHB2KTc399Zbb62trQ2UaiqV+tKXvtRyDg8++GC41re3cOHCyy+/fE8f9Lvwwgvfe++9GNK77bbbmstBEWtOa4oYAADZJ56J6Pvvv3/iiSe2OcmioqJXXnklhjx3lkwmn3766eLi4rZl/t3vfjeGU1db88zFJZdcEjqNVCqVTCZfffXV448/vm3DtYMLL7xw8eLFMaRdW1s7dOjQlpOJecmmqqrq9ttvT/OZlEGDBr3++usxZNvyAagzZswI0ejKlSuPPvrodMZnZ2eeeeaWLVtCZJtKpb773e+20HSvXr0qKioCNb3Nhg0brrjiinSG6IYbbgi9hXD16tW7XE5SxFrQmiIGAED2iWEi+sorr7T+1a0tePTRR0OnuoPa2tr0X6E6cuTIsrKyoHn+9Kc/3W0a77//ftAcUqnUhg0bvv/976c5XDtIJBK///3vY3jK7Iknnmg5kziXbObOnXvMMcdENYZ//vOfQ+/2+uUvf9lc67m5uSFWIkpLSyNfr2lyzjnn1NXVRZ5wKpW69tprW2h34sSJIRrd3owZM3r37p3+EJ188smhdz6ef/75O7eriLVst0UMAIDsE3oi+tprr+Xm5kaVbZx7berr63/4wx9GkvZZZ50VaBLY5J577mk5gR/96EfhWm/yzjvv9OvXL5Lh2tnIkSNXrlwZNP/a2tqWz6qIbclm8uTJEX5lmtxwww1BX4r8t7/9rbmmTz311MibSyaTF154YbRDtL377rsv8pxTqdSf/vSnFhoNfVjMpEmTInzl2fDhw4Ou2jz11FM7tKiI7dZuixgAANkn6ER02bJlhYWFEWZbUlIS27k21113XYSZ33rrreFSff7551tufe7cueFaT6VSL7zwQujXyvTp0yf0ORqTJk1qIYF4lmxaWPtI08MPPxwu7Zdeeqm5dkNsHpk6dWqgUWrSq1evEI9H3XXXXc21eM4550Te3PYeeOCByEdpzJgx4XaOlJWV7bBwqYi1RstFDACA7BNuItrQ0DBmzJjIE7722msDJby9F198Mdq0c3NzP/jgg0DZzps3r4WmTznllEDtNnnxxRcj/PW+BUVFRYsWLQrXkfLy8hZWGGNYspk8eXK40cvLy1u6dGmgzN97773m2p02bVq0bTU0NOz2HN/0PfHEE9GmnUql/vKXvzTX3NNPPx15c9tMmTIl0Chdd9114dLe/lXfilgrtVzEAADIPuEmov/+979DJJybm7t+/fpAOTepqKho+R3kbfOTn/wkUMKrVq1qod2nnnoqULupVOrdd98N/dP09vr377927dpw3fnNb37TXNOhl2zmzp2bl5cXdPTOO++8QMmvWbOmuUY//PDDaNuaMWNG0FFqctlll0WbdiqVuvvuu3fZVkFBQbgzj5cuXRrJUWLNmT17dqDM77333m2tKGKt10IRAwAg+wSaiNbX1wc6HDQnJ+fee+8NkfM2uz0apm0SicTq1atDJFxeXt5coz169Aj3pueNGzeGWNtq2amnnhruTczz589vrt2gSzaVlZXhvi/bC/SO5C1btuyyuby8vMgv1pVXXhnDQA0bNizatFPNL9mEexFSXV3dqFGjgg7U6NGjAx1uPWfOnKYmFLE90kIRAwAg+wSaiL766qvhch45cmSInJts3bq1T58+gTK/5557QuRcU1PTXItXXXVViBZTqVQymfzBD34QaKBa9uc//zlcp5p76Cboks3EiRPjGbpf/vKXIfKvra3dZXPHH398tA01NDRE8s6j3crPz4/8wObmlmzCPRX197//PYaxCnQqfHV1ddNxNorYnnYqhicHAQCISaAfSC+77LKgaYc7hHi3R/mmI9BiU0NDQ3MtvvHGGyFaTLV44mxoubm5kT9us01zZ8SGe0/2qlWrQj8StU337t1DHBnb3B34wx/+MNqGPvzww3gGKicnJ/J9EM2dZbNx48ZoG2qyefPm4uLiGAbq7LPPDpF/KpU66aSTchSxPdfCQdcAHUMcx48BtBOpVCrymHV1dSFeULK9hQsXBor85JNPBoqck5MzderUjRs3hou/g+Li4s997nMhItfV1V1xxRUhIrdGY2PjhAkTAgX/yle+sst/HuKb0uT++++vr68PFHwHZWVlLR9WHa3Id8R88MEH0QZsTm5ubuTraJ06ddr5H37jG98IdF7sI4880vIpV1GZNGnSihUrQkT+/Oc/r4i1QXNFDKDDsGQDkJbFixeXlpYGbeL9998PEbauru6hhx4KEXmbcItNOzv33HMDbd948sknZ82aFSJyK/31r3+dO3duiMh9+/YdPHhwiMi7tGXLlt/97nexNZeTkxPnks1BBx0UbcBASwM7Gzx48C5XWCI3cuTIEGFrampuvPHGEJF3KfJX7DU5/PDDFbE2iLmIAcRvn0wnAJDdYliVCPRj+9KlS0MvNi1ZsmT48OFBm9jmuOOOCxG2oaEh5lWGXbr77rtvvfXWyMN26tTp9NNPf+eddyKPvEsvvfRSc2f3BrJgwYLY2rrjjjuefvrpCAPGdrTqiBEj4mloyJAhIcK+8sorse1IysnJeeqpp84///zIwx588ME9e/aMPGyOIgaQ5SzZAKRl8eLFoZtYtmxZiLCLFi0KEXZ7S5cuDd3ENoF+aH3jjTcy++t0kz//+c+//OUvi4qKIo88bNiwyGM259///ndsbTWJ4eu5zWuvvRZbW9E69dRT42nos5/9bIiw//rXv0KEbc7jjz9eUVHxiU98ItqwPXr0CLRko4gBZDUPRgGkJYZViZUrV4YIG0PmsZ2fOnz48AMPPDBE5EceeSRE2D2VTCanTJkSIvKAAQNChN1ZdXX1gw8+GE9b28S5+SJLXXXVVfG8c3348OGf/OQnIw9bVlZ2//33Rx62BclkcsmSJZGHPeywwxSxtomtiAFkhF02AGmJYVUi0JJNDJkvX748dBNNTjzxxBBht2zZcuedd4aI3AZ///vfx40bF3nYAw444Nhjj505c2bkkXewaNGi2A4e3uajjz6KucUskkgkbrvttu985zvxNPflL385RNi33nqrsbExROQWvPrqq/vuu2+0MQsLC7t27RptzBxFDCD7WbIBSEsMc8I1a9aECBvoeavtBVps2tlRRx0VIuysWbPiX2VozosvvrhixYpDDjkk8sgn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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgu/x/CUIBTWQx/HwAAAAASUVORK5CYII=" alt="Mónaco"></div>
+    <div>
+      <div class="kicker">Método Mónaco</div>
+      <h1>Insumos del lavadero</h1>
+      <p class="bajada">Lo que hay que comprar para arrancar, con cantidades para un mes a pleno rendimiento. Chulea cada insumo cuando ya lo tengas en el local.</p>
+      <p class="aviso"><strong>Antes de comprar en volumen, prueba un litro.</strong> Úsalo en motos reales con tu dosificación y cuenta cuántas salen. Lo que importa es el costo por moto, no el precio del envase.</p>
+    </div>
+  </header>
+
+  <div class="estado">
+    <h2>Lista de compra</h2>
+    <span class="contador" id="contador">0 de 15 listos</span>
+    <div class="barra" aria-hidden="true"><span id="progreso"></span></div>
+    <button type="button" id="reiniciar">Desmarcar todo</button>
+  </div>
+  
+  <h3 class="grupo">Químicos</h3>
+  <p class="nota">Se guardan en el cuarto de insumos, rotulados y con su ficha de seguridad (SDS).</p>
+  <div class="tabla">
+    <table class="lista">
+      <thead><tr><th>✓</th><th>Insumo</th><th>Para arrancar</th><th>Cómo se usa</th><th>Dónde se compra</th></tr></thead>
+      <tbody>
+        <tr data-id="i1">
+          <td class="c-check"><input type="checkbox" id="i1" aria-label="Champú pH neutro"></td>
+          <td class="c-herr"><span class="num">01</span><label for="i1"><strong>Champú pH neutro</strong></label><span class="medida">Garrafa de 20 L</span></td>
+          <td class="c-cant">1 garrafa</td>
+          <td class="c-uso">Dilución 1:9 para la carrocería. En la champucera van 1,5 L premezclados. Una garrafa rinde 120 a 140 motos.</td>
+          <td class="c-marca">Proveedor local, por volumen</td>
+        </tr>
+        <tr data-id="i2">
+          <td class="c-check"><input type="checkbox" id="i2" aria-label="Desengrasante"></td>
+          <td class="c-herr"><span class="num">02</span><label for="i2"><strong>Desengrasante</strong></label><span class="medida">Garrafa de 20 L · biodegradable, seguro para O-ring</span></td>
+          <td class="c-cant">1 garrafa</td>
+          <td class="c-uso">70 % producto y 30 % agua, solo en partes bajas: rines, cadena, motor y mofle. Nunca sobre pintura.</td>
+          <td class="c-marca">Proveedor local, por volumen</td>
+        </tr>
+        <tr data-id="i3">
+          <td class="c-check"><input type="checkbox" id="i3" aria-label="Cera"></td>
+          <td class="c-herr"><span class="num">03</span><label for="i3"><strong>Cera</strong></label><span class="medida">Porcelanizadora 1 L o Simoniz Super Blue 1.000 ml</span></td>
+          <td class="c-cant">1 unidad</td>
+          <td class="c-uso">Va en lo brillante, sobre pieza seca. Nunca en discos ni mordazas.</td>
+          <td class="c-marca">Wash Riders · Simoniz en almacenes de cadena</td>
+        </tr>
+        <tr data-id="i4">
+          <td class="c-check"><input type="checkbox" id="i4" aria-label="Restaurador de partes negras"></td>
+          <td class="c-herr"><span class="num">04</span><label for="i4"><strong>Restaurador de partes negras</strong></label><span class="medida">Crema de 500 g o líquido de 1 L</span></td>
+          <td class="c-cant">1 unidad</td>
+          <td class="c-uso">Va en lo mate y sobre pieza totalmente seca. Reemplaza al llantín: en la llanta solo en el flanco, nunca en la banda.</td>
+          <td class="c-marca">Wash Riders</td>
+        </tr>
+        <tr data-id="i5">
+          <td class="c-check"><input type="checkbox" id="i5" aria-label="Restaurador de motores"></td>
+          <td class="c-herr"><span class="num">05</span><label for="i5"><strong>Restaurador de motores</strong></label><span class="medida">Galón de 4 a 5 L</span></td>
+          <td class="c-cant">1 galón</td>
+          <td class="c-uso">Se aplica con pistola pulverizadora para no desperdiciar.</td>
+          <td class="c-marca">Wash Riders</td>
+        </tr>
+        <tr data-id="i6">
+          <td class="c-check"><input type="checkbox" id="i6" aria-label="Lubricante de cadena"></td>
+          <td class="c-herr"><span class="num">06</span><label for="i6"><strong>Lubricante de cadena</strong></label><span class="medida">Transparente</span></td>
+          <td class="c-cant">1 básico y 1 premium</td>
+          <td class="c-uso">Último paso, con la cadena limpia y seca. Que no sea blanco ni de color.</td>
+          <td class="c-marca">Básico: Eduardoño Cadenoil · Premium: Motul C2 Chain Lube Road</td>
+        </tr>
+        <tr data-id="i7">
+          <td class="c-check"><input type="checkbox" id="i7" aria-label="Hipoclorito (cloro)"></td>
+          <td class="c-herr"><span class="num">07</span><label for="i7"><strong>Hipoclorito (cloro)</strong></label><span class="medida">Galón</span></td>
+          <td class="c-cant">1 galón</td>
+          <td class="c-uso">Para desinfectar baño y zonas comunes. Nunca toca una moto ni se mezcla con otros químicos.</td>
+          <td class="c-marca">Cualquier almacén</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3 class="grupo">Para cada lavador</h3>
+  <p class="nota">Cantidades por lavador. Se cuentan cada semana y se completan.</p>
+  <div class="tabla">
+    <table class="lista">
+      <thead><tr><th>✓</th><th>Insumo</th><th>Para arrancar</th><th>Cómo se usa</th><th>Dónde se compra</th></tr></thead>
+      <tbody>
+        <tr data-id="i8">
+          <td class="c-check"><input type="checkbox" id="i8" aria-label="Toallas de microfibra"></td>
+          <td class="c-herr"><span class="num">08</span><label for="i8"><strong>Toallas de microfibra</strong></label><span class="medida">Terry, en 6 colores</span></td>
+          <td class="c-cant">18 + 1 para la cadena</td>
+          <td class="c-uso">Un color por función: desengrase, champú, secado de abajo, secado de arriba, cera y restaurador. 3 de cada una. El de la cadena no vuelve al kit.</td>
+          <td class="c-marca">Mayorista en el centro · Wash Riders</td>
+        </tr>
+        <tr data-id="i9">
+          <td class="c-check"><input type="checkbox" id="i9" aria-label="Brochas"></td>
+          <td class="c-herr"><span class="num">09</span><label for="i9"><strong>Brochas</strong></label><span class="medida">1½", cerda suave</span></td>
+          <td class="c-cant">2 por lavador</td>
+          <td class="c-uso">Para la corona, detrás del plato, mandos y mordazas: donde el trapo no entra.</td>
+          <td class="c-marca">Mayorista en el centro</td>
+        </tr>
+        <tr data-id="i10">
+          <td class="c-check"><input type="checkbox" id="i10" aria-label="Cepillo de llantas y cadena"></td>
+          <td class="c-herr"><span class="num">10</span><label for="i10"><strong>Cepillo de llantas y cadena</strong></label><span class="medida">Cerda gruesa</span></td>
+          <td class="c-cant">1 por lavador</td>
+          <td class="c-uso">Solo en llantas, rines, cadena y mordazas. En la pintura raya.</td>
+          <td class="c-marca">Tienda de aseo o remate</td>
+        </tr>
+        <tr data-id="i11">
+          <td class="c-check"><input type="checkbox" id="i11" aria-label="Aplicadores de cera y restaurador"></td>
+          <td class="c-herr"><span class="num">11</span><label for="i11"><strong>Aplicadores de cera y restaurador</strong></label><span class="medida">Esponja</span></td>
+          <td class="c-cant">2 por lavador</td>
+          <td class="c-uso">Uno para cera y otro para restaurador; no se cruzan.</td>
+          <td class="c-marca">Wash Riders</td>
+        </tr>
+        <tr data-id="i12">
+          <td class="c-check"><input type="checkbox" id="i12" aria-label="Guantes de caucho"></td>
+          <td class="c-herr"><span class="num">12</span><label for="i12"><strong>Guantes de caucho</strong></label><span class="medida">Pares</span></td>
+          <td class="c-cant">5 pares al mes</td>
+          <td class="c-uso">Siempre puestos al limpiar la cadena y al manejar el desengrasante.</td>
+          <td class="c-marca">Mayorista en el centro</td>
+        </tr>
+        <tr data-id="i13">
+          <td class="c-check"><input type="checkbox" id="i13" aria-label="Balde de trabajo"></td>
+          <td class="c-herr"><span class="num">13</span><label for="i13"><strong>Balde de trabajo</strong></label><span class="medida">Uno por lavador</span></td>
+          <td class="c-cant">1</td>
+          <td class="c-uso">Lleva 500 ml de desengrasante, 500 ml de champú y unos 15 L de agua. Debe alcanzar para 3 a 5 motos.</td>
+          <td class="c-marca">Cualquier almacén</td>
+        </tr>
+        <tr data-id="i14">
+          <td class="c-check"><input type="checkbox" id="i14" aria-label="Aspersor y pistola pulverizadora"></td>
+          <td class="c-herr"><span class="num">14</span><label for="i14"><strong>Aspersor y pistola pulverizadora</strong></label><span class="medida">Atomizadores de 1 L</span></td>
+          <td class="c-cant">2 por lavador</td>
+          <td class="c-uso">El aspersor para el desengrasante en partes bajas y la pistola para el restaurador de motores.</td>
+          <td class="c-marca">Cualquier almacén</td>
+        </tr>
+        <tr data-id="i15">
+          <td class="c-check"><input type="checkbox" id="i15" aria-label="Bolsas y vinipel"></td>
+          <td class="c-herr"><span class="num">15</span><label for="i15"><strong>Bolsas y vinipel</strong></label><span class="medida">Rollo de vinipel y bolsas plásticas</span></td>
+          <td class="c-cant">1 rollo y 1 paquete</td>
+          <td class="c-uso">Para tapar tablero, pantallas, conectores y filtro de aire antes de lavar. El exhosto no se tapa.</td>
+          <td class="c-marca">Cualquier almacén</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section>
+    <h2>Dónde se compra</h2>
+    <ul class="reglas">
+      <li><strong>Especializados</strong> (ceras, restauradores, aplicadores): Wash Riders, 322 361 8557, para asegurar la calidad.</li>
+      <li><strong>Básicos</strong> (champú y desengrasante): proveedor local por garrafa de 20 L, que sale más barato.</li>
+      <li><strong>Microfibras, brochas y guantes:</strong> al por mayor en el centro.</li>
+      <li>Pide la <strong>ficha de seguridad (SDS)</strong> de cada químico el día de la compra: la piden en la visita de Salud.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Lo que nunca se compra</h2>
+    <ul class="nunca"><li><strong>Grafito y silicona:</strong> dañan los O-ring de la cadena, manchan los plásticos y contaminan los frenos.</li><li><strong>Llantín:</strong> cuartea la llanta y, si toca la banda, la moto sale patinando.</li><li><strong>Gasolina y ACPM:</strong> le quitan la grasa interna a la cadena y destruyen los O-ring.</li><li><strong>Champú que no sea pH neutro:</strong> solo entre 6,5 y 7,5.</li><li><strong>Pads de lana al pulir:</strong> calientan y queman la pintura.</li></ul>
+  </section>
+
+  <footer>Mónaco Moto Detailing · Documento de entrega · Versión 1.0 · 19-oct-2026</footer>
+</main>
+
+<script>
+(function () {
+  var CLAVE = "monaco-insumos-v1";
+  var filas = Array.prototype.slice.call(document.querySelectorAll(".lista tbody tr"));
+  var total = filas.length, guardado = {};
+  try { guardado = JSON.parse(localStorage.getItem(CLAVE) || "{}"); } catch (e) { guardado = {}; }
+  function pintar() {
+    var listos = 0;
+    filas.forEach(function (tr) { var cb = tr.querySelector("input"); tr.classList.toggle("listo", cb.checked); if (cb.checked) listos++; });
+    document.getElementById("contador").textContent = listos + " de " + total + " listos";
+    document.getElementById("progreso").style.width = (listos / total * 100) + "%";
+  }
+  function guardar() {
+    var estado = {};
+    filas.forEach(function (tr) { estado[tr.dataset.id] = tr.querySelector("input").checked; });
+    try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {}
+  }
+  filas.forEach(function (tr) {
+    var cb = tr.querySelector("input");
+    cb.checked = !!guardado[tr.dataset.id];
+    cb.addEventListener("change", function () { pintar(); guardar(); });
+    tr.addEventListener("click", function (ev) { if (ev.target.closest("input, label")) return; cb.checked = !cb.checked; pintar(); guardar(); });
+  });
+  document.getElementById("reiniciar").addEventListener("click", function () {
+    filas.forEach(function (tr) { tr.querySelector("input").checked = false; }); pintar(); guardar();
+  });
+  pintar();
+})();
+</script>
+
+</body>
+</html>
