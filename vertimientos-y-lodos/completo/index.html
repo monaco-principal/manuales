@@ -39,7 +39,7 @@
   ul{padding-left:20px;margin:6px 0 10px}
   li{margin:3px 0}
   table{border-collapse:collapse;width:100%;font-size:15px}
-  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
+  td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top;overflow-wrap:anywhere}
   td:first-child{font-weight:600;white-space:nowrap}
   a{color:var(--blue)}
   .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -63,7 +63,7 @@
   <p class="kicker">MANUAL PARA ASESORADOS · VERSIÓN EXPRESS</p>
   <h1>El agua y los lodos de tu lavadero, en 6 pasos</h1>
   <p class="lead">El agua con la que lavas motos sale con barro, grasa y jabón. Antes de irse al alcantarillado tiene que pasar por tu <strong>trampa</strong>. En Bogotá <strong>no necesitas permiso de vertimientos</strong>: necesitas el <strong>registro de vertimientos</strong>, que se hace en línea. Y el lodo que sacas de la trampa se lo entregas a una empresa que te da un <strong>certificado</strong>.</p>
-  <p class="meta">Verificado contra fuentes oficiales el 1 de octubre de 2026.</p>
+  <p class="meta">Verificado contra fuentes oficiales el 1 de octubre de 2026. <a href="#cali">Sección de Cali</a> verificada el 23 de octubre de 2026.</p>
 
   <div class="box green">
     <h3>Permiso no. Registro sí.</h3>
@@ -228,15 +228,142 @@
   <table>
     <tr><td>Soacha, Funza, Mosquera, Facatativá, Chía</td><td>La autoridad ambiental es la <strong>CAR</strong> (Corporación Autónoma Regional de Cundinamarca). Pregúntale a la CAR si te piden algún registro y a la empresa de alcantarillado (la que sale en tu recibo) si te piden caracterización.</td></tr>
     <tr><td>Medellín</td><td>La autoridad ambiental urbana es el <strong>Área Metropolitana del Valle de Aburrá</strong>. EPM tiene un servicio para clientes no residenciales cuya agua no cumple la Resolución 631; para entrar pide una caracterización hecha por un laboratorio acreditado por el IDEAM.</td></tr>
+    <tr><td>Cali</td><td>La caracterización es <strong>obligatoria cada año</strong> y se entrega en EMCALI antes del 31 de diciembre. Quien decide y sanciona es el <strong>DAGMA</strong> (zona urbana) o la <strong>CVC</strong> (zona rural). <a href="#cali">Mira la sección de Cali abajo ↓</a></td></tr>
     <tr><td>Otras ciudades</td><td>Busca la autoridad ambiental de tu municipio (la corporación autónoma regional o, en ciudades grandes, la autoridad urbana).</td></tr>
   </table>
   <p>Mensaje para preguntar (guarda el pantallazo de la respuesta):</p>
   <p class="say">"Hola. Voy a abrir un lavadero de motos en [dirección], [municipio]. El agua del lavado pasa por desarenador y trampa de grasas y sale al alcantarillado público. ¿Debo hacer algún registro de vertimientos ante ustedes? ¿Debo presentar caracterización, y cada cuánto? ¿Ante quién inscribo el lodo de la trampa si es residuo peligroso?"</p>
 
+  <h2 id="cali">Cali (EMCALI y DAGMA)</h2>
+  <p class="meta">Verificado el 23 de octubre de 2026.</p>
+  <p>En Cali la caracterización no es "si te la piden": <strong>es cada año</strong>. EMCALI lo recordó en su comunicado de octubre de 2026 (<em>"Recordatorio Presentación Caracterización de Vertimientos al Alcantarillado"</em>). La obligación es de los usuarios comerciales, industriales, oficiales y especiales (Decreto 1076 de 2015, art. 2.2.3.3.4.17, y Resolución 631 de 2015).</p>
+
+  <div class="papers">
+    <div class="paper"><div class="ic">📅</div><b>Fecha de corte</b><span>31 de diciembre de cada año. Sin prórrogas.</span></div>
+    <div class="paper"><div class="ic">🏢</div><b>Dónde se entrega</b><span>Solo en la Ventanilla Única de EMCALI: CAM, torre EMCALI, sótano 1. Con oficio remisorio.</span></div>
+    <div class="paper"><div class="ic">🧪</div><b>Qué es</b><span>Dos jornadas de muestreo con un laboratorio acreditado por el IDEAM, y un informe en papel.</span></div>
+  </div>
+
+  <div class="box amber">
+    <h3>¿Le aplica a un lavadero de motos? Sí.</h3>
+    <ul>
+      <li>El DAGMA tiene una lista de unas 76 actividades que no tienen que presentarla (<a href="https://www.emcali.com.co/documents/d/acueducto/resolucion-dagma-0278-de-agosto-del-2021">Resolución DAGMA 0278 de 2021</a>). <strong>Los lavaderos no están.</strong> Y la misma lista deja por fuera a los parqueaderos y concesionarios que lavan vehículos.</li>
+      <li>EMCALI <strong>solo recibe</strong> el informe. Quien decide si estás obligado y quien sanciona es el <strong>DAGMA</strong> en la zona urbana, o la <strong>CVC</strong> en la zona rural.</li>
+      <li>No presentarla, o pasarte de los límites, abre una <strong>investigación sancionatoria ambiental</strong> (Res. DAGMA 278 de 2021, art. 8; Ley 1333 de 2009, modificada por la Ley 2387 de 2024).</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h3>⚠️ Ojo con los "asesores de EMCALI"</h3>
+    <p>EMCALI advierte que hay personas que usan su nombre para "asesorarte". <strong>EMCALI no trabaja con terceros.</strong></p>
+  </div>
+
+  <h3>Los límites que tiene que cumplir tu agua</h3>
+  <p>El lavado de vehículos no tiene columna propia en la Resolución 631. Cae en el <strong>artículo 15</strong>, con el ajuste del <strong>artículo 16</strong> para el alcantarillado. Confírmalo con el DAGMA.</p>
+  <table>
+    <tr><td>pH</td><td>Entre 5 y 9</td></tr>
+    <tr><td>DQO</td><td>225 mg/L</td></tr>
+    <tr><td>DBO5</td><td>75 mg/L</td></tr>
+    <tr><td>Sólidos suspendidos (SST)</td><td>75 mg/L</td></tr>
+    <tr><td>Sólidos sedimentables</td><td>1,5 mL/L</td></tr>
+    <tr><td>Grasas y aceites</td><td>15 mg/L</td></tr>
+    <tr><td>Hidrocarburos totales</td><td>10 mg/L</td></tr>
+    <tr><td>Detergentes (SAAM)</td><td>Análisis y reporte (se mide, sin límite)</td></tr>
+    <tr><td>Metales y otros</td><td>Los que pide el art. 15. El laboratorio te da la lista completa.</td></tr>
+  </table>
+
+  <h3 style="margin-top:22px">Los pasos en Cali</h3>
+  <ol class="steps">
+    <li>
+      <h3>Contrata un laboratorio acreditado por el IDEAM</h3>
+      <p>Verifica que siga acreditado en el <a href="https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Listado-de-Laboratorios-Ambientales-Acreditados-ID/2waz-acaa">listado del IDEAM en datos.gov.co</a>. Tiene que estar acreditado el día del muestreo, para todos los parámetros. Abajo tienes los de Cali y Yumbo.</p>
+      <p class="done">✔ Listo cuando: tienes cotización firmada y fecha de muestreo.</p>
+    </li>
+    <li>
+      <h3>Avisa a EMCALI 8 días antes</h3>
+      <p>Por correo, <strong>mínimo 8 días antes</strong> del muestreo, a los cuatro correos de la guía: emmayor@emcali.com.co, dfpantoja@emcali.com.co, jsloaiza@emcali.com.co e ingpantojaemcali@gmail.com. Incluye:</p>
+      <ul>
+        <li>Razón social y dirección.</li>
+        <li>Número de contrato que sale en el recibo.</li>
+        <li>Artículo de la Resolución 631 al que te acoges (art. 15).</li>
+        <li>Jornada de trabajo, fecha y hora del muestreo.</li>
+        <li>Punto de muestreo con georreferencia.</li>
+        <li>Parámetros, laboratorio y datos de contacto.</li>
+      </ul>
+      <p class="done">✔ Listo cuando: guardaste el correo enviado.</p>
+    </li>
+    <li>
+      <h3>Ten la caja de inspección afuera del predio</h3>
+      <p>La muestra se toma en una caja de inspección <strong>por fuera del predio</strong>, después de la trampa de grasas. <span class="no">No</span> se acepta dentro de la trampa ni adentro del local. Si no la tienes, constrúyela antes. Diluir el agua para que salga más limpia está prohibido.</p>
+      <p class="done">✔ Listo cuando: la caja está afuera, de fácil acceso.</p>
+    </li>
+    <li>
+      <h3>Haz las dos jornadas de muestreo</h3>
+      <p>El laboratorio toma las muestras en <strong>dos jornadas</strong>. Si llueve o se va el agua, avísale a EMCALI el mismo día.</p>
+      <p class="done">✔ Listo cuando: tienes los certificados originales del laboratorio.</p>
+    </li>
+    <li>
+      <h3>Arma el informe</h3>
+      <p>En <strong>carpeta física</strong>, más <strong>2 CD o 2 USB</strong> con un solo PDF igual a lo impreso. Lleva:</p>
+      <ul>
+        <li>Formulario 1 y formulario 2 de la guía.</li>
+        <li>Descripción del proceso de lavado.</li>
+        <li>Fotos con fecha del punto de muestreo.</li>
+        <li>Certificados <strong>originales</strong> del laboratorio. No sirven fotos ni escaneos dentro del informe.</li>
+        <li>Recibos de EMCALI del periodo del muestreo.</li>
+        <li><strong>Certificado del gestor de lodos y grasas.</strong></li>
+        <li>RUT y Cámara de Comercio.</li>
+        <li>Oficio firmado por el representante legal.</li>
+      </ul>
+      <p class="done">✔ Listo cuando: tienes carpeta, 2 copias digitales y oficio firmado.</p>
+    </li>
+    <li>
+      <h3>Radícalo en la Ventanilla Única</h3>
+      <p>Llévalo al CAM, torre EMCALI, sótano 1, <strong>antes del 31 de diciembre</strong>. No lo reciben por correo. ¿A quién va el oficio? El comunicado y la guía dicen <em>"Ing. Germán Chávez Muñoz, Jefe Unidad de Recolección"</em>; la página web de EMCALI dice <em>"Ing. Gilberto Sepúlveda Cárdenas"</em>. Llama a EMCALI y confírmalo antes de radicar.</p>
+      <p class="done">✔ Listo cuando: tienes tu copia del oficio con el <strong>sticker de radicado</strong>. Es tu única constancia: EMCALI no da certificado.</p>
+    </li>
+  </ol>
+  <p class="meta">Guía de EMCALI: <a href="https://www.emcali.com.co/acueducto/caracterizacion-de-vertimientos-al-alcantarillado">página de caracterización</a> · <a href="https://www.emcali.com.co/documents/d/acueducto/guia-general-caracterizacion-vertimientos">guía en PDF</a>.</p>
+
+  <h3 style="margin-top:22px">Laboratorios en Cali y Yumbo</h3>
+  <p>Acreditados por el IDEAM y con muestreo en sitio, según el listado del IDEAM actualizado el 6 de agosto de 2026.</p>
+  <table>
+    <tr><td>DBO Ingeniería<br><span class="meta">Yumbo</span></td><td><a href="tel:3165214174">316 521 4174</a><br>Tiene hidrocarburos acreditados.</td></tr>
+    <tr><td>Ecoquímica<br><span class="meta">Cali</span></td><td><a href="tel:6025210373">602 521 0373</a><br>Tiene hidrocarburos acreditados. Su vigencia figuraba hasta el 3 de agosto de 2026: pídele la renovación.</td></tr>
+    <tr><td>Análisis Ambiental<br><span class="meta">Cali</span></td><td><a href="tel:6026687281">602 668 7281</a></td></tr>
+    <tr><td>Incoambiental<br><span class="meta">Cali</span></td><td><a href="tel:6023714222">602 371 4222</a></td></tr>
+    <tr><td>Water Technology Eng<br><span class="meta">Cali</span></td><td><a href="tel:6024027675">602 402 7675</a> / <a href="tel:3175108848">317 510 8848</a></td></tr>
+    <tr><td>Hidroambiental<br><span class="meta">Cali</span></td><td><a href="tel:6023834629">602 383 4629</a><br>No tiene grasas y aceites acreditadas.</td></tr>
+  </table>
+  <p>Solo <strong>DBO Ingeniería y Ecoquímica</strong> tienen hidrocarburos acreditados. Los demás los subcontratan. No hay precios públicos: <strong>cotiza con 3</strong> y pide que el precio incluya los parámetros del art. 15 + 16, las 2 jornadas y el informe.</p>
+
+  <h3 style="margin-top:22px">El lodo de la trampa en Cali</h3>
+  <p>Manéjalo como <strong>residuo peligroso</strong>. Entrégalo a un gestor con licencia de la CVC o del DAGMA para <strong>"lodos con hidrocarburos"</strong>. Guarda los certificados <strong>5 años</strong>: el último va en el informe. No pudimos verificar un listado de gestores en Cali. Pídeselo al DAGMA.</p>
+
+  <div class="box green">
+    <h3>Cómo pasar la prueba (por las buenas)</h3>
+    <ul>
+      <li>Desarenador y trampa del tamaño correcto.</li>
+      <li>Límpialos con frecuencia fija. La última limpieza, unos días antes del muestreo, no el mismo día.</li>
+      <li>Bitácora de cada limpieza.</li>
+      <li>Desengrasantes biodegradables y bien dosificados. El exceso sube la DQO y los SAAM.</li>
+      <li>Nada de aceite de motor al drenaje: bandejas y paños absorbentes.</li>
+      <li>El agua lluvia, separada.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:22px">Contacto del DAGMA</h3>
+  <table>
+    <tr><td>Correo</td><td>vertimientos.dagma@cali.gov.co</td></tr>
+    <tr><td>Teléfonos</td><td>660 6880 · 668 7247</td></tr>
+    <tr><td>Dirección</td><td>Av. 5AN # 21-08, piso 7 (Edificio Fuente Versalles)</td></tr>
+  </table>
+  <p class="meta">Datos de la guía de EMCALI de 2023: pueden haber cambiado. Desde el 22 de octubre de 2026 la página web del DAGMA muestra un aviso de suspensión temporal.</p>
+
   <p><a href="../../">← Ver todos los manuales</a></p>
 
   <footer>
-    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados, versión express. Este manual te explica el trámite; lo haces tú y lo que decide la autoridad ambiental es lo que vale. Las referencias de precios son de Mónaco, no tarifas oficiales. Si algo no coincide con lo que te dicen en la Secretaría de Ambiente, la CAR o tu empresa de acueducto, avísale a tu asesor Mónaco.<br>Verificado el 1 de octubre de 2026.
+    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados, versión express. Este manual te explica el trámite; lo haces tú y lo que decide la autoridad ambiental es lo que vale. Las referencias de precios son de Mónaco, no tarifas oficiales. Si algo no coincide con lo que te dicen en la Secretaría de Ambiente, la CAR o tu empresa de acueducto, avísale a tu asesor Mónaco.<br>Verificado el 1 de octubre de 2026. Sección de Cali verificada el 23 de octubre de 2026.
   </footer>
 </main>
 </body>
