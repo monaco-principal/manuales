@@ -19,6 +19,10 @@ body { background:var(--papel); color:var(--tinta); font-family:var(--helvetica)
 .hoja { max-width:1040px; margin:0 auto; padding-block:24px 56px;
   padding-left:max(16px, env(safe-area-inset-left, 0px));
   padding-right:max(16px, env(safe-area-inset-right, 0px)) }
+.hoja > .tres, .hoja > .resumen, .hoja > .video, .hoja > .aviso { max-width:720px }
+.tres p { font-size:16px }
+.hoja > .aviso { margin-top:24px }
+.hoja > .pie p { font-size:12px }
 .miga { display:inline-block; font-size:15px; font-weight:700; color:var(--azul); text-decoration:none; padding:8px 0; margin-bottom:12px }
 .miga:hover { text-decoration:underline }
 .marca img { height:48px; display:block }
@@ -69,16 +73,59 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
 <body data-tarea="proveedores">
 
 <main class="hoja">
-  <a class="miga" href="../">← Mapa</a>
-  <header>
-    <div class="marca"><img src="../assets/logo-monaco.png" alt="Mónaco"></div>
-    <div>
-      <div class="kicker">Método Mónaco</div>
-      <h1>Proveedores</h1>
-      <p class="bajada">Todos los proveedores en un solo lugar, ordenados por lo que les compras. Toca <strong>WhatsApp</strong> para escribirles o <strong>Llamar</strong> para llamarlos.</p>
-      <p class="aviso">Al escribirles, di que vienes de parte de <strong>Mónaco Moto Detailing</strong>. El mensaje de WhatsApp ya lo dice por ti. Los precios están sujetos a disponibilidad y a cambios del proveedor.</p>
+  <a class="migas" href="../">← Mapa</a>
+  <p class="ubicacion" id="ruta-ubicacion">Paso 3 · Montar y comprar</p>
+  <h1>Proveedores</h1>
+  <p class="bajada">Todos los proveedores en un solo lugar, ordenados por lo que les compras. Toca <strong>WhatsApp</strong> para escribirles o <strong>Llamar</strong> para llamarlos.</p>
+  <p class="meta">Datos tomados de las páginas de Maquinaria, Insumos y Herramientas · 6 de noviembre de 2026.</p>
+
+  <!-- VIDEO: pega aquí el <iframe> de YouTube y borra la línea <p class="video-vacio">. -->
+  <div class="video">
+    <p class="video-vacio">Video tutorial · muy pronto</p>
+  </div>
+
+  <h2>En 3 pasos</h2>
+  <ol class="tres">
+    <li>
+      <h3>Busca lo que necesitas</h3>
+      <p>Escribe el producto o el proveedor en el buscador de abajo, por ejemplo "hidrolavadora", "champú" o "tanque".</p>
+      <p class="listo-cuando">✔ Listo cuando: ves quién te lo vende.</p>
+    </li>
+    <li>
+      <h3>Escríbele por WhatsApp</h3>
+      <p>Toca <strong>WhatsApp</strong>. El mensaje ya dice que vienes de parte de <strong>Mónaco Moto Detailing</strong>. Si prefieres, toca <strong>Llamar</strong>.</p>
+      <p class="listo-cuando">✔ Listo cuando: el proveedor te respondió.</p>
+    </li>
+    <li>
+      <h3>Compara con tu lista de compra</h3>
+      <p>Toca <strong>Ver qué comprarle</strong> para ver la cantidad y el precio de referencia. Los precios están sujetos a disponibilidad y a cambios del proveedor.</p>
+      <p class="listo-cuando">✔ Listo cuando: compraste todo lo de las listas.</p>
+    </li>
+  </ol>
+
+  <div class="resumen" aria-label="Resumen">
+    <div class="ancho">
+      <h3>Qué encuentras</h3>
+      <ul>
+        <li>Máquinas: Maquitec de Colombia y Car Detailing Pro.</li>
+        <li>Agua y tanques: Maquicentro y Surti Plastic.</li>
+        <li>Químicos e insumos: Wash Riders y Giovanny Detailing.</li>
+        <li>Herramientas: ferretería de tu zona.</li>
+      </ul>
     </div>
-  </header>
+    <div>
+      <h3>Cuánto cuesta</h3>
+      <b>En cada lista</b>
+      <p><a href="../maquinaria/">Maquinaria</a> · <a href="../herramientas-kit-arrastre/">Kit de arrastre</a> · <a href="../insumos-lavadero/">Insumos</a></p>
+    </div>
+    <div>
+      <h3>Dónde</h3>
+      <b>WhatsApp o llamada</b>
+      <p>Maquitec tiene punto físico en Bogotá. Giovanny Detailing solo atiende en Bogotá.</p>
+    </div>
+  </div>
+
+  <p class="aviso">Al escribirles, di que vienes de parte de <strong>Mónaco Moto Detailing</strong>. El mensaje de WhatsApp ya lo dice por ti. Los precios están sujetos a disponibilidad y a cambios del proveedor.</p>
 
   <div class="buscar">
     <label for="buscar">Buscar proveedor o producto</label>
@@ -197,7 +244,11 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
 
   <div id="ruta-hice"></div>
   <div id="ruta-siguiente"></div>
-  <footer>Mónaco Moto Detailing · Directorio de proveedores · 6-nov-2026 · Datos tomados de las páginas de Maquinaria, Insumos y Herramientas.</footer>
+  <footer class="pie">
+    <!-- TODO: el número real de WhatsApp se pone en assets/ruta.js (variable WHATSAPP). -->
+    <a class="boton" href="#whatsapp" data-whatsapp>¿Te trabaste? Escríbenos por WhatsApp</a>
+    <p>Mónaco Moto Detailing · Directorio de proveedores · 6-nov-2026 · Datos tomados de las páginas de Maquinaria, Insumos y Herramientas.</p>
+  </footer>
 </main>
 
 <script>

@@ -2,280 +2,120 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Guía para pautar en Meta — Manual Mónaco</title>
+<title>Pauta en Meta · Mapa Mónaco</title>
+<link rel="stylesheet" href="../assets/mapa.css">
+<script src="../assets/ruta.js" defer></script>
 <style>
-  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
-  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
-  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
-  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
-  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
-  h2{font-size:22px;margin:30px 0 12px}
-  p{margin:0 0 12px}
-  .lead{font-size:19px;color:var(--ink2)}
-  .meta{font-size:13px;color:var(--muted)}
-  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
-  .box.amber{border-left-color:var(--amber)}
-  .box.green{border-left-color:var(--green)}
-  .box h3{margin:0 0 6px;font-size:17px}
-  .box p:last-child{margin:0}
-  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
-  ol.steps>li{position:relative;padding:0 0 22px 58px;counter-increment:s}
-  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--onblue);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
-  ol.steps>li::after{content:"";position:absolute;left:19px;top:44px;bottom:4px;width:2px;background:var(--line)}
-  ol.steps>li:last-child::after{display:none}
-  ol.steps h3{margin:6px 0 4px;font-size:19px}
-  .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
-  .no{color:var(--red);font-weight:700}
-  ul{padding-left:20px;margin:6px 0 10px}
-  li{margin:3px 0}
-  a{color:var(--blue)}
-  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-  @media (max-width:560px){h1{font-size:28px}}
-  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}ol.steps>li{padding-bottom:10px}.box{padding:10px 14px;margin:10px 0}}
-  .vid{position:relative;z-index:1;background:var(--bg);margin:14px 0 4px;padding-bottom:4px;break-inside:avoid}
-  .vid figcaption{font-size:14px;color:var(--muted);margin-top:6px}
-  @media (max-width:560px){ol.steps>li{padding-left:50px}.vid{margin-left:-50px}}
-  @media print{.vid figcaption a::after{content:" (" attr(href) ")";word-break:break-all}}
-  .check{list-style:none;padding:0;margin:6px 0 14px}
-  .check li{margin:0;padding:7px 0;border-top:1px solid var(--line)}
-  .check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
-  .check input{width:20px;height:20px;margin:3px 0 0;flex:none;accent-color:var(--green)}
-  .check small{display:block;font-size:13px;color:var(--muted)}
-  @media print{.vid iframe{display:none}}
+  /* Solo de esta página (reproductor lite, capítulos, alternativas) */
+  :root { --rojo-yt:#c62828; --pantalla:#111 }
+  .check small { display:block; font-size:13px; color:var(--gris) }
+  .ruta-rec { font-weight:700; font-size:15px; margin:8px 0 0 }
+  .sub { font-size:18px; margin:20px 0 6px }
+  .detalle-cuerpo > ul { padding-left:20px; margin:6px 0 10px }
+  .detalle-cuerpo li { margin:3px 0 }
+  .caja ul { padding-left:20px; margin:6px 0 0 }
+  .caja li { margin:3px 0 }
+  .caja.verde { border-left-color:var(--ok) }
+  .caja.ambar { border-left-color:#b7791f }
   /* Reproductor lite */
-  .lite{position:relative;display:block;width:100%;aspect-ratio:16/9;background:var(--screen);border-radius:12px;overflow:hidden;border:1px solid var(--line);cursor:pointer;padding:0}
-  .lite img{display:block;width:100%;height:100%;object-fit:cover}
-  .lite .play{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;border-radius:12px;background:var(--red);color:var(--onblue);font-size:22px;display:flex;align-items:center;justify-content:center;border:0;pointer-events:none}
-  .lite iframe{display:block;width:100%;height:100%;border:0}
-  .yt{font-size:13px;white-space:nowrap}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
-  .chip{font:inherit;font-size:14px;line-height:1.3;text-align:left;color:var(--blue);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;max-width:100%}
-  .chip:hover,.chip:focus-visible{border-color:var(--blue);outline:none}
-  .chip.on{background:var(--blue);color:var(--onblue);border-color:var(--blue)}
-  h4{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 2px}
-  .alt{border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;background:var(--soft);break-inside:avoid}
-  .alt p{font-size:15px;margin:0 0 8px}
-  .alt .lite{max-width:360px}
-  .alt .vid{margin:0}
-  @media (max-width:560px){.alt .vid{margin-left:0}}
-  .toc{padding-left:22px;margin:6px 0 10px}
-  .route{font-weight:700}
-  @media print{.chips,.lite{display:none}}
+  .lite { position:relative; display:block; width:100%; aspect-ratio:16/9; background:var(--pantalla); border-radius:var(--radio);
+    overflow:hidden; border:1px solid var(--linea); cursor:pointer; padding:0 }
+  .lite img { display:block; width:100%; height:100%; object-fit:cover }
+  .lite .play { position:absolute; left:50%; top:50%; width:68px; height:48px; margin:-24px 0 0 -34px; border-radius:12px;
+    background:var(--rojo-yt); color:#fff; font-size:22px; display:flex; align-items:center; justify-content:center; pointer-events:none }
+  .lite iframe { display:block; width:100%; height:100%; border:0; border-radius:0 }
+  .yt { font-size:13px; white-space:nowrap }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 10px }
+  .chip { font:inherit; font-size:14px; line-height:1.3; text-align:left; color:var(--azul); background:var(--azul-suave);
+    border:1px solid var(--linea); border-radius:999px; padding:5px 11px; cursor:pointer; max-width:100% }
+  .chip:hover, .chip:focus-visible { border-color:var(--azul); outline:none }
+  .chip.on { background:var(--azul); color:#fff; border-color:var(--azul) }
+  h4 { font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gris); margin:12px 0 2px }
+  .alt { border:1px solid var(--linea); border-radius:var(--radio); padding:12px; margin:10px 0; background:var(--papel-suave) }
+  .alt p { font-size:15px; margin:0 0 8px }
+  .alt .lite { max-width:360px }
+  .alt .vid, ol.steps > li .alt .vid { margin:0 }
+  ol.steps > li { scroll-margin-top:72px }
+  @media print {
+    .chips, .lite { display:none }
+    .vid figcaption a::after { content:" (" attr(href) ")"; word-break:break-all }
+  }
 </style>
 </head>
-<body>
-<main>
-  <p class="brand">MÓNACO · MOTO DETAILING</p>
-  <p class="kicker">GUÍA PARA ASESORADOS · MARKETING</p>
-  <h1>Guía para pautar en Meta (Facebook e Instagram)</h1>
-  <p class="lead">¿Nunca has pautado? Esta guía te lleva de cero a tu <strong>primer anuncio publicado</strong>, con mensajes que llegan a tu <strong>WhatsApp</strong>. Cada paso tiene su video. Míralo aquí mismo y salta a la parte que necesitas.</p>
+<body data-tarea="pauta-meta">
+<main class="hoja">
+  <a class="migas" href="../">← Mapa</a>
+  <p class="ubicacion" id="ruta-ubicacion">Paso 4 · Conseguir clientes</p>
+  <h1>Pauta en Meta (Facebook e Instagram)</h1>
+  <p class="bajada">¿Nunca has pautado? Esta guía te lleva de cero a tu <strong>primer anuncio publicado</strong>, con mensajes que llegan a tu <strong>WhatsApp</strong>. Cada paso tiene su video.</p>
   <p class="meta">Verificado el 23 de octubre de 2026.</p>
-  <p class="route">Ruta recomendada: Paso 1 → 3 → 4</p>
 
-  <h2>Índice</h2>
-  <ol class="toc">
-    <li><a href="#antes">Antes de empezar</a></li>
-    <li><a href="#video">¿Qué video pautar?</a></li>
-    <li><a href="#paso1">Paso 1. Portafolio comercial y conexiones</a></li>
-    <li><a href="#paso2">Paso 2. Método de pago</a></li>
-    <li><a href="#paso3">Paso 3. Tu primera campaña a WhatsApp</a></li>
-    <li><a href="#paso4">Paso 4. Pauta un video que ya te funcionó</a></li>
-    <li><a href="#paso5">Paso 5. Lee los resultados</a></li>
-    <li><a href="#config">Configuración sugerida</a></li>
-    <li><a href="#errores">Errores comunes</a></li>
-    <li><a href="#mas">Para profundizar</a></li>
-  </ol>
-
-  <h2 id="antes">Antes de empezar</h2>
-  <p>Marca lo que ya hiciste. Queda guardado en este celular.</p>
-  <ul class="check">
-    <li><label><input type="checkbox"><span>Página de Facebook del negocio.</span></label></li>
-    <li><label><input type="checkbox"><span>Instagram en cuenta profesional.</span></label></li>
-    <li><label><input type="checkbox"><span>WhatsApp Business con el número del local.</span></label></li>
-    <li><label><input type="checkbox"><span>Tarjeta débito o crédito habilitada para compras por internet o internacionales.<small>Todos los videos de esta guía usan tarjeta. Ninguno muestra PSE ni Nequi. Pregúntale a tu banco si tu tarjeta sirve para compras en internet.</small></span></label></li>
-    <li><label><input type="checkbox"><span>Un video o Reel que ya haya funcionado sin pauta.<small>Muchas vistas, comentarios o mensajes.</small></span></label></li>
-    <li><label><input type="checkbox"><span>La dirección exacta del local.</span></label></li>
-  </ul>
-
-  <h2 id="video">¿Qué video pautar?</h2>
-  <div class="box green">
-    <h3>No grabes un anuncio: pauta tu video más viral</h3>
-    <p>El video que más vistas, comentarios y mensajes te trajo sin pagar ya demostró que engancha. Ese es el primero que pautas. Revisa los de <strong>Instagram</strong> y también los de <strong>TikTok</strong>.</p>
+  <!-- VIDEO: pega aquí el <iframe> de YouTube y borra la línea <p class="video-vacio">. -->
+  <div class="video">
+    <p class="video-vacio">Video tutorial · muy pronto</p>
   </div>
 
-  <h3>Cómo encontrarlo</h3>
-  <ul>
-    <li><strong>Instagram:</strong> Panel profesional → Estadísticas → Contenido. Ordena por alcance o reproducciones.</li>
-    <li><strong>TikTok:</strong> Herramientas para creadores → Estadísticas → Contenido.</li>
-    <li>Escoge 2 o 3. Mira las vistas, pero sobre todo los comentarios, los guardados y los mensajes que te llegaron por ese video.</li>
-  </ul>
-
-  <h3>Cómo subirlo a la pauta</h3>
-  <ul>
-    <li><strong>Si está en Instagram:</strong> páutalo como <strong>publicación existente</strong> (<a href="#paso4">Paso 4</a>). Así conserva sus likes y comentarios, y eso le da confianza a quien lo ve.</li>
-    <li><strong>Si está en TikTok:</strong> súbelo primero a Instagram como Reel con el <strong>archivo original</strong>, sin la marca de agua de TikTok, y luego páutalo como publicación existente.</li>
-    <li>Pauta los 2 o 3 videos en la misma campaña, como anuncios distintos, y deja que Meta muestre más el que mejor funcione. El curso del Paso 3 explica cómo duplicar anuncios a partir de la hora 1:07.</li>
-  </ul>
-
-  <h3>Cómo debe ser el video que pautas</h3>
-  <ul>
-    <li><strong>Vertical</strong> (9:16), de 15 a 45 segundos.</li>
-    <li><strong>Gancho en los primeros 3 segundos:</strong> la moto sucia, el antes y después, la espuma, el brillo final.</li>
-    <li><strong>Se entiende sin sonido:</strong> la mayoría lo ve en silencio. Ponle texto en pantalla o subtítulos.</li>
-    <li><strong>Tu local y tu trabajo reales,</strong> no videos sacados de internet.</li>
-    <li><strong>Dice qué ofreces, dónde estás y cuánto cuesta</strong>, en el video o en el texto del anuncio.</li>
-    <li><strong>Termina invitando a escribir:</strong> "Escríbenos por WhatsApp y separa tu turno".</li>
-    <li>No pongas texto pegado al borde de abajo: ahí van los botones del anuncio y lo tapan.</li>
-    <li>Si usa una <strong>canción comercial</strong>, Meta puede silenciarlo o rechazarlo como anuncio. Mejor usa audio original o música libre.</li>
-  </ul>
-  <p class="say">¿No sabes cuál escoger? Escríbele a tu asesor Mónaco: revisamos juntos tus videos más virales de Instagram y TikTok y escogemos los que vale la pena pautar.</p>
-
-  <h2>Los 5 pasos</h2>
-  <ol class="steps">
-    <li id="paso1">
-      <h3>Crea tu Portafolio comercial y conecta Facebook, Instagram y WhatsApp</h3>
-      <p>El Portafolio comercial (antes Business Manager) es la "oficina" de tu negocio en Meta. Ahí conectas tus tres cuentas.</p>
-      <figure class="vid">
-        <div class="lite" data-id="CcdGYXw-k6w" data-title="Cómo crear el Facebook Business Manager 2026 · Portafolio comercial"></div>
-        <figcaption>▶ Susan Gorbina · Cómo crear el Facebook Business Manager 2026 (Portafolio comercial) · 18 min · <a class="yt" href="https://www.youtube.com/watch?v=CcdGYXw-k6w&amp;t=0s">Ver en YouTube</a></figcaption>
-      </figure>
-      <div class="alt">
-        <p><strong>Alternativa más reciente</strong> (dic-2025): Soy Mathias con H, "Cómo configurar el Portafolio Comercial y Business Manager en Meta" · 18 min · <a class="yt" href="https://www.youtube.com/watch?v=W0Vmuxrqls0&amp;t=0s">Ver en YouTube</a></p>
-        <figure class="vid"><div class="lite" data-id="W0Vmuxrqls0" data-title="Cómo configurar el Portafolio Comercial y Business Manager en Meta"></div></figure>
-      </div>
-      <div class="alt">
-        <p><strong>¿WhatsApp no aparece?</strong> Nico Lezcano, "Cómo Conectar WhatsApp a Facebook Ads - 2026" · 8 min · <a class="yt" href="https://www.youtube.com/watch?v=gjvI_O4MEyU&amp;t=0s">Ver en YouTube</a></p>
-        <figure class="vid"><div class="lite" data-id="gjvI_O4MEyU" data-title="Cómo Conectar WhatsApp a Facebook Ads - 2026"></div></figure>
-      </div>
+  <h2>En 3 pasos</h2>
+  <ol class="tres">
+    <li>
+      <h3>Ten listo esto y conecta tus cuentas</h3>
+      <p>Marca lo que ya hiciste. Queda guardado en este celular.</p>
       <ul class="check">
-        <li><label><input type="checkbox"><span>Creé mi Portafolio comercial.</span></label></li>
-        <li><label><input type="checkbox"><span>Conecté Facebook, Instagram y WhatsApp.</span></label></li>
+        <li><label><input type="checkbox"><span>Página de Facebook del negocio.</span></label></li>
+        <li><label><input type="checkbox"><span>Instagram en cuenta profesional.</span></label></li>
+        <li><label><input type="checkbox"><span>WhatsApp Business con el número del local.</span></label></li>
+        <li><label><input type="checkbox"><span>Tarjeta débito o crédito habilitada para compras por internet o internacionales.<small>Todos los videos de esta guía usan tarjeta. Ninguno muestra PSE ni Nequi. Pregúntale a tu banco si tu tarjeta sirve para compras en internet.</small></span></label></li>
+        <li><label><input type="checkbox"><span>Un video o Reel que ya haya funcionado sin pauta.<small>Muchas vistas, comentarios o mensajes.</small></span></label></li>
+        <li><label><input type="checkbox"><span>La dirección exacta del local.</span></label></li>
       </ul>
-      <p class="done">✔ Listo cuando: ves tus tres cuentas dentro del Portafolio.</p>
+      <p>Luego crea tu <strong>Portafolio comercial</strong> (antes Business Manager), conecta ahí Facebook, Instagram y WhatsApp, y agrega la tarjeta. Videos en los <a href="#paso1">pasos 1 y 2 de la guía completa</a>.</p>
+      <p class="listo-cuando">✔ Listo cuando: ves tus tres cuentas dentro del Portafolio y la tarjeta aparece como método de pago principal.</p>
     </li>
-
-    <li id="paso2">
-      <h3>Agrega el método de pago</h3>
-      <p>Registra tu tarjeta. Si la rechaza, llama a tu banco y pide habilitarla para compras por internet o internacionales.</p>
-      <figure class="vid">
-        <div class="lite" data-id="6hUQWC09LF4" data-title="Cómo configurar método de pago en Facebook 2026"></div>
-        <figcaption>▶ Susan Gorbina · Cómo configurar método de pago en Facebook 2026 · 10 min · <a class="yt" href="https://www.youtube.com/watch?v=6hUQWC09LF4&amp;t=0s">Ver en YouTube</a></figcaption>
-      </figure>
-      <h4>También en el curso del paso 3</h4>
-      <div class="chips">
-        <button class="chip" data-id="wZLUWtmYvK8" data-t="323">5:23 · Facturación, divisas y métodos de pago</button>
-        <button class="chip" data-id="wZLUWtmYvK8" data-t="465">7:45 · Límite de gasto</button>
-      </div>
-      <ul class="check">
-        <li><label><input type="checkbox"><span>Agregué mi tarjeta y quedó activa.</span></label></li>
-      </ul>
-      <p class="done">✔ Listo cuando: la tarjeta aparece como método de pago principal.</p>
+    <li>
+      <h3>Crea tu campaña a WhatsApp con tu video más viral</h3>
+      <p>No grabes un anuncio: <strong>pauta el video que más vistas, comentarios y mensajes te trajo sin pagar</strong> (de Instagram o de TikTok). Crea la campaña con objetivo <strong>Interacción</strong>, mensajes a WhatsApp y un radio alrededor del local, y pon el video con <strong>"Usar publicación existente"</strong> desde el Administrador de anuncios. <span class="alerta">No uses el botón "Promocionar"</span> de Instagram.</p>
+      <p>Cómo escoger el video y los videos de cada parte: <a href="#video">qué video pautar</a>, <a href="#paso3">paso 3</a> y <a href="#paso4">paso 4</a> de la guía completa.</p>
+      <p class="listo-cuando">✔ Listo cuando: el anuncio con tu video dice "Activo" o "En revisión".</p>
     </li>
-
-    <li id="paso3">
-      <h3>Tu primera campaña a WhatsApp (el paso principal)</h3>
-      <p>Este es el video más importante. Es largo, pero no tienes que verlo de una. Usa los capítulos y haz cada parte mientras la ves.</p>
-      <figure class="vid">
-        <div class="lite" data-id="wZLUWtmYvK8" data-title="Curso Facebook Ads 2026 desde cero y gratis"></div>
-        <figcaption>▶ Elevación Digital · Curso FACEBOOK ADS 2026 Desde Cero y GRATIS · 1 h 38 min · jun-2026 · <a class="yt" href="https://www.youtube.com/watch?v=wZLUWtmYvK8&amp;t=0s">Ver en YouTube</a></figcaption>
-      </figure>
-      <h4>Preparar</h4>
-      <div class="chips">
-        <button class="chip" data-t="0">0:00 · Introducción</button>
-        <button class="chip" data-t="55">0:55 · Qué es Meta Ads</button>
-        <button class="chip" data-t="178">2:58 · Entrar al Administrador de anuncios</button>
-        <button class="chip" data-t="323">5:23 · Facturación y métodos de pago</button>
-        <button class="chip" data-t="465">7:45 · Límite de gasto</button>
-        <button class="chip" data-t="558">9:18 · Cuánto cuesta anunciarse (CPM)</button>
-        <button class="chip" data-t="660">11:00 · Estructura: campaña, conjunto y anuncio</button>
-      </div>
-      <h4>Campaña</h4>
-      <div class="chips">
-        <button class="chip" data-t="720">12:00 · Objetivos y por qué empezar con Interacción</button>
-        <button class="chip" data-t="948">15:48 · Crear la campaña desde cero</button>
-        <button class="chip" data-t="1125">18:45 · Tamaños de imágenes y videos</button>
-        <button class="chip" data-t="1159">19:19 · Configurar la campaña de Interacción</button>
-      </div>
-      <h4>Conjunto de anuncios</h4>
-      <div class="chips">
-        <button class="chip" data-t="1276">21:16 · Conjunto de anuncios y destino a mensajes</button>
-        <button class="chip" data-t="1530">25:30 · Presupuesto diario y fase de aprendizaje</button>
-        <button class="chip" data-t="1965">32:45 · Público y ubicación geográfica (radio alrededor del local)</button>
-        <button class="chip" data-t="2507">41:47 · Ubicaciones y Advantage+</button>
-      </div>
-      <h4>Anuncio</h4>
-      <div class="chips">
-        <button class="chip" data-t="2728">45:28 · Crear el primer anuncio</button>
-        <button class="chip" data-t="3019">50:19 · Textos con ChatGPT</button>
-        <button class="chip" data-t="3318">55:18 · Mejoras automáticas Advantage</button>
-        <button class="chip" data-t="3723">1:02:03 · Revisión final y vista previa</button>
-        <button class="chip" data-t="4000">1:06:40 · Pruebas A/B</button>
-        <button class="chip" data-t="4042">1:07:22 · Duplicar anuncios</button>
-        <button class="chip" data-t="4325">1:12:05 · Tercer anuncio</button>
-        <button class="chip" data-t="4505">1:15:05 · Anuncio en video</button>
-      </div>
-      <h4>Resultados</h4>
-      <div class="chips">
-        <button class="chip" data-t="4921">1:22:01 · Métricas clave</button>
-        <button class="chip" data-t="4976">1:22:56 · IA para analizar resultados</button>
-        <button class="chip" data-t="5286">1:28:06 · Resumen</button>
-        <button class="chip" data-t="5435">1:30:35 · De Interacción a Ventas</button>
-        <button class="chip" data-t="5580">1:33:00 · Pixel y API de conversiones</button>
-        <button class="chip" data-t="5752">1:35:52 · Errores comunes</button>
-      </div>
-      <ul class="check">
-        <li><label><input type="checkbox"><span>Creé la campaña con objetivo Interacción.</span></label></li>
-        <li><label><input type="checkbox"><span>En el conjunto elegí mensajes a WhatsApp, presupuesto y radio alrededor del local.</span></label></li>
-        <li><label><input type="checkbox"><span>Armé el anuncio y lo publiqué.</span></label></li>
-      </ul>
-      <p class="done">✔ Listo cuando: tu anuncio dice "Activo" o "En revisión".</p>
-    </li>
-
-    <li id="paso4">
-      <h3>Pauta un video que ya te funcionó</h3>
-      <p>Usa <strong>"Usar publicación existente"</strong> desde el <strong>Administrador de anuncios</strong>. <span class="no">No uses el botón "Promocionar"</span> de Instagram: te da menos control.</p>
-      <div class="box amber">
-        <h3>Ojo: Meta cambió la pantalla</h3>
-        <p>Meta cambió la elección manual de ubicaciones por <strong>"reglas de valor"</strong>. Este video ya muestra la interfaz nueva. Si en otro video ves algo distinto, guíate por este.</p>
-      </div>
-      <figure class="vid">
-        <div class="lite" data-id="lwAN1sokmUM" data-title="Cómo hacer campañas de Meta Ads para WhatsApp 2026"></div>
-        <figcaption>▶ Susan Gorbina · Cómo hacer campañas de Meta Ads para WhatsApp 2026 · 26 min · 22-oct-2026 · <a class="yt" href="https://www.youtube.com/watch?v=lwAN1sokmUM&amp;t=0s">Ver en YouTube</a></figcaption>
-      </figure>
-      <div class="alt">
-        <p><strong>Alternativa:</strong> Camilo Barbosa TV, "Promocionar Reels en Meta ads: El Método Correcto Que Pocos Conocen" · 31 min · <a class="yt" href="https://www.youtube.com/watch?v=mNDebhm4YHo&amp;t=0s">Ver en YouTube</a></p>
-        <figure class="vid"><div class="lite" data-id="mNDebhm4YHo" data-title="Promocionar Reels en Meta ads: el método correcto"></div></figure>
-      </div>
-      <ul class="check">
-        <li><label><input type="checkbox"><span>Pauté mi mejor video como publicación existente.</span></label></li>
-      </ul>
-      <p class="done">✔ Listo cuando: el anuncio con tu video está activo.</p>
-    </li>
-
-    <li id="paso5">
-      <h3>Lee los resultados</h3>
-      <p>Espera al menos 7 días. Luego mira cuántas conversaciones te llegaron y cuánto te costó cada una.</p>
-      <figure class="vid">
-        <div class="lite" data-id="cAjYEO6Tpp0" data-title="Cómo hacer campañas de Meta Ads en 2026 · Tutorial completo"></div>
-        <figcaption>▶ Felipe Vergara · Cómo hacer CAMPAÑAS de Meta Ads en 2026 · Tutorial completo para principiantes · <a class="yt" href="https://www.youtube.com/watch?v=cAjYEO6Tpp0&amp;t=0s">Ver en YouTube</a></figcaption>
-      </figure>
-      <div class="chips">
-        <button class="chip" data-t="4764">1:19:24 · Qué números analizar</button>
-        <button class="chip" data-t="4823">1:20:23 · Personalizar columnas</button>
-        <button class="chip" data-id="wZLUWtmYvK8" data-t="4921">1:22:01 · Métricas clave (curso del paso 3)</button>
-      </div>
-      <ul class="check">
-        <li><label><input type="checkbox"><span>Revisé mis resultados después de 7 días.</span></label></li>
-      </ul>
-      <p class="done">✔ Listo cuando: sabes cuántas conversaciones te trajo la pauta.</p>
+    <li>
+      <h3>Espera 7 días y lee los resultados</h3>
+      <p>No toques la campaña: cada cambio reinicia el aprendizaje. Después de 7 días mira cuántas conversaciones te llegaron y cuánto te costó cada una (<a href="#paso5">paso 5</a>).</p>
+      <p class="listo-cuando">✔ Listo cuando: sabes cuántas conversaciones te trajo la pauta.</p>
     </li>
   </ol>
 
-  <div class="box green" id="config">
+  <div class="resumen" aria-label="Resumen">
+    <div class="ancho">
+      <h3>Qué necesitas</h3>
+      <ul>
+        <li>Página de Facebook del negocio.</li>
+        <li>Instagram en cuenta profesional.</li>
+        <li>WhatsApp Business con el número del local.</li>
+        <li>Tarjeta débito o crédito habilitada para compras por internet o internacionales.</li>
+        <li>Un video o Reel que ya haya funcionado sin pauta.</li>
+        <li>La dirección exacta del local.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cuánto cuesta</h3>
+      <b>Tu presupuesto diario</b>
+      <p>Uno que puedas sostener al menos 7 días sin tocar la campaña.</p>
+    </div>
+    <div>
+      <h3>Cuánto tarda</h3>
+      <b>7 días mínimo</b>
+      <p>Antes de juzgar la campaña. El curso principal dura 1 h 38 min; no tienes que verlo de una.</p>
+    </div>
+    <div class="ancho">
+      <h3>Dónde</h3>
+      <b>En línea</b>
+      <p>Portafolio comercial y Administrador de anuncios de Meta. Desde el celular o el computador.</p>
+    </div>
+  </div>
+
+  <div class="caja verde" id="config">
     <h3>Configuración sugerida para un lavadero de motos (punto de partida Mónaco)</h3>
     <ul>
       <li><strong>Objetivo:</strong> Interacción → mensajes a WhatsApp.</li>
@@ -286,7 +126,7 @@
     </ul>
   </div>
 
-  <div class="box amber" id="errores">
+  <div class="caja ambar" id="errores">
     <h3>Errores comunes</h3>
     <ul>
       <li>Editar la campaña cada día. Cada cambio reinicia el aprendizaje.</li>
@@ -297,23 +137,207 @@
     </ul>
   </div>
 
-  <h2 id="mas">Para profundizar</h2>
-  <div class="alt">
-    <p><strong>Felipe Vergara</strong>, "Cómo hacer CAMPAÑAS de Meta Ads en 2026 ► Tutorial COMPLETO para Principiantes" · 1 h 44 min · <a class="yt" href="https://www.youtube.com/watch?v=cAjYEO6Tpp0&amp;t=0s">Ver en YouTube</a></p>
-    <figure class="vid"><div class="lite" data-id="cAjYEO6Tpp0" data-title="Felipe Vergara · Meta Ads 2026 completo"></div></figure>
-  </div>
-  <div class="alt">
-    <p><strong>Aprendamos Marketing</strong>, "Cómo hacer Publicidad en Facebook 2026 (META ADS para negocios)" · 32 min · <a class="yt" href="https://www.youtube.com/watch?v=Dnh1Ki45zKw&amp;t=0s">Ver en YouTube</a></p>
-    <figure class="vid"><div class="lite" data-id="Dnh1Ki45zKw" data-title="Cómo hacer publicidad en Facebook 2026"></div></figure>
-  </div>
-  <div class="alt">
-    <p><strong>Santiago García</strong>, "Curso Completo de Meta Ads 2026 | De Cero a Experto" · 17 clases cortas · <a href="https://www.youtube.com/playlist?list=PL5C1edi-BaZBzii2RkGylihC-iDFP2CY8">Abrir la lista en YouTube</a></p>
-  </div>
+  <details class="detalle" id="guia">
+    <summary>Ver guía completa · 5 pasos con video</summary>
+    <div class="detalle-cuerpo">
+      <p class="ruta-rec">Ruta recomendada: Paso 1 → 3 → 4</p>
 
-  <p><a href="../">← Ver todos los manuales</a></p>
+      <h3 class="sub" id="video">¿Qué video pautar?</h3>
+      <div class="caja verde">
+        <h3>No grabes un anuncio: pauta tu video más viral</h3>
+        <p>El video que más vistas, comentarios y mensajes te trajo sin pagar ya demostró que engancha. Ese es el primero que pautas. Revisa los de <strong>Instagram</strong> y también los de <strong>TikTok</strong>.</p>
+      </div>
 
-  <footer>
-    <strong>Mónaco · Moto Detailing</strong> · Guía para asesorados, versión 1.1 · 23-oct-2026
+      <h3 class="sub">Cómo encontrarlo</h3>
+      <ul>
+        <li><strong>Instagram:</strong> Panel profesional → Estadísticas → Contenido. Ordena por alcance o reproducciones.</li>
+        <li><strong>TikTok:</strong> Herramientas para creadores → Estadísticas → Contenido.</li>
+        <li>Escoge 2 o 3. Mira las vistas, pero sobre todo los comentarios, los guardados y los mensajes que te llegaron por ese video.</li>
+      </ul>
+
+      <h3 class="sub">Cómo subirlo a la pauta</h3>
+      <ul>
+        <li><strong>Si está en Instagram:</strong> páutalo como <strong>publicación existente</strong> (<a href="#paso4">Paso 4</a>). Así conserva sus likes y comentarios, y eso le da confianza a quien lo ve.</li>
+        <li><strong>Si está en TikTok:</strong> súbelo primero a Instagram como Reel con el <strong>archivo original</strong>, sin la marca de agua de TikTok, y luego páutalo como publicación existente.</li>
+        <li>Pauta los 2 o 3 videos en la misma campaña, como anuncios distintos, y deja que Meta muestre más el que mejor funcione. El curso del Paso 3 explica cómo duplicar anuncios a partir de la hora 1:07.</li>
+      </ul>
+
+      <h3 class="sub">Cómo debe ser el video que pautas</h3>
+      <ul>
+        <li><strong>Vertical</strong> (9:16), de 15 a 45 segundos.</li>
+        <li><strong>Gancho en los primeros 3 segundos:</strong> la moto sucia, el antes y después, la espuma, el brillo final.</li>
+        <li><strong>Se entiende sin sonido:</strong> la mayoría lo ve en silencio. Ponle texto en pantalla o subtítulos.</li>
+        <li><strong>Tu local y tu trabajo reales,</strong> no videos sacados de internet.</li>
+        <li><strong>Dice qué ofreces, dónde estás y cuánto cuesta</strong>, en el video o en el texto del anuncio.</li>
+        <li><strong>Termina invitando a escribir:</strong> "Escríbenos por WhatsApp y separa tu turno".</li>
+        <li>No pongas texto pegado al borde de abajo: ahí van los botones del anuncio y lo tapan.</li>
+        <li>Si usa una <strong>canción comercial</strong>, Meta puede silenciarlo o rechazarlo como anuncio. Mejor usa audio original o música libre.</li>
+      </ul>
+      <p class="say">¿No sabes cuál escoger? Escríbele a tu asesor Mónaco: revisamos juntos tus videos más virales de Instagram y TikTok y escogemos los que vale la pena pautar.</p>
+
+      <h3 class="sub">Los 5 pasos</h3>
+      <ol class="steps">
+        <li id="paso1">
+          <h3>Crea tu Portafolio comercial y conecta Facebook, Instagram y WhatsApp</h3>
+          <p>El Portafolio comercial (antes Business Manager) es la "oficina" de tu negocio en Meta. Ahí conectas tus tres cuentas.</p>
+          <figure class="vid">
+            <div class="lite" data-id="CcdGYXw-k6w" data-title="Cómo crear el Facebook Business Manager 2026 · Portafolio comercial"></div>
+            <figcaption>▶ Susan Gorbina · Cómo crear el Facebook Business Manager 2026 (Portafolio comercial) · 18 min · <a class="yt" href="https://www.youtube.com/watch?v=CcdGYXw-k6w&amp;t=0s">Ver en YouTube</a></figcaption>
+          </figure>
+          <div class="alt">
+            <p><strong>Alternativa más reciente</strong> (dic-2025): Soy Mathias con H, "Cómo configurar el Portafolio Comercial y Business Manager en Meta" · 18 min · <a class="yt" href="https://www.youtube.com/watch?v=W0Vmuxrqls0&amp;t=0s">Ver en YouTube</a></p>
+            <figure class="vid"><div class="lite" data-id="W0Vmuxrqls0" data-title="Cómo configurar el Portafolio Comercial y Business Manager en Meta"></div></figure>
+          </div>
+          <div class="alt">
+            <p><strong>¿WhatsApp no aparece?</strong> Nico Lezcano, "Cómo Conectar WhatsApp a Facebook Ads - 2026" · 8 min · <a class="yt" href="https://www.youtube.com/watch?v=gjvI_O4MEyU&amp;t=0s">Ver en YouTube</a></p>
+            <figure class="vid"><div class="lite" data-id="gjvI_O4MEyU" data-title="Cómo Conectar WhatsApp a Facebook Ads - 2026"></div></figure>
+          </div>
+          <ul class="check">
+            <li><label><input type="checkbox"><span>Creé mi Portafolio comercial.</span></label></li>
+            <li><label><input type="checkbox"><span>Conecté Facebook, Instagram y WhatsApp.</span></label></li>
+          </ul>
+          <p class="done">✔ Listo cuando: ves tus tres cuentas dentro del Portafolio.</p>
+        </li>
+
+        <li id="paso2">
+          <h3>Agrega el método de pago</h3>
+          <p>Registra tu tarjeta. Si la rechaza, llama a tu banco y pide habilitarla para compras por internet o internacionales.</p>
+          <figure class="vid">
+            <div class="lite" data-id="6hUQWC09LF4" data-title="Cómo configurar método de pago en Facebook 2026"></div>
+            <figcaption>▶ Susan Gorbina · Cómo configurar método de pago en Facebook 2026 · 10 min · <a class="yt" href="https://www.youtube.com/watch?v=6hUQWC09LF4&amp;t=0s">Ver en YouTube</a></figcaption>
+          </figure>
+          <h4>También en el curso del paso 3</h4>
+          <div class="chips">
+            <button class="chip" data-id="wZLUWtmYvK8" data-t="323">5:23 · Facturación, divisas y métodos de pago</button>
+            <button class="chip" data-id="wZLUWtmYvK8" data-t="465">7:45 · Límite de gasto</button>
+          </div>
+          <ul class="check">
+            <li><label><input type="checkbox"><span>Agregué mi tarjeta y quedó activa.</span></label></li>
+          </ul>
+          <p class="done">✔ Listo cuando: la tarjeta aparece como método de pago principal.</p>
+        </li>
+
+        <li id="paso3">
+          <h3>Tu primera campaña a WhatsApp (el paso principal)</h3>
+          <p>Este es el video más importante. Es largo, pero no tienes que verlo de una. Usa los capítulos y haz cada parte mientras la ves.</p>
+          <figure class="vid">
+            <div class="lite" data-id="wZLUWtmYvK8" data-title="Curso Facebook Ads 2026 desde cero y gratis"></div>
+            <figcaption>▶ Elevación Digital · Curso FACEBOOK ADS 2026 Desde Cero y GRATIS · 1 h 38 min · jun-2026 · <a class="yt" href="https://www.youtube.com/watch?v=wZLUWtmYvK8&amp;t=0s">Ver en YouTube</a></figcaption>
+          </figure>
+          <h4>Preparar</h4>
+          <div class="chips">
+            <button class="chip" data-t="0">0:00 · Introducción</button>
+            <button class="chip" data-t="55">0:55 · Qué es Meta Ads</button>
+            <button class="chip" data-t="178">2:58 · Entrar al Administrador de anuncios</button>
+            <button class="chip" data-t="323">5:23 · Facturación y métodos de pago</button>
+            <button class="chip" data-t="465">7:45 · Límite de gasto</button>
+            <button class="chip" data-t="558">9:18 · Cuánto cuesta anunciarse (CPM)</button>
+            <button class="chip" data-t="660">11:00 · Estructura: campaña, conjunto y anuncio</button>
+          </div>
+          <h4>Campaña</h4>
+          <div class="chips">
+            <button class="chip" data-t="720">12:00 · Objetivos y por qué empezar con Interacción</button>
+            <button class="chip" data-t="948">15:48 · Crear la campaña desde cero</button>
+            <button class="chip" data-t="1125">18:45 · Tamaños de imágenes y videos</button>
+            <button class="chip" data-t="1159">19:19 · Configurar la campaña de Interacción</button>
+          </div>
+          <h4>Conjunto de anuncios</h4>
+          <div class="chips">
+            <button class="chip" data-t="1276">21:16 · Conjunto de anuncios y destino a mensajes</button>
+            <button class="chip" data-t="1530">25:30 · Presupuesto diario y fase de aprendizaje</button>
+            <button class="chip" data-t="1965">32:45 · Público y ubicación geográfica (radio alrededor del local)</button>
+            <button class="chip" data-t="2507">41:47 · Ubicaciones y Advantage+</button>
+          </div>
+          <h4>Anuncio</h4>
+          <div class="chips">
+            <button class="chip" data-t="2728">45:28 · Crear el primer anuncio</button>
+            <button class="chip" data-t="3019">50:19 · Textos con ChatGPT</button>
+            <button class="chip" data-t="3318">55:18 · Mejoras automáticas Advantage</button>
+            <button class="chip" data-t="3723">1:02:03 · Revisión final y vista previa</button>
+            <button class="chip" data-t="4000">1:06:40 · Pruebas A/B</button>
+            <button class="chip" data-t="4042">1:07:22 · Duplicar anuncios</button>
+            <button class="chip" data-t="4325">1:12:05 · Tercer anuncio</button>
+            <button class="chip" data-t="4505">1:15:05 · Anuncio en video</button>
+          </div>
+          <h4>Resultados</h4>
+          <div class="chips">
+            <button class="chip" data-t="4921">1:22:01 · Métricas clave</button>
+            <button class="chip" data-t="4976">1:22:56 · IA para analizar resultados</button>
+            <button class="chip" data-t="5286">1:28:06 · Resumen</button>
+            <button class="chip" data-t="5435">1:30:35 · De Interacción a Ventas</button>
+            <button class="chip" data-t="5580">1:33:00 · Pixel y API de conversiones</button>
+            <button class="chip" data-t="5752">1:35:52 · Errores comunes</button>
+          </div>
+          <ul class="check">
+            <li><label><input type="checkbox"><span>Creé la campaña con objetivo Interacción.</span></label></li>
+            <li><label><input type="checkbox"><span>En el conjunto elegí mensajes a WhatsApp, presupuesto y radio alrededor del local.</span></label></li>
+            <li><label><input type="checkbox"><span>Armé el anuncio y lo publiqué.</span></label></li>
+          </ul>
+          <p class="done">✔ Listo cuando: tu anuncio dice "Activo" o "En revisión".</p>
+        </li>
+
+        <li id="paso4">
+          <h3>Pauta un video que ya te funcionó</h3>
+          <p>Usa <strong>"Usar publicación existente"</strong> desde el <strong>Administrador de anuncios</strong>. <span class="no">No uses el botón "Promocionar"</span> de Instagram: te da menos control.</p>
+          <div class="caja ambar">
+            <h3>Ojo: Meta cambió la pantalla</h3>
+            <p>Meta cambió la elección manual de ubicaciones por <strong>"reglas de valor"</strong>. Este video ya muestra la interfaz nueva. Si en otro video ves algo distinto, guíate por este.</p>
+          </div>
+          <figure class="vid">
+            <div class="lite" data-id="lwAN1sokmUM" data-title="Cómo hacer campañas de Meta Ads para WhatsApp 2026"></div>
+            <figcaption>▶ Susan Gorbina · Cómo hacer campañas de Meta Ads para WhatsApp 2026 · 26 min · 22-oct-2026 · <a class="yt" href="https://www.youtube.com/watch?v=lwAN1sokmUM&amp;t=0s">Ver en YouTube</a></figcaption>
+          </figure>
+          <div class="alt">
+            <p><strong>Alternativa:</strong> Camilo Barbosa TV, "Promocionar Reels en Meta ads: El Método Correcto Que Pocos Conocen" · 31 min · <a class="yt" href="https://www.youtube.com/watch?v=mNDebhm4YHo&amp;t=0s">Ver en YouTube</a></p>
+            <figure class="vid"><div class="lite" data-id="mNDebhm4YHo" data-title="Promocionar Reels en Meta ads: el método correcto"></div></figure>
+          </div>
+          <ul class="check">
+            <li><label><input type="checkbox"><span>Pauté mi mejor video como publicación existente.</span></label></li>
+          </ul>
+          <p class="done">✔ Listo cuando: el anuncio con tu video está activo.</p>
+        </li>
+
+        <li id="paso5">
+          <h3>Lee los resultados</h3>
+          <p>Espera al menos 7 días. Luego mira cuántas conversaciones te llegaron y cuánto te costó cada una.</p>
+          <figure class="vid">
+            <div class="lite" data-id="cAjYEO6Tpp0" data-title="Cómo hacer campañas de Meta Ads en 2026 · Tutorial completo"></div>
+            <figcaption>▶ Felipe Vergara · Cómo hacer CAMPAÑAS de Meta Ads en 2026 · Tutorial completo para principiantes · <a class="yt" href="https://www.youtube.com/watch?v=cAjYEO6Tpp0&amp;t=0s">Ver en YouTube</a></figcaption>
+          </figure>
+          <div class="chips">
+            <button class="chip" data-t="4764">1:19:24 · Qué números analizar</button>
+            <button class="chip" data-t="4823">1:20:23 · Personalizar columnas</button>
+            <button class="chip" data-id="wZLUWtmYvK8" data-t="4921">1:22:01 · Métricas clave (curso del paso 3)</button>
+          </div>
+          <ul class="check">
+            <li><label><input type="checkbox"><span>Revisé mis resultados después de 7 días.</span></label></li>
+          </ul>
+          <p class="done">✔ Listo cuando: sabes cuántas conversaciones te trajo la pauta.</p>
+        </li>
+      </ol>
+
+      <h3 class="sub" id="mas">Para profundizar</h3>
+      <div class="alt">
+        <p><strong>Felipe Vergara</strong>, "Cómo hacer CAMPAÑAS de Meta Ads en 2026 ► Tutorial COMPLETO para Principiantes" · 1 h 44 min · <a class="yt" href="https://www.youtube.com/watch?v=cAjYEO6Tpp0&amp;t=0s">Ver en YouTube</a></p>
+        <figure class="vid"><div class="lite" data-id="cAjYEO6Tpp0" data-title="Felipe Vergara · Meta Ads 2026 completo"></div></figure>
+      </div>
+      <div class="alt">
+        <p><strong>Aprendamos Marketing</strong>, "Cómo hacer Publicidad en Facebook 2026 (META ADS para negocios)" · 32 min · <a class="yt" href="https://www.youtube.com/watch?v=Dnh1Ki45zKw&amp;t=0s">Ver en YouTube</a></p>
+        <figure class="vid"><div class="lite" data-id="Dnh1Ki45zKw" data-title="Cómo hacer publicidad en Facebook 2026"></div></figure>
+      </div>
+      <div class="alt">
+        <p><strong>Santiago García</strong>, "Curso Completo de Meta Ads 2026 | De Cero a Experto" · 17 clases cortas · <a href="https://www.youtube.com/playlist?list=PL5C1edi-BaZBzii2RkGylihC-iDFP2CY8">Abrir la lista en YouTube</a></p>
+      </div>
+    </div>
+  </details>
+
+  <div id="ruta-hice"></div>
+  <div id="ruta-siguiente"></div>
+
+  <footer class="pie">
+    <!-- TODO: poner el número real de WhatsApp en assets/ruta.js (variable WHATSAPP). No inventar número. -->
+    <a class="boton" href="#whatsapp" data-whatsapp>¿Te trabaste? Escríbenos por WhatsApp</a>
+    <p>Mónaco · Moto Detailing · Guía para asesorados, versión 1.1 · 23-oct-2026</p>
   </footer>
 </main>
 <script>
@@ -355,14 +379,26 @@
       var r=el.getBoundingClientRect();if(r.top<0||r.bottom>window.innerHeight)el.scrollIntoView({behavior:'smooth',block:'center'});
     });
   });
+  // Casillas: se guardan en este celular (mismo orden y clave que la versión anterior)
   var K='monaco-pauta-meta-v1',st={};
   try{st=JSON.parse(localStorage.getItem(K)||'{}')||{};}catch(e){st={};}
   document.querySelectorAll('.check input[type=checkbox]').forEach(function(cb,i){
     if(st[i])cb.checked=true;
     cb.addEventListener('change',function(){st[i]=cb.checked;try{localStorage.setItem(K,JSON.stringify(st));}catch(e){}});
   });
+  // Enlaces a una parte de la guía completa: abre el plegable antes de saltar
+  function abrir(hash){
+    if(!hash||hash.length<2)return;
+    var t=document.getElementById(decodeURIComponent(hash.slice(1)));if(!t)return;
+    var d=t.closest('details');if(d&&!d.open)d.open=true;
+    t.scrollIntoView({block:'start'});
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var h=a.getAttribute('href');if(h==='#whatsapp')return;
+    a.addEventListener('click',function(e){var t=document.getElementById(h.slice(1));if(!t)return;e.preventDefault();history.replaceState(null,'',h);abrir(h);});
+  });
+  if(location.hash)abrir(location.hash);
 })();
 </script>
-<script src="../assets/ruta.js" defer></script>
 </body>
 </html>

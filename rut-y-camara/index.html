@@ -2,32 +2,24 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RUT y Cámara de Comercio — Manual Mónaco</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RUT y Cámara de Comercio · Mapa Mónaco</title>
 <meta name="robots" content="noindex">
+<link rel="stylesheet" href="../assets/mapa.css">
+<script src="../assets/ruta.js" defer></script>
 <style>
-  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--amber:#b7791f;--green:#1f8a3b;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
-  main{max-width:720px;margin:0 auto;padding-block:32px 48px;padding-inline:16px}
-  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
-  .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px}
-  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
-  h2{font-size:22px;margin:30px 0 12px}
-  p{margin:0 0 12px}
-  .lead{font-size:19px;color:var(--ink2)}
-  .meta{font-size:13px;color:var(--muted)}
-  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin:16px 0;break-inside:avoid}
+  :root{--ink:#1d1d1f;--ink2:#333;--muted:#5f6368;--line:#e3e3e6;--blue:#1f6fb2;--amber:#b7791f;--green:#1d7a46;--red:#c62828;--bg:#fff;--soft:#f6f8fb;--onblue:#fff;--screen:#111;color-scheme:light}
+  .box{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:var(--radio);padding:16px 18px;margin:16px 0;break-inside:avoid}
   .box.amber{border-left-color:var(--amber)}
   .box.green{border-left-color:var(--green)}
   .box h3{margin:0 0 6px;font-size:17px}
   .box p:last-child{margin:0}
   .papers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
-  .paper{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
+  .paper{border:1px solid var(--line);border-radius:var(--radio);padding:14px;text-align:center;background:var(--soft);break-inside:avoid}
   .paper .ic{font-size:30px;line-height:1}
   .paper b{display:block;margin-top:6px;font-size:15px}
   .paper span{font-size:13px;color:var(--muted)}
-  .say{background:var(--soft);border-radius:10px;padding:10px 12px;font-style:italic;margin:8px 0}
+  .say{background:var(--soft);border-radius:var(--radio);padding:10px 12px;font-style:italic;margin:8px 0}
   .done{color:var(--green);font-weight:600;font-size:15px;margin-top:6px}
   .no{color:var(--red);font-weight:700}
   ul{padding-left:20px;margin:6px 0 10px}
@@ -35,13 +27,11 @@
   table{border-collapse:collapse;width:100%;font-size:15px}
   td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
   td:first-child{font-weight:600;white-space:nowrap}
-  a{color:var(--blue)}
   .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .cal div{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;break-inside:avoid}
+  .cal div{border:1px solid var(--line);border-radius:var(--radio);padding:12px;font-size:15px;break-inside:avoid}
   .cal b{display:block;color:var(--blue)}
-  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-  @media (max-width:560px){h1{font-size:28px}.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
-  @media print{@page{size:letter;margin:14mm}body{font-size:13px}main{padding:0;max-width:none}h1{font-size:26px}h2{font-size:17px;margin:16px 0 8px}.lead{font-size:14px}.box{padding:10px 14px;margin:10px 0}}
+  @media (max-width:560px){.papers,.cal{grid-template-columns:1fr}td:first-child{white-space:normal}}
+  @media print{.box{padding:10px 14px;margin:10px 0}}
 
   /* ---------- Asistente: componentes nuevos ---------- */
   .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -52,7 +42,7 @@
   :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
   h1:focus,h2:focus{outline:none}
 
-  .topbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+  .topbar{position:sticky;top:61px;z-index:5;background:var(--bg);padding:10px 0 8px;margin-bottom:8px;border-bottom:1px solid var(--line)}
   .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted)}
   .bar{height:8px;background:var(--soft);border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
   .bar span{display:block;height:100%;width:0;background:var(--blue);border-radius:99px;transition:width .25s ease}
@@ -61,10 +51,16 @@
   .screen{padding:8px 0 24px;border-bottom:1px dashed var(--line)}
   html.js .screen{border-bottom:0}
   html.js .screen:not(.on){display:none}
-  .screen h2{margin-top:14px}
+  .screen h2{margin-top:14px;padding-top:0;border-top:0}
+  .screen .lead{color:var(--tinta-2);font-size:18px}
+  .asistente{margin-top:8px;border:1.5px solid var(--tinta);border-radius:var(--radio);padding:0 14px 6px}
+  .asistente .topbar{margin:0 -14px 8px;padding:10px 14px 8px}
+  .check label{min-height:44px}
+  #asistente{scroll-margin-top:72px}
+  @media print{.asistente{border:0;padding:0}}
   .stepno{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--blue);margin:14px 0 0}
 
-  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:14px 18px;border-radius:14px;border:2px solid var(--blue);background:var(--blue);color:var(--onblue);font:inherit;font-size:18px;font-weight:700;text-decoration:none;cursor:pointer;text-align:center;margin:10px 0}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:14px 18px;border-radius:var(--radio);border:2px solid var(--blue);background:var(--blue);color:var(--onblue);font:inherit;font-size:18px;font-weight:700;text-decoration:none;cursor:pointer;text-align:center;margin:10px 0}
   .btn:hover{filter:brightness(.95)}
   .btn.ghost{background:var(--bg);color:var(--blue)}
   .btn.ok{background:var(--green);border-color:var(--green)}
@@ -72,50 +68,48 @@
   .nav{display:flex;flex-direction:column;gap:0;margin-top:18px}
   .nav .back{background:none;border:0;color:var(--muted);font:inherit;font-size:15px;text-decoration:underline;cursor:pointer;min-height:44px;align-self:center}
 
-  .q{border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0;background:var(--bg)}
+  .q{border:1px solid var(--line);border-radius:var(--radio);padding:16px;margin:14px 0;background:var(--bg)}
   .q > label, .q legend{display:block;font-weight:700;font-size:17px;margin-bottom:8px;padding:0}
   fieldset.q{min-width:0}
-  select,input[type=text]{width:100%;min-height:52px;font:inherit;font-size:18px;padding:10px 12px;border:1.5px solid #b9bcc4;border-radius:12px;background:var(--bg);color:var(--ink)}
+  select,input[type=text]{width:100%;min-height:52px;font:inherit;font-size:18px;padding:10px 12px;border:1.5px solid #b9bcc4;border-radius:var(--radio);background:var(--bg);color:var(--ink)}
   .money{position:relative}
   .money span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--muted)}
   .money input{padding-left:30px}
   .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .choices label{display:flex;align-items:center;justify-content:center;min-height:52px;border:1.5px solid #b9bcc4;border-radius:12px;font-weight:600;cursor:pointer;position:relative}
+  .choices label{display:flex;align-items:center;justify-content:center;min-height:52px;border:1.5px solid #b9bcc4;border-radius:var(--radio);font-weight:600;cursor:pointer;position:relative}
   .choices input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
   .choices label:has(input:checked){background:var(--blue);border-color:var(--blue);color:var(--onblue)}
   .choices label:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:3px}
-  .result{background:var(--soft);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:15px}
+  .result{background:var(--soft);border-radius:var(--radio);padding:12px 14px;margin-top:12px;font-size:15px}
   .result p:last-child{margin:0}
   .big{font-size:26px;font-weight:800;letter-spacing:-.01em}
   .cost td{font-size:15px}
   .cost td:last-child{text-align:right;white-space:nowrap}
   .cost tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
 
-  .check{list-style:none;padding:0;margin:8px 0}
-  .check li{margin:0;border-top:1px solid var(--line)}
   .check label{display:flex;gap:12px;align-items:flex-start;padding:12px 2px;cursor:pointer;min-height:48px}
   .check input{width:24px;height:24px;flex:0 0 24px;margin-top:1px;accent-color:var(--green)}
   .check small{display:block;color:var(--muted);font-size:14px}
   .check input:checked + span{color:var(--muted)}
 
-  .code{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:var(--soft)}
+  .code{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:var(--radio);padding:10px 12px;margin:8px 0;background:var(--soft)}
   .code b{font-size:22px;font-family:"SF Mono",Menlo,Consolas,monospace;letter-spacing:.04em}
   .code .lbl{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--muted);display:block}
   .code .txt{flex:1 1 220px;font-size:15px}
-  .copy{min-height:44px;padding:8px 14px;border-radius:10px;border:1.5px solid var(--blue);background:var(--bg);color:var(--blue);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+  .copy{min-height:44px;padding:8px 14px;border-radius:var(--radio);border:1.5px solid var(--blue);background:var(--bg);color:var(--blue);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
   .copy.copied{background:var(--green);border-color:var(--green);color:var(--onblue)}
 
-  details.stuck{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;margin:14px 0;background:var(--bg)}
+  details.stuck{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--radio);margin:14px 0;background:var(--bg)}
   details.stuck summary{cursor:pointer;padding:14px 16px;font-weight:700;min-height:48px;list-style-position:inside}
   details.stuck > div{padding:0 16px 12px}
   details.stuck h4{margin:10px 0 4px;font-size:16px}
 
-  .shot{margin:16px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--soft)}
+  .shot{margin:16px 0;border:1px solid var(--line);border-radius:var(--radio);overflow:hidden;background:var(--soft)}
   .shot img{display:block;width:100%;height:auto}
-  .shot-ph{display:flex;align-items:center;justify-content:center;min-height:140px;padding:16px;font-size:14px;color:var(--muted);text-align:center;border:2px dashed var(--line);border-radius:12px;margin:6px}
+  .shot-ph{display:flex;align-items:center;justify-content:center;min-height:140px;padding:16px;font-size:14px;color:var(--muted);text-align:center;border:2px dashed var(--line);border-radius:var(--radio);margin:6px}
 
-  .platnote{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:12px 14px;margin:12px 0;font-size:15px;background:var(--bg)}
-  .camara{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:12px;font-size:15px}
+  .platnote{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--radio);padding:12px 14px;margin:12px 0;font-size:15px;background:var(--bg)}
+  .camara{border:1px solid var(--line);border-radius:var(--radio);padding:12px 14px;margin-top:12px;font-size:15px}
   .camara b.n{display:block;font-size:17px}
   .warn{color:var(--amber);font-weight:700}
   .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:var(--soft);border:1px solid var(--line);color:var(--muted);vertical-align:middle}
@@ -125,15 +119,84 @@
   @media (max-width:560px){.choices{grid-template-columns:1fr 1fr 1fr}.btn{font-size:17px}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
   @media print{.topbar,.nav,.jsonly,.copy{display:none!important}html.js .screen:not(.on){display:block}.shot-ph{min-height:40px}details.stuck > div{display:block}}
-  .shot-img{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg);margin:14px 0}
+  .shot-img{border:1px solid var(--line);border-radius:var(--radio);overflow:hidden;background:var(--bg);margin:14px 0}
   .shot-img img{display:block;width:100%;max-width:100%;height:auto}
   .shot-img figcaption{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line)}
 </style>
 </head>
-<body>
-<main id="app">
-  <p class="brand">MÓNACO · MOTO DETAILING</p>
+<body data-tarea="rut-y-camara">
+<main id="app" class="hoja">
+  <a class="migas" href="../">← Mapa</a>
+  <p class="ubicacion" id="ruta-ubicacion">Paso 2 · Sacar los papeles</p>
+  <h1>RUT y Cámara de Comercio</h1>
+  <p class="bajada">En un solo trámite por internet, en la <strong>Ventanilla Única Empresarial (VUE)</strong>, te registras como <strong>persona natural con un establecimiento de comercio</strong>, que es tu lavadero. Salen 3 cosas: tu <strong>RUT</strong> (con tu NIT), tu <strong>matrícula</strong> como comerciante y la <strong>matrícula del local</strong>.</p>
+  <p class="meta">Verificado contra fuentes oficiales (VUE, tablas de tarifas 2026 de las cámaras, DANE) el 1 de octubre de 2026.</p>
 
+  <!-- VIDEO: pega aquí el <iframe> de YouTube y borra la línea <p class="video-vacio">. -->
+  <div class="video">
+    <p class="video-vacio">Video tutorial · muy pronto</p>
+  </div>
+
+  <h2>En 3 pasos</h2>
+  <ol class="tres">
+    <li>
+      <h3>Ten listos tus códigos y el nombre</h3>
+      <p><strong>El código CIIU principal depende de tu uso de suelo:</strong> si en tu local permiten el <strong>4520</strong>, ese va de principal; si no, el <strong>4542</strong>. Secundaria: <strong>4541</strong>. Revisa también que el nombre de tu lavadero esté libre en la <a href="https://www.vue.gov.co/tramites-y-consultas/consulta-de-nombre-de-empresa-homonimia" target="_blank" rel="noopener">VUE ↗</a>.</p>
+      <p class="listo-cuando">✔ Listo cuando: tienes tu código principal y el nombre revisado.</p>
+    </li>
+    <li>
+      <h3>Crea tu cuenta desde la VUE</h3>
+      <p>Abre la VUE con el link de tu municipio (el asistente de abajo te lo da), toca <strong>Crear mi empresa → Persona Natural</strong>. Cuando te pida clave, <strong>no llenes nada</strong>: baja a <strong>"Regístrese"</strong>. Verifica tu identidad, responde las preguntas de seguridad y activa la cuenta desde tu correo.</p>
+      <p class="listo-cuando">✔ Listo cuando: entras con tu clave y tocas "Crear nuevo trámite".</p>
+    </li>
+    <li>
+      <h3>Llena, firma, paga y descarga</h3>
+      <p>Pon <strong>1 establecimiento</strong> y tus activos: en Mónaco recomendamos <strong>declarar poco</strong>, por ejemplo $1.000.000. Revisa que la preliquidación traiga <strong>dos matrículas</strong>. Revisa todo antes de enviar los formularios: <span class="alerta">después ya no se puede cambiar</span>. Firma con tu clave, paga y guarda el número de solicitud. Si ya tenías RUT, actualízalo en la DIAN con la actividad nueva dentro del mes siguiente.</p>
+      <p class="listo-cuando">✔ Listo cuando: tienes el RUT, el certificado de tu matrícula y el del establecimiento.</p>
+    </li>
+  </ol>
+
+  <div class="resumen" aria-label="Resumen">
+    <div class="ancho">
+      <h3>Qué llevar</h3>
+      <ul>
+        <li>Tu cédula física (la fecha de expedición exacta). En la Cámara de Bogotá, también escaneada o en foto.</li>
+        <li>Un correo tuyo que abras en el celular, y tu celular, con un número a tu nombre.</li>
+        <li>Tus datos de bancos y tarjetas, para las preguntas de seguridad.</li>
+        <li>La dirección exacta del local, tal como sale en el recibo de servicios.</li>
+        <li>La fecha en que empezaste a trabajar (no puede ser futura).</li>
+        <li>El nombre del lavadero ya revisado y el valor de activos que vas a declarar.</li>
+        <li>Con qué pagar, y papel y lápiz para anotar la clave y los números.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cuánto cuesta</h3>
+      <b>Según tus activos</b>
+      <p>Tablas 2026: tu matrícula $24.220 + $8.477 por cada millón de activos; local $48.400; formulario RUES $8.500; certificado $6.100 cada uno. El asistente te calcula el total.</p>
+    </div>
+    <div>
+      <h3>Cuánto tarda</h3>
+      <b>De inmediato a 1 hora</b>
+      <p>Bogotá: de inmediato al pagar. Facatativá, Medellín y Cali: 1 hora después (fuera del horario hábil, el siguiente día hábil). El RUT llega después al correo.</p>
+    </div>
+    <div class="ancho">
+      <h3>Dónde</h3>
+      <b>En línea, en la VUE</b>
+      <p><a href="https://www.vue.gov.co/tramites-y-consultas/creacion-empresa-persona-natural-juridica" target="_blank" rel="noopener">vue.gov.co ↗</a> · No tienes que ir antes a la DIAN. Funza y Madrid son de la Cámara de Comercio de Facatativá: no salen en la VUE; el asistente te dice cómo entrar.</p>
+    </div>
+  </div>
+
+  <h2 id="renueva">Se renueva cada año</h2>
+  <div class="calendario">
+    <div><b>1 de enero</b>Arranca la renovación de las dos matrículas, la tuya y la del local.</div>
+    <div><b>Antes del 31 de marzo</b>Renueva. Si no, te expones a multas de la Superintendencia de Sociedades y a que la Policía suspenda tu actividad, y si tienes la Ley 1780, pierdes el beneficio.</div>
+    <div><b>Diciembre</b>Pon un recordatorio en el celular para enero.</div>
+  </div>
+  <p class="meta" style="margin-top:10px">Si te matriculas en octubre de 2026, entendemos que tu primera renovación es entre enero y el 31 de marzo de 2027. Confírmalo con tu Cámara.</p>
+
+  <h2 id="asistente">Hazlo pantalla por pantalla</h2>
+  <p>Este asistente te acompaña en cada pantalla del trámite. Guarda tus respuestas en este celular: puedes cerrar y volver.</p>
+  <div class="asistente">
   <div class="topbar jsonly" id="topbar">
     <div class="row">
       <span id="progtxt">Inicio</span>
@@ -146,7 +209,7 @@
   <!-- ============ 0. PORTADA ============ -->
   <section class="screen" data-id="inicio" data-title="Inicio">
     <p class="kicker">ASISTENTE PARA ASESORADOS · PASO A PASO</p>
-    <h1 tabindex="-1">Saca tu RUT y tu Cámara de Comercio en línea</h1>
+    <h2 tabindex="-1">Saca tu RUT y tu Cámara de Comercio en línea</h2>
     <p class="lead">En un solo trámite por internet, en la <strong>Ventanilla Única Empresarial (VUE)</strong>, te registras como <strong>persona natural con un establecimiento de comercio</strong>, que es tu lavadero.</p>
     <div class="papers">
       <div class="paper"><div class="ic">1</div><b>RUT</b><span>Registro Único Tributario: tu registro ante la DIAN (la entidad de impuestos), con tu NIT (tu número de identificación tributaria)</span></div>
@@ -539,18 +602,19 @@
       <li><a href="../bomberos/">Bomberos</a></li>
     </ul>
 
-    <h2>Se renueva cada año</h2>
-    <div class="cal">
-      <div><b>1 de enero</b>Arranca la renovación de las dos matrículas, la tuya y la del local.</div>
-      <div><b>Antes del 31 de marzo</b>Renueva. Si no, te expones a multas de la Superintendencia de Sociedades y a que la Policía suspenda tu actividad, y si tienes la Ley 1780, pierdes el beneficio.</div>
-      <div><b>Diciembre</b>Pon un recordatorio en el celular para enero.</div>
-    </div>
-    <p class="meta" style="margin-top:10px">Si te matriculas en octubre de 2026, entendemos que tu primera renovación es entre enero y el 31 de marzo de 2027. Confírmalo con tu Cámara.</p>
+    <p class="meta">Recuerda: se renueva cada año antes del 31 de marzo (mira <a href="#renueva">arriba</a>).</p>
     <div class="nav jsonly"><button type="button" class="back" data-back>← Atrás</button></div>
   </section>
+  </div><!-- /asistente -->
 
-  <footer>
-    <strong>Mónaco · Moto Detailing</strong> · Manual para asesorados. Este asistente te explica el trámite; lo haces tú y los valores los fija tu Cámara de Comercio. Si algo no coincide con lo que ves en pantalla, avísale a tu asesor Mónaco.<br>Fuentes: vue.gov.co (fichas y preguntas frecuentes, Manual Persona Natural), tablas de tarifas 2026 de las cámaras de Bogotá, Facatativá, Medellín y Cali, CIIU Rev. 4 A.C. del DANE, Código de Comercio art. 33 y Ley 1780 de 2016.<br>Verificado el 1 de octubre de 2026.
+  <!-- Esta página aún no tiene guía completa (completo/). Cuando exista, poner aquí:
+       <a class="enlace-completo" href="completo/">Ver la guía completa →</a> -->
+  <div id="ruta-hice"></div>
+  <div id="ruta-siguiente"></div>
+
+  <footer class="pie">
+    <a class="boton" href="#whatsapp" data-whatsapp>¿Te trabaste? Escríbenos por WhatsApp</a>
+    <p><strong>Mónaco · Moto Detailing</strong> · Manual para asesorados. Este asistente te explica el trámite; lo haces tú y los valores los fija tu Cámara de Comercio. Si algo no coincide con lo que ves en pantalla, avísale a tu asesor Mónaco.<br>Fuentes: vue.gov.co (fichas y preguntas frecuentes, Manual Persona Natural), tablas de tarifas 2026 de las cámaras de Bogotá, Facatativá, Medellín y Cali, CIIU Rev. 4 A.C. del DANE, Código de Comercio art. 33 y Ley 1780 de 2016.<br>Verificado el 1 de octubre de 2026.</p>
   </footer>
 </main>
 
@@ -636,7 +700,7 @@
     if(focus){
       $('#live').textContent = lbl;
       var h = screens[i].querySelector('h1,h2');
-      try{ window.scrollTo(0, 0); }catch(e){}
+      try{ var ax = document.getElementById('asistente'); if(ax) ax.scrollIntoView({block:'start'}); else window.scrollTo(0, 0); }catch(e){ window.scrollTo(0, 0); }
       if(h){ try{ h.focus({preventScroll:true}); }catch(e){ h.focus(); } }
     }
   }
@@ -820,6 +884,5 @@
   show(S.step, false);
 })();
 </script>
-<script src="../assets/ruta.js" defer></script>
 </body>
 </html>
