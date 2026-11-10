@@ -1,6 +1,6 @@
 # Manuales Mónaco
 
-Sitio público de los manuales para asesorados. Netlify lo publica solo cada vez que
+Sitio público de los manuales para asesorados. GitHub Pages (https://monaco-principal.github.io/manuales/) lo publica solo cada vez que
 se sube un cambio a `main`.
 
 - Cada manual es una carpeta con su `index.html` (y sus videos si tiene).
