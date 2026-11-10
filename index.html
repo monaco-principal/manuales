@@ -2,52 +2,42 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manuales Mónaco</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abre tu lavadero en 4 pasos · Mapa Mónaco</title>
 <meta name="robots" content="noindex">
-<style>
-  :root{--ink:#1d1d1f;--muted:#5f6368;--line:#e3e3e6;--blue:#0a6cff;--bg:#fff;--soft:#f6f8fb;color-scheme:light}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
-  main{max-width:720px;margin:0 auto;padding-block:40px 48px;padding-inline:16px}
-  .brand{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.18em;margin:0 0 6px}
-  h1{font-size:32px;line-height:1.15;margin:0 0 8px;letter-spacing:-.02em}
-  p{margin:0 0 20px;color:var(--muted)}
-  ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-  a.card{display:block;border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink);background:var(--soft)}
-  a.card:hover,a.card:focus-visible{border-color:var(--blue);outline:none}
-  a.card b{display:block;font-size:19px;color:var(--blue)}
-  a.card small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  a.card span{font-size:15px;color:var(--muted)}
-  h2{font-size:22px;letter-spacing:-.01em;margin:36px 0 12px}
-</style>
+<meta name="description" content="La ruta para abrir tu lavadero de motos: local, papeles, compras y clientes.">
+<link rel="stylesheet" href="assets/mapa.css">
+<script src="assets/ruta.js" defer></script>
 </head>
 <body>
-<main>
-  <p class="brand">MÓNACO · MOTO DETAILING</p>
-  <h1>Manuales para asesorados</h1>
-  <p>Guías paso a paso para dejar tu lavadero de motos en regla. Van en el orden en que se hacen.</p>
-  <ul>
-    <li><a class="card" href="uso-de-suelo/"><small>Paso 1</small><b>Uso del suelo</b><span>Antes de firmar el arriendo: ¿se puede tener un lavadero ahí?</span></a></li>
-    <li><a class="card" href="rut-y-camara/"><small>Paso 2</small><b>RUT y Cámara de Comercio</b><span>Registrar tu negocio en línea, paso a paso</span></a></li>
-    <li><a class="card" href="aviso-de-apertura/"><small>Paso 3</small><b>Aviso de apertura</b><span>Avisarle a la Policía que abriste (gratis)</span></a></li>
-    <li><a class="card" href="rit-ica/"><small>Paso 4</small><b>Inscripción en ICA (RIT)</b><span>Inscribirte en Hacienda en los 2 meses después de abrir</span></a></li>
-    <li><a class="card" href="bomberos/"><small>Paso 5</small><b>Permiso de Bomberos</b><span>Curso virtual y concepto de Bomberos</span></a></li>
-    <li><a class="card" href="sayco-acinpro/"><small>Paso 6</small><b>Sayco y Acinpro</b><span>Licencia de música y TV, en línea, con videos</span></a></li>
-    <li><a class="card" href="concepto-sanitario/"><small>Paso 7</small><b>Concepto sanitario</b><span>Prepararte para la visita de Salud</span></a></li>
-    <li><a class="card" href="vertimientos-y-lodos/"><small>Paso 8</small><b>Vertimientos y lodos</b><span>El agua sucia, la trampa y quién se lleva el lodo</span></a></li>
-  </ul>
-  <h2>Operación</h2>
-  <ul>
-    <li><a class="card" href="herramientas-kit-arrastre/"><small>Puesto de lavado</small><b>Herramientas del kit de arrastre</b><span>Lo que necesita cada puesto, con fotos y marcas; chulea lo que ya tienes</span></a></li>
-    <li><a class="card" href="maquinaria/"><small>Compras</small><b>Maquinaria del lavadero</b><span>Hidrolavadoras, compresor, espumadora y bomba, con precios y botón para escribirle al proveedor</span></a></li>
-    <li><a class="card" href="insumos-lavadero/"><small>Compras</small><b>Insumos del lavadero</b><span>Químicos y elementos de cada lavador, con cantidades para el primer mes</span></a></li>
-  </ul>
-  <h2>Marketing</h2>
-  <ul>
-    <li><a class="card" href="descripcion-videos/"><small>Redes</small><b>Descripción de los videos</b><span>Plantilla y generador: el «Comenta» primero y las palabras que busca el motero</span></a></li>
-    <li><a class="card" href="pauta-meta/"><small>Pauta</small><b>Guía para pautar en Meta</b><span>Facebook e Instagram de cero a anuncio publicado, con los videos paso a paso</span></a></li>
-  </ul>
+<main class="hoja">
+  <a class="marca" href="./"><img src="assets/logo-monaco.png" alt="Mónaco" width="62" height="44"></a>
+  <p class="kicker">Método Mónaco · El mapa</p>
+  <h1>Abre tu lavadero en 4 pasos</h1>
+  <p class="bajada">Ve en orden. Toca cada cosa, hazla y márcala con ✔. Tu avance queda guardado en este celular.</p>
+
+  <div id="ruta-progreso" aria-live="polite"></div>
+  <div id="ruta-seguir"></div>
+
+  <div class="buscador" role="search">
+    <label for="ruta-buscar">¿Qué necesitas hacer?</label>
+    <input id="ruta-buscar" type="search" placeholder="Ej.: bomberos, cámara, hidrolavadora" autocomplete="off" enterkeyhint="search">
+    <ul id="ruta-resultados" class="resultados" aria-live="polite"></ul>
+    <p id="ruta-sin-resultados" class="sin-resultados" hidden>No encontramos eso. Prueba con otra palabra o escríbenos abajo.</p>
+  </div>
+
+  <ul id="ruta-accesos" class="accesos" aria-label="Lo más buscado"></ul>
+
+  <h2>La ruta</h2>
+  <div id="ruta-mapa">
+    <noscript><p>Para ver la ruta, abre este link en Chrome o Safari.</p></noscript>
+  </div>
+
+  <footer class="pie">
+    <!-- TODO: poner el número real de WhatsApp en assets/ruta.js (variable WHATSAPP). No inventar número. -->
+    <a class="boton" href="#whatsapp" data-whatsapp>¿Te trabaste? Escríbenos por WhatsApp</a>
+    <p>Mónaco · Moto Detailing</p>
+  </footer>
 </main>
 </body>
 </html>

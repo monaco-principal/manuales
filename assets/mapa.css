@@ -1,0 +1,221 @@
+/* ==========================================================
+   Mapa Mónaco · estilos compartidos (inicio + páginas de tarea)
+   Tokens tomados de maquinaria/: Helvetica, tinta, azul, verde ok,
+   líneas finas, radios de 4px.
+   ========================================================== */
+:root {
+  --tinta:#16161a; --tinta-2:#33333a; --papel:#ffffff; --papel-suave:#f6f5f2;
+  --azul:#1f6fb2; --azul-suave:#eaf2f9; --gris:#6b6b70; --gris-claro:#a3a3a8;
+  --linea:#e6e4dd; --ok:#1d7a46; --ok-suave:#eaf5ee; --alerta:#a33a2a; --wa:#1f7a4d;
+  --helvetica:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  --radio:4px;
+  color-scheme: light;
+}
+* { box-sizing:border-box }
+html { -webkit-text-size-adjust:100% }
+body { background:var(--papel); color:var(--tinta); font-family:var(--helvetica);
+  font-size:17px; line-height:1.5; letter-spacing:-0.01em; margin:0 }
+.hoja { max-width:720px; margin:0 auto; padding-block:24px 48px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px)) }
+a { color:var(--azul) }
+p { margin:0 0 12px }
+h1 { font-size:clamp(28px, 7vw, 40px); line-height:1.08; letter-spacing:-0.02em; font-weight:800;
+  margin:4px 0 10px; text-wrap:balance }
+h2 { font-size:21px; font-weight:800; letter-spacing:-0.01em; margin:36px 0 12px;
+  padding-top:14px; border-top:2px solid var(--tinta) }
+h3 { font-size:18px; font-weight:800; margin:0 0 6px }
+.kicker { font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--azul); font-weight:700; margin:0 }
+.bajada { color:var(--tinta-2); font-size:18px; margin:0 0 8px }
+.meta { font-size:13px; color:var(--gris) }
+.marca { display:block; margin:0 0 18px }
+.marca img { height:44px; width:auto; display:block }
+:focus-visible { outline:2px solid var(--azul); outline-offset:2px }
+.alerta { color:var(--alerta); font-weight:700 }
+
+/* ---------- Botones ---------- */
+.boton { display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+  min-height:56px; padding:14px 18px; font:inherit; font-size:18px; font-weight:800; letter-spacing:-0.01em;
+  text-decoration:none; text-align:center; color:var(--papel); background:var(--tinta);
+  border:2px solid var(--tinta); border-radius:var(--radio); cursor:pointer }
+.boton:hover { background:var(--tinta-2) }
+.boton.claro { background:var(--papel); color:var(--tinta) }
+.boton.claro:hover { background:var(--papel-suave) }
+.boton.azul { background:var(--azul); border-color:var(--azul) }
+.boton small { font-weight:600; font-size:14px; opacity:.85 }
+.boton-seguir { flex-direction:column; gap:2px; margin:16px 0 0 }
+.boton-seguir small { display:block }
+
+/* ---------- Progreso ---------- */
+.progreso { margin:20px 0 0 }
+.progreso-texto { display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  font-weight:800; font-size:18px; font-variant-numeric:tabular-nums; margin:0 0 8px }
+.progreso-texto span { color:var(--gris); font-weight:600; font-size:14px }
+.barra { height:10px; background:var(--linea); border-radius:5px; overflow:hidden }
+.barra span { display:block; height:100%; width:0; background:var(--ok); transition:width .3s }
+
+/* ---------- Buscador ---------- */
+.buscador { margin:28px 0 0 }
+.buscador label { display:block; font-weight:800; font-size:18px; margin:0 0 8px }
+.buscador input { width:100%; min-height:52px; padding:12px 14px; font:inherit; font-size:18px;
+  color:var(--tinta); background:var(--papel); border:1.5px solid var(--tinta); border-radius:var(--radio);
+  -webkit-appearance:none; appearance:none }
+.buscador input::placeholder { color:var(--gris-claro) }
+.resultados { list-style:none; margin:8px 0 0; padding:0 }
+.resultados:empty { display:none }
+.sin-resultados { color:var(--gris); padding:12px 0; margin:0 }
+
+/* ---------- Accesos rápidos ---------- */
+.accesos { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0 0; padding:0; list-style:none }
+.accesos a { display:flex; align-items:center; min-height:64px; padding:12px 14px; font-weight:800; font-size:16px;
+  line-height:1.2; color:var(--tinta); text-decoration:none; background:var(--papel-suave);
+  border:1px solid var(--linea); border-radius:var(--radio) }
+.accesos a:hover { border-color:var(--tinta) }
+.accesos li:last-child:nth-child(odd) { grid-column:1 / -1 }
+.accesos a.listo { background:var(--ok-suave); border-color:#cfe6d7 }
+.accesos a.listo::after { content:"✔"; margin-left:auto; padding-left:8px; color:var(--ok) }
+
+/* ---------- Ruta (4 pasos) ---------- */
+.ruta { display:grid; gap:12px; margin:0 }
+.paso { border:1px solid var(--linea); border-radius:var(--radio); background:var(--papel) }
+.paso[open] { border-color:var(--tinta) }
+.paso > summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:44px 1fr auto;
+  align-items:center; gap:12px; padding:14px; min-height:72px }
+.paso > summary::-webkit-details-marker { display:none }
+.paso-num { width:44px; height:44px; border-radius:50%; border:2px solid var(--tinta); display:flex;
+  align-items:center; justify-content:center; font-weight:800; font-size:19px; font-variant-numeric:tabular-nums }
+.paso.completo .paso-num { background:var(--ok); border-color:var(--ok); color:var(--papel) }
+.paso-titulo { display:block; font-weight:800; font-size:18px; line-height:1.2 }
+.paso-cuenta { display:block; font-size:14px; color:var(--gris); font-variant-numeric:tabular-nums; margin-top:2px }
+.paso.completo .paso-cuenta { color:var(--ok); font-weight:700 }
+.paso-flecha { font-size:20px; color:var(--gris); transition:transform .2s }
+.paso[open] .paso-flecha { transform:rotate(90deg) }
+.tareas { list-style:none; margin:0; padding:0 14px 8px }
+
+/* Fila de tarea (se usa en la ruta y en los resultados del buscador) */
+.tarea { display:flex; align-items:center; gap:12px; border-top:1px solid var(--linea); min-height:64px }
+.tarea-check { flex:none; width:32px; height:32px; border-radius:50%; border:2px solid var(--gris-claro);
+  background:var(--papel); padding:0; font:inherit; font-size:16px; font-weight:800; line-height:1;
+  color:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center }
+.tarea-check:hover { border-color:var(--ok) }
+.tarea.listo .tarea-check { background:var(--ok); border-color:var(--ok); color:var(--papel) }
+.tarea-link { flex:1; display:block; padding:10px 0; color:var(--tinta); text-decoration:none }
+.tarea-link b { display:block; font-size:17px; line-height:1.25 }
+.tarea-link span { display:block; font-size:14px; color:var(--gris); line-height:1.35 }
+a.tarea-link b::after { content:" →"; color:var(--azul) }
+.tarea.listo .tarea-link b { color:var(--ok) }
+.tarea.siguiente .tarea-link b { color:var(--azul) }
+.tarea.pronto { color:var(--gris-claro) }
+.tarea.pronto .tarea-link, .tarea.pronto .tarea-link b, .tarea.pronto .tarea-link span { color:var(--gris-claro) }
+.tarea.pronto .tarea-check { border-style:dashed; cursor:default }
+.tarea-link .etiqueta, .etiqueta { display:inline-block; width:auto; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid currentColor; border-radius:var(--radio); padding:1px 6px; margin-top:4px }
+.resultados .tarea:first-child { border-top:0 }
+.resultados .tarea-link span.paso-de { color:var(--azul); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase }
+
+/* ---------- Página de tarea ---------- */
+.migas { display:inline-flex; align-items:center; min-height:44px; font-weight:700; text-decoration:none; color:var(--azul); margin:0 0 8px }
+.ubicacion { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gris); font-weight:700; margin:0 0 4px }
+
+/* Video: pega el <iframe> de YouTube dentro de .video y borra el <p class="video-vacio"> */
+.video { position:relative; aspect-ratio:16 / 9; width:100%; margin:18px 0 0; background:var(--papel-suave);
+  border:1px solid var(--linea); border-radius:var(--radio); overflow:hidden }
+.video iframe, .video video { position:absolute; inset:0; width:100%; height:100%; border:0; display:block }
+.video-vacio { position:absolute; inset:0; margin:0; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:6px; color:var(--gris); font-weight:700; font-size:16px; text-align:center; padding:12px }
+.video-vacio::before { content:"▶"; display:flex; align-items:center; justify-content:center; width:56px; height:56px;
+  border-radius:50%; border:2px solid var(--gris-claro); color:var(--gris-claro); font-size:20px; padding-left:4px }
+
+/* En 3 pasos */
+.tres { list-style:none; margin:0; padding:0; counter-reset:t }
+.tres > li { position:relative; counter-increment:t; padding:0 0 22px 60px }
+.tres > li::before { content:counter(t); position:absolute; left:0; top:0; width:44px; height:44px; border-radius:50%;
+  background:var(--tinta); color:var(--papel); font-weight:800; font-size:21px; display:flex; align-items:center; justify-content:center }
+.tres > li::after { content:""; position:absolute; left:21px; top:50px; bottom:6px; width:2px; background:var(--linea) }
+.tres > li:last-child::after { display:none }
+.tres h3 { font-size:20px; margin:8px 0 6px }
+.tres ul { padding-left:20px; margin:6px 0 10px }
+.tres li li { margin:4px 0 }
+.listo-cuando { color:var(--ok); font-weight:700; font-size:15px; margin:6px 0 0 }
+.dilo { background:var(--papel-suave); border-left:3px solid var(--azul); padding:10px 12px; font-style:italic; margin:8px 0 }
+
+/* Lista con casillas (sin guardar) */
+.check { list-style:none; padding:0 !important; margin:6px 0 12px !important }
+.check li { margin:0 !important; padding:8px 0; border-top:1px solid var(--linea) }
+.check label { display:flex; gap:10px; align-items:flex-start; cursor:pointer }
+.check input { width:22px; height:22px; margin:2px 0 0; flex:none; accent-color:var(--ok) }
+
+/* Caja resumen: 4 celdas */
+.resumen { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--linea);
+  border:1.5px solid var(--tinta); border-radius:var(--radio); margin:28px 0 0; overflow:hidden }
+.resumen > div { padding:14px; background:var(--papel) }
+.resumen h3 { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gris); font-weight:700; margin:0 0 6px }
+.resumen b { display:block; font-size:19px; line-height:1.2 }
+.resumen p { font-size:15px; margin:4px 0 0 }
+.resumen ul { margin:0; padding-left:18px; font-size:15px }
+.resumen li { margin:2px 0 }
+.resumen .ancho { grid-column:1 / -1 }
+
+/* Cajas de aviso */
+.caja { border:1px solid var(--linea); border-left:3px solid var(--azul); border-radius:var(--radio); padding:14px 16px; margin:16px 0 }
+.caja.alerta-caja { border-left-color:var(--alerta) }
+.caja h3 { margin:0 0 6px }
+.caja p:last-child { margin:0 }
+.calendario { display:grid; gap:0; border:1px solid var(--linea); border-radius:var(--radio) }
+.calendario div { padding:12px 14px; border-top:1px solid var(--linea); font-size:16px }
+.calendario div:first-child { border-top:0 }
+.calendario b { display:block; color:var(--azul) }
+
+/* Plegable de detalle */
+.detalle { margin:28px 0 0; border:1px solid var(--linea); border-radius:var(--radio) }
+.detalle > summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between;
+  gap:12px; min-height:56px; padding:12px 14px; font-weight:800; font-size:17px }
+.detalle > summary::-webkit-details-marker { display:none }
+.detalle > summary::after { content:"+"; font-size:24px; font-weight:400; color:var(--gris) }
+.detalle[open] > summary::after { content:"–" }
+.detalle-cuerpo { padding:4px 14px 8px; border-top:1px solid var(--linea) }
+
+/* Pasos detallados (dentro del plegable) */
+ol.steps { list-style:none; padding:0; margin:12px 0 0; counter-reset:s }
+ol.steps > li { position:relative; padding:0 0 18px 48px; counter-increment:s }
+ol.steps > li::before { content:counter(s); position:absolute; left:0; top:2px; width:34px; height:34px; border-radius:50%;
+  border:2px solid var(--tinta); font-weight:800; font-size:16px; display:flex; align-items:center; justify-content:center }
+ol.steps h3 { font-size:17px; margin:6px 0 4px }
+ol.steps ul:not(.check) { padding-left:20px; margin:6px 0 10px }
+.say { background:var(--papel-suave); border-left:3px solid var(--azul); padding:10px 12px; font-style:italic; margin:8px 0 }
+.done { color:var(--ok); font-weight:700; font-size:15px; margin-top:6px }
+.no { color:var(--alerta); font-weight:700 }
+.vid { margin:12px 0 4px }
+.vid iframe { display:block; width:100%; aspect-ratio:16 / 9; border:0; border-radius:var(--radio) }
+.vid figcaption { font-size:14px; color:var(--gris); margin-top:6px }
+@media (max-width:560px) { ol.steps > li .vid { margin-left:-48px } }
+.vlink { display:inline-block; font-size:14px; font-weight:700; text-decoration:none; border:1px solid var(--linea);
+  border-radius:var(--radio); padding:3px 10px; margin:2px 6px 2px 0 }
+
+/* Zona "Lo hice" + siguiente */
+.cierre { display:grid; gap:12px; margin:32px 0 0 }
+.enlace-completo + .cierre { margin-top:12px }
+.boton-hice[aria-pressed="true"] { background:var(--ok); border-color:var(--ok); color:var(--papel) }
+.boton-hice[aria-pressed="false"] { background:var(--papel); color:var(--ok); border-color:var(--ok) }
+.boton-hice[aria-pressed="false"]:hover { background:var(--ok-suave) }
+.hice-nota { text-align:center; font-size:14px; color:var(--gris); margin:-4px 0 0 }
+.boton-siguiente { flex-direction:column; gap:0 }
+.boton-siguiente small { display:block }
+.enlace-completo { display:flex; align-items:center; justify-content:center; min-height:48px; font-weight:700; text-decoration:none }
+
+/* ---------- Pie ---------- */
+.pie { margin-top:40px; padding-top:16px; border-top:1px solid var(--linea); text-align:center }
+.pie a.boton { background:var(--wa); border-color:var(--wa); color:#fff }
+.pie a.boton:hover { background:#18643f }
+.pie p { font-size:13px; color:var(--gris); margin:12px 0 0 }
+
+@media (max-width:420px) { .resumen { grid-template-columns:1fr } }
+
+@media (prefers-reduced-motion:reduce) { * { transition:none !important } }
+@media print {
+  @page { size:letter; margin:14mm }
+  body { font-size:13px }
+  .hoja { padding:0; max-width:none }
+  .video, .cierre, .buscador, .boton-seguir, .pie a.boton, .migas { display:none }
+  .detalle > summary::after { display:none }
+}

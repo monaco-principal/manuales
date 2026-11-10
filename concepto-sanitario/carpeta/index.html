@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Arma tu carpeta sanitaria — Manual Mónaco</title>
+<link rel="stylesheet" href="carpeta.css">
+<link rel="stylesheet" href="../../assets/mapa.css">
+</head>
+<body>
+<main class="hoja">
+  <div class="no-print">
+    <a class="migas" href="../">← Concepto sanitario</a>
+    <p class="kicker">Concepto sanitario · Herramienta</p>
+    <h1>Arma tu carpeta sanitaria</h1>
+    <p class="bajada">Escribe los datos de tu lavadero una sola vez. La página te arma los programas y planillas que pide la Secretaría de Salud, ya llenos y listos para imprimir.</p>
+    <p class="meta">No necesitas cuenta ni correo. Lo que escribes se guarda solo en este celular o computador.</p>
+
+    <ol class="tres">
+      <li><h3>Llena tus datos</h3><p>Los de tu negocio primero. Los demás, solo si los tienes.</p></li>
+      <li><h3>Revisa</h3><p>Mira la vista previa. Lo que falte sale como una raya para escribirlo a mano.</p></li>
+      <li><h3>Imprime y firma</h3><p>Imprime o guarda en PDF. Firma cada documento y archívalo en una carpeta.</p></li>
+    </ol>
+
+    <div class="caja">
+      <p><b>La carpeta va en el local, no en tu casa.</b> El inspector pide verla durante la visita. Las planillas (aseo, tanques, insumos) se llenan <b>cada día</b> que abres, no todas la misma tarde: el inspector nota cuando se llenaron de un tirón.</p>
+    </div>
+
+    <h2>1. Tus datos</h2>
+    <div id="cs-form"></div>
+    <p class="cs-estado"><span id="cs-guardado" class="cs-guardado" aria-live="polite"></span></p>
+    <button type="button" class="cs-borrar" id="cs-borrar">Borrar mis datos de este equipo</button>
+
+    <h2>2. Elige qué imprimir</h2>
+    <p>Todos vienen marcados. Quita los que no apliquen (por ejemplo, la planilla de tanques si no tienes tanque).</p>
+    <div class="cs-todos">
+      <button type="button" id="cs-marcar-todos">Marcar todos</button>
+      <button type="button" id="cs-marcar-ninguno">Quitar todos</button>
+    </div>
+    <div id="cs-docs"></div>
+    <p class="caja" id="cs-faltan" aria-live="polite"></p>
+
+    <div class="cs-imprimir">
+      <button type="button" class="boton" id="cs-btn-imprimir">Imprimir / Guardar PDF<small id="cs-cuantos"></small></button>
+    </div>
+    <p class="meta">Para guardar en PDF: en la ventana de impresión elige <b>«Guardar como PDF»</b> como impresora. Usa papel <b>carta</b>.</p>
+
+    <h2>3. Vista previa</h2>
+    <p>Así quedan las hojas. Lo azul salió de tus datos; lo rojo está vacío y saldrá como una raya.</p>
+  </div>
+
+  <section class="cs-previa" id="cs-previa" aria-label="Vista previa de los documentos"></section>
+
+  <div class="no-print">
+    <p><a href="../">← Volver al manual de concepto sanitario</a></p>
+    <footer class="pie-carpeta">
+      <strong>Mónaco · Moto Detailing</strong> · Plantillas base para tu carpeta. Revísalas y ajústalas a cómo funciona tu lavadero antes de firmar.
+    </footer>
+  </div>
+</main>
+<script src="plantillas.js"></script>
+<script src="carpeta.js"></script>
+<script src="../../assets/ruta.js" defer></script>
+</body>
+</html>

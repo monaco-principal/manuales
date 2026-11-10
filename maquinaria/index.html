@@ -99,6 +99,12 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
 }
 @media (prefers-reduced-motion:reduce) { * { transition:none !important } }
 .total { display:flex; justify-content:space-between; gap:12px; font-size:18px; font-weight:800; padding:14px 10px; border-top:2px solid var(--tinta); margin-top:8px; font-variant-numeric:tabular-nums }
+.puestos { margin-top:32px }
+.puestos h2 { font-size:20px; font-weight:800; margin:0 0 10px; padding-top:14px; border-top:2px solid var(--tinta) }
+.puestos-botones { display:grid; grid-template-columns:repeat(4, minmax(0, 72px)); gap:10px }
+.puestos-botones button { font-size:26px; font-weight:800; min-height:64px; border:2px solid var(--tinta); border-radius:8px; padding:0 }
+.puestos-botones button[aria-pressed="true"] { background:var(--tinta); color:#fff }
+.puestos .nota { margin-top:10px }
 </style>
 </head>
 <body>
@@ -141,6 +147,17 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
     <p class="nota" style="margin-top:10px">Al escribirles, di que vienes de parte de <strong>Mónaco Moto Detailing</strong>. Los precios están sujetos a disponibilidad y a cambios del proveedor.</p>
   </section>
 
+  <section class="puestos" aria-labelledby="puestos-t">
+    <h2 id="puestos-t">¿Cuántos puestos vas a montar?</h2>
+    <div class="puestos-botones" role="group" aria-label="Número de puestos">
+      <button type="button" data-puestos="1" aria-pressed="false">1</button>
+      <button type="button" data-puestos="2" aria-pressed="false">2</button>
+      <button type="button" data-puestos="3" aria-pressed="false">3</button>
+      <button type="button" data-puestos="4" aria-pressed="true">4</button>
+    </div>
+    <p class="nota">Toca un número. Las cantidades y el total de la lista cambian solos: 1 hidrolavadora por cada 2 puestos y 1 kit de aire por puesto. Lo demás no cambia.</p>
+  </section>
+
   <div class="estado">
     <h2>Lista de compra</h2>
     <span class="contador" id="contador">0 de 12 listos</span>
@@ -155,15 +172,15 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
         <tr data-id="m1">
           <td class="c-check"><input type="checkbox" id="m1" aria-label="Hidrolavadora Annovi Reverberi 1.750 PSI"></td>
           <td class="c-herr"><span class="num">01</span><label for="m1"><strong>Hidrolavadora Annovi Reverberi 1.750 PSI</strong></label><span class="medida">110 V · para motos</span></td>
-          <td class="c-cant">1</td>
-          <td class="c-precio"><span class="p-linea"><b>$2.800.000</b> c/u</span><span class="p-linea">En tienda: $2.950.000. Comprando en línea ahorra $150.000.</span></td>
-          <td class="c-uso">Se recomienda 1 si el espacio es reducido: la máquina se turna entre puestos. Si el flujo aumenta mucho, se compra la segunda.</td>
+          <td class="c-cant" id="cant-hidro">2</td>
+          <td class="c-precio"><span class="p-linea"><b>$2.800.000</b> c/u</span><span class="p-linea" id="total-hidro">Total $5.600.000</span><span class="p-linea">En tienda: $2.950.000. Comprando en línea ahorra $150.000.</span></td>
+          <td class="c-uso">Una por cada 2 puestos: con 1 o 2 puestos, 1 hidrolavadora; con 3 o 4 puestos, 2. La máquina se turna entre los puestos.</td>
           <td class="c-marca">Maquitec<a class="btn comprar" href="https://maquitecdecolombia.com/compra-de/soluciones-de-limpieza/hidrolavadoras/hidrolavadora-annovi-reverberi-vip-pro-150-2-175-psi-110v/" target="_blank" rel="noopener">Comprar ahora</a><a class="btn wa mini" href="https://wa.me/573172734572?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20cotizar%20hidrolavadoras%20Annovi%20Reverberi%20para%20mi%20lavadero%20de%20motos." target="_blank" rel="noopener">WhatsApp</a></td>
         </tr>
         <tr data-id="m2">
           <td class="c-check"><input type="checkbox" id="m2" aria-label="Hidrolavadora Annovi Reverberi 2.175 PSI"></td>
           <td class="c-herr"><span class="num">02</span><label for="m2"><strong>Hidrolavadora Annovi Reverberi 2.175 PSI</strong></label><span class="medida">220 V · AR680-220-E</span></td>
-          <td class="c-cant">1</td>
+          <td class="c-cant">Opcional</td>
           <td class="c-precio"><span class="p-linea"><b>$3.599.900</b> c/u</span><span class="p-linea">En tienda: $3.699.900. Comprando en línea ahorra $100.000.</span></td>
           <td class="c-uso">La de más presión. Si también se lavan carros, se recomiendan 2, porque un carro toma más tiempo y no se puede turnar la máquina.</td>
           <td class="c-marca">Maquitec<a class="btn comprar" href="https://maquitecdecolombia.com/compra-de/soluciones-de-limpieza/hidrolavadoras/hidrolavadora-alta-presion-annovi-reverberi-2175psi-220v-2f-ar680-220-e/" target="_blank" rel="noopener">Comprar ahora</a><a class="btn wa mini" href="https://wa.me/573172734572?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20cotizar%20hidrolavadoras%20Annovi%20Reverberi%20para%20mi%20lavadero%20de%20motos." target="_blank" rel="noopener">WhatsApp</a></td>
@@ -179,8 +196,8 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
         <tr data-id="m4">
           <td class="c-check"><input type="checkbox" id="m4" aria-label="Kit de aire"></td>
           <td class="c-herr"><span class="num">04</span><label for="m4"><strong>Kit de aire</strong></label><span class="medida">Pistola de soplado y accesorios para compresor</span></td>
-          <td class="c-cant">4</td>
-          <td class="c-precio"><span class="p-linea"><b>$121.410</b> c/u</span><span class="p-linea">Total $485.640</span></td>
+          <td class="c-cant" id="cant-aire">4</td>
+          <td class="c-precio"><span class="p-linea"><b>$121.410</b> c/u</span><span class="p-linea" id="total-aire">Total $485.640</span></td>
           <td class="c-uso">Uno por puesto, para que cada lavador seque con aire además de las microfibras.</td>
           <td class="c-marca">Mercado Libre<a class="btn comprar" href="https://www.mercadolibre.com.co/kit-pistola-herramientas-para-compresor-5-pz-total-tatk0531/p/MCO32625734" target="_blank" rel="noopener">Comprar ahora</a></td>
         </tr>
@@ -251,7 +268,8 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
       </tbody>
     </table>
   </div>
-  <div class="total"><span>Total de la lista</span><span>$15.606.440</span></div>
+  <div class="total"><span id="total-txt">Total para 4 puestos</span><span id="total-val">$14.806.540</span></div>
+  <p class="nota">El total no incluye la hidrolavadora opcional de 2.175 PSI ($3.599.900 c/u).</p>
 
   <footer>Mónaco Moto Detailing · Documento de entrega · Versión 1.0 · 5-nov-2026 · Precios de proveedores en Colombia al 24-oct-2026.</footer>
 </main>
@@ -285,6 +303,54 @@ footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); f
   pintar();
 })();
 </script>
+<script>
+(function () {
+  /* Selector de puestos: se recuerda en localStorage "monaco_puestos" y lo comparten las páginas. */
+  var CLAVE = "monaco_puestos", POR_DEFECTO = 4;
+  var botones = Array.prototype.slice.call(document.querySelectorAll("[data-puestos]"));
+  function leer() {
+    var n = POR_DEFECTO;
+    try { n = parseInt(localStorage.getItem(CLAVE), 10); } catch (e) {}
+    return (n >= 1 && n <= 4) ? n : POR_DEFECTO;
+  }
+  function cop(v) { return "$" + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  function precio(tr) {
+    var b = tr.querySelector(".c-precio b");
+    return b ? parseInt(b.textContent.replace(/\D/g, ""), 10) || 0 : 0;
+  }
+  function cantidad(tr, n) {
+    var id = tr.dataset.id;
+    if (id === "m1") return Math.ceil(n / 2);   /* 1 hidrolavadora por cada 2 puestos */
+    if (id === "m2") return 0;                  /* opcional: no entra al total */
+    if (id === "m4") return n;                  /* 1 kit de aire por puesto */
+    return parseInt(tr.querySelector(".c-cant").textContent, 10) || 0;
+  }
+  function aplicar(n) {
+    botones.forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.puestos === n)); });
+    var hidro = Math.ceil(n / 2);
+    document.getElementById("cant-hidro").textContent = hidro;
+    var th = document.getElementById("total-hidro");
+    th.textContent = "Total " + cop(hidro * 2800000);
+    th.hidden = hidro < 2;
+    document.getElementById("cant-aire").textContent = n;
+    document.getElementById("total-aire").textContent = "Total " + cop(n * 121410);
+    var suma = 0;
+    document.querySelectorAll(".lista tbody tr").forEach(function (tr) { suma += cantidad(tr, n) * precio(tr); });
+    document.getElementById("total-txt").textContent = "Total para " + n + (n === 1 ? " puesto" : " puestos");
+    document.getElementById("total-val").textContent = cop(suma);
+  }
+  botones.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var n = +b.dataset.puestos;
+      try { localStorage.setItem(CLAVE, String(n)); } catch (e) {}
+      aplicar(n);
+    });
+  });
+  window.addEventListener("storage", function (ev) { if (ev.key === CLAVE) aplicar(leer()); });
+  aplicar(leer());
+})();
+</script>
 
+<script src="../assets/ruta.js" defer></script>
 </body>
 </html>

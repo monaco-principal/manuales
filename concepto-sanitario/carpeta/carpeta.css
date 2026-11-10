@@ -1,0 +1,148 @@
+/* ==========================================================
+   Arma tu carpeta sanitaria · estilos propios
+   Se carga ANTES de ../../assets/mapa.css: si mapa.css existe,
+   manda en las clases compartidas (.hoja, .boton, .tres, .caja…);
+   si no existe, estas reglas bastan para que la página se vea bien.
+   ========================================================== */
+:root { color-scheme: light }
+* { box-sizing: border-box }
+body { margin: 0; background: #fff; color: #16161a;
+  font: 17px/1.5 "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif }
+.hoja { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px }
+a { color: #1f6fb2 }
+p { margin: 0 0 12px }
+h1 { font-size: clamp(28px, 7vw, 40px); line-height: 1.08; letter-spacing: -.02em; margin: 4px 0 10px }
+h2 { font-size: 21px; margin: 36px 0 12px; padding-top: 14px; border-top: 2px solid #16161a }
+.kicker { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #1f6fb2; font-weight: 700; margin: 0 }
+.bajada { font-size: 18px; color: #33333a }
+.migas { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; text-decoration: none }
+.boton { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 56px;
+  padding: 14px 18px; font: inherit; font-size: 18px; font-weight: 800; color: #fff; background: #16161a;
+  border: 2px solid #16161a; border-radius: 4px; cursor: pointer; text-decoration: none }
+.boton.claro { background: #fff; color: #16161a }
+.caja { border: 1px solid #e6e4dd; border-left: 3px solid #1f6fb2; border-radius: 4px; padding: 14px 16px; margin: 16px 0 }
+.caja p:last-child { margin: 0 }
+.tres { list-style: none; margin: 0; padding: 0; counter-reset: t }
+.tres > li { position: relative; counter-increment: t; padding: 0 0 18px 60px; min-height: 44px }
+.tres > li::before { content: counter(t); position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%;
+  background: #16161a; color: #fff; font-weight: 800; font-size: 21px; display: flex; align-items: center; justify-content: center }
+.tres h3 { font-size: 19px; margin: 8px 0 2px }
+.tres p { margin: 0; color: #33333a }
+
+/* ---------- Formulario ---------- */
+.cs-grupo { border: 1.5px solid #16161a; border-radius: 4px; padding: 4px 16px 12px; margin: 0 0 16px }
+.cs-grupo > legend, .cs-grupo > summary { font-weight: 800; font-size: 18px; padding: 0 6px }
+details.cs-grupo { padding: 0 16px }
+details.cs-grupo > summary { cursor: pointer; min-height: 56px; display: flex; align-items: center; gap: 8px; padding: 0; list-style: none }
+details.cs-grupo > summary::-webkit-details-marker { display: none }
+details.cs-grupo > summary::after { content: "+"; margin-left: auto; font-weight: 400; font-size: 24px; color: #6b6b70 }
+details.cs-grupo[open] > summary::after { content: "–" }
+details.cs-grupo > summary small { font-weight: 600; font-size: 14px; color: #6b6b70 }
+details.cs-grupo[open] { padding-bottom: 12px }
+.cs-sub { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #6b6b70; font-weight: 700; margin: 18px 0 2px }
+.cs-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px }
+.cs-campo { margin: 12px 0 0; min-width: 0 }
+.cs-campo.ancho { grid-column: 1 / -1 }
+.cs-campo label { display: block; font-weight: 700; font-size: 16px; line-height: 1.25 }
+.cs-campo .cs-pista { display: block; font-size: 14px; color: #6b6b70; line-height: 1.35; margin: 2px 0 6px }
+.cs-campo input, .cs-campo textarea { width: 100%; min-height: 48px; padding: 10px 12px; font: inherit; font-size: 17px;
+  color: #16161a; background: #fff; border: 1.5px solid #a3a3a8; border-radius: 4px; -webkit-appearance: none; appearance: none }
+.cs-campo textarea { min-height: 76px; resize: vertical }
+.cs-campo input:focus, .cs-campo textarea:focus { border-color: #1f6fb2; outline: 2px solid #1f6fb2; outline-offset: 0 }
+.cs-campo input::placeholder, .cs-campo textarea::placeholder { color: #a3a3a8 }
+.cs-estado { font-size: 15px; color: #6b6b70; margin: 4px 0 0 }
+.cs-estado b { color: #16161a }
+.cs-guardado { color: #1d7a46; font-weight: 700 }
+.cs-borrar { background: none; border: 0; padding: 8px 0; font: inherit; font-size: 15px; color: #a33a2a; text-decoration: underline; cursor: pointer }
+
+/* ---------- Lista de documentos ---------- */
+.cs-lista { list-style: none; margin: 0; padding: 0 }
+.cs-lista li { border-top: 1px solid #e6e4dd }
+.cs-lista label { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; cursor: pointer }
+.cs-lista input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: #1d7a46 }
+.cs-lista b { display: block; line-height: 1.25 }
+.cs-lista span { display: block; font-size: 14px; color: #6b6b70; line-height: 1.35 }
+.cs-lista code { font: 12px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: .06em; color: #6b6b70 }
+.cs-todos { display: flex; gap: 16px; margin: 0 0 6px; font-size: 15px }
+.cs-todos button { background: none; border: 0; padding: 6px 0; font: inherit; color: #1f6fb2; text-decoration: underline; cursor: pointer }
+.cs-imprimir { position: sticky; bottom: 0; z-index: 5; background: #fff; padding: 12px 0; margin: 20px 0 0; border-top: 1px solid #e6e4dd }
+.cs-imprimir .boton { background: #1d7a46; border-color: #1d7a46; flex-direction: column; gap: 0 }
+.cs-imprimir .boton small { font-size: 14px; font-weight: 600; opacity: .9 }
+
+/* ---------- Vista previa ---------- */
+.cs-previa { background: #f6f5f2; border-radius: 4px; padding: 12px; margin: 12px -4px 0 }
+.cs-doc { margin: 0 0 20px }
+.cs-doc[hidden] { display: none }
+.cs-doc-barra { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 0 0 6px }
+.cs-doc-barra b { font-size: 15px }
+.cs-doc-barra button { min-height: 40px; padding: 6px 12px; font: inherit; font-size: 14px; font-weight: 700; background: #fff;
+  color: #16161a; border: 1.5px solid #16161a; border-radius: 4px; cursor: pointer }
+.cs-doc-barra button:hover { background: #eaf2f9 }
+
+/* La hoja carta en pantalla */
+.folio { background: #fff; border: 1px solid #d9d7cf; box-shadow: 0 1px 3px rgba(0,0,0,.06); padding: 28px 30px;
+  max-width: 8.5in; margin: 0 auto; font: 13px/1.45 Arial, Helvetica, sans-serif; color: #000; overflow-x: auto; letter-spacing: 0 }
+.folio h1 { font-size: 17px; line-height: 1.25; text-align: center; margin: 0 0 10px; letter-spacing: 0; font-weight: 700 }
+.folio h2 { font-size: 14px; margin: 16px 0 6px; padding: 0; border: 0; letter-spacing: 0; font-weight: 700 }
+.folio h3 { font-size: 13px; margin: 10px 0 4px; font-weight: 700 }
+.folio p { margin: 0 0 8px }
+.folio ul { margin: 4px 0 8px; padding-left: 22px }
+.folio li { margin: 2px 0 }
+.folio table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; font-size: 12px }
+.folio th, .folio td { border: 1px solid #000; padding: 4px 6px; vertical-align: top; text-align: left }
+.folio th { background: #ececec; font-weight: 700; text-align: center }
+.folio .t-enc td { text-align: center }
+.folio .t-firmas td { width: 50%; text-align: center }
+.folio .t-firmas td.firma { height: 40px; text-align: left; vertical-align: top }
+.folio .t-llenar td { height: 26px }
+.folio .t-diaria td { height: 19px; padding-top: 1px; padding-bottom: 1px }
+.folio .t-diaria td:first-child { text-align: center; width: 34px }
+.folio .t-ancha { font-size: 11px }
+.folio .datos-neg { text-align: center }
+.folio .cierre-firma { margin-top: 36px; break-inside: avoid }
+.folio .cierre-firma hr { border: 0; border-top: 1px solid #000; width: 60%; margin: 0 0 6px }
+.folio ul.marcar { list-style: none; padding-left: 0 }
+.folio ul.marcar li::before { content: "[   ]  "; white-space: pre; font-family: "Courier New", monospace }
+.folio .pl-titulo { margin-bottom: 2px }
+.folio .pl-sub { text-align: center; color: #333; margin: 0 0 8px }
+.folio .t-plenc td { border: 0; padding: 1px 4px }
+.folio .t-plenc td:last-child { text-align: right }
+.folio .t-plenc { border-bottom: 2px solid #000 }
+.folio .pl-nota { margin-top: 8px }
+.folio .pl-pie { margin-top: 10px }
+
+/* Casillas llenadas desde el formulario */
+.cs-v { background: #eaf2f9; border-radius: 2px; padding: 0 1px }
+.cs-v.vacio { background: #fdecea; color: #a33a2a; letter-spacing: .02em }
+
+.pie-carpeta { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e6e4dd; font-size: 14px; color: #6b6b70 }
+
+@media (max-width: 560px) {
+  .cs-campos { grid-template-columns: 1fr }
+  .folio { padding: 16px 12px; font-size: 12px }
+  .folio table { font-size: 11px }
+  .cs-previa { padding: 6px; margin: 12px -10px 0 }
+}
+
+/* ---------- Impresión ---------- */
+@media print {
+  @page { size: letter; margin: 12mm 12mm 14mm }
+  html, body { background: #fff !important }
+  body { font-size: 11pt }
+  .no-print, .cs-doc-barra { display: none !important }
+  .hoja { max-width: none !important; padding: 0 !important; margin: 0 !important }
+  .cs-previa { background: none !important; padding: 0 !important; margin: 0 !important; border: 0 !important }
+  .cs-doc { margin: 0 !important }
+  .cs-doc.salto { break-before: page; page-break-before: always }
+  body.uno .cs-doc:not(.solo) { display: none !important }
+  .folio { border: 0 !important; box-shadow: none !important; padding: 0 6px !important; max-width: none !important;
+    overflow: visible !important; font-size: 10.5pt }
+  .folio table { font-size: 9.5pt; page-break-inside: auto }
+  .folio .t-ancha { font-size: 8.5pt }
+  .folio tr { break-inside: avoid; page-break-inside: avoid }
+  .folio thead { display: table-header-group }
+  .folio h2, .folio h3 { break-after: avoid; page-break-after: avoid }
+  .folio th { background: #ececec !important; -webkit-print-color-adjust: exact; print-color-adjust: exact }
+  .cs-v, .cs-v.vacio { background: none !important; color: #000 !important; padding: 0 }
+  .folio .t-diaria td { height: 5.6mm }
+}

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proveedores · Manuales Mónaco</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../assets/mapa.css">
+<style>
+:root {
+  --tinta:#16161a; --papel:#ffffff; --papel-suave:#f6f5f2; --azul:#1f6fb2;
+  --gris:#6b6b70; --linea:#e6e4dd; --ok:#1d7a46; --ok-suave:#eaf5ee; --alerta:#a33a2a;
+  --helvetica:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  color-scheme: light;
+}
+* { box-sizing:border-box }
+body { background:var(--papel); color:var(--tinta); font-family:var(--helvetica);
+  font-size:16px; line-height:1.5; letter-spacing:-0.01em; margin:0 }
+.hoja { max-width:1040px; margin:0 auto; padding-block:24px 56px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px)) }
+.miga { display:inline-block; font-size:15px; font-weight:700; color:var(--azul); text-decoration:none; padding:8px 0; margin-bottom:12px }
+.miga:hover { text-decoration:underline }
+.marca img { height:48px; display:block }
+header { display:grid; gap:20px; padding-bottom:20px; border-bottom:2px solid var(--tinta) }
+.kicker { font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--azul); font-weight:700 }
+h1 { font-size:clamp(28px, 7vw, 42px); line-height:1.05; letter-spacing:-0.02em; font-weight:800;
+  margin:6px 0 10px; text-wrap:balance }
+.bajada { color:var(--gris); max-width:62ch; margin:0 }
+.aviso { margin:18px 0 0; padding:12px 16px; background:var(--papel-suave);
+  border-left:3px solid var(--azul); max-width:72ch }
+.buscar { margin:24px 0 8px }
+.buscar label { display:block; font-weight:800; font-size:17px; margin-bottom:8px }
+.buscar input { width:100%; font:inherit; font-size:18px; padding:14px 16px; border:2px solid var(--tinta);
+  border-radius:8px; background:var(--papel); color:var(--tinta) }
+.buscar input:focus-visible { outline:3px solid var(--azul); outline-offset:2px }
+.sin-resultados { padding:16px; background:var(--papel-suave); border-radius:8px; font-weight:700 }
+.grupo { margin-top:32px }
+.grupo h2 { font-size:22px; font-weight:800; margin:0 0 12px; padding-top:14px; border-top:2px solid var(--tinta) }
+.prov-grid { display:grid; grid-template-columns:1fr; gap:16px }
+@media (min-width:700px) { .prov-grid { grid-template-columns:repeat(2, 1fr) } }
+.prov { border:1px solid var(--linea); border-radius:10px; padding:18px; display:grid; gap:10px; align-content:start; background:var(--papel) }
+.prov-cab strong { display:block; font-size:20px; font-weight:800; line-height:1.2 }
+.tel { display:block; font-variant-numeric:tabular-nums; font-weight:700; font-size:17px; margin-top:2px }
+.vende { margin:0; font-size:16px }
+.datos { margin:0; padding:0; list-style:none; display:grid; gap:4px; color:var(--gris); font-size:15px }
+.datos b { color:var(--tinta) }
+.decir { margin:0; font-size:14px; color:var(--gris) }
+.botones { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px }
+.btn { display:flex; align-items:center; justify-content:center; min-height:52px; font-size:17px; font-weight:800; text-decoration:none;
+  color:var(--tinta); border:2px solid var(--tinta); border-radius:8px; padding:10px 14px; background:var(--papel); text-align:center }
+.btn:hover { background:var(--papel-suave) }
+.btn.wa { background:#1f7a4d; border-color:#1f7a4d; color:#fff }
+.btn.wa:hover { background:#18643f }
+.btn:focus-visible, .ver:focus-visible, .miga:focus-visible { outline:3px solid var(--azul); outline-offset:2px }
+.extra { display:flex; flex-wrap:wrap; gap:8px }
+.extra a { font-size:14px; font-weight:700; color:var(--tinta); border:1px solid var(--linea); border-radius:6px; padding:8px 12px; text-decoration:none }
+.ver { font-weight:800; color:var(--azul); text-decoration:none; padding:6px 0; font-size:16px }
+.ver:hover { text-decoration:underline }
+.otros { margin:0; padding:0; list-style:none }
+.otros li { padding:12px 0; border-bottom:1px solid var(--linea) }
+.otros li strong { display:block; font-size:17px }
+.otros li span { color:var(--gris); font-size:15px }
+footer { margin-top:40px; padding-top:12px; border-top:1px solid var(--linea); font-size:12px; color:var(--gris) }
+[hidden] { display:none !important }
+</style>
+<script src="../assets/ruta.js" defer></script>
+</head>
+<body data-tarea="proveedores">
+
+<main class="hoja">
+  <a class="miga" href="../">← Mapa</a>
+  <header>
+    <div class="marca"><img src="../assets/logo-monaco.png" alt="Mónaco"></div>
+    <div>
+      <div class="kicker">Método Mónaco</div>
+      <h1>Proveedores</h1>
+      <p class="bajada">Todos los proveedores en un solo lugar, ordenados por lo que les compras. Toca <strong>WhatsApp</strong> para escribirles o <strong>Llamar</strong> para llamarlos.</p>
+      <p class="aviso">Al escribirles, di que vienes de parte de <strong>Mónaco Moto Detailing</strong>. El mensaje de WhatsApp ya lo dice por ti. Los precios están sujetos a disponibilidad y a cambios del proveedor.</p>
+    </div>
+  </header>
+
+  <div class="buscar">
+    <label for="buscar">Buscar proveedor o producto</label>
+    <input type="search" id="buscar" placeholder="Ej.: hidrolavadora, champú, tanque" autocomplete="off">
+  </div>
+  <p class="sin-resultados" id="sin-resultados" hidden>No encontramos nada con esa palabra. Prueba con otra.</p>
+
+  <section class="grupo" id="maquinas">
+    <h2>Máquinas</h2>
+    <div class="prov-grid">
+      <article class="prov">
+        <div class="prov-cab"><strong>Maquitec de Colombia</strong><span class="tel">317 273 4572</span></div>
+        <p class="vende">Hidrolavadoras Annovi Reverberi.</p>
+        <ul class="datos">
+          <li><b>Atiende:</b> Andrea Martínez</li>
+          <li><b>Dirección:</b> Cra. 22 # 68-68, Bogotá</li>
+          <li>En tienda, pagando en efectivo, a veces hacen un descuento adicional.</li>
+        </ul>
+        <div class="botones">
+          <a class="btn wa" href="https://wa.me/573172734572?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20cotizar%20hidrolavadoras%20Annovi%20Reverberi%20para%20mi%20lavadero%20de%20motos." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="tel:+573172734572">Llamar</a>
+        </div>
+        <a class="ver" href="../maquinaria/#m1">Ver qué comprarle →</a>
+      </article>
+      <article class="prov">
+        <div class="prov-cab"><strong>Car Detailing Pro</strong><span class="tel">350 480 9919</span></div>
+        <p class="vende">Polichadora roto-orbital SPTA de 3" con kit, para el servicio de pulido.</p>
+        <div class="botones">
+          <a class="btn wa" href="https://wa.me/573504809919?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20comprar%20la%20polichadora%20roto-orbital%20SPTA%20de%203%20pulgadas." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="tel:+573504809919">Llamar</a>
+        </div>
+        <a class="ver" href="../maquinaria/#m12">Ver qué comprarle →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="grupo" id="agua">
+    <h2>Agua y tanques</h2>
+    <div class="prov-grid">
+      <article class="prov">
+        <div class="prov-cab"><strong>Maquicentro</strong><span class="tel">318 280 4031</span></div>
+        <p class="vende">Bomba centrífuga de 1 HP y control automático de presión, para llevar el agua de los isotanques a las hidrolavadoras.</p>
+        <div class="botones">
+          <a class="btn wa" href="https://wa.me/573182804031?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20cotizar%20la%20bomba%20centr%C3%ADfuga%20de%201%20HP%20y%20el%20control%20autom%C3%A1tico%20de%20presi%C3%B3n." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="tel:+573182804031">Llamar</a>
+        </div>
+        <a class="ver" href="../maquinaria/#m7">Ver qué comprarle →</a>
+      </article>
+      <article class="prov">
+        <div class="prov-cab"><strong>Surti Plastic</strong><span class="tel">310 628 7324</span></div>
+        <p class="vende">Isotanques IBC de 1.000 L para recoger agua lluvia.</p>
+        <div class="botones">
+          <a class="btn wa" href="https://wa.me/573106287324?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20cotizar%20isotanques%20IBC%20de%201.000%20litros." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="tel:+573106287324">Llamar</a>
+        </div>
+        <a class="ver" href="../maquinaria/#m9">Ver qué comprarle →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="grupo" id="quimicos">
+    <h2>Químicos e insumos</h2>
+    <div class="prov-grid">
+      <article class="prov">
+        <div class="prov-cab"><strong>Wash Riders</strong><span class="tel">322 361 8557</span></div>
+        <p class="vende">Kit de pulido Symplex, aerógrafo, cera porcelanizadora, restauradores, aplicadores, microfibras, champú y desengrasante.</p>
+        <ul class="datos">
+          <li>Precio mayorista desde 3 unidades del mismo producto: sale entre 20 % y 30 % más barato que el precio por unidad.</li>
+          <li>El envío se paga aparte.</li>
+        </ul>
+        <div class="botones">
+          <a class="btn wa" href="https://wa.me/573223618557?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20cotizar%20insumos%20para%20mi%20lavadero%20de%20motos." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="tel:+573223618557">Llamar</a>
+        </div>
+        <div class="extra">
+          <a href="../insumos-lavadero/catalogo-wash-riders.pdf" download target="_blank" rel="noopener">Catálogo (PDF)</a>
+          <a href="../insumos-lavadero/precios-mayorista-wash-riders.jpg" download target="_blank" rel="noopener">Precios al por mayor</a>
+        </div>
+        <a class="ver" href="../insumos-lavadero/#i1">Ver qué comprarle →</a>
+      </article>
+      <article class="prov">
+        <div class="prov-cab"><strong>Giovanny Detailing</strong><span class="tel">320 867 9215</span></div>
+        <p class="vende">Fabrica los productos de Wash Riders. <strong>Solo vende champú y desengrasante</strong>, en garrafa de 20 L, a $75.000 cada una.</p>
+        <ul class="datos">
+          <li><b>Solo atiende en Bogotá.</b></li>
+        </ul>
+        <div class="botones">
+          <a class="btn wa" href="https://wa.me/573208679215?text=Hola%2C%20vengo%20de%20parte%20de%20M%C3%B3naco%20Moto%20Detailing.%20Quiero%20cotizar%20champ%C3%BA%20y%20desengrasante%20por%20garrafa." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="tel:+573208679215">Llamar</a>
+        </div>
+        <a class="ver" href="../insumos-lavadero/#i1">Ver qué comprarle →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="grupo" id="herramientas">
+    <h2>Herramientas</h2>
+    <div class="prov-grid">
+      <article class="prov">
+        <div class="prov-cab"><strong>Ferretería de tu zona</strong></div>
+        <p class="vende">Las herramientas del puesto no tienen un proveedor fijo. Pide marca <strong>Stanley, Urrea o SATA</strong>. Evita Pretul y la herramienta sin marca.</p>
+        <a class="ver" href="../herramientas-kit-arrastre/">Ver qué comprarle →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="grupo" id="otros">
+    <h2>Otros lugares de compra</h2>
+    <ul class="otros">
+      <li><strong>Mercado Libre</strong><span>Kit de aire, espumadora Ferton, aspiradora Kärcher, prefiltro de sedimentos y filtro de aguas lluvias. Los links de compra están en <a href="../maquinaria/">Maquinaria</a>. También pads de corte SPTA (o en Amazon).</span></li>
+      <li><strong>Aquatech</strong><span>Compresor industrial lubricado de 150 libras (por cotización). Ver en <a href="../maquinaria/#m3">Maquinaria</a>.</span></li>
+      <li><strong>Ferretería o mayorista en el centro</strong><span>Brochas, guantes de caucho y microfibras. Ver en <a href="../insumos-lavadero/#i8">Insumos</a>.</span></li>
+      <li><strong>Cualquier almacén</strong><span>Hipoclorito, canecas de trabajo, bolsas y vinipel.</span></li>
+    </ul>
+  </section>
+
+  <div id="ruta-hice"></div>
+  <div id="ruta-siguiente"></div>
+  <footer>Mónaco Moto Detailing · Directorio de proveedores · 6-nov-2026 · Datos tomados de las páginas de Maquinaria, Insumos y Herramientas.</footer>
+</main>
+
+<script>
+(function () {
+  var campo = document.getElementById("buscar");
+  var vacio = document.getElementById("sin-resultados");
+  var items = Array.prototype.slice.call(document.querySelectorAll(".prov, .otros li"));
+  var grupos = Array.prototype.slice.call(document.querySelectorAll(".grupo"));
+  function limpiar(t) {
+    return (t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
+  }
+  items.forEach(function (el) {
+    var grupo = el.closest(".grupo");
+    el._texto = limpiar(el.textContent + " " + (grupo ? grupo.querySelector("h2").textContent : ""));
+  });
+  function filtrar() {
+    var palabras = limpiar(campo.value).split(" ").filter(Boolean);
+    var hay = 0;
+    items.forEach(function (el) {
+      var ok = palabras.every(function (p) { return el._texto.indexOf(p) !== -1; });
+      el.hidden = !ok;
+      if (ok) hay++;
+    });
+    grupos.forEach(function (g) {
+      g.hidden = !g.querySelector(".prov:not([hidden]), .otros li:not([hidden])");
+    });
+    vacio.hidden = hay > 0;
+  }
+  campo.addEventListener("input", filtrar);
+})();
+</script>
+
+</body>
+</html>
