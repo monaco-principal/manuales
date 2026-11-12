@@ -71,6 +71,7 @@
   .lista li { display:grid; grid-template-columns:34px 1fr; gap:10px; align-items:start; font-size:clamp(17px,1.8vw,20px) }
   .lista li > b { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%;
     background:var(--m-tinta); color:#fff; font-size:14px; margin-top:1px }
+  .lista.oro { color:var(--m-tinta) }
   .lista.oro li > b { background:var(--m-oro) }
 
   /* Línea de tiempo del video */
@@ -101,25 +102,79 @@
   a.link { color:var(--m-oro-osc); font-weight:700 }
   .slide .boton { max-width:420px }
 
-  /* ---------- Modo presentación (pantalla ancha) ---------- */
-  body.pres .slide { display:none; min-height:calc(100vh - 49px); border:0; flex-direction:column; justify-content:center;
-    padding-top:4vh; padding-bottom:7vh }
-  body.pres .slide.activa { display:flex }
-  body.pres .pie-deck { display:none }
-  .nav-deck { display:none }
-  body.pres .nav-deck { display:flex; position:fixed; right:18px; bottom:16px; gap:8px; z-index:20 }
-  .nav-deck button { width:44px; height:44px; border-radius:50%; border:0; background:var(--m-suave); font-size:20px; cursor:pointer; color:var(--m-tinta) }
-  .nav-deck button:hover { background:var(--m-linea) }
-  .ayuda { font-size:13px; color:var(--m-gris) }
-  body.pres .solo-doc { display:none }
-  body:not(.pres) .solo-pres { display:none }
+  /* ---------- Videos que funcionaron ---------- */
+  .tabla-videos { display:grid; gap:2px; border-radius:14px; overflow:hidden; background:var(--m-linea) }
+  .tabla-videos .fila { display:grid; grid-template-columns:2.6fr 1.1fr .8fr .9fr; gap:10px; padding:10px 14px; background:#fff;
+    color:var(--m-tinta); text-decoration:none; font-size:16px; font-variant-numeric:tabular-nums }
+  .tabla-videos a.fila:hover { background:var(--m-suave) }
+  .tabla-videos .cab { background:var(--m-suave); font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--m-gris) }
+  .tabla-videos .fila span:first-child { font-weight:700 }
+  @media (max-width:760px) { .tabla-videos .fila { grid-template-columns:1fr auto; } .tabla-videos .fila span:nth-child(2), .tabla-videos .fila span:nth-child(4) { display:none } }
+
+  .vid-grid { display:grid; grid-template-columns:auto minmax(0,1fr); gap:28px; align-items:start }
+  .vid-col { display:flex; flex-direction:column; gap:8px; align-items:center }
+  .tt { display:block; border:0; border-radius:16px; background:#000; aspect-ratio:9/16; height:min(72vh, 600px); width:auto }
+  .vid-col a { color:var(--m-gris) }
+  .h2-video { font-size:clamp(24px, 3vw, 36px) !important; margin:0 0 8px !important }
+  .metricas { display:flex; flex-wrap:wrap; gap:6px 14px; font-size:14px; color:var(--m-gris); margin:0 0 14px !important; font-variant-numeric:tabular-nums }
+  .metricas b { color:var(--m-tinta) }
+  .vid-info { font-size:15px; line-height:1.4 }
+  .vid-info h3 { font-size:15px; margin:0 0 4px; text-transform:none }
+  .vid-dos { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 0 12px }
+  .vid-dos .card { padding:14px 16px 12px; border-radius:14px }
+  .mock-titulo { background:#2c2c2e; color:#fff; font-weight:800; font-size:16px; line-height:1.2; text-align:center; border-radius:10px;
+    padding:12px 12px; margin:0 0 6px; text-transform:none }
+  .mock-titulo i { font-style:normal; color:#ffd60a }
+  .mock-titulo .rojo { color:#ff453a; font-size:1.35em; display:block }
+  .mock-titulo .cint { display:block; width:max-content; margin:0 auto 6px; background:#d70015; color:#fff; font-size:11px; letter-spacing:.08em; padding:3px 8px; border-radius:3px }
+  .mock-titulo .cint.blanco { background:#fff; color:#0a2a5c; font-size:12px }
+  .tramos { list-style:none; margin:0 0 12px; padding:0; display:grid; gap:4px }
+  .tramos li { display:grid; grid-template-columns:62px 1fr; gap:8px; padding:5px 0; border-bottom:1px solid var(--m-linea) }
+  .tramos li span { color:var(--m-oro-osc); font-weight:700; font-variant-numeric:tabular-nums; font-size:13px; padding-top:1px }
+  .tramos li p { margin:0 } .tramos li b { margin-right:4px }
+  ul.puntos { margin:0; padding-left:18px } ul.puntos li { margin:0 0 4px }
+  @media (max-width:900px) {
+    .vid-grid { grid-template-columns:1fr } .vid-dos { grid-template-columns:1fr }
+    .tt { width:100%; max-width:340px; height:auto }
+  }
+  .titulos-grid { grid-template-columns:260px minmax(0,1fr); gap:32px; align-items:center }
+  .celu { width:100%; max-width:260px; margin:0 auto }
+  @media (max-width:760px) { .titulos-grid { grid-template-columns:1fr } }
+  .formulas h3 { font-size:clamp(17px,1.7vw,20px) }
+
+  /* ---------- Índice ---------- */
+  .indice { columns:2; column-gap:28px; margin:0; padding:0; list-style:none; counter-reset:ind }
+  .indice li { break-inside:avoid; counter-increment:ind; border-bottom:1px solid var(--m-linea) }
+  .indice a { display:flex; gap:12px; padding:11px 0; color:var(--m-tinta); text-decoration:none; font-weight:700; font-size:17px }
+  .indice a::before { content:counter(ind, decimal-leading-zero); color:var(--m-oro-osc); font-variant-numeric:tabular-nums; min-width:24px }
+  .indice a:hover { color:var(--m-oro-osc) }
+  @media (max-width:760px) { .indice { columns:1 } }
+  .slide { scroll-margin-top:52px }
+
+  /* ---------- Retención interactiva ---------- */
+  .ret { background:var(--m-suave); border-radius:22px; padding:22px 22px 18px; margin:6px 0 14px }
+  .ret-lectura { display:grid; grid-template-columns:auto auto 1fr; gap:14px 26px; align-items:center; margin:0 0 10px }
+  .ret-seg { font-size:15px; color:var(--m-gris); margin:0 !important; grid-column:1 / -1 }
+  .ret-seg b { color:var(--m-tinta); font-size:22px; font-variant-numeric:tabular-nums }
+  .ret-seg .parte { display:inline-block; margin-left:8px; padding:3px 10px; border-radius:980px; background:var(--m-oro); color:#fff; font-weight:700; font-size:13px; vertical-align:3px }
+  .ret-v span { display:block; font-size:clamp(36px,5vw,54px); font-weight:800; letter-spacing:-0.03em; line-height:1; font-variant-numeric:tabular-nums }
+  .ret-v small { display:block; font-size:13px; color:var(--m-gris); margin-top:4px }
+  .ret-v.b span { color:var(--m-verde) } .ret-v.m span { color:var(--m-rojo) }
+  .ret-msg { margin:0 !important; font-size:16px; line-height:1.4; align-self:center }
+  .ret-msg b { color:var(--m-tinta) }
+  #ret-svg { display:block; width:100%; height:auto; touch-action:pan-y; cursor:ew-resize; user-select:none; -webkit-user-select:none }
+  .ret input[type=range] { width:100%; margin:6px 0 4px; accent-color:var(--m-oro); height:28px }
+  .ret-botones { display:flex; flex-wrap:wrap; gap:8px }
+  .ret-botones button { font:inherit; font-size:14px; font-weight:700; border:1px solid var(--m-linea); background:#fff; color:var(--m-tinta);
+    border-radius:980px; padding:7px 14px; cursor:pointer }
+  .ret-botones button:hover { border-color:var(--m-oro) }
+  @media (max-width:760px) { .ret { padding:16px 14px } .ret-lectura { grid-template-columns:1fr 1fr } .ret-msg { grid-column:1 / -1 } }
 
   .pie-deck { max-width:1080px; margin:0 auto; padding:24px max(16px, env(safe-area-inset-left,0px)) 48px; color:var(--m-gris); font-size:14px }
 
   @media print {
-    .barra-top, .nav-deck { display:none !important }
-    body.pres .slide, .slide { display:flex !important; flex-direction:column; justify-content:center; min-height:auto;
-      page-break-after:always; break-after:page; border:0 }
+    .barra-top, .ret input, .ret-botones { display:none !important }
+    .slide { break-inside:avoid-page }
   }
 </style>
 </head>
@@ -128,9 +183,7 @@
 <header class="barra-top">
   <a href="../">← Mapa</a>
   <span class="titulo">Redes sociales · Cómo lo hacemos en Mónaco</span>
-  <span class="contador" id="contador"></span>
-  <button type="button" id="btn-modo" hidden>Presentar</button>
-  <span class="progreso-deck" id="progreso"></span>
+  <span class="progreso-deck" id="progreso" aria-hidden="true"></span>
 </header>
 
 <main class="deck" id="deck">
@@ -139,9 +192,30 @@
 <section class="slide" id="s1">
   <p class="num">Paso 4 · Conseguir clientes</p>
   <h1>Redes sociales:<br>cómo lo hacemos en Mónaco</h1>
-  <p class="lead">Cómo se arma cada video, qué es la retención, cómo se escribe el gancho, los cuatro tipos de guion que usamos, la descripción y a qué hora se publica.</p>
+  <p class="lead">Cómo se arma cada video, qué es la retención, cómo se escribe el gancho, los cuatro tipos de guion que usamos, la descripción, a qué hora se publica y ocho videos reales analizados.</p>
   <p class="chico">Versión 1 · noviembre de 2026. Se va actualizando con lo que nos vaya funcionando.</p>
-  <p class="ayuda solo-pres">Usa las flechas ← → o la barra espaciadora para pasar. <b>F</b> = pantalla completa.</p>
+</section>
+
+<!-- Contenido -->
+<section class="slide" id="contenido">
+  <p class="num">Contenido</p>
+  <ol class="indice">
+    <li><a href="#s2">La idea de fondo</a></li>
+    <li><a href="#s3">Las cuatro partes de un video</a></li>
+    <li><a href="#s4">Retención: cómo decide la red</a></li>
+    <li><a href="#s8">El gancho</a></li>
+    <li><a href="#s10">Los cuatro tipos de guion</a></li>
+    <li><a href="#s16">La vuelta</a></li>
+    <li><a href="#s17">Reglas de los guiones</a></li>
+    <li><a href="#s18">El CTA</a></li>
+    <li><a href="#videos">Ocho videos que funcionaron</a></li>
+    <li><a href="#titulos">Cómo hacer el título</a></li>
+    <li><a href="#formulas">Ganchos para copiar</a></li>
+    <li><a href="#s19">La descripción</a></li>
+    <li><a href="#s20">Publicar a las 6 p. m.</a></li>
+    <li><a href="#s22">Después de publicar</a></li>
+    <li><a href="#s24">En resumen</a></li>
+  </ol>
 </section>
 
 <!-- 2 · La idea de fondo -->
@@ -200,36 +274,26 @@
 
 <!-- 5 · Qué es una retención buena -->
 <section class="slide" id="s5">
-  <p class="num">Retención</p>
-  <h2>Retención: cuánta gente sigue viendo en cada segundo</h2>
-  <div class="grid g2" style="align-items:center">
-    <div>
-      <p class="grande oro">+50 %</p>
-      <p class="lead" style="margin-top:8px">La meta: que <b>más de la mitad</b> siga viendo en el <b>segundo 3</b>.</p>
-      <p>Si se pierde la mitad antes del segundo 3, el gancho no funcionó y la red no amplía el video.</p>
+  <p class="num">Retención · muévala</p>
+  <h2>Cuánta gente sigue viendo en cada segundo</h2>
+  <p class="lead">La meta: que <b>más de la mitad</b> siga viendo en el <b>segundo 3</b>. Mueva la barra o arrastre sobre la gráfica para ver qué pasa en cada parte del video.</p>
+  <div class="ret" id="ret">
+    <div class="ret-lectura">
+      <p class="ret-seg">Segundo <b id="r-seg">3</b> de 30 <span class="parte" id="r-parte">Gancho</span></p>
+      <div class="ret-v b"><span id="r-b">72 %</span><small>video bueno</small></div>
+      <div class="ret-v m"><span id="r-m">33 %</span><small>video malo</small></div>
+      <p class="ret-msg" id="r-msg"></p>
     </div>
-    <svg viewBox="0 0 460 300" role="img" aria-label="Curva de retención de ejemplo: empieza en 100 por ciento y la meta es estar por encima de 50 por ciento en el segundo 3">
-      <g font-size="13" fill="#86868b">
-        <line x1="50" y1="20" x2="50" y2="250" stroke="#e5e5ea"/>
-        <line x1="50" y1="250" x2="440" y2="250" stroke="#e5e5ea"/>
-        <text x="42" y="26" text-anchor="end">100 %</text>
-        <text x="42" y="140" text-anchor="end">50 %</text>
-        <text x="42" y="254" text-anchor="end">0 %</text>
-        <line x1="50" y1="135" x2="440" y2="135" stroke="#c0a44d" stroke-dasharray="5 5"/>
-        <text x="50" y="272">0 s</text><text x="128" y="272" text-anchor="middle">3 s</text><text x="440" y="272" text-anchor="end">final</text>
-        <line x1="128" y1="20" x2="128" y2="250" stroke="#e5e5ea" stroke-dasharray="3 4"/>
-        <!-- buena -->
-        <path d="M50 20 C 80 40, 100 60, 128 72 S 300 120, 440 160" fill="none" stroke="#1d7a46" stroke-width="3.5"/>
-        <!-- mala -->
-        <path d="M50 20 C 70 90, 95 170, 128 200 S 300 236, 440 242" fill="none" stroke="#b3261e" stroke-width="3.5"/>
-        <circle cx="128" cy="72" r="5" fill="#1d7a46"/><circle cx="128" cy="200" r="5" fill="#b3261e"/>
-        <text x="140" y="66" fill="#1d7a46" font-weight="700">Buena: la mayoría se queda</text>
-        <text x="140" y="196" fill="#b3261e" font-weight="700">Mala: se fueron en el gancho</text>
-        <text x="436" y="128" text-anchor="end" fill="#8a7330" font-weight="700">meta</text>
-      </g>
-    </svg>
+    <svg id="ret-svg" viewBox="0 0 640 290" role="img" aria-label="Gráfica de retención de un video de 30 segundos: el video bueno conserva el 72 por ciento en el segundo 3 y el malo el 33 por ciento"></svg>
+    <input type="range" id="r-range" min="0" max="30" step="0.5" value="3" aria-label="Segundo del video">
+    <div class="ret-botones">
+      <button type="button" data-t="1">Segundo 1</button>
+      <button type="button" data-t="3">Segundo 3 · la meta</button>
+      <button type="button" data-t="15">La mitad</button>
+      <button type="button" data-t="29">Justo antes del final</button>
+    </div>
   </div>
-  <p class="chico">Gráfica de ejemplo. La de cada video sale en las estadísticas del Reel en Instagram y en las del video en TikTok.</p>
+  <p class="chico">Video de ejemplo de 30 segundos. La gráfica de cada video sale en las estadísticas del Reel en Instagram y en las del video en TikTok: ahí se lee igual.</p>
 </section>
 
 <!-- 6 · Leer la gráfica -->
@@ -477,6 +541,289 @@
   </div>
 </section>
 
+<!-- Videos · apertura -->
+<section class="slide" id="videos">
+  <p class="num">Videos que funcionaron</p>
+  <h2>Ocho videos reales, analizados toma por toma</h2>
+  <p class="lead">Tres de Mónaco, cuatro de lavaderos que asesoramos y uno de un cantante que usa muy bien los títulos. De cada uno miramos el gancho, el título en pantalla, cómo va, por qué funcionó y qué se puede mejorar.</p>
+  <div class="tabla-videos">
+    <div class="fila cab"><span>Video</span><span>Tipo</span><span>Vistas</span><span>Comentarios</span></div>
+    <a class="fila" href="#v1" data-ir="v1"><span>«¿Un millón me alcanza para una lavada?»</span><span>Controversial</span><span>477.200</span><span>988</span></a>
+    <a class="fila" href="#v2" data-ir="v2"><span>«Una lavada de 59.000, demasiado caro»</span><span>Controversial</span><span>118.300</span><span>513</span></a>
+    <a class="fila" href="#v3" data-ir="v3"><span>«Se roban las motos del barrio»</span><span>Controversial</span><span>642.300</span><span>832</span></a>
+    <a class="fila" href="#v4" data-ir="v4"><span>«Llevan motos robadas a barrios»</span><span>Controversial</span><span>29.900</span><span>66</span></a>
+    <a class="fila" href="#v5" data-ir="v5"><span>«Un lavado de un millón de pesos»</span><span>Llamativo</span><span>381.000</span><span>184</span></a>
+    <a class="fila" href="#v6" data-ir="v6"><span>«¿Qué necesito para montar mi lavadero?»</span><span>Llamativo</span><span>552.600</span><span>213</span></a>
+    <a class="fila" href="#v7" data-ir="v7"><span>«Yo quiero montar un lavadero de motos»</span><span>Testimonio</span><span>357.500</span><span>984</span></a>
+    <a class="fila" href="#v8" data-ir="v8"><span>La noticia que resulta ser una canción</span><span>Otro nicho</span><span>507.800</span><span>265</span></a>
+  </div>
+  <p class="chico" style="margin-top:12px">Números de TikTok del 11 de noviembre de 2026.</p>
+</section>
+
+<!-- Video 1 -->
+<section class="slide video-slide" id="v1">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7699999813630299412?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @saenzmotodetailing" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@saenzmotodetailing/video/7699999813630299412" target="_blank" rel="noopener">Ver en TikTok · @saenzmotodetailing ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 1 de 8 · Controversial · precio</p>
+      <h2 class="h2-video">«¿Un millón me alcanza para una lavada?»</h2>
+      <p class="metricas"><span><b>477.200</b> vistas</span><span><b>23.900</b> likes</span><span><b>988</b> comentarios</span><span><b>4.130</b> compartidos</span><span>19 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>«Oye, pregunta: ¿un millón de pesos me alcanza para una lavada de moto?» Lo dice el que graba, mientras ella camina hacia la cámara.</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo"><i>un millón</i> de pesos me alcanza para una lavada <i>de moto</i></div><p class="chico">Se arma palabra por palabra al ritmo de la voz. Las palabras clave, en amarillo.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–2 s</span><p><b>Gancho</b> La pregunta absurda, dicha y escrita.</p></li><li><span>2–5 s</span><p><b>Problema</b> «¿Va a lavar la moto? Me va a comprar el negocio.»</p></li><li><span>5–13 s</span><p><b>La vuelta</b> «La membresía vale 59.900», en verde gigante. «¿Una? Más. ¿Dos? ¿Tres? Muchas más.»</p></li><li><span>13–17 s</span><p><b>Objeción</b> «¿Cinco horas esperando?» → «Reserva y mientras tanto juega Play.»</p></li><li><span>17–19 s</span><p><b>CTA</b> En la fachada: «Comenta SAENZ». Y se acaba.</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>Cifra absurda en el segundo 0: uno se queda para saber la respuesta.</li><li>Tumba las dos objeciones del motero, precio y espera, y lo muestra en cámara.</li><li>15 tomas en 19 s: no da tiempo de aburrirse.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>La palabra del CTA se oye mal (la transcripción entendió «Science»). Decirla despacio y dejarla escrita.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video 2 -->
+<section class="slide video-slide" id="v2">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7645470750622715156?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @saenzmotodetailing" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@saenzmotodetailing/video/7645470750622715156" target="_blank" rel="noopener">Ver en TikTok · @saenzmotodetailing ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 2 de 8 · Controversial · queja de precio</p>
+      <h2 class="h2-video">«Una lavada de 59.000, demasiado caro»</h2>
+      <p class="metricas"><span><b>118.300</b> vistas</span><span><b>3.131</b> likes</span><span><b>513</b> comentarios</span><span><b>924</b> compartidos</span><span>29 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>Un cliente que no sale en cámara se queja del precio desde el segundo 0. El dueño levanta la cara: «No, parce, está confundido».</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo">una lavada de <b class='rojo'>59.000</b> demasiado caro</div><p class="chico">Tres líneas arriba, desde el primer cuadro. El precio en rojo, enorme.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–2 s</span><p><b>Gancho</b> La queja y el título con el precio en rojo.</p></li><li><span>2–11 s</span><p><b>La vuelta</b> «59 mil pesos no vale la lavada, vale la membresía.»</p></li><li><span>11–17 s</span><p><b>Objeción</b> «¿Me toca esperar dos horas?» → la página de reservas en pantalla.</p></li><li><span>17–24 s</span><p><b>Se muestra</b> «¿Qué incluye?» «Venga, le muestro»: desengrase, cadena, rines, espuma.</p></li><li><span>24–30 s</span><p><b>CTA</b> «Comenta la palabra SÁENZ y te envío toda la información.»</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>Es una queja que todo motero ha pensado, y eso provoca discusión: 513 comentarios.</li><li>La vuelta sorprende: lo «caro» resulta ser barato.</li><li>Cada pregunta es una objeción, y se responde en segundos.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>Los «100 cupos al mes» solo están en la descripción. Dichos antes del CTA empujan más.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video 3 -->
+<section class="slide video-slide" id="v3">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7688873007644708117?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @baiku.moto.detail" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@baiku.moto.detail/video/7688873007644708117" target="_blank" rel="noopener">Ver en TikTok · @baiku.moto.detail ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 3 de 8 · Controversial · formato noticiero</p>
+      <h2 class="h2-video">«Se roban las motos del barrio»</h2>
+      <p class="metricas"><span><b>642.300</b> vistas</span><span><b>12.200</b> likes</span><span><b>832</b> comentarios</span><span><b>1.766</b> compartidos</span><span>44 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>Toma espía de la fachada desde la acera de enfrente y una voz de vecino: «No, no, no, eso está muy raro».</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo"><span class='cint'>EN TENDENCIA</span> POLÉMICA EN BRITALIA «SE ROBAN LAS MOTOS DEL BARRIO»</div><p class="chico">Placa roja de noticiero con el nombre del barrio, desde el segundo 0. En 1 segundo se entiende el chisme.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–4 s</span><p><b>Gancho</b> La fachada, la placa y el vecino que sospecha.</p></li><li><span>4–24 s</span><p><b>Problema</b> Entran y salen motos todo el día; los vecinos arman el chisme.</p></li><li><span>24–28 s</span><p><b>La vuelta</b> «La gente en Britalia, así chismosa, piensa que estamos haciendo algo ilegal por ofrecer lavadas ilimitadas.»</p></li><li><span>28–41 s</span><p><b>Las cuentas</b> 25.000 la lavada y 100.000 a la semana, tachados, contra 59.000 al mes.</p></li><li><span>41–44 s</span><p><b>CTA</b> «Comenta la palabra MOTO.» Y se acaba.</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>Una acusación fuerte y local, legible desde el primer cuadro.</li><li>Lo que se ve confirma el chisme: sí entran motos todo el día. Por eso la vuelta es lógica y graciosa.</li><li>Las cuentas tachadas en pantalla se entienden sin pensar.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>El chisme dura 24 s: con 2 o 3 frases basta.</li><li>Casi no se ve el lavado (1,4 s de espuma).</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video 4 -->
+<section class="slide video-slide" id="v4">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7699631158853897479?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @endurancegarage2" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@endurancegarage2/video/7699631158853897479" target="_blank" rel="noopener">Ver en TikTok · @endurancegarage2 ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 4 de 8 · Controversial · formato noticiero</p>
+      <h2 class="h2-video">«Llevan motos robadas a barrios»</h2>
+      <p class="metricas"><span><b>29.900</b> vistas</span><span><b>294</b> likes</span><span><b>66</b> comentarios</span><span><b>42</b> compartidos</span><span>38 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>La fachada de noche, grabada como a escondidas: «Ay no, en ese lugar como que roban motos… espere y verá cómo empiezan a salir y a entrar motos». Y entra una moto.</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo"><span class='cint'>¡ALERTA!</span> POLÉMICA EN LAURELES «LLEVAN MOTOS ROBADAS A BARRIOS»</div><p class="chico">El mismo formato de Baiku, pero con cuatro líneas: las dos de abajo quedan encima de los botones de TikTok.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–6 s</span><p><b>Gancho</b> La acusación y la placa de noticiero.</p></li><li><span>6–12 s</span><p><b>Problema</b> Salen motos, gente en la puerta: «Vean, vean…».</p></li><li><span>12–17 s</span><p><b>La vuelta</b> «La gente sí es chismosa. Piensa que estamos haciendo algo ilegal porque ofrecemos lavadas ilimitadas.»</p></li><li><span>17–34 s</span><p><b>Las cuentas</b> 35, 70 y 140 mil contra «desde $59.900» en verde.</p></li><li><span>34–38 s</span><p><b>CTA</b> «Comenta la palabra MOTO.» Y se acaba.</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>Mismo gancho que funcionó en Baiku, con un barrio que todo Medellín conoce.</li><li>Lo que dice la voz se ve en cámara en los primeros 3 segundos.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>Lo publicaron hace 3 semanas, pero comparado con Baiku: primera toma de 6 s, placa de cuatro líneas y no se ve ninguna moto lavándose. Un formato que funcionó no alcanza si se graba más lento.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video 5 -->
+<section class="slide video-slide" id="v5">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7595742566251875592?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @monaco_motodetailing" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@monaco_motodetailing/video/7595742566251875592" target="_blank" rel="noopener">Ver en TikTok · @monaco_motodetailing ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 5 de 8 · Llamativo · cifra absurda</p>
+      <h2 class="h2-video">«Un lavado de un millón de pesos»</h2>
+      <p class="metricas"><span><b>381.000</b> vistas</span><span><b>4.703</b> likes</span><span><b>184</b> comentarios</span><span><b>322</b> compartidos</span><span>38 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>«Este es un lavado de un millón de pesos. Hoy nos llegó esta KTM Duke 200.» La moto ya va entrando desde el primer cuadro.</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo">Esto incluye un <b class='rojo'>Lavado</b> de $1.000.000</div><p class="chico">En el centro, encima de la moto, unos 3 s. Al final se cierra con el mismo estilo: «No vale 1.000.000» en rojo y «Vale 25.000» en verde.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–3 s</span><p><b>Gancho</b> La cifra absurda, dicha y escrita.</p></li><li><span>4–7 s</span><p><b>Arranque</b> «El cliente reservó en nuestro sitio web.»</p></li><li><span>7–35 s</span><p><b>La vuelta</b> Unas 28 tomas del proceso: barro, desengrasante, motor, espuma, secado.</p></li><li><span>35–38 s</span><p><b>Remate</b> «Este lavado no vale un millón de pesos, sino 25 mil.»</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>Una cifra que no cuadra: uno se queda para entender por qué.</li><li>Todo el video es el valor mostrado en cámara, en tomas de menos de 2 s.</li><li>Después de ver tanto trabajo, 25.000 parece barato.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>No hay CTA dentro del video, solo en la descripción. Después de «Vale 25.000» faltaba «Comente MOTO».</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video 6 -->
+<section class="slide video-slide" id="v6">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7631368924730314005?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @monaco_motodetailing" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@monaco_motodetailing/video/7631368924730314005" target="_blank" rel="noopener">Ver en TikTok · @monaco_motodetailing ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 6 de 8 · Llamativo · para dueños</p>
+      <h2 class="h2-video">«¿Qué necesito para montar mi lavadero?»</h2>
+      <p class="metricas"><span><b>552.600</b> vistas</span><span><b>12.300</b> likes</span><span><b>213</b> comentarios</span><span><b>1.979</b> compartidos</span><span>44 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>Alguien fuera de cámara: «Oiga Juanpa, ¿y ese hueco qué?». «Parce, esta es una trampa de grasas. Esto es obligatorio para que usted monte su lavadero de motos.»</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo">¿Qué necesito para montar mi lavadero?</div><p class="chico">Es la pregunta exacta del que quiere montar un lavadero. Va detrás de la persona: la cabeza tapa un pedazo.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–5 s</span><p><b>Gancho</b> El hueco en el piso y la pregunta de otra persona.</p></li><li><span>5–13 s</span><p><b>Problema</b> «¿Qué otra cosa necesito?» Las canales, para no contaminar el acueducto.</p></li><li><span>13–39 s</span><p><b>La vuelta</b> Recorrido por la obra: hidrolavadoras, bomba, tanques de 2.000 litros, puntos de lavado.</p></li><li><span>39–44 s</span><p><b>Remate</b> «Lo más importante: una buena ubicación.» «+500» motos al día en pantalla.</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>Algo raro a la vista y una pregunta natural: da curiosidad.</li><li>«Es obligatorio» mete un miedo útil.</li><li>Todo se muestra en una obra real: credibilidad sin decir «somos expertos». 1.979 compartidos: sirve como lista de chequeo.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>Sin CTA dentro del video.</li><li>El título dura solo 1,25 s: dejarlo hasta el segundo 3.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video 7 -->
+<section class="slide video-slide" id="v7">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7602467617546243346?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @monaco_motodetailing" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@monaco_motodetailing/video/7602467617546243346" target="_blank" rel="noopener">Ver en TikTok · @monaco_motodetailing ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 7 de 8 · Testimonio de un asesorado</p>
+      <h2 class="h2-video">«Yo quiero montar un lavadero de motos»</h2>
+      <p class="metricas"><span><b>357.500</b> vistas</span><span><b>7.511</b> likes</span><span><b>984</b> comentarios</span><span><b>2.233</b> compartidos</span><span>82 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>«Oiga Juanpa, ¿ese es el nuevo lavadero que usted montó?» «Amigo, ese es el lavadero de una persona que estamos asesorando.»</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo">Yo quiero montar un lavadero de motos</div><p class="chico">La frase que piensa el cliente ideal, en primera persona y detrás de la persona.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–5 s</span><p><b>Gancho</b> Una confusión natural en un lavadero ya terminado.</p></li><li><span>5–31 s</span><p><b>Se muestra</b> El dueño cuenta qué compró y la cámara lo va mostrando.</p></li><li><span>31–56 s</span><p><b>La vuelta</b> «Uno cree que cualquiera va a servir… qué hacer, cómo hacerlo, dónde comprarlo, para no malgastar el dinero.»</p></li><li><span>56–82 s</span><p><b>Remate</b> «Me siento realizado, era un sueño.»</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>La prueba la da otra persona, y eso vale más que si lo decimos nosotros.</li><li>El resultado se ve desde el segundo 0: un lavadero terminado y bonito.</li><li>984 comentarios: el que sueña con su lavadero se identifica.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>Sin CTA: termina en el perfil del lavadero del cliente.</li><li>82 s es largo: se puede recortar la parte de las compras.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video 8 -->
+<section class="slide video-slide" id="v8">
+  <div class="vid-grid">
+    <div class="vid-col">
+      <iframe class="tt" src="https://www.tiktok.com/player/v1/7662104381264776469?music_info=0&amp;description=0&amp;rel=0" title="Video de TikTok @jorge.callejasmusica" allow="fullscreen; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <a class="chico" href="https://www.tiktok.com/@jorge.callejasmusica/video/7662104381264776469" target="_blank" rel="noopener">Ver en TikTok · @jorge.callejasmusica ↗</a>
+    </div>
+    <div class="vid-info">
+      <p class="num">Videos que funcionaron · 8 de 8 · Otro nicho · por los títulos</p>
+      <h2 class="h2-video">La noticia que resulta ser una canción</h2>
+      <p class="metricas"><span><b>507.800</b> vistas</span><span><b>14.900</b> likes</span><span><b>265</b> comentarios</span><span><b>1.717</b> compartidos</span><span>31 s</span></p>
+      <div class="vid-dos">
+        <div><h3>El gancho</h3><p>Escena grabada con celular en la calle: un señor con una lata se mete entre los carros. Encima, titular de noticiero. A los 4,7 s se revela que es un video musical.</p></div>
+        <div><h3>El título en pantalla</h3><div class="mock-titulo"><span class='cint blanco'>CRÍTICA SITUACIÓN EN SOACHA, CUNDINAMARCA</span> Hombre en aparente estado de embriaguez casi provoca una tragedia</div><p class="chico">Arriba, el lugar; abajo, qué pasó. Después, la letra de la canción con solo 1 a 3 palabras grandes por toma, en neón y a veces detrás del cantante.</p></div>
+      </div>
+      <h3>Cómo va</h3>
+      <ul class="tramos"><li><span>0–5 s</span><p><b>Gancho</b> Titular de noticiero con un lugar real y palabras de alarma.</p></li><li><span>5–9 s</span><p><b>La vuelta</b> Corte limpio al cantante: «Y viviré tomando trago».</p></li><li><span>9–31 s</span><p><b>Desarrollo</b> La canción, con 1 a 3 palabras en pantalla por toma.</p></li></ul>
+      <div class="vid-dos">
+        <div class="card bien"><span class="etq">Por qué funcionó</span><ul class="puntos"><li>Titular desde el primer cuadro, con un lugar real.</li><li>La sorpresa del segundo 4,7 hace que la gente se quede.</li><li>Las palabras en pantalla se leen de un vistazo, incluso sin sonido.</li></ul></div>
+        <div class="card mal"><span class="etq">Para mejorar</span><ul class="puntos"><li>Para copiar el formato: nosotros siempre ponemos el rótulo «Dramatización», y el texto va lejos de los botones de TikTok.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Patrones -->
+<section class="slide" id="patrones">
+  <p class="num">Lo que tienen en común</p>
+  <h2>Siete cosas que se repiten en los que funcionaron</h2>
+  <div class="grid g3 patrones">
+    <div class="card"><h3>1. Arrancan sin introducción</h3><p>En el primer cuadro ya hay voz, título y algo pasando: una moto que entra, alguien que camina, un hueco en el piso.</p></div>
+    <div class="card"><h3>2. El gancho lo dice otra persona</h3><p>Un cliente o un vecino fuera de cámara pregunta o se queja: «Oiga Juanpa, ¿y ese hueco qué?». Se siente como una charla, no como un anuncio.</p></div>
+    <div class="card"><h3>3. Una cifra al principio y el precio real al final</h3><p>«Un millón de pesos», «59.000 demasiado caro»… y al final, 25.000 o la membresía. Después de ver el trabajo, el precio real parece barato.</p></div>
+    <div class="card"><h3>4. Le dan la vuelta a la crítica</h3><p>«Ahí roban motos» → «Entran tantas motos porque hay lavadas ilimitadas». Lo malo que dicen termina siendo la razón para comprar.</p></div>
+    <div class="card"><h3>5. Cada pregunta es una objeción</h3><p>¿Cuánto vale? ¿Cuánto toca esperar? ¿Qué incluye? Cada respuesta llega en segundos y abre la siguiente pregunta.</p></div>
+    <div class="card"><h3>6. Lo muestran en vez de contarlo</h3><p>Cada cosa que nombran se ve: la máquina, la espuma, la cadena, la sala con Play, la página de reservas.</p></div>
+  </div>
+  <div class="card oro-c" style="margin-top:14px"><h3>7. Cortes rápidos</h3><p>Tomas de 1 a 2 segundos y el primer corte antes del segundo 2,5. Los videos con una primera toma de 4 a 6 segundos son los que más se pueden mejorar.</p></div>
+</section>
+
+<!-- Lo que hay que corregir -->
+<section class="slide" id="corregir">
+  <p class="num">Lo que hay que corregir</p>
+  <h2>Tres errores que salieron en el análisis</h2>
+  <div class="grid g3">
+    <div class="card mal"><span class="etq">El más importante</span><h3>Videos sin CTA</h3><p>Los tres videos de Mónaco dejan el «Comenta MÓNACO» solo en la descripción. Los cuatro de los lavaderos sí lo dicen al final. La palabra va dicha, escrita en pantalla y en la descripción.</p></div>
+    <div class="card mal"><span class="etq">Se pierde el texto</span><h3>Letras encima de los botones</h3><p>Abajo y a la derecha TikTok pone la descripción y los botones. Ahí no va texto: las placas de noticiero de cuatro líneas quedan tapadas.</p></div>
+    <div class="card mal"><span class="etq">Se va la gente</span><h3>Problema demasiado largo</h3><p>Un chisme de 24 segundos o un testimonio de 82. Con 2 o 3 frases de problema basta: hay que llegar rápido a la vuelta.</p></div>
+  </div>
+  <p class="lead" style="margin-top:22px">Y una palabra de CTA que sea fácil de escribir. Si es el nombre del local, hay que decirla despacio: la transcripción automática entendió «Science» en vez de «Sáenz».</p>
+</section>
+
+<!-- Títulos en pantalla -->
+<section class="slide" id="titulos">
+  <p class="num">El título en pantalla</p>
+  <h2>Cómo hacer el título</h2>
+  <div class="grid titulos-grid">
+    <svg class="celu" viewBox="0 0 270 480" role="img" aria-label="Pantalla de celular: el título va arriba en la zona segura; abajo y a la derecha van la descripción y los botones de TikTok, donde no se pone texto">
+      <rect x="1" y="1" width="268" height="478" rx="26" fill="#1d1d1f"/>
+      <rect x="10" y="10" width="250" height="460" rx="18" fill="#3a3a3c"/>
+      <rect x="22" y="60" width="200" height="96" rx="8" fill="none" stroke="#c0a44d" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="122" y="88" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">una lavada de</text>
+      <text x="122" y="118" text-anchor="middle" fill="#ff453a" font-size="28" font-weight="800">59.000</text>
+      <text x="122" y="143" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">demasiado caro</text>
+      <text x="122" y="52" text-anchor="middle" fill="#c0a44d" font-size="11" font-weight="700">AQUÍ VA EL TÍTULO</text>
+      <rect x="10" y="355" width="250" height="115" rx="0" fill="#b3261e" opacity=".55"/>
+      <rect x="215" y="190" width="45" height="165" fill="#b3261e" opacity=".55"/>
+      <g fill="#fff"><circle cx="237" cy="215" r="11"/><circle cx="237" cy="255" r="11"/><circle cx="237" cy="295" r="11"/><circle cx="237" cy="335" r="11"/></g>
+      <rect x="22" y="380" width="150" height="9" rx="4" fill="#fff" opacity=".8"/><rect x="22" y="398" width="185" height="8" rx="4" fill="#fff" opacity=".6"/><rect x="22" y="414" width="120" height="8" rx="4" fill="#fff" opacity=".6"/>
+      <text x="135" y="452" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">AQUÍ NO: DESCRIPCIÓN Y BOTONES</text>
+    </svg>
+    <ol class="lista oro">
+      <li><b>1</b><span><b>Desde el primer cuadro</b> y hasta el segundo 3. Si se quita antes, el que entra un poco tarde no lo alcanza a leer.</span></li>
+      <li><b>2</b><span><b>Dice lo mismo que la voz</b>, para que se lea y se oiga a la vez.</span></li>
+      <li><b>3</b><span><b>Arriba, de 3 a 4 líneas cortas</b>, casi de lado a lado. Nada abajo ni en el borde derecho.</span></li>
+      <li><b>4</b><span><b>La cifra o la palabra clave, más grande y en color:</b> rojo para el precio que asusta, verde para el precio bueno.</span></li>
+      <li><b>5</b><span><b>Letra blanca y gruesa, con sombra o brillo</b> para que se despegue del fondo. Si se puede, detrás de la persona.</span></li>
+      <li><b>6</b><span><b>Placa de noticiero:</b> «¡ALERTA!» y una sola frase con un lugar real. Cuatro líneas es demasiado. En la escena actuada, siempre «Dramatización».</span></li>
+      <li><b>7</b><span><b>Después del gancho, de 1 a 3 palabras por toma</b>, no frases largas. Y al final, la palabra del CTA en grande.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Fórmulas de gancho -->
+<section class="slide" id="formulas">
+  <p class="num">Para copiar</p>
+  <h2>Seis ganchos que ya funcionaron, listos para adaptar</h2>
+  <div class="grid g2 formulas">
+    <div class="card"><h3>«Oiga, ¿y ese/esa [cosa rara del lavadero] qué?»</h3><p class="gris">«Oiga Juanpa, ¿y ese hueco qué?» → «Es una trampa de grasas, es obligatoria».</p></div>
+    <div class="card"><h3>«Este es un lavado de [cifra absurda]»</h3><p class="gris">«Este es un lavado de un millón de pesos»… y al final, «no vale un millón, sino 25 mil».</p></div>
+    <div class="card"><h3>«¿[Cifra exagerada] me alcanza para una lavada?»</h3><p class="gris">«¿Un millón de pesos me alcanza para una lavada de moto?»</p></div>
+    <div class="card"><h3>«[Precio], demasiado caro», con la cifra en rojo</h3><p class="gris">«Una lavada de 59.000, demasiado caro» → «No vale la lavada, vale la membresía».</p></div>
+    <div class="card"><h3>«POLÉMICA EN [barrio]» + voz de vecino</h3><p class="gris">«Se roban las motos del barrio» → «Son lavadas ilimitadas».</p></div>
+    <div class="card"><h3>«¿Ese es [algo suyo]?» «No, es de un cliente»</h3><p class="gris">«¿Ese es el lavadero que usted montó?» → el cliente cuenta su resultado.</p></div>
+  </div>
+</section>
+
 <!-- 19 · La descripción -->
 <section class="slide" id="s19">
   <p class="num">La descripción</p>
@@ -566,7 +913,7 @@
 
 <!-- 24 · Resumen -->
 <section class="slide" id="s24">
-  <p class="num">En una sola diapositiva</p>
+  <p class="num">En resumen</p>
   <h2>Lo que hay que recordar</h2>
   <ol class="lista oro">
     <li><b>1</b><span>Las redes son para <b>llamar la atención</b>: el gancho se gana en <b>2 segundos</b>.</span></li>
@@ -576,7 +923,7 @@
     <li><b>5</b><span>Una palabra: se dice, se ve y se escribe. <b>Después del CTA, nada.</b></span></li>
     <li><b>6</b><span>Publicar a las <b>6:00 p. m.</b> y contestar en menos de un minuto.</span></li>
   </ol>
-  <div id="ruta-cierre" class="solo-doc" style="margin-top:28px"></div>
+  <div id="ruta-cierre" style="margin-top:28px"></div>
 </section>
 
 </main>
@@ -585,68 +932,110 @@
   <p>Mónaco · Moto Detailing · Redes sociales · v1 · noviembre de 2026</p>
 </footer>
 
-<nav class="nav-deck" aria-label="Diapositivas">
-  <button type="button" id="ant" aria-label="Anterior">←</button>
-  <button type="button" id="sig" aria-label="Siguiente">→</button>
-</nav>
 
 <script>
 (function () {
   "use strict";
-  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
-  var total = slides.length, i = 0;
-  var body = document.body, btn = document.getElementById("btn-modo");
-  var contador = document.getElementById("contador"), barra = document.getElementById("progreso");
-  var ancho = window.matchMedia("(min-width: 900px)");
-
-  function pintar() {
-    slides.forEach(function (s, k) { s.classList.toggle("activa", k === i); });
-    contador.textContent = (i + 1) + " / " + total;
-    barra.style.width = ((i + 1) / total * 100) + "%";
+  /* Barra de avance de lectura */
+  var barra = document.getElementById("progreso");
+  function avance() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    barra.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + "%";
   }
-  function ir(n) {
-    i = Math.max(0, Math.min(total - 1, n));
-    pintar();
-    if (body.classList.contains("pres")) {
-      try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {}
-      window.scrollTo(0, 0);
-    }
-  }
-  function modo(pres) {
-    body.classList.toggle("pres", pres);
-    btn.textContent = pres ? "Ver como documento" : "Presentar";
-    if (pres) ir(i); else { slides[i].scrollIntoView(); contador.textContent = total + " diapositivas"; barra.style.width = "0"; }
-  }
+  window.addEventListener("scroll", avance, { passive: true }); avance();
 
-  var h = parseInt((location.hash || "").replace("#", ""), 10);
-  if (h >= 1 && h <= total) i = h - 1;
-  btn.hidden = false;
-  btn.addEventListener("click", function () { modo(!body.classList.contains("pres")); });
-  modo(ancho.matches);
+  /* Retención interactiva (datos de ejemplo, video de 30 s) */
+  var BUENA = [100,90,80,72,68,65,62,60,58,57,56,55,54,53,52,51,50,49,48,47,46,45,44,44,43,42,41,40,38,36,34];
+  var MALA  = [100,70,48,33,27,24,22,20,19,18,17,16,15,15,14,14,13,13,12,12,11,11,11,10,10,10,9,9,8,7,6];
+  var PARTES = [
+    { desde:0,  hasta:3,  nombre:"Gancho",    color:"#c0a44d" },
+    { desde:3,  hasta:7,  nombre:"Problema",  color:"#a8955a" },
+    { desde:7,  hasta:27, nombre:"La vuelta", color:"#86868b" },
+    { desde:27, hasta:30, nombre:"CTA",       color:"#1d1d1f" }
+  ];
+  var svg = document.getElementById("ret-svg"); if (!svg) return;
+  var NS = "http://www.w3.org/2000/svg";
+  var W = 640, H = 290, X0 = 46, X1 = 626, Y0 = 34, Y1 = 250, T = 30, actual = 3;
+  var cursor, pb, pm;
+  function x(t) { return X0 + (X1 - X0) * t / T; }
+  function y(v) { return Y1 - (Y1 - Y0) * v / 100; }
+  function val(arr, t) { var a = Math.floor(t), b = Math.min(T, a + 1), f = t - a; return arr[a] + (arr[b] - arr[a]) * f; }
+  function el(tag, at, txt) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; }
+  function dibujar() {
+    /* Se dibuja al ancho real para que la letra no se encoja en el celular */
+    W = Math.max(320, Math.min(760, Math.round(svg.clientWidth || 640)));
+    var angosto = W < 520;
+    H = angosto ? 260 : 290; X0 = 44; X1 = W - 12; Y0 = 30; Y1 = H - 36;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    PARTES.forEach(function (p, k) {
+      el("rect", { x:x(p.desde), y:Y0, width:x(p.hasta) - x(p.desde), height:Y1 - Y0, fill: k % 2 ? "#ffffff" : "#efeee9", opacity:".7" });
+      var nombre = angosto && p.nombre === "Problema" ? "" : p.nombre;
+      el("text", { x:(x(p.desde) + x(p.hasta)) / 2, y:Y0 - 10, "text-anchor":"middle", "font-size":"12", "font-weight":"700", fill:p.color }, nombre);
+    });
+    [0,25,50,75,100].forEach(function (v) {
+      el("line", { x1:X0, x2:X1, y1:y(v), y2:y(v), stroke:"#e0e0e5" });
+      el("text", { x:X0 - 7, y:y(v) + 4, "text-anchor":"end", "font-size":"12", fill:"#86868b" }, v + " %");
+    });
+    (angosto ? [3,15,30] : [0,3,7,15,27,30]).forEach(function (t) {
+      el("text", { x:x(t), y:Y1 + 20, "text-anchor": t === 30 ? "end" : (t === 0 ? "start" : "middle"), "font-size":"12", fill:"#86868b" }, t + " s");
+    });
+    el("line", { x1:X0, x2:X1, y1:y(50), y2:y(50), stroke:"#c0a44d", "stroke-width":"2", "stroke-dasharray":"6 5" });
+    el("text", { x:X1 - 4, y:y(50) - 7, "text-anchor":"end", "font-size":"12", "font-weight":"700", fill:"#8a7330" }, "meta 50 %");
+    [[BUENA, "#1d7a46"], [MALA, "#b3261e"]].forEach(function (c) {
+      var d = ""; for (var t = 0; t <= T; t += 0.5) d += (t ? " L" : "M") + x(t).toFixed(1) + " " + y(val(c[0], t)).toFixed(1);
+      el("path", { d:d, fill:"none", stroke:c[1], "stroke-width":"3.5", "stroke-linejoin":"round", "stroke-linecap":"round" });
+    });
+    cursor = el("line", { y1:Y0, y2:Y1, stroke:"#1d1d1f", "stroke-width":"1.5" });
+    pb = el("circle", { r:"7", fill:"#1d7a46", stroke:"#fff", "stroke-width":"2.5" });
+    pm = el("circle", { r:"7", fill:"#b3261e", stroke:"#fff", "stroke-width":"2.5" });
+  }
+  dibujar();
 
-  document.getElementById("ant").addEventListener("click", function () { ir(i - 1); });
-  document.getElementById("sig").addEventListener("click", function () { ir(i + 1); });
-  document.addEventListener("keydown", function (e) {
-    if (!body.classList.contains("pres")) return;
-    if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
-    var k = e.key;
-    if (k === "ArrowRight" || k === "PageDown" || k === " ") { e.preventDefault(); ir(i + 1); }
-    else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); ir(i - 1); }
-    else if (k === "Home") ir(0);
-    else if (k === "End") ir(total - 1);
-    else if (k === "f" || k === "F") {
-      if (!document.fullscreenElement && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
-      else if (document.exitFullscreen) document.exitFullscreen();
-    }
+  var rango = document.getElementById("r-range");
+  var oSeg = document.getElementById("r-seg"), oParte = document.getElementById("r-parte");
+  var oB = document.getElementById("r-b"), oM = document.getElementById("r-m"), oMsg = document.getElementById("r-msg");
+
+  function mensaje(t, b, m) {
+    if (t === 0) return "Todos arrancan viendo. La pregunta es cuántos siguen en el segundo 3.";
+    if (t < 3) return "<b>El gancho.</b> En el malo ya se fue " + (100 - m) + " % de la gente: no arrancó con el dato o la imagen no llamó la atención.";
+    if (t === 3) return "<b>La meta.</b> El bueno está " + (b >= 50 ? "por encima" : "por debajo") + " del 50 % ✔. El malo perdió a " + (100 - m) + " de cada 100: la red no lo va a mostrar a más gente.";
+    if (t <= 7) return "<b>El problema.</b> Si aquí la curva se sigue cayendo fuerte, el problema está muy largo. Con dos líneas basta.";
+    if (t < 27) return "<b>La vuelta.</b> De cada 100 que empezaron, siguen " + b + " en el bueno y " + m + " en el malo. Si se caen en la mitad, faltó punch o falta mostrar el servicio.";
+    return "<b>El CTA.</b> Si se van justo antes del final, el cierre se alargó o la venta se notó muy pronto. Después de la palabra, nada.";
+  }
+  function poner(t) {
+    t = Math.max(0, Math.min(T, Math.round(t * 2) / 2)); actual = t;
+    var b = Math.round(val(BUENA, t)), m = Math.round(val(MALA, t));
+    var parte = PARTES.filter(function (p) { return t >= p.desde && t <= p.hasta; })[0];
+    if (t === 3) parte = PARTES[0];
+    cursor.setAttribute("x1", x(t)); cursor.setAttribute("x2", x(t));
+    pb.setAttribute("cx", x(t)); pb.setAttribute("cy", y(val(BUENA, t)));
+    pm.setAttribute("cx", x(t)); pm.setAttribute("cy", y(val(MALA, t)));
+    oSeg.textContent = String(t).replace(".", ",");
+    oParte.textContent = parte.nombre; oParte.style.background = parte.color;
+    oB.textContent = b + " %"; oM.textContent = m + " %";
+    oMsg.innerHTML = mensaje(t, b, m);
+    rango.value = t;
+  }
+  rango.addEventListener("input", function () { poner(parseFloat(rango.value)); });
+  document.querySelectorAll(".ret-botones button").forEach(function (bt) {
+    bt.addEventListener("click", function () { poner(parseFloat(bt.getAttribute("data-t"))); });
   });
-  /* Deslizar en tableta */
-  var x0 = null;
-  document.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-  document.addEventListener("touchend", function (e) {
-    if (x0 === null || !body.classList.contains("pres")) return;
-    var dx = e.changedTouches[0].clientX - x0; x0 = null;
-    if (Math.abs(dx) > 60) ir(i + (dx < 0 ? 1 : -1));
+  var arrastrando = false;
+  function desdePuntero(e) {
+    var r = svg.getBoundingClientRect(), px = (e.clientX - r.left) / r.width * W;
+    poner((px - X0) / (X1 - X0) * T);
+  }
+  svg.addEventListener("pointerdown", function (e) { arrastrando = true; desdePuntero(e); });
+  window.addEventListener("pointermove", function (e) { if (arrastrando) desdePuntero(e); });
+  window.addEventListener("pointerup", function () { arrastrando = false; });
+  var anchoAntes = svg.clientWidth;
+  window.addEventListener("resize", function () {
+    if (Math.abs(svg.clientWidth - anchoAntes) < 8) return;
+    anchoAntes = svg.clientWidth; dibujar(); poner(actual);
   });
+  poner(3);
 })();
 </script>
 </body>
