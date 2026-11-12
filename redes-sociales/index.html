@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Redes sociales Mónaco</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Cómo usamos las redes en Mónaco: gancho, retención, los cuatro tipos de guion, la descripción y la hora de publicar.">
+<link rel="stylesheet" href="../assets/mapa.css">
+<script src="../assets/ruta.js" defer></script>
+<style>
+  /* Estilo Mónaco: blanco tipo Apple, Helvetica Neue, #f5f5f7 y dorado #c0a44d */
+  :root {
+    --m-tinta:#1d1d1f; --m-tinta-2:#424245; --m-gris:#86868b; --m-suave:#f5f5f7;
+    --m-linea:#e5e5ea; --m-oro:#c0a44d; --m-oro-osc:#8a7330; --m-oro-suave:#f8f3e4;
+    --m-rojo:#b3261e; --m-rojo-suave:#fbeceb; --m-verde:#1d7a46; --m-verde-suave:#eaf5ee;
+    --m-font:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    color-scheme: light;
+  }
+  html, body { background:#ffffff; color:var(--m-tinta); font-family:var(--m-font) }
+  body { margin:0; font-size:17px; line-height:1.45; letter-spacing:-0.01em }
+
+  .rm-barra { display:none !important }
+  /* ---------- Barra superior ---------- */
+  .barra-top { position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:12px;
+    padding:10px max(16px, env(safe-area-inset-left,0px)); background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--m-linea); font-size:14px }
+  .barra-top a { color:var(--m-tinta); text-decoration:none; font-weight:600 }
+  .barra-top .titulo { color:var(--m-gris); flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+  .barra-top .contador { font-variant-numeric:tabular-nums; color:var(--m-gris) }
+  .barra-top button { font:inherit; font-size:14px; font-weight:600; color:var(--m-tinta); background:var(--m-suave);
+    border:0; border-radius:980px; padding:7px 14px; cursor:pointer }
+  .barra-top button:hover { background:var(--m-linea) }
+  .progreso-deck { position:absolute; left:0; bottom:-1px; height:2px; background:var(--m-oro); width:0; transition:width .25s }
+
+  /* ---------- Diapositivas ---------- */
+  .deck { margin:0 auto }
+  .slide { box-sizing:border-box; padding:48px max(16px, env(safe-area-inset-left,0px)) 56px;
+    border-bottom:1px solid var(--m-linea); max-width:1080px; margin:0 auto }
+  .slide .num { font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--m-oro-osc); margin:0 0 10px }
+  .slide h1, .slide h2 { border:0; padding:0; font-weight:800; letter-spacing:-0.025em; text-wrap:balance; color:var(--m-tinta) }
+  .slide h1 { font-size:clamp(34px, 6.2vw, 68px); line-height:1.03; margin:0 0 18px }
+  .slide h2 { font-size:clamp(28px, 4.4vw, 50px); line-height:1.06; margin:0 0 18px }
+  .slide h3 { font-size:clamp(18px, 1.9vw, 22px); font-weight:800; margin:0 0 6px; letter-spacing:-0.01em }
+  .slide p { margin:0 0 12px }
+  .slide .lead { font-size:clamp(19px, 2.2vw, 26px); line-height:1.3; color:var(--m-tinta-2); max-width:34em; margin:0 0 24px }
+  .oro { color:var(--m-oro-osc) }
+  .gris { color:var(--m-gris) }
+  .chico { font-size:14px; color:var(--m-gris) }
+
+  .grid { display:grid; gap:14px }
+  .g2 { grid-template-columns:repeat(2, minmax(0,1fr)) }
+  .g3 { grid-template-columns:repeat(3, minmax(0,1fr)) }
+  .g4 { grid-template-columns:repeat(4, minmax(0,1fr)) }
+  @media (max-width:760px) { .g2,.g3,.g4 { grid-template-columns:1fr } }
+
+  .card { background:var(--m-suave); border-radius:18px; padding:20px 20px 16px }
+  .card p:last-child { margin-bottom:0 }
+  .card.oro-c { background:var(--m-oro-suave) }
+  .card.mal { background:var(--m-rojo-suave) }
+  .card.bien { background:var(--m-verde-suave) }
+  .card .etq { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin:0 0 8px }
+  .mal .etq { color:var(--m-rojo) } .bien .etq { color:var(--m-verde) } .oro-c .etq { color:var(--m-oro-osc) }
+
+  .cita { font-size:clamp(20px, 2.4vw, 28px); line-height:1.25; font-weight:700; letter-spacing:-0.015em; margin:0 0 6px }
+  .fuente { font-size:13px; color:var(--m-gris); margin:0 }
+  .grande { font-size:clamp(56px, 10vw, 120px); font-weight:800; letter-spacing:-0.04em; line-height:1; margin:0 }
+
+  ol.lista, ul.lista { margin:0; padding:0; list-style:none; display:grid; gap:10px }
+  .lista li { display:grid; grid-template-columns:34px 1fr; gap:10px; align-items:start; font-size:clamp(17px,1.8vw,20px) }
+  .lista li > b { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%;
+    background:var(--m-tinta); color:#fff; font-size:14px; margin-top:1px }
+  .lista.oro li > b { background:var(--m-oro) }
+
+  /* Línea de tiempo del video */
+  .tiempo { display:grid; grid-template-columns:3fr 4fr 10fr 3fr; gap:6px; margin:8px 0 18px }
+  .tiempo div { border-radius:12px; padding:14px 12px; min-height:120px }
+  .tiempo b { display:block; font-size:clamp(15px,1.7vw,19px) }
+  .tiempo span { display:block; font-size:13px; opacity:.8; font-variant-numeric:tabular-nums; margin:0 0 6px }
+  .tiempo small { display:block; font-size:13px; line-height:1.3; margin-top:6px }
+  .t1 { background:var(--m-oro); color:#fff } .t2 { background:#ede7d3 } .t3 { background:var(--m-suave) } .t4 { background:var(--m-tinta); color:#fff }
+  @media (max-width:760px) { .tiempo { grid-template-columns:1fr } .tiempo div { min-height:0 } }
+
+  /* Guion de ejemplo */
+  .guion { background:#fff; border:1px solid var(--m-linea); border-radius:18px; padding:18px 20px; font-size:16px }
+  .guion p { margin:0 0 8px }
+  .guion .acc { font-style:italic; color:var(--m-gris) }
+  .guion .seg { font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--m-oro-osc); margin:12px 0 4px }
+  .guion .seg:first-child { margin-top:0 }
+  .guion .titulo-pant { font-weight:800; text-transform:uppercase; background:var(--m-rojo); color:#fff; padding:6px 10px; border-radius:6px; display:inline-block }
+
+  .pill { display:inline-block; font-size:13px; font-weight:700; padding:5px 12px; border-radius:980px; background:var(--m-suave); margin:0 6px 6px 0 }
+  .pill.oro-p { background:var(--m-oro); color:#fff }
+
+  svg { display:block; max-width:100% }
+  svg text { font-family:var(--m-font) }
+
+  .reloj { display:flex; align-items:baseline; gap:18px; flex-wrap:wrap }
+
+  a.link { color:var(--m-oro-osc); font-weight:700 }
+  .slide .boton { max-width:420px }
+
+  /* ---------- Modo presentación (pantalla ancha) ---------- */
+  body.pres .slide { display:none; min-height:calc(100vh - 49px); border:0; flex-direction:column; justify-content:center;
+    padding-top:4vh; padding-bottom:7vh }
+  body.pres .slide.activa { display:flex }
+  body.pres .pie-deck { display:none }
+  .nav-deck { display:none }
+  body.pres .nav-deck { display:flex; position:fixed; right:18px; bottom:16px; gap:8px; z-index:20 }
+  .nav-deck button { width:44px; height:44px; border-radius:50%; border:0; background:var(--m-suave); font-size:20px; cursor:pointer; color:var(--m-tinta) }
+  .nav-deck button:hover { background:var(--m-linea) }
+  .ayuda { font-size:13px; color:var(--m-gris) }
+  body.pres .solo-doc { display:none }
+  body:not(.pres) .solo-pres { display:none }
+
+  .pie-deck { max-width:1080px; margin:0 auto; padding:24px max(16px, env(safe-area-inset-left,0px)) 48px; color:var(--m-gris); font-size:14px }
+
+  @media print {
+    .barra-top, .nav-deck { display:none !important }
+    body.pres .slide, .slide { display:flex !important; flex-direction:column; justify-content:center; min-height:auto;
+      page-break-after:always; break-after:page; border:0 }
+  }
+</style>
+</head>
+<body data-tarea="redes-sociales">
+
+<header class="barra-top">
+  <a href="../">← Mapa</a>
+  <span class="titulo">Redes sociales · Cómo lo hacemos en Mónaco</span>
+  <span class="contador" id="contador"></span>
+  <button type="button" id="btn-modo" hidden>Presentar</button>
+  <span class="progreso-deck" id="progreso"></span>
+</header>
+
+<main class="deck" id="deck">
+
+<!-- 1 · Portada -->
+<section class="slide" id="s1">
+  <p class="num">Paso 4 · Conseguir clientes</p>
+  <h1>Redes sociales:<br>cómo lo hacemos en Mónaco</h1>
+  <p class="lead">Cómo se arma cada video, qué es la retención, cómo se escribe el gancho, los cuatro tipos de guion que usamos, la descripción y a qué hora se publica.</p>
+  <p class="chico">Versión 1 · noviembre de 2026. Se va actualizando con lo que nos vaya funcionando.</p>
+  <p class="ayuda solo-pres">Usa las flechas ← → o la barra espaciadora para pasar. <b>F</b> = pantalla completa.</p>
+</section>
+
+<!-- 2 · La idea de fondo -->
+<section class="slide" id="s2">
+  <p class="num">La idea de fondo</p>
+  <h2>Las redes sirven para <span class="oro">llamar la atención</span>.</h2>
+  <p class="lead">Nadie abre Instagram o TikTok buscando un lavadero de motos. Abre para entretenerse. Si el video parece publicidad, lo pasa.</p>
+  <div class="grid g3">
+    <div class="card"><h3>1. Que se quede</h3><p>En los primeros <b>2 segundos</b> decide si sigue viendo o pasa al siguiente.</p></div>
+    <div class="card"><h3>2. Que lo vea completo</h3><p>Mientras más gente lo vea hasta el final, más gente nueva se lo muestra la red.</p></div>
+    <div class="card oro-c"><h3>3. Que comente</h3><p>Al final pedimos <b>una sola palabra</b>. Ese comentario es el cliente: ahí empieza la venta.</p></div>
+  </div>
+</section>
+
+<!-- 3 · El recorrido del video -->
+<section class="slide" id="s3">
+  <p class="num">Cómo funciona un video</p>
+  <h2>Todo video tiene cuatro partes</h2>
+  <div class="tiempo" role="img" aria-label="Gancho de 0 a 3 segundos, problema de 3 a 7, la vuelta de 7 a 17, el CTA al final">
+    <div class="t1"><span>0–3 s</span><b>Gancho</b><small>El dato, la noticia o la imagen. De una.</small></div>
+    <div class="t2"><span>3–7 s</span><b>Problema</b><small>Dos líneas. Lo que le duele al motero.</small></div>
+    <div class="t3"><span>7–17 s o más</span><b>La vuelta</b><small>Le damos la vuelta al tema y aparece el lavadero: se muestra el servicio en cámara.</small></div>
+    <div class="t4"><span>Al final</span><b>CTA</b><small>«Comente MOTO». Y ahí se acaba.</small></div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><p><b>Poco problema y mucho beneficio.</b> La noticia o el problema ocupan unas dos líneas. El resto es el servicio. Nada de «exposición de colegio».</p></div>
+    <div class="card"><p><b>Después del CTA no va nada.</b> Ni chiste ni explicación. Lo que se diga después del CTA mata la retención.</p></div>
+  </div>
+</section>
+
+<!-- 4 · Cómo decide la red -->
+<section class="slide" id="s4">
+  <p class="num">Retención</p>
+  <h2>La red prueba el video con poquitos antes de mostrarlo a muchos</h2>
+  <svg viewBox="0 0 960 230" role="img" aria-label="La red muestra el video a un grupo pequeño, mide si lo aguantan y solo entonces lo muestra a más gente">
+    <g font-size="17" fill="#1d1d1f">
+      <rect x="0" y="40" width="250" height="130" rx="18" fill="#f5f5f7"/>
+      <text x="24" y="82" font-weight="800">1. Grupo chiquito</text>
+      <text x="24" y="110" fill="#424245">Lo muestra a unas</text>
+      <text x="24" y="132" fill="#424245">pocas personas.</text>
+      <rect x="355" y="40" width="250" height="130" rx="18" fill="#f5f5f7"/>
+      <text x="379" y="82" font-weight="800">2. Mide</text>
+      <text x="379" y="110" fill="#424245">¿Lo aguantan o</text>
+      <text x="379" y="132" fill="#424245">lo pasan rápido?</text>
+      <rect x="710" y="40" width="250" height="130" rx="18" fill="#c0a44d"/>
+      <text x="734" y="82" font-weight="800" fill="#fff">3. Amplía</text>
+      <text x="734" y="110" fill="#fff">Si lo aguantan, lo</text>
+      <text x="734" y="132" fill="#fff">muestra a más gente.</text>
+      <path d="M262 105 H340" stroke="#86868b" stroke-width="2.5" fill="none"/><path d="M332 97 L344 105 L332 113" stroke="#86868b" stroke-width="2.5" fill="none"/>
+      <path d="M617 105 H695" stroke="#86868b" stroke-width="2.5" fill="none"/><path d="M687 97 L699 105 L687 113" stroke="#86868b" stroke-width="2.5" fill="none"/>
+      <text x="480" y="212" text-anchor="middle" fill="#86868b" font-size="15">Si lo pasan rápido, el video se queda en ese grupo chiquito y no sale de ahí.</text>
+    </g>
+  </svg>
+  <p class="lead" style="margin-top:18px">Por eso manda la <b>retención</b> y no los likes: es lo que la red mide para decidir si lo sigue mostrando.</p>
+</section>
+
+<!-- 5 · Qué es una retención buena -->
+<section class="slide" id="s5">
+  <p class="num">Retención</p>
+  <h2>Retención: cuánta gente sigue viendo en cada segundo</h2>
+  <div class="grid g2" style="align-items:center">
+    <div>
+      <p class="grande oro">+50 %</p>
+      <p class="lead" style="margin-top:8px">La meta: que <b>más de la mitad</b> siga viendo en el <b>segundo 3</b>.</p>
+      <p>Si se pierde la mitad antes del segundo 3, el gancho no funcionó y la red no amplía el video.</p>
+    </div>
+    <svg viewBox="0 0 460 300" role="img" aria-label="Curva de retención de ejemplo: empieza en 100 por ciento y la meta es estar por encima de 50 por ciento en el segundo 3">
+      <g font-size="13" fill="#86868b">
+        <line x1="50" y1="20" x2="50" y2="250" stroke="#e5e5ea"/>
+        <line x1="50" y1="250" x2="440" y2="250" stroke="#e5e5ea"/>
+        <text x="42" y="26" text-anchor="end">100 %</text>
+        <text x="42" y="140" text-anchor="end">50 %</text>
+        <text x="42" y="254" text-anchor="end">0 %</text>
+        <line x1="50" y1="135" x2="440" y2="135" stroke="#c0a44d" stroke-dasharray="5 5"/>
+        <text x="50" y="272">0 s</text><text x="128" y="272" text-anchor="middle">3 s</text><text x="440" y="272" text-anchor="end">final</text>
+        <line x1="128" y1="20" x2="128" y2="250" stroke="#e5e5ea" stroke-dasharray="3 4"/>
+        <!-- buena -->
+        <path d="M50 20 C 80 40, 100 60, 128 72 S 300 120, 440 160" fill="none" stroke="#1d7a46" stroke-width="3.5"/>
+        <!-- mala -->
+        <path d="M50 20 C 70 90, 95 170, 128 200 S 300 236, 440 242" fill="none" stroke="#b3261e" stroke-width="3.5"/>
+        <circle cx="128" cy="72" r="5" fill="#1d7a46"/><circle cx="128" cy="200" r="5" fill="#b3261e"/>
+        <text x="140" y="66" fill="#1d7a46" font-weight="700">Buena: la mayoría se queda</text>
+        <text x="140" y="196" fill="#b3261e" font-weight="700">Mala: se fueron en el gancho</text>
+        <text x="436" y="128" text-anchor="end" fill="#8a7330" font-weight="700">meta</text>
+      </g>
+    </svg>
+  </div>
+  <p class="chico">Gráfica de ejemplo. La de cada video sale en las estadísticas del Reel en Instagram y en las del video en TikTok.</p>
+</section>
+
+<!-- 6 · Leer la gráfica -->
+<section class="slide" id="s6">
+  <p class="num">Retención</p>
+  <h2>La gráfica dice qué parte del video arreglar</h2>
+  <div class="grid g3">
+    <div class="card"><span class="etq oro">Se van en el segundo 1</span><h3>Falló el gancho</h3><p>No arrancó con el dato, o el título y la imagen no llamaron la atención.</p></div>
+    <div class="card"><span class="etq oro">Se caen a la mitad</span><h3>Falló la vuelta</h3><p>Mucho problema, mucha explicación o ritmo lento. Le faltó punch.</p></div>
+    <div class="card"><span class="etq oro">Se van justo antes del final</span><h3>Falló el CTA</h3><p>Se alargó el cierre o se notó la venta muy pronto.</p></div>
+  </div>
+  <p class="lead" style="margin-top:22px">Así «el video no funcionó» se convierte en algo que se puede arreglar en el siguiente.</p>
+</section>
+
+<!-- 7 · Vistas no son clientes -->
+<section class="slide" id="s7">
+  <p class="num">Ojo</p>
+  <h2>Muchas vistas no siempre son clientes</h2>
+  <div class="grid g2">
+    <div class="card mal">
+      <span class="etq">Caso real</span>
+      <p class="cita">56.000 vistas y 6 comentarios</p>
+      <p>Retuvo al 71 % en el segundo 3, pero solo al 13 % al final. El gancho funcionó; la gente se fue antes de oír la palabra.</p>
+    </div>
+    <div class="card bien">
+      <span class="etq">Lo que buscamos</span>
+      <p class="cita">Vistas de gente de la zona que comente</p>
+      <p>Un video que llegue al final y pida una palabra concreta trae conversaciones. Un lavadero asesorado consiguió <b>200 clientes nuevos en 2 semanas</b>.</p>
+    </div>
+  </div>
+  <p class="lead" style="margin-top:22px">Por eso se miran tres números: <b>retención al segundo 3</b>, <b>retención al final</b> y <b>comentarios con la palabra</b>.</p>
+</section>
+
+<!-- 8 · El gancho -->
+<section class="slide" id="s8">
+  <p class="num">El gancho</p>
+  <h2>Los primeros 2 segundos lo deciden todo</h2>
+  <ol class="lista oro">
+    <li><b>1</b><span><b>El dato desde el segundo 0.</b> Sin «hola, ¿cómo están?», sin presentarse, sin introducción. De una.</span></li>
+    <li><b>2</b><span><b>Corto.</b> En 3 segundos caben unas 12 palabras. Máximo 16.</span></li>
+    <li><b>3</b><span><b>Que se entienda sin hacer cuentas.</b> Un solo precio, una sola queja, una sola idea.</span></li>
+    <li><b>4</b><span><b>Lo que se dice, se ve.</b> El título en pantalla y la imagen dicen lo mismo que la voz.</span></li>
+    <li><b>5</b><span><b>No vende en el gancho.</b> Nada de precio ni de «el mejor lavadero» en los primeros segundos. Eso va después.</span></li>
+  </ol>
+</section>
+
+<!-- 9 · Ganchos buenos y malos -->
+<section class="slide" id="s9">
+  <p class="num">El gancho</p>
+  <h2>Ganchos que usamos y ganchos que no</h2>
+  <div class="grid g2">
+    <div class="card bien">
+      <span class="etq">Sí</span>
+      <p class="cita">«¡Le pueden inmovilizar la moto por llevar la placa así!»</p>
+      <p class="cita">«¡Se están cambiando las motos de Soacha por lanchas!»</p>
+      <p class="cita">«¡No traigan a lavar la moto en este lavadero!»</p>
+      <p class="cita">«Parce, ¿con un millón me alcanza para lavar la moto?»</p>
+    </div>
+    <div class="card mal">
+      <span class="etq">No</span>
+      <p class="cita">«Hola, somos el mejor lavadero de motos del barrio»</p>
+      <p class="cita">«Compra ya la membresía por $79.000»</p>
+      <p class="cita">«Excelente servicio, síguenos para más»</p>
+      <p class="fuente">Frase genérica de publicidad, precio en el gancho o nada que despierte curiosidad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Los cuatro tipos de guion -->
+<section class="slide" id="s10">
+  <p class="num">Los guiones</p>
+  <h2>Los cuatro tipos de guion que usamos</h2>
+  <p class="lead">Salen del Doc «Guiones Virales Mónaco», con más de 70 guiones ya grabados para los lavaderos. Cambia cómo se llama la atención; la estructura es siempre la misma.</p>
+  <div class="grid g4">
+    <div class="card"><h3>1. Noticia dramatizada</h3><p>Una «noticia» actuada, con titular rojo y el rótulo «Dramatización».</p></div>
+    <div class="card"><h3>2. Noticia real o tema popular</h3><p>Lo que está pasando: multas, pico y placa, lluvias, la quincena.</p></div>
+    <div class="card"><h3>3. Controversial</h3><p>Una frase o una escena que genera discusión: la pareja, «no traigan su moto aquí».</p></div>
+    <div class="card"><h3>4. Llamativo</h3><p>Algo que se ve raro o curioso: billetes, un contador, un remo, el tablero.</p></div>
+  </div>
+</section>
+
+<!-- 11 · Tipo 1 -->
+<section class="slide" id="s11">
+  <p class="num">Tipo 1 · Noticia dramatizada</p>
+  <h2>Parece noticia, es una escena actuada</h2>
+  <div class="grid g2">
+    <div>
+      <ol class="lista">
+        <li><b>1</b><span><b>Titular amarillista</b> en pantalla, con el gráfico rojo de noticia y el rótulo pequeño <b>«Dramatización»</b>.</span></li>
+        <li><b>2</b><span><b>Toma lejana y movida</b>, como si alguien estuviera grabando lo que acaba de ver.</span></li>
+        <li><b>3</b><span><b>Corte brusco</b> a un plano cercano, estable y con buen audio. Desaparece el gráfico.</span></li>
+        <li><b>4</b><span>La escena revela el servicio: <b>la cuenta en pantalla</b>, el antes y el después.</span></li>
+        <li><b>5</b><span>Remate y <b>CTA</b>.</span></li>
+      </ol>
+      <p class="chico" style="margin-top:14px">Con este formato, un lavadero asesorado llegó a 500.000 vistas en Instagram.</p>
+    </div>
+    <div class="guion" aria-label="Ejemplo resumido">
+      <p class="titulo-pant">Mujer sigue a su pareja hasta un local y le arma un escándalo</p>
+      <p class="seg">0–10 s · Apertura tipo noticia</p>
+      <p class="acc">[Plano lejano desde el andén. Ella llega señalándolo.]</p>
+      <p><b>—Ella:</b> ¡Ya sé dónde se le está yendo la plata!</p>
+      <p class="seg">10–17 s · Corte brusco</p>
+      <p><b>—Ella:</b> ¿Otra vez pagando para lavar esa moto?</p>
+      <p><b>—Él:</b> ¡Si yo pagué una sola vez!</p>
+      <p class="seg">17–36 s · La cuenta</p>
+      <p><b>—Él:</b> Cuatro lavadas a veinticinco mil serían cien mil… con la membresía pagué una sola vez por todo el mes.</p>
+      <p class="seg">Cierre</p>
+      <p><b>—Él, a cámara:</b> Comente <b>MOTO</b> y le enviamos toda la información.</p>
+    </div>
+  </div>
+  <p class="chico" style="margin-top:14px"><b>Regla:</b> siempre con el rótulo «Dramatización». Es una escena nuestra, nunca una noticia inventada sobre una persona, una autoridad o un negocio real.</p>
+</section>
+
+<!-- 12 · Tipo 2 -->
+<section class="slide" id="s12">
+  <p class="num">Tipo 2 · Noticia real o tema popular</p>
+  <h2>Lo que está pasando, y la vuelta hacia la moto limpia</h2>
+  <div class="grid g2">
+    <div>
+      <ol class="lista">
+        <li><b>1</b><span><b>El dato oficial en dos líneas</b>: una multa, la placa, el pico y placa, el SOAT, el Día sin Moto.</span></li>
+        <li><b>2</b><span><b>Cuánto le cuesta al motero</b> o qué le puede pasar.</span></li>
+        <li><b>3</b><span><b>La vuelta:</b> «Si quiere ahorrar con su moto, empiece por las lavadas».</span></li>
+        <li><b>4</b><span><b>Se muestra el lavado</b> en cámara: cadena, rines, antes y después.</span></li>
+        <li><b>5</b><span><b>CTA.</b></span></li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>Temas que ya usamos</h3>
+      <p><span class="pill">Placa ilegible</span><span class="pill">Grúa y patios</span><span class="pill">¿Pico y placa para motos?</span><span class="pill">Dos infracciones y sin pase</span><span class="pill">Multa por lavar en la calle</span><span class="pill">SOAT falso en PDF</span><span class="pill">Día sin Moto</span><span class="pill">La quincena</span><span class="pill">Inundaciones</span><span class="pill">Halloween</span></p>
+      <p class="chico"><b>Reglas:</b> con la fuente oficial enlazada en el guion. Antes de grabar, revisar que siga vigente: las de fecha se vencen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · Ejemplo tipo 2 -->
+<section class="slide" id="s13">
+  <p class="num">Tipo 2 · Ejemplo</p>
+  <h2>«Le pueden inmovilizar la moto por llevar la placa así»</h2>
+  <div class="guion">
+    <p class="acc">[Desde el segundo 0: primer plano de una placa llena de barro. Ella la señala.]</p>
+    <p><b>—Gancho:</b> ¡Le pueden inmovilizar la moto por llevar la placa así! Así tenga el SOAT y la técnico-mecánica al día.</p>
+    <p><b>—Problema:</b> Usted la usa para trabajar, pasa por barro, se le ensucia… y dice: «Eso todavía aguanta otra semana». Hasta que lo paran…</p>
+    <p><b>—La vuelta:</b> Usted está pendiente de los papeles, la gasolina y la cuota… pero tiene que pararle bolas a la motico. Por eso, acá tenemos una membresía de lavadas ilimitadas: un solo pago al mes.</p>
+    <p class="acc">[Mostrar la moto terminada y cerrar con un primer plano de la placa limpia.]</p>
+    <p><b>—CTA:</b> Si usted quiere su membresía, comente <b>MOTO</b> y le enviamos toda la información.</p>
+  </div>
+  <p class="chico" style="margin-top:12px">Fuente del guion: Ministerio de Transporte, placa ilegible.</p>
+</section>
+
+<!-- 14 · Tipo 3 -->
+<section class="slide" id="s14">
+  <p class="num">Tipo 3 · Controversial</p>
+  <h2>Que la gente quiera opinar</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Lo que ya funcionó</h3>
+      <p><b>La pareja:</b> «POV: te arreglaste el pelo y tu novio es motero». Él no le nota el pelo, pero sí el tanque de la moto.</p>
+      <p><b>Lo contrario de lo que se espera:</b> «¡No traigan a lavar la moto en este lavadero!»… porque después de verla así ya no la van a querer ver sucia.</p>
+      <p><b>Para dueños:</b> «Negocios con los que no debe emprender este 2027. Número uno: un lavadero de motos». «No busque ser el más barato del barrio».</p>
+      <p><b>¿A o B?:</b> el camarógrafo da dos opciones y el lavador elige y explica por qué.</p>
+    </div>
+    <div class="card oro-c">
+      <h3>Hasta dónde</h3>
+      <p>Se vale el tono de denuncia, amarillista y pícaro.</p>
+      <p>Pero el lavador <b>nunca suena grosero</b> con el cliente, y nunca decimos que todo lavado convencional es malo.</p>
+      <p>Afirmaciones técnicas prudentes: nada de «elimina el 99 %».</p>
+      <p>La polémica es el gancho; el video termina en el servicio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · Tipo 4 -->
+<section class="slide" id="s15">
+  <p class="num">Tipo 4 · Llamativo</p>
+  <h2>Algo que se vea raro desde el primer cuadro</h2>
+  <div class="grid g3">
+    <div class="card"><h3>El millón</h3><p>Billetes en el mostrador: «¿Con un millón me alcanza?». Contador en pantalla 1 → 2 → 5 → ∞ mientras la misma moto entra varias veces.</p></div>
+    <div class="card"><h3>Billetes en el suelo</h3><p>Un camino de billetes que lleva hasta el local.</p></div>
+    <div class="card"><h3>El tablero</h3><p>Lavada suelta contra membresía, con las cuentas hechas en vivo. Uno de los más virales de Mónaco.</p></div>
+    <div class="card"><h3>El objeto fuera de lugar</h3><p>Casco y remo frente al local: «Se están cambiando las motos por lanchas».</p></div>
+    <div class="card"><h3>POV del lavadero</h3><p>Una situación de todos los días en el local, respondida con respeto: «Necesito la moto en cinco minutos».</p></div>
+    <div class="card"><h3>ASMR</h3><p>Sin guion: solo tomas del lavado con buen sonido. El camarógrafo las hace.</p></div>
+  </div>
+</section>
+
+<!-- 16 · La vuelta -->
+<section class="slide" id="s16">
+  <p class="num">La vuelta</p>
+  <h2>Cualquier tema se puede llevar al lavadero</h2>
+  <p class="lead">El tema llama la atención. La frase puente lo conecta con la moto. El servicio se muestra. La palabra cierra.</p>
+  <svg viewBox="0 0 960 120" role="img" aria-label="Tema, frase puente, se muestra el servicio, CTA">
+    <g font-size="18" font-weight="800">
+      <rect x="0" y="20" width="210" height="80" rx="16" fill="#f5f5f7"/><text x="105" y="66" text-anchor="middle" fill="#1d1d1f">Tema</text>
+      <rect x="250" y="20" width="210" height="80" rx="16" fill="#ede7d3"/><text x="355" y="66" text-anchor="middle" fill="#1d1d1f">Frase puente</text>
+      <rect x="500" y="20" width="210" height="80" rx="16" fill="#c0a44d"/><text x="605" y="66" text-anchor="middle" fill="#fff">Se muestra</text>
+      <rect x="750" y="20" width="210" height="80" rx="16" fill="#1d1d1f"/><text x="855" y="66" text-anchor="middle" fill="#fff">CTA</text>
+      <path d="M214 60 H244 M464 60 H494 M714 60 H744" stroke="#86868b" stroke-width="2.5"/>
+    </g>
+  </svg>
+  <h3 style="margin-top:22px">Frases puente que ya usamos</h3>
+  <div class="grid g3">
+    <div class="card"><p class="cita" style="font-size:20px">«Si quiere ahorrar con su moto, empiece por las lavadas.»</p></div>
+    <div class="card"><p class="cita" style="font-size:20px">«Es que andar en moto también cuesta, parce. Gasolina, mantenimiento, lavadas…»</p></div>
+    <div class="card"><p class="cita" style="font-size:20px">«Usted está pendiente de los papeles y la cuota… pero tiene que pararle bolas a la motico.»</p></div>
+  </div>
+</section>
+
+<!-- 17 · Reglas de escritura -->
+<section class="slide" id="s17">
+  <p class="num">Reglas de los guiones</p>
+  <h2>Lo que más corregimos</h2>
+  <div class="grid g2">
+    <ol class="lista">
+      <li><b>1</b><span><b>Ajustar, no reescribir.</b> Si ya hay una idea, se respeta su orden y sus frases. Se cambia solo lo puntual.</span></li>
+      <li><b>2</b><span><b>El valor se muestra, no se recita.</b> Que el cliente vea la microfibra, el desengrasante, la cadena antes y después, la sala de espera.</span></li>
+      <li><b>3</b><span><b>Punch y giro.</b> Si suena tranquilo o genérico, se cae la retención.</span></li>
+      <li><b>4</b><span><b>Colombiano natural:</b> «parce», «motico», «pararle bolas», «de una».</span></li>
+    </ol>
+    <ol class="lista" start="5">
+      <li><b>5</b><span><b>Solo los actores que el local tiene.</b> Personajes reales y claros para el camarógrafo.</span></li>
+      <li><b>6</b><span><b>Precios reales del local</b>, nunca inventados.</span></li>
+      <li><b>7</b><span><b>La membresía se vende como ahorro y tranquilidad.</b> Nunca invitar a «venir todos los días».</span></li>
+      <li><b>8</b><span><b>En los videos de tema no se menciona la membresía</b> (técnica, POV, cómo reservar): cierran con «comente LAVADO y le ayudamos a reservar».</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 18 · El CTA -->
+<section class="slide" id="s18">
+  <p class="num">El CTA</p>
+  <h2>Una sola palabra: se dice, se ve y se escribe</h2>
+  <div class="grid g2">
+    <div>
+      <p class="lead">La palabra va <b>en el audio</b>, <b>en pantalla al final</b> y <b>en la descripción</b>. Siempre con algo que entregar: «Comente MOTO y le enviamos toda la información».</p>
+      <p>Es lo último que se dice. Después, corte.</p>
+    </div>
+    <div class="card">
+      <h3>Qué palabra según el video</h3>
+      <p><span class="pill oro-p">MOTO</span> videos de membresía. Es la de siempre.</p>
+      <p><span class="pill oro-p">LAVADO</span> o <span class="pill oro-p">NOMBRE DEL LOCAL</span> videos para reservar un lavado, sin membresía.</p>
+      <p><span class="pill oro-p">SERVICIO</span> un servicio puntual, por ejemplo CERÁMICO.</p>
+      <p class="chico">«Comente 🔥 si le gustó» no sirve: no hay nada que entregar y la red lo baja.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19 · La descripción -->
+<section class="slide" id="s19">
+  <p class="num">La descripción</p>
+  <h2>Seis bloques, siempre en el mismo orden</h2>
+  <div class="grid g3">
+    <div class="card oro-c"><h3>1. El «Comenta»</h3><p>Máx. ~50 caracteres. Es lo único que todos leen mientras corre el video.</p></div>
+    <div class="card"><h3>2. Servicio + barrio + ciudad</h3><p>«Lavado de motos en Suba, Bogotá». Es lo que la gente busca.</p></div>
+    <div class="card"><h3>3. Los servicios con ✅</h3><p>Como los busca el motero. El del video, de primero.</p></div>
+    <div class="card"><h3>4. La membresía</h3><p>Que existe y para qué sirve. El precio exacto, por WhatsApp.</p></div>
+    <div class="card"><h3>5. Dónde estamos</h3><p>📍 Barrio y ciudad, y la ubicación etiquetada en la publicación.</p></div>
+    <div class="card"><h3>6. «Comenta» otra vez</h3><p>Y máximo 5 hashtags.</p></div>
+  </div>
+  <p style="margin-top:18px"><a class="link" href="../descripcion-videos/">Abrir la guía de descripciones y el generador →</a></p>
+</section>
+
+<!-- 20 · A qué hora -->
+<section class="slide" id="s20">
+  <p class="num">Publicar</p>
+  <h2>Publicamos a las 6 de la tarde</h2>
+  <div class="grid g2" style="align-items:center">
+    <div>
+      <p class="grande">6:00 <span style="font-size:.45em">p. m.</span></p>
+    </div>
+    <div>
+      <p class="lead">Es la hora en que la gente va saliendo del trabajo y coge el celular. Es la que mejor nos ha funcionado.</p>
+      <p><b>Cuántos:</b> mínimo dos videos por semana. Si se puede todos los días, mejor.</p>
+      <p><b>Antes de abrir el local:</b> mínimo ocho videos publicados en el mes anterior a la apertura.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 21 · Checklist de publicación -->
+<section class="slide" id="s21">
+  <p class="num">Publicar</p>
+  <h2>Antes de darle «Publicar»</h2>
+  <div class="grid g2">
+    <ol class="lista oro">
+      <li><b>1</b><span>El video llegó <b>como archivo</b>, no como video normal de WhatsApp (WhatsApp lo comprime y se ve mal).</span></li>
+      <li><b>2</b><span>El <b>título en pantalla</b> de los primeros segundos está puesto.</span></li>
+      <li><b>3</b><span>La <b>palabra del CTA</b> sale en el audio y en pantalla al final.</span></li>
+      <li><b>4</b><span>Nada después del CTA.</span></li>
+    </ol>
+    <ol class="lista oro" start="5">
+      <li><b>5</b><span>La <b>descripción</b> sale del generador, con la misma palabra.</span></li>
+      <li><b>6</b><span>La <b>ubicación</b> del local está etiquetada.</span></li>
+      <li><b>7</b><span>Se publica en <b>Instagram y TikTok</b>.</span></li>
+      <li><b>8</b><span>A las <b>6:00 p. m.</b></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 22 · Después de publicar -->
+<section class="slide" id="s22">
+  <p class="num">Después de publicar</p>
+  <h2>El trabajo no termina al publicar</h2>
+  <div class="grid g3">
+    <div class="card oro-c">
+      <span class="etq">Primera hora</span>
+      <h3>Contestar en menos de un minuto</h3>
+      <p>En público: «Revisa tu mensaje directo, te enviamos toda la información». Por privado: «Hola, vi que estás interesado. Dame tu WhatsApp y te envío toda la información».</p>
+      <p class="chico">A los 5 minutos se enfría el 80 %.</p>
+    </div>
+    <div class="card">
+      <span class="etq oro">A las 48 horas</span>
+      <h3>Mirar los números</h3>
+      <p>Vistas, retención al segundo 3, retención al final y comentarios con la palabra.</p>
+    </div>
+    <div class="card">
+      <span class="etq oro">Para el siguiente</span>
+      <h3>Corregir una cosa</h3>
+      <p>Con la gráfica se sabe si falló el gancho, la vuelta o el CTA. Se ajusta eso en el próximo guion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 23 · La semana -->
+<section class="slide" id="s23">
+  <p class="num">La rutina</p>
+  <h2>La semana de contenido</h2>
+  <div class="grid g4">
+    <div class="card"><h3>Toda la semana</h3><p>Guardar ideas: noticias, temas del momento, cosas que pasan en el local.</p></div>
+    <div class="card"><h3>Un día</h3><p>Se graba todo en una jornada, con fecha y hora en el calendario. Con el que pueda.</p></div>
+    <div class="card"><h3>Otro día</h3><p>Se edita todo. El material crudo va a la carpeta de Drive con el número del guion.</p></div>
+    <div class="card oro-c"><h3>Cada video</h3><p>Se publica a las 6:00 p. m. y se contesta cada comentario.</p></div>
+  </div>
+</section>
+
+<!-- 24 · Resumen -->
+<section class="slide" id="s24">
+  <p class="num">En una sola diapositiva</p>
+  <h2>Lo que hay que recordar</h2>
+  <ol class="lista oro">
+    <li><b>1</b><span>Las redes son para <b>llamar la atención</b>: el gancho se gana en <b>2 segundos</b>.</span></li>
+    <li><b>2</b><span>Manda la <b>retención</b>: más del <b>50 % al segundo 3</b>.</span></li>
+    <li><b>3</b><span>Gancho → problema en dos líneas → la vuelta con el servicio en cámara → CTA.</span></li>
+    <li><b>4</b><span>Cuatro tipos de guion: <b>noticia dramatizada, noticia real, controversial, llamativo</b>.</span></li>
+    <li><b>5</b><span>Una palabra: se dice, se ve y se escribe. <b>Después del CTA, nada.</b></span></li>
+    <li><b>6</b><span>Publicar a las <b>6:00 p. m.</b> y contestar en menos de un minuto.</span></li>
+  </ol>
+  <div id="ruta-cierre" class="solo-doc" style="margin-top:28px"></div>
+</section>
+
+</main>
+
+<footer class="pie-deck">
+  <p>Mónaco · Moto Detailing · Redes sociales · v1 · noviembre de 2026</p>
+</footer>
+
+<nav class="nav-deck" aria-label="Diapositivas">
+  <button type="button" id="ant" aria-label="Anterior">←</button>
+  <button type="button" id="sig" aria-label="Siguiente">→</button>
+</nav>
+
+<script>
+(function () {
+  "use strict";
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var total = slides.length, i = 0;
+  var body = document.body, btn = document.getElementById("btn-modo");
+  var contador = document.getElementById("contador"), barra = document.getElementById("progreso");
+  var ancho = window.matchMedia("(min-width: 900px)");
+
+  function pintar() {
+    slides.forEach(function (s, k) { s.classList.toggle("activa", k === i); });
+    contador.textContent = (i + 1) + " / " + total;
+    barra.style.width = ((i + 1) / total * 100) + "%";
+  }
+  function ir(n) {
+    i = Math.max(0, Math.min(total - 1, n));
+    pintar();
+    if (body.classList.contains("pres")) {
+      try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {}
+      window.scrollTo(0, 0);
+    }
+  }
+  function modo(pres) {
+    body.classList.toggle("pres", pres);
+    btn.textContent = pres ? "Ver como documento" : "Presentar";
+    if (pres) ir(i); else { slides[i].scrollIntoView(); contador.textContent = total + " diapositivas"; barra.style.width = "0"; }
+  }
+
+  var h = parseInt((location.hash || "").replace("#", ""), 10);
+  if (h >= 1 && h <= total) i = h - 1;
+  btn.hidden = false;
+  btn.addEventListener("click", function () { modo(!body.classList.contains("pres")); });
+  modo(ancho.matches);
+
+  document.getElementById("ant").addEventListener("click", function () { ir(i - 1); });
+  document.getElementById("sig").addEventListener("click", function () { ir(i + 1); });
+  document.addEventListener("keydown", function (e) {
+    if (!body.classList.contains("pres")) return;
+    if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
+    var k = e.key;
+    if (k === "ArrowRight" || k === "PageDown" || k === " ") { e.preventDefault(); ir(i + 1); }
+    else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); ir(i - 1); }
+    else if (k === "Home") ir(0);
+    else if (k === "End") ir(total - 1);
+    else if (k === "f" || k === "F") {
+      if (!document.fullscreenElement && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+      else if (document.exitFullscreen) document.exitFullscreen();
+    }
+  });
+  /* Deslizar en tableta */
+  var x0 = null;
+  document.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", function (e) {
+    if (x0 === null || !body.classList.contains("pres")) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 60) ir(i + (dx < 0 ? 1 : -1));
+  });
+})();
+</script>
+</body>
+</html>
