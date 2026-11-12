@@ -32,6 +32,11 @@
   .barra-top button { font:inherit; font-size:14px; font-weight:600; color:var(--m-tinta); background:var(--m-suave);
     border:0; border-radius:980px; padding:7px 14px; cursor:pointer }
   .barra-top button:hover { background:var(--m-linea) }
+  .pestanas { display:flex; background:var(--m-suave); border-radius:980px; padding:3px; margin:0 auto }
+  .pestanas a { padding:6px 16px; border-radius:980px; color:var(--m-tinta-2) !important; font-weight:600; white-space:nowrap }
+  .pestanas a[aria-current="page"] { background:#fff; color:var(--m-tinta) !important; box-shadow:0 1px 3px rgba(0,0,0,.12) }
+  .barra-top .relleno { width:52px }
+  @media (max-width:520px) { .barra-top .relleno { display:none } .pestanas a { padding:6px 12px } }
   .progreso-deck { position:absolute; left:0; bottom:-1px; height:2px; background:var(--m-oro); width:0; transition:width .25s }
 
   /* ---------- Diapositivas ---------- */
@@ -182,7 +187,11 @@
 
 <header class="barra-top">
   <a href="../">← Mapa</a>
-  <span class="titulo">Redes sociales · Cómo lo hacemos en Mónaco</span>
+  <nav class="pestanas" aria-label="Guías de redes">
+    <a href="./" aria-current="page">Contenido</a>
+    <a href="../mensajes-redes/">Mensajes</a>
+  </nav>
+  <span class="relleno"></span>
   <span class="progreso-deck" id="progreso" aria-hidden="true"></span>
 </header>
 

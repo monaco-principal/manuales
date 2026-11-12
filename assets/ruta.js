@@ -85,6 +85,9 @@
     { id: "redes-sociales", paso: 4, url: "redes-sociales/",
       title: "Redes sociales", verb: "Gancho, retención, tipos de guion y a qué hora publicar",
       keywords: ["redes", "videos", "guiones", "gancho", "retención", "hook", "reels", "tiktok", "instagram", "publicar"] },
+    { id: "mensajes-redes", paso: 4, url: "mensajes-redes/",
+      title: "Mensajes de redes", verb: "Qué contestar en comentarios, DM y WhatsApp para cerrar la venta",
+      keywords: ["mensajes", "dm", "whatsapp", "comentarios", "contestar", "responder", "vender", "plantillas", "chat"] },
     { id: "descripcion-videos", paso: 4, url: "descripcion-videos/",
       title: "Descripción de los videos", verb: "Qué escribir debajo de cada video",
       keywords: ["descripción", "videos", "redes", "reels", "tiktok", "copy", "comenta"] }

@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mensajes de redes</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Cómo contestar comentarios, DMs y WhatsApp para convertir un video en una venta.">
+<link rel="stylesheet" href="../assets/mapa.css">
+<script src="../assets/ruta.js" defer></script>
+<style>
+  /* Estilo Mónaco tipo Apple: blanco, Helvetica Neue, #f5f5f7 y azul */
+  :root {
+    --t:#1d1d1f; --t2:#424245; --g:#86868b; --s:#f5f5f7; --l:#e5e5ea;
+    --a:#0071e3; --a-osc:#0058b0; --a-suave:#e8f1fc;
+    --r:#d70015; --r-suave:#fdecee; --v:#1d7a46; --v-suave:#e9f6ee;
+    --wa:#d9fdd3; --wa-fondo:#efeae2; --ig:#efefef;
+    --f:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    color-scheme: light;
+  }
+  html, body { background:#fff; color:var(--t); font-family:var(--f) }
+  body { margin:0; font-size:17px; line-height:1.45; letter-spacing:-0.01em }
+  .rm-barra { display:none !important }
+  * { box-sizing:border-box }
+
+  /* Barra superior con pestañas */
+  .barra-top { position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:12px;
+    padding:8px max(16px, env(safe-area-inset-left,0px)); background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--l); font-size:14px }
+  .barra-top > a { color:var(--t); text-decoration:none; font-weight:600; white-space:nowrap }
+  .pestanas { display:flex; background:var(--s); border-radius:980px; padding:3px; margin:0 auto }
+  .pestanas a { padding:6px 16px; border-radius:980px; color:var(--t2); text-decoration:none; font-weight:600; white-space:nowrap }
+  .pestanas a[aria-current="page"] { background:#fff; color:var(--t); box-shadow:0 1px 3px rgba(0,0,0,.12) }
+  .barra-top .relleno { width:52px }
+  .progreso { position:absolute; left:0; bottom:-1px; height:2px; background:var(--a); width:0; transition:width .2s }
+  @media (max-width:520px) { .barra-top .relleno { display:none } .pestanas a { padding:6px 12px } }
+
+  /* Navegación de secciones */
+  .indice { position:sticky; top:49px; z-index:15; background:rgba(255,255,255,.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--l); overflow-x:auto; scrollbar-width:none }
+  .indice::-webkit-scrollbar { display:none }
+  .indice div { display:flex; gap:4px; max-width:1080px; margin:0 auto; padding:8px 16px }
+  .indice a { flex:none; padding:6px 12px; border-radius:980px; font-size:14px; font-weight:600; color:var(--t2); text-decoration:none }
+  .indice a.activo { background:var(--a); color:#fff }
+
+  .sec { max-width:1080px; margin:0 auto; padding:56px max(16px, env(safe-area-inset-left,0px)) 56px; border-bottom:1px solid var(--l); scroll-margin-top:100px }
+  .kick { font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--a); margin:0 0 10px }
+  h1, h2 { font-weight:800; letter-spacing:-0.025em; text-wrap:balance; margin:0 0 16px; border:0; padding:0; color:var(--t) }
+  h1 { font-size:clamp(38px, 7vw, 76px); line-height:1.02 }
+  h2 { font-size:clamp(30px, 4.6vw, 52px); line-height:1.05 }
+  h3 { font-size:20px; font-weight:800; margin:0 0 6px; letter-spacing:-0.01em }
+  .lead { font-size:clamp(19px, 2.2vw, 25px); line-height:1.3; color:var(--t2); max-width:34em; margin:0 0 28px }
+  .chico { font-size:14px; color:var(--g) }
+  p { margin:0 0 12px }
+
+  .grid { display:grid; gap:14px }
+  .g2 { grid-template-columns:repeat(2, minmax(0,1fr)) }
+  .g3 { grid-template-columns:repeat(3, minmax(0,1fr)) }
+  @media (max-width:760px) { .g2, .g3 { grid-template-columns:1fr } }
+  .card { background:var(--s); border-radius:18px; padding:20px }
+  .card p:last-child { margin:0 }
+  .card.azul { background:var(--a-suave) }
+  .card.mal { background:var(--r-suave) } .card.bien { background:var(--v-suave) }
+  .etq { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin:0 0 10px }
+  .mal .etq { color:var(--r) } .bien .etq { color:var(--v) } .azul .etq { color:var(--a-osc) }
+
+  /* Embudo */
+  .embudo { display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:8px; list-style:none; padding:0; margin:0 0 18px }
+  .embudo button { all:unset; box-sizing:border-box; cursor:pointer; display:flex; flex-direction:column; gap:6px; height:100%; width:100%;
+    padding:16px 14px; border-radius:16px; background:var(--s); transition:background .2s, transform .2s }
+  .embudo button:hover { transform:translateY(-2px) }
+  .embudo button:focus-visible { outline:2px solid var(--a); outline-offset:2px }
+  .embudo .n { width:30px; height:30px; border-radius:50%; background:#fff; color:var(--a); font-weight:800; display:flex; align-items:center; justify-content:center; font-size:14px }
+  .embudo b { font-size:15px; line-height:1.15 }
+  .embudo small { font-size:13px; color:var(--g); line-height:1.25 }
+  .embudo button[aria-pressed="true"] { background:var(--a); color:#fff }
+  .embudo button[aria-pressed="true"] small { color:rgba(255,255,255,.85) }
+  .embudo li.critico button { box-shadow:inset 0 0 0 2px var(--r) }
+  .embudo li.critico button[aria-pressed="true"] { box-shadow:none }
+  .detalle { background:var(--s); border-radius:18px; padding:20px 22px; display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center; min-height:96px }
+  .detalle p { margin:0 } .detalle a { color:var(--a); font-weight:700; text-decoration:none; white-space:nowrap }
+  .alerta { margin-top:14px; border-radius:18px; padding:18px 22px; background:var(--r-suave); color:var(--t) }
+  .alerta b { color:var(--r) }
+  @media (max-width:860px) { .embudo { grid-template-columns:repeat(3, minmax(0,1fr)) } }
+  @media (max-width:520px) { .embudo { grid-template-columns:repeat(2, minmax(0,1fr)) } .detalle { grid-template-columns:1fr } }
+
+  /* Segmentos (selector tipo Apple) */
+  .seg { display:inline-flex; flex-wrap:wrap; background:var(--s); border-radius:12px; padding:3px; gap:2px; margin:0 0 20px }
+  .seg button { font:inherit; font-size:15px; font-weight:600; border:0; background:transparent; color:var(--t2); padding:8px 16px; border-radius:9px; cursor:pointer }
+  .seg button[aria-selected="true"] { background:#fff; color:var(--t); box-shadow:0 1px 3px rgba(0,0,0,.12) }
+  .panel[hidden] { display:none }
+
+  /* Teléfono y chats */
+  .fono { background:#fff; border:1px solid var(--l); border-radius:28px; padding:14px; box-shadow:0 10px 30px rgba(0,0,0,.06); max-width:400px; width:100% }
+  .fono-cab { display:flex; align-items:center; gap:10px; padding:4px 6px 12px; border-bottom:1px solid var(--l); margin-bottom:12px; font-size:14px; font-weight:700 }
+  .avatar { width:32px; height:32px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#fff; background:var(--t) }
+  .avatar.ig { background:linear-gradient(45deg,#f9a825,#e1306c,#833ab4) }
+  .avatar.tk { background:#000 }
+  .avatar.wa { background:#25d366 }
+  .chat { display:flex; flex-direction:column; gap:6px }
+  .chat.wa-f { background:var(--wa-fondo); border-radius:16px; padding:12px }
+  .burbuja { max-width:84%; padding:9px 13px; border-radius:18px; font-size:15px; line-height:1.35; position:relative }
+  .burbuja.yo { align-self:flex-end; background:var(--a); color:#fff; border-bottom-right-radius:6px }
+  .burbuja.el { align-self:flex-start; background:var(--ig); border-bottom-left-radius:6px }
+  .wa-f .burbuja.yo { background:var(--wa); color:var(--t) }
+  .wa-f .burbuja.el { background:#fff }
+  .quien { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--g); margin:8px 2px 0 }
+  .quien.d { align-self:flex-end }
+  .comentario { display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--l); font-size:15px }
+  .comentario:last-child { border:0 }
+  .comentario b { margin-right:4px }
+  .comentario .resp { margin-left:42px }
+  .copiar { font:inherit; font-size:13px; font-weight:700; color:var(--a); background:var(--a-suave); border:0; border-radius:980px; padding:6px 12px; cursor:pointer; white-space:nowrap }
+  .copiar:hover { background:#d6e7fb }
+  .copiar.ok { background:var(--v); color:#fff }
+
+  .dos-col { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,400px); gap:32px; align-items:start }
+  @media (max-width:860px) { .dos-col { grid-template-columns:1fr } }
+
+  ol.pasos { list-style:none; margin:0; padding:0; display:grid; gap:12px }
+  ol.pasos li { display:grid; grid-template-columns:34px 1fr; gap:12px; align-items:start }
+  ol.pasos li > b { width:28px; height:28px; border-radius:50%; background:var(--a); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; margin-top:1px }
+
+  .tip { display:flex; gap:12px; align-items:flex-start; background:var(--a-suave); border-radius:16px; padding:14px 18px; margin-top:18px }
+  .tip b:first-child { color:var(--a-osc); white-space:nowrap }
+
+  /* Plantillas */
+  .plantilla { background:#fff; border:1px solid var(--l); border-radius:18px; padding:18px 20px; display:flex; flex-direction:column; gap:10px }
+  .plantilla .cab { display:flex; justify-content:space-between; align-items:center; gap:10px }
+  .plantilla .cab span { font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--g) }
+  .plantilla .texto { font-size:17px; line-height:1.4; margin:0 }
+
+  /* Probador */
+  .probador { background:var(--s); border-radius:22px; padding:22px }
+  .probador textarea { width:100%; min-height:96px; font:inherit; font-size:17px; border:1px solid var(--l); border-radius:14px; padding:14px; resize:vertical; background:#fff; color:var(--t) }
+  .probador textarea:focus { outline:2px solid var(--a); border-color:transparent }
+  .checks { list-style:none; padding:0; margin:14px 0 0; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px }
+  .checks li { display:flex; gap:8px; align-items:center; font-size:15px; background:#fff; border-radius:12px; padding:10px 12px }
+  .checks li i { font-style:normal; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; flex:none; background:var(--l); color:var(--g) }
+  .checks li.si i { background:var(--v); color:#fff } .checks li.no i { background:var(--r); color:#fff }
+  .veredicto { margin:14px 0 0; font-weight:800; font-size:19px }
+  .ejemplos { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px }
+  .ejemplos button { font:inherit; font-size:13px; font-weight:600; border:1px solid var(--l); background:#fff; color:var(--t2); border-radius:980px; padding:6px 12px; cursor:pointer }
+  @media (max-width:520px) { .checks { grid-template-columns:1fr } }
+
+  /* Conversación animada */
+  .controles { display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 0 }
+  .btn { font:inherit; font-size:15px; font-weight:600; border:0; border-radius:980px; padding:10px 18px; cursor:pointer; background:var(--a); color:#fff }
+  .btn.sec2 { background:var(--s); color:var(--t) }
+  .btn:disabled { opacity:.4; cursor:default }
+  #conv .burbuja { animation:entra .3s ease }
+  @keyframes entra { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:none } }
+  .nota-paso { font-size:13px; color:var(--a-osc); font-weight:700; align-self:center; background:#fff; border-radius:980px; padding:4px 10px; margin:4px 0; animation:entra .3s ease }
+
+  /* Línea de tiempo de seguimiento */
+  .linea { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px; position:relative }
+  .linea .punto { background:var(--s); border-radius:18px; padding:18px; position:relative }
+  .linea .punto b.cuando { display:block; font-size:28px; font-weight:800; letter-spacing:-0.02em; color:var(--a) }
+  .linea .punto.ultimo b.cuando { color:var(--t) }
+  .linea .punto.espera b.cuando { color:var(--g) }
+  @media (max-width:760px) { .linea { grid-template-columns:1fr } }
+
+  /* Errores */
+  .errores { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:12px }
+  .error { all:unset; box-sizing:border-box; cursor:pointer; background:var(--s); border-radius:18px; padding:18px; min-height:150px; display:flex; flex-direction:column; gap:8px; transition:background .2s }
+  .error:focus-visible { outline:2px solid var(--a); outline-offset:2px }
+  .error .num { font-size:13px; font-weight:800; color:var(--r) }
+  .error b { font-size:18px; line-height:1.2 }
+  .error .por { color:var(--g); font-size:15px; display:none }
+  .error .ver { font-size:13px; color:var(--a); font-weight:700; margin-top:auto }
+  .error[aria-expanded="true"] { background:var(--r-suave) }
+  .error[aria-expanded="true"] .por { display:block; color:var(--t2) }
+  .error[aria-expanded="true"] .ver { display:none }
+
+  .cierre { font-size:clamp(26px, 4vw, 44px); font-weight:800; letter-spacing:-0.02em; line-height:1.1; margin:0 0 8px }
+  .pie { max-width:1080px; margin:0 auto; padding:24px 16px 48px; color:var(--g); font-size:14px }
+
+  @media print { .barra-top, .indice, .controles, .copiar, .probador { display:none !important } .error .por { display:block } }
+  @media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important } }
+</style>
+</head>
+<body data-tarea="mensajes-redes">
+
+<header class="barra-top">
+  <a href="../">← Mapa</a>
+  <nav class="pestanas" aria-label="Guías de redes">
+    <a href="../redes-sociales/">Contenido</a>
+    <a href="./" aria-current="page">Mensajes</a>
+  </nav>
+  <span class="relleno"></span>
+  <span class="progreso" id="progreso" aria-hidden="true"></span>
+</header>
+
+<nav class="indice" aria-label="Secciones">
+  <div>
+    <a href="#embudo">Embudo</a>
+    <a href="#comentarios">1 · Comentarios y DM</a>
+    <a href="#plantillas">2 · Plantillas</a>
+    <a href="#whatsapp">3 · Primer WhatsApp</a>
+    <a href="#venta">4 · La venta</a>
+    <a href="#seguimiento">5 · Si no contestan</a>
+    <a href="#errores">7 errores</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="sec" id="inicio">
+  <p class="kick">Paso 4 · Conseguir clientes</p>
+  <h1>Cómo contestar<br>mensajes y vender</h1>
+  <p class="lead">El video trae el comentario. Los mensajes traen la plata. Aquí está qué escribir en cada paso, en Instagram, TikTok y WhatsApp, listo para copiar.</p>
+  <div class="grid g3">
+    <div class="card azul"><span class="etq">Regla 1</span><p><b>Responder en menos de 1 hora</b> al comentario. Después se enfría.</p></div>
+    <div class="card azul"><span class="etq">Regla 2</span><p>El primer WhatsApp es <b>corto y con una pregunta de sí o no</b>.</p></div>
+    <div class="card azul"><span class="etq">Regla 3</span><p>Siempre <b>cerrar con fecha</b>: «¿Para cuándo la quieres traer?»</p></div>
+  </div>
+</section>
+
+<!-- Embudo -->
+<section class="sec" id="embudo">
+  <p class="kick">El embudo de ventas</p>
+  <h2>Así un seguidor se vuelve cliente</h2>
+  <p class="lead">Seis pasos. Toca cada uno para ver qué hacer.</p>
+  <ol class="embudo" id="embudo-lista">
+    <li><button type="button" data-i="0"><span class="n">1</span><b>Video con CTA</b><small>Publicas con llamado a la acción</small></button></li>
+    <li><button type="button" data-i="1"><span class="n">2</span><b>Comentario</b><small>La persona comenta</small></button></li>
+    <li><button type="button" data-i="2"><span class="n">3</span><b>DM en IG o TikTok</b><small>Le escribes apenas comenta</small></button></li>
+    <li class="critico"><button type="button" data-i="3"><span class="n">4</span><b>Pedir WhatsApp</b><small>Le pides el número en el DM</small></button></li>
+    <li class="critico"><button type="button" data-i="4"><span class="n">5</span><b>1.er WhatsApp</b><small>Corto, que obligue a responder</small></button></li>
+    <li><button type="button" data-i="5"><span class="n">6</span><b>Cierre</b><small>Cierras la venta por WhatsApp</small></button></li>
+  </ol>
+  <div class="detalle" id="embudo-detalle" aria-live="polite"><p></p><a href="#"></a></div>
+  <div class="alerta"><b>Punto crítico:</b> la mayoría se pierde entre el paso 4 y el 5. Dan el número pero no contestan el primer WhatsApp. Por eso el primer mensaje tiene su propia sección.</div>
+</section>
+
+<!-- 1 Comentarios y DMs -->
+<section class="sec" id="comentarios">
+  <p class="kick">1 · Comentarios y DMs</p>
+  <h2>Cuando alguien comenta, haces dos cosas</h2>
+  <div class="seg" role="tablist" data-grupo="red">
+    <button type="button" role="tab" aria-selected="true" data-panel="p-ig">Instagram</button>
+    <button type="button" role="tab" aria-selected="false" data-panel="p-tk">TikTok</button>
+  </div>
+
+  <div class="panel" id="p-ig">
+    <div class="dos-col">
+      <div>
+        <ol class="pasos">
+          <li><b>1</b><div><h3>Respondes el comentario público</h3><p>Así los demás ven que contestas y la persona sabe que le llegó un mensaje.</p>
+            <div class="plantilla"><div class="cab"><span>Perfil público</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Ya te escribimos al DM! 📩 Revisa tus mensajes</p></div>
+            <div class="plantilla" style="margin-top:8px"><div class="cab"><span>Perfil privado</span><button class="copiar" type="button">Copiar</button></div><p class="texto">Tienes el perfil privado 🔒 ¡Mándanos un DM!</p></div>
+          </div></li>
+          <li><b>2</b><div><h3>Le escribes al DM</h3><p>El objetivo del DM no es vender: es <b>conseguir el WhatsApp</b>.</p>
+            <div class="plantilla"><div class="cab"><span>DM</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Vi que comentaste en nuestro video. ¿Quieres agendar tu lavado? Pásame tu WhatsApp y te mando la info 🏍️</p></div>
+          </div></li>
+        </ol>
+      </div>
+      <div class="fono" aria-label="Ejemplo en Instagram">
+        <div class="fono-cab"><span class="avatar ig">IG</span>Comentarios</div>
+        <div class="comentario"><span class="avatar" style="background:#bbb">C</span><div><b>cliente</b>Info 🙌</div></div>
+        <div class="comentario resp"><span class="avatar ig">TU</span><div><b>tunegocio</b>¡Ya te escribimos al DM! 📩 Revisa tus mensajes</div></div>
+        <p class="quien">Mensaje directo</p>
+        <div class="chat">
+          <div class="burbuja yo">¡Hola! 👋 Vi que comentaste en nuestro video. ¿Quieres agendar tu lavado? Pásame tu WhatsApp y te mando la info 🏍️</div>
+          <div class="burbuja el">¡Dale! Mi número es 3XX XXX XXXX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="p-tk" hidden>
+    <div class="dos-col">
+      <div>
+        <p>En TikTok es igual: respuesta pública y luego el DM con la misma plantilla.</p>
+        <div class="plantilla"><div class="cab"><span>Comentario público</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Te mandamos la info al DM! 📩 Revísalo</p></div>
+        <div class="plantilla" style="margin-top:8px"><div class="cab"><span>DM</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Vi que comentaste en nuestro video. ¿Quieres agendar tu lavado? Pásame tu WhatsApp y te mando la info 🏍️</p></div>
+      </div>
+      <div class="fono" aria-label="Ejemplo en TikTok">
+        <div class="fono-cab"><span class="avatar tk">TK</span>Comentarios</div>
+        <div class="comentario"><span class="avatar" style="background:#bbb">C</span><div><b>cliente</b>¿Cuánto vale? 👀</div></div>
+        <div class="comentario resp"><span class="avatar tk">TU</span><div><b>tunegocio</b>¡Te mandamos la info al DM! 📩 Revísalo</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip"><b>Tip</b><span>Máximo <b>1 hora</b> para responder. Por eso publicamos a las 6:00 p. m. y alguien queda pendiente del celular esa hora.</span></div>
+</section>
+
+<!-- 2 Plantillas por video -->
+<section class="sec" id="plantillas">
+  <p class="kick">2 · Plantillas según el video</p>
+  <h2>El mensaje cambia según lo que promocionaste</h2>
+  <p class="lead">Elige qué tipo de video era. Ves el DM y el primer WhatsApp que van con él.</p>
+  <div class="seg" role="tablist" data-grupo="tipo">
+    <button type="button" role="tab" aria-selected="true" data-panel="t-reserva">🏍️ Reserva</button>
+    <button type="button" role="tab" aria-selected="false" data-panel="t-inaug">🎉 Inauguración</button>
+    <button type="button" role="tab" aria-selected="false" data-panel="t-memb">♾️ Membresía</button>
+    <button type="button" role="tab" aria-selected="false" data-panel="t-desc">🏷️ Descuento</button>
+  </div>
+
+  <div class="panel" id="t-reserva">
+    <p class="chico">Para videos de antes y después o del proceso de lavado.</p>
+    <div class="grid g2">
+      <div class="plantilla"><div class="cab"><span>DM · Instagram o TikTok</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Vi que te gustó cómo quedó esa moto. ¿Quieres agendar la tuya? Pásame tu WhatsApp y te mando el link de reserva 🏍️</p></div>
+      <div class="plantilla"><div class="cab"><span>Primer WhatsApp</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Nos pasaste tu número por TikTok. ¿Todavía quieres agendar tu lavada?</p></div>
+    </div>
+  </div>
+  <div class="panel" id="t-inaug" hidden>
+    <p class="chico">Para videos que invitan a la apertura.</p>
+    <div class="grid g2">
+      <div class="plantilla"><div class="cab"><span>DM · Instagram o TikTok</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Vi que te interesó la inauguración. ¿Quieres que te guarde un cupo? Pásame tu WhatsApp y te paso la info</p></div>
+      <div class="plantilla"><div class="cab"><span>Primer WhatsApp</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Nos pasaste tu número. ¿Te guardamos cupo para la inauguración?</p></div>
+    </div>
+  </div>
+  <div class="panel" id="t-memb" hidden>
+    <p class="chico">Para videos de lavados ilimitados.</p>
+    <div class="grid g2">
+      <div class="plantilla"><div class="cab"><span>DM · Instagram o TikTok</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Vi que te interesó lo de lavados ilimitados. Pásame tu WhatsApp y te explico cómo funciona</p></div>
+      <div class="plantilla"><div class="cab"><span>Primer WhatsApp</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Nos pasaste tu número por lo de lavados ilimitados. ¿Te interesa?</p></div>
+    </div>
+  </div>
+  <div class="panel" id="t-desc" hidden>
+    <p class="chico">Para videos con una promoción especial.</p>
+    <div class="grid g2">
+      <div class="plantilla"><div class="cab"><span>DM · Instagram o TikTok</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Vi que comentaste por el descuento. Pásame tu WhatsApp y te mando el código</p></div>
+      <div class="plantilla"><div class="cab"><span>Primer WhatsApp</span><button class="copiar" type="button">Copiar</button></div><p class="texto">¡Hola! 👋 Nos pasaste tu número por el descuento. ¿Lo quieres redimir?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Primer WhatsApp -->
+<section class="sec" id="whatsapp">
+  <p class="kick">3 · Primer mensaje de WhatsApp</p>
+  <h2>La parte más importante</h2>
+  <p class="lead">El objetivo es que te <b>respondan</b>. No vender, no informar. Mensaje corto más una pregunta de sí o no.</p>
+  <div class="grid g2">
+    <div class="card mal">
+      <span class="etq">✕ No hagas esto</span>
+      <p class="chico" style="color:var(--t2)">Párrafo largo = te ignoran</p>
+      <div class="chat wa-f"><div class="burbuja yo">Hola buenas! Somos [LAVADERO], ubicados en [DIRECCIÓN]. Lavado $25.000, cera $35.000, membresía $59.000. Reserva: [LINK]. Lunes a sábado 8am-6pm. Te esperamos! 🙌🏍️✨</div></div>
+    </div>
+    <div class="card bien">
+      <span class="etq">✓ Haz esto</span>
+      <p class="chico" style="color:var(--t2)">Corto + pregunta = responden</p>
+      <div class="chat wa-f"><div class="burbuja yo">¡Hola! 👋 Nos pasaste tu número por IG. ¿Todavía quieres lavar tu moto?</div><div class="burbuja el">¡Sí!</div></div>
+    </div>
+  </div>
+  <div class="tip"><b>Por qué</b><span>«¿Todavía quieres?» genera urgencia: sienten que pierden algo si no dicen que sí.</span></div>
+
+  <h3 style="margin-top:40px">Prueba tu primer mensaje</h3>
+  <p class="chico">Escribe el mensaje que vas a mandar y mira si pasa las cuatro reglas.</p>
+  <div class="probador">
+    <div class="ejemplos">
+      <button type="button" data-ej="¡Hola! 👋 Nos pasaste tu número por IG. ¿Todavía quieres lavar tu moto?">Ejemplo bueno</button>
+      <button type="button" data-ej="Hola buenas! Somos el lavadero, ubicados en la calle 10. Lavado $25.000, cera $35.000. Reserva aquí: link.com. Te esperamos!">Ejemplo malo</button>
+    </div>
+    <label for="msg" class="chico" style="display:block;margin-bottom:6px">Tu mensaje</label>
+    <textarea id="msg" placeholder="¡Hola! 👋 Nos pasaste tu número por…"></textarea>
+    <ul class="checks" id="checks">
+      <li data-c="corto"><i>·</i><span>Corto (máximo 20 palabras)</span></li>
+      <li data-c="pregunta"><i>·</i><span>Termina en pregunta</span></li>
+      <li data-c="precio"><i>·</i><span>Sin precios</span></li>
+      <li data-c="link"><i>·</i><span>Sin links ni dirección</span></li>
+    </ul>
+    <p class="veredicto" id="veredicto" aria-live="polite">Escribe algo para probar.</p>
+  </div>
+</section>
+
+<!-- 4 La conversación de venta -->
+<section class="sec" id="venta">
+  <p class="kick">4 · La conversación de venta</p>
+  <h2>Cuando dicen «sí», das la info de a poquitos</h2>
+  <div class="dos-col">
+    <div>
+      <ol class="pasos">
+        <li><b>1</b><div><h3>Responde en menos de 5 minutos</h3><p>Ya contestó: está caliente. No lo dejes esperando.</p></div></li>
+        <li><b>2</b><div><h3>Pregunta qué moto tiene</h3><p>Personaliza. Con la moto ya puedes hablarle de su caso.</p></div></li>
+        <li><b>3</b><div><h3>Ahí sí, los precios</h3><p>Dos opciones, nada más. Ya los pidió con su interés.</p></div></li>
+        <li><b>4</b><div><h3>Cierra con fecha</h3><p>«¿Para cuándo la quieres traer?» «Cuando quieras» es igual a nunca.</p></div></li>
+        <li><b>5</b><div><h3>Link y opción por chat</h3><p>Manda el link de reserva y ofrece agendarlo tú mismo. Al final, la dirección.</p></div></li>
+      </ol>
+    </div>
+    <div class="fono">
+      <div class="fono-cab"><span class="avatar wa">WA</span>WhatsApp</div>
+      <div class="chat wa-f" id="conv" aria-live="polite" style="min-height:360px"></div>
+      <div class="controles">
+        <button class="btn" type="button" id="conv-sig">Siguiente mensaje</button>
+        <button class="btn sec2" type="button" id="conv-todo">Ver todo</button>
+        <button class="btn sec2" type="button" id="conv-reini">Reiniciar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 Si no contestan -->
+<section class="sec" id="seguimiento">
+  <p class="kick">5 · Si no contestan</p>
+  <h2>No mandes otro mensaje de una. Espera.</h2>
+  <div class="linea">
+    <div class="punto espera"><b class="cuando">Día 0</b><p>Mandaste el primer WhatsApp y no contestó. <b>No escribas más ese día.</b></p></div>
+    <div class="punto"><b class="cuando">24 h</b><p>«¡Hola! Te escribí ayer por lo del lavado. ¿Aún te interesa? 🏍️»</p><button class="copiar" type="button" data-texto="¡Hola! Te escribí ayer por lo del lavado. ¿Aún te interesa? 🏍️">Copiar</button></div>
+    <div class="punto"><b class="cuando">3 días</b><p>«¡Hey! El descuento sigue disponible si lo quieres redimir 🙌»</p><button class="copiar" type="button" data-texto="¡Hey! El descuento sigue disponible si lo quieres redimir 🙌">Copiar</button></div>
+    <div class="punto ultimo"><b class="cuando">7 días</b><p>Último intento. Si no responde, <b>ya no insistir</b>. Más de 3 mensajes y te bloquean el número.</p></div>
+  </div>
+</section>
+
+<!-- 7 errores -->
+<section class="sec" id="errores">
+  <p class="kick">7 errores que matan la venta</p>
+  <h2>Lo que no se hace</h2>
+  <p class="lead">Toca cada error para ver por qué.</p>
+  <div class="errores">
+    <button class="error" type="button" aria-expanded="false"><span class="num">01</span><b>Párrafo largo como primer mensaje</b><span class="por">Nadie lee textos de desconocidos.</span><span class="ver">Por qué →</span></button>
+    <button class="error" type="button" aria-expanded="false"><span class="num">02</span><b>Mandar precios sin que los pidan</b><span class="por">Primero interés, después plata.</span><span class="ver">Por qué →</span></button>
+    <button class="error" type="button" aria-expanded="false"><span class="num">03</span><b>Enviar la ubicación de una</b><span class="por">Parece spam automático.</span><span class="ver">Por qué →</span></button>
+    <button class="error" type="button" aria-expanded="false"><span class="num">04</span><b>Demorar más de 1 hora</b><span class="por">Ya se enfrió.</span><span class="ver">Por qué →</span></button>
+    <button class="error" type="button" aria-expanded="false"><span class="num">05</span><b>Insistir más de 3 veces</b><span class="por">Te bloquean el número.</span><span class="ver">Por qué →</span></button>
+    <button class="error" type="button" aria-expanded="false"><span class="num">06</span><b>Mandar audios de primeras</b><span class="por">Nadie escucha audios de extraños.</span><span class="ver">Por qué →</span></button>
+    <button class="error" type="button" aria-expanded="false"><span class="num">07</span><b>No cerrar con fecha</b><span class="por">«Cuando quieras» = nunca van.</span><span class="ver">Por qué →</span></button>
+  </div>
+</section>
+
+<section class="sec" id="final" style="border-bottom:0">
+  <p class="cierre">El primer mensaje es para que contesten.<br><span style="color:var(--a)">Todo lo demás viene después.</span></p>
+  <p class="chico">Siguiente: <a href="../redes-sociales/" style="color:var(--a);font-weight:700">cómo hacer los videos que traen los comentarios →</a></p>
+  <div id="ruta-cierre" style="margin-top:24px"></div>
+</section>
+
+</main>
+
+<footer class="pie"><p>Mónaco · Moto Detailing · Manual de mensajes · v1 · noviembre de 2026</p></footer>
+
+<script>
+(function () {
+  "use strict";
+  /* Barra de avance y sección activa */
+  var barra = document.getElementById("progreso");
+  var links = Array.prototype.slice.call(document.querySelectorAll(".indice a"));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  function avance() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    barra.style.width = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + "%";
+    var act = -1;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 140) act = i; });
+    links.forEach(function (a, i) {
+      var on = i === act;
+      if (on !== a.classList.contains("activo")) {
+        a.classList.toggle("activo", on);
+        if (on) a.scrollIntoView({ block: "nearest", inline: "center" });
+      }
+    });
+  }
+  addEventListener("scroll", avance, { passive: true }); avance();
+
+  /* Embudo */
+  var PASOS = [
+    ["Publica el video con un CTA de una palabra dicho, mostrado y escrito: «Comenta LAVADO».", "Ver la guía de contenido", "../redes-sociales/#s18"],
+    ["La persona comenta. Desde aquí corre el reloj: máximo 1 hora para responder.", "Qué contestar", "#comentarios"],
+    ["Respondes el comentario en público y le escribes al DM con la plantilla del tipo de video.", "Plantillas de DM", "#plantillas"],
+    ["En el DM pides el WhatsApp. No mandes precios ni ubicación todavía.", "Ver el DM", "#comentarios"],
+    ["El primer WhatsApp: corto y con pregunta de sí o no. Aquí se pierde la mayoría.", "Primer WhatsApp", "#whatsapp"],
+    ["Cuando dice «sí»: pregunta la moto, da dos precios y cierra con fecha.", "La conversación", "#venta"]
+  ];
+  var bot = document.querySelectorAll("#embudo-lista button");
+  var det = document.getElementById("embudo-detalle");
+  function paso(i) {
+    bot.forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    det.querySelector("p").innerHTML = "<b>Paso " + (i + 1) + ".</b> " + PASOS[i][0];
+    var a = det.querySelector("a"); a.textContent = PASOS[i][1] + " →"; a.href = PASOS[i][2];
+  }
+  bot.forEach(function (b) { b.addEventListener("click", function () { paso(+b.dataset.i); }); });
+  paso(0);
+
+  /* Selectores de pestañas */
+  document.querySelectorAll(".seg").forEach(function (seg) {
+    var bs = seg.querySelectorAll("button");
+    bs.forEach(function (b) {
+      b.addEventListener("click", function () {
+        bs.forEach(function (o) {
+          var on = o === b; o.setAttribute("aria-selected", on ? "true" : "false");
+          document.getElementById(o.dataset.panel).hidden = !on;
+        });
+      });
+    });
+  });
+
+  /* Copiar */
+  function copiar(txt, b) {
+    var hecho = function () { var t = b.textContent; b.textContent = "Copiado ✓"; b.classList.add("ok");
+      setTimeout(function () { b.textContent = t; b.classList.remove("ok"); }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(hecho, hecho);
+    else { var ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (e) {} ta.remove(); hecho(); }
+  }
+  document.querySelectorAll(".copiar").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var txt = b.dataset.texto;
+      if (!txt) { var p = b.closest(".plantilla"); txt = p ? p.querySelector(".texto").textContent : ""; }
+      copiar(txt.trim(), b);
+    });
+  });
+
+  /* Probador del primer mensaje */
+  var ta = document.getElementById("msg"), ver = document.getElementById("veredicto");
+  function probar() {
+    var t = ta.value.trim();
+    var items = document.querySelectorAll("#checks li");
+    if (!t) { items.forEach(function (li) { li.className = ""; li.querySelector("i").textContent = "·"; });
+      ver.textContent = "Escribe algo para probar."; ver.style.color = ""; return; }
+    var palabras = t.split(/\s+/).filter(function (w) { return /[\wáéíóúñ]/i.test(w); }).length;
+    var r = {
+      corto: palabras <= 20,
+      pregunta: /\?\s*[^\wáéíóúñ]*$/i.test(t),
+      precio: !/\$|\b\d{2}\.?\d{3}\b|\bmil\b|precio|cuesta|vale/i.test(t),
+      link: !/https?:|www\.|\.com|\.co\b|calle|carrera|cra\b|cll\b|ubicad|direcci/i.test(t)
+    };
+    var ok = 0;
+    items.forEach(function (li) { var v = r[li.dataset.c]; if (v) ok++;
+      li.className = v ? "si" : "no"; li.querySelector("i").textContent = v ? "✓" : "✕"; });
+    var extra = r.corto ? "" : " (" + palabras + " palabras)";
+    if (ok === 4) { ver.textContent = "Listo para mandar. Este mensaje pide respuesta."; ver.style.color = "var(--v)"; }
+    else { ver.textContent = "Falta " + (4 - ok) + (4 - ok === 1 ? " regla" : " reglas") + extra + ". Así lo más seguro es que no conteste."; ver.style.color = "var(--r)"; }
+  }
+  ta.addEventListener("input", probar);
+  document.querySelectorAll("[data-ej]").forEach(function (b) {
+    b.addEventListener("click", function () { ta.value = b.dataset.ej; probar(); });
+  });
+
+  /* Conversación de venta, mensaje por mensaje */
+  var CONV = [
+    ["yo", "¡Hola! 👋 Nos pasaste tu número por IG. ¿Todavía quieres lavar tu moto?", "Corto + pregunta de sí o no"],
+    ["el", "¡Sí, parce!"],
+    ["yo", "¡Buenísimo! 🙌 ¿Qué moto tienes?", "Pregunta la moto: personaliza"],
+    ["el", "Una Pulsar 200"],
+    ["yo", "Uff, esa queda brutal 🔥<br>Lavado profesional: $25.000<br>Con cera + restaurador: $35.000<br>¿Para cuándo la quieres traer?", "Ahora sí precios, y cierra con fecha"],
+    ["el", "¿Este sábado se puede?"],
+    ["yo", "¡Dale! Reserva acá para no hacer fila:<br>[LINK DE RESERVA]<br>O dime a qué hora y te la agendo yo.<br>📍 [DIRECCIÓN DEL LAVADERO]", "Link + opción por chat. La dirección va al final"]
+  ];
+  var conv = document.getElementById("conv"), n = 0;
+  var bSig = document.getElementById("conv-sig"), bTodo = document.getElementById("conv-todo");
+  function uno() {
+    if (n >= CONV.length) return;
+    var m = CONV[n++];
+    if (m[2]) { var nota = document.createElement("span"); nota.className = "nota-paso"; nota.textContent = m[2]; conv.appendChild(nota); }
+    var d = document.createElement("div"); d.className = "burbuja " + m[0]; d.innerHTML = m[1]; conv.appendChild(d);
+    bSig.disabled = bTodo.disabled = n >= CONV.length;
+    bSig.textContent = n >= CONV.length ? "Venta cerrada ✓" : "Siguiente mensaje";
+  }
+  bSig.addEventListener("click", uno);
+  bTodo.addEventListener("click", function () { while (n < CONV.length) uno(); });
+  document.getElementById("conv-reini").addEventListener("click", function () { conv.innerHTML = ""; n = 0; uno(); });
+  uno();
+
+  /* Errores */
+  document.querySelectorAll(".error").forEach(function (b) {
+    b.addEventListener("click", function () { b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true"); });
+  });
+})();
+</script>
+</body>
+</html>
