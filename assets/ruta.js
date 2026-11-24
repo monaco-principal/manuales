@@ -82,6 +82,10 @@
       title: "Contratar lavadores", verb: "Dónde buscar, qué preguntar en la entrevista y cómo decidir",
       keywords: ["contratar", "contratación", "personal", "lavador", "lavadores", "entrevista", "preguntas", "empleado", "trabajador", "referencias", "antecedentes", "hoja de vida", "prueba", "flyer", "equipo"] },
 
+    { id: "arranque-digital", paso: 4, url: "arranque-digital/",
+      title: "Arranque digital", verb: "Lo que debe estar listo para empezar el marketing",
+      keywords: ["arranque", "digital", "marketing", "requisitos", "gmail", "correo", "whatsapp business", "sim", "instagram", "facebook", "tiktok", "biografía", "maps", "google", "accesos", "cuentas", "redes"] },
+
     { id: "atencion-al-cliente", paso: 4, url: "atencion-al-cliente/",
       title: "Atender al cliente", verb: "Las 5 frases para recibir, ofrecer, entregar y despedir",
       keywords: ["atención", "atencion", "cliente", "recepción", "recepcion", "guion", "mostrador", "venta", "precios", "escalera", "entrega", "cobro", "membresía", "casco", "está caro"] },
